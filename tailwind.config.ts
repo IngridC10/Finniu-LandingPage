@@ -15,8 +15,10 @@ const config: Config = {
       },
 
       colors: {
-        colorLightBlue: "#B0E5F8",
+        lightBlueColor: "#B0E5F8",
         blueDarkColor: "#051926",
+        lighBlue: "#DFF7FF",
+        skyBlueColor: "#C9F1FF",
       },
     },
   },

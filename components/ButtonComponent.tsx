@@ -13,10 +13,10 @@ const ButtonComponent: React.FC<ButtonComponentProps> = ({
   return (
     <div>
       <button
-        className={`flex items-center justify-center w-40 h-10  rounded-lg  bg-colorLightBlue ${className}`}
+        className={`flex items-center justify-center rounded-lg  ${className} `}
         {...props}
       >
-        <h1 className="text-white">{text}</h1>
+        <span>{text}</span>
       </button>
     </div>
   );
