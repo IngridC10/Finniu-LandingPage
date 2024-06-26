@@ -19,9 +19,15 @@ const config: Config = {
         blueDarkColor: "#051926",
         lighBlue: "#DFF7FF",
         skyBlueColor: "#C9F1FF",
+        lighBlueColorOpcional: "#F0FBFF",
+        darkBlueColor: "#0D3A5C",
+        grayColor: "#F4F4F4",
+        graySecondaryColor: "#B8B8B8",
+        lilaColor: "#D2B7FF",
+        lightSecondaryColor: "##F0FBFF",
       },
     },
   },
-  plugins: [],
+  plugins: [require("flowbite/plugin")],
 };
 export default config;

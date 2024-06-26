@@ -2,12 +2,8 @@ import { hostname } from "os";
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  image: {
-    remotePatterns: [
-      {
-        protocol: "https",
-      },
-    ],
+  images: {
+    domains: ["example.com"],
   },
 };
 

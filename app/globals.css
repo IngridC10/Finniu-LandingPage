@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "flowbite";
 
 @layer utilities {
   .text-balance {
@@ -10,5 +11,13 @@
 
 nav ul li {
   display: inline;
-  padding: 14px 20px;
+  padding: 24px 50px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
