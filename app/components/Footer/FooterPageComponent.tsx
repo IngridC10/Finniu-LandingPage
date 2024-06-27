@@ -1,4 +1,5 @@
 "use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import Instagram from "/images/Instagram.png";
@@ -15,8 +16,11 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-2">Acerca de Finniu</h3>
           <ul>
             <li className="mb-1">
-              <Link href="/preguntas-frecuentes" legacyBehavior>
-                <a className=" cursor-pointer hover:underline">
+              <Link
+                href="https://finniuapp.notion.site/Preguntas-Frecuentes-f7f77872d34a4de3a9e12d5fc58421ff"
+                legacyBehavior
+              >
+                <a target="_blank" className=" cursor-pointer hover:underline">
                   Preguntas Frecuentes
                 </a>
               </Link>
@@ -72,20 +76,46 @@ const Footer = () => {
         <div>
           <h3 className="text-lg font-semibold mb-2">Encuéntranos en</h3>
           <div className="flex space-x-4">
-            <Image
-              src={Instagram}
-              alt="Logo de Finniu"
-              width={38}
-              height={96}
-            />
+            <Link
+              href="https://www.instagram.com/finniu.app?igsh=MWRsZGRpMzdncXZ1MA=="
+              legacyBehavior
+            >
+              <a target="_blank">
+                <Image
+                  src={Instagram}
+                  alt="Logo de Finniu"
+                  width={38}
+                  height={96}
+                />
+              </a>
+            </Link>
 
-            <Image
-              src={LinkedinIcon}
-              alt="Logo de Finniu"
-              width={38}
-              height={96}
-            />
-            <Image src={Facebook} alt="Logo de Finniu" width={38} height={96} />
+            <Link
+              href="https://www.linkedin.com/company/finniu/"
+              legacyBehavior
+            >
+              <a target="_blank">
+                <Image
+                  src={LinkedinIcon}
+                  alt="Logo de Finniu"
+                  width={38}
+                  height={96}
+                />
+              </a>
+            </Link>
+            <Link
+              href="https://www.facebook.com/finniuapp?mibextid=ZbWKwL"
+              legacyBehavior
+            >
+              <a target="_blank">
+                <Image
+                  src={Facebook}
+                  alt="Logo de Finniu"
+                  width={38}
+                  height={96}
+                />
+              </a>
+            </Link>
           </div>
         </div>
       </div>

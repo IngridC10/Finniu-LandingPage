@@ -21,3 +21,27 @@ a {
 a:hover {
   text-decoration: underline;
 }
+/* .custom-carousel-button {
+  background-color: #1d4ed8 !important;
+}
+.custom-carousel-button {
+  background-color: #1d4ed8 !important;
+} */
+
+button[data-testid="carousel-right-control"] {
+  /* Tus estilos aquí */
+  background-color: #1a3a5a;
+  color: white;
+}
+
+button[data-testid="carousel-left-control"] {
+  /* Tus estilos aquí */
+  background-color: #1a3a5a;
+  color: #1a3a5a;
+}
+
+button[data-testid="carousel-indicator"] {
+  /* Tus estilos aquí */
+  background-color: #1a3a5a;
+  color: white;
+}

@@ -23,13 +23,16 @@ const NavComponent = () => {
           </Link>
         </li>
         <li>
-          <Link href="/aprende" legacyBehavior>
-            <a>Aprende</a>
+          <Link
+            href="https://finniuapp.notion.site/Preguntas-Frecuentes-f7f77872d34a4de3a9e12d5fc58421ff"
+            legacyBehavior
+          >
+            <a target="_blank">Aprende</a>
           </Link>
         </li>
         <li>
-          <Link href="/finantips" legacyBehavior>
-            <a>Finantips</a>
+          <Link href="https://finantips.substack.com/" legacyBehavior>
+            <a target="_blank">Finantips</a>
           </Link>
         </li>
         <li>

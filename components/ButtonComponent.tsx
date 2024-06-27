@@ -11,7 +11,7 @@ const ButtonComponent: React.FC<ButtonComponentProps> = ({
   ...props
 }) => {
   return (
-    <div>
+    <div className="flex justify-center items-center">
       <button
         className={`flex items-center justify-center rounded-lg  ${className} `}
         {...props}
