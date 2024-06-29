@@ -13,10 +13,10 @@ const FixedTermComponent = () => {
 
   return (
     <section className="flex flex-col justify-center items-center w-full min-h-screen bg-white">
-      <div className="flex flex-row w-full min-h-screen justify-center">
+      <div className="flex  min-h-screen justify-center max-w-[1512px]">
         <div className="text-left w-[561px] relative z-10 flex flex-col justify-center mb-24 mr-10">
           <p
-            className={`text-[54px] mb-4 leading-tight font-bold ${
+            className={`text-[55px] mb-4 leading-tight font-bold ${
               showComponent ? "text-grayColorText" : "text-graySecondaryColor"
             }`}
             onClick={handleTextClick}
@@ -35,7 +35,7 @@ const FixedTermComponent = () => {
         {showComponent ? <FixedTermCard /> : <SafeInvestmentCard />}
 
         {showComponent ? (
-          <div className="absolute top-[1100px] right-[650px]">
+          <div className="absolute top-[1120px] right-[530px]">
             <Image
               src={CellphoneImage}
               alt="cellphone-image"

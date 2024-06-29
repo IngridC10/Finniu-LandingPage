@@ -9,7 +9,6 @@ const NavComponent = () => {
   const handleButton = () => {
     window.open("https://app.finniu.com/login", "_blank");
   };
-
   return (
     <div className="flex justify-around items-center w-full bg-blueDarkColor p-4">
       <div className="flex ">
@@ -18,8 +17,12 @@ const NavComponent = () => {
 
       <ul className="flex space-x-20 text-white text-[28px]">
         <li>
-          <Link href="/como-funciona" legacyBehavior>
-            <a> ¿Cómo funciona?</a>
+          <Link href={"/#HowItWorks"}>¿Cómo funciona?</Link>
+        </li>
+
+        <li>
+          <Link href="StepDownLoaddComponent" legacyBehavior>
+            <a> Simulador</a>
           </Link>
         </li>
         <li>

@@ -32,16 +32,27 @@ button[data-testid="carousel-right-control"] {
   /* Tus estilos aquí */
   background-color: #1a3a5a;
   color: white;
+  margin-right: -232px;
 }
 
 button[data-testid="carousel-left-control"] {
   /* Tus estilos aquí */
   background-color: #1a3a5a;
   color: #1a3a5a;
+  margin-left: -232px;
 }
 
 button[data-testid="carousel-indicator"] {
   /* Tus estilos aquí */
   background-color: #1a3a5a;
   color: white;
+}
+
+.inline-flex {
+  background-color: #1a3a5a;
+  width: 70px;
+  height: 67px;
+}
+.group {
+  border-radius: 80px;
 }

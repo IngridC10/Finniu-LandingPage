@@ -1,12 +1,14 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import GooglePlay from "/images/GooglePlay.png";
 import AppStore from "/images/AppStore.png";
 import CellphoneDollar from "/images/CellphoneDollar.png";
+import CountUp from "react-countup";
 const DownloadAppComponent = () => {
   return (
     <section className=" flex flex-col justify-center items-center w-full min-h-screen bg-blueDarkColor h-screen  ">
-      <div className="flex flex-row  w-full min-h-screen justify-center">
+      <div className="flex flex-row  max-w-[1512px] min-h-screen justify-center ">
         <div className="text-left w-[561px]  relative z-10 flex justify-center flex-col mb-24">
           <p className="text-white text-2xl mb-4 leading-tight ">
             Invierte en tu futuro
@@ -52,17 +54,36 @@ const DownloadAppComponent = () => {
             <div className="flex items-center mb-4 space-x-4 w-[476px]">
               <div className="text-center">
                 <p>Soles invertidos</p>
-                <p className="font-bold">+3,5M</p>
+                +
+                <CountUp
+                  start={0}
+                  end={3.5}
+                  duration={2.5}
+                  separator=","
+                  decimals={1}
+                  prefix=""
+                  suffix="M"
+                />
               </div>
               <div className="border-l-2 border-lightBlueColor h-16"></div>
               <div className="text-center">
                 <p>Operaciones</p>
-                <p className="font-bold">+780</p>
+                <CountUp
+                  start={0}
+                  end={780}
+                  duration={2.7}
+                  prefix="+"
+                ></CountUp>
               </div>
               <div className="border-l-2 border-lightBlueColor h-16"></div>
               <div className="text-center">
                 <p>Inversionistas</p>
-                <p className="font-bold">+100</p>
+                <CountUp
+                  start={0}
+                  end={100}
+                  duration={2.5}
+                  prefix="+"
+                ></CountUp>
               </div>
             </div>
             <p className="text-justify">

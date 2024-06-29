@@ -29,6 +29,8 @@ const config: Config = {
         lightSecondaryColor: "##F0FBFF",
         grayColorOpcional: "#FAFAFA",
         backgroundLightColor: "#E7F9FF",
+        whiteColor: " #F7FAFB",
+        grayColorBackground: "#B8B8B8",
       },
     },
   },

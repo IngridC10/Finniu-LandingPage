@@ -74,7 +74,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <h3 className="text-lg font-semibold mb-2">Encuéntranos en</h3>
+          <h3 className="text-lg font-semibold mb-4">Encuéntranos en</h3>
           <div className="flex space-x-4">
             <Link
               href="https://www.instagram.com/finniu.app?igsh=MWRsZGRpMzdncXZ1MA=="
@@ -116,6 +116,7 @@ const Footer = () => {
                 />
               </a>
             </Link>
+            <div className=" w-20 h-20"></div>
           </div>
         </div>
       </div>

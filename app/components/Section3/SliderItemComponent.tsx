@@ -3,19 +3,23 @@ import Image, { StaticImageData } from "next/image";
 
 interface SliderItemComponentProps {
   text: string;
-  imgSrc: StaticImageData;
+  image: StaticImageData[];
   alt: string;
 }
 
 const SliderComponent: React.FC<SliderItemComponentProps> = ({
   text,
-  imgSrc,
+  image,
   alt,
 }) => {
   return (
-    <div className="bg-backgroundLightColor flex flex-col p-10 rounded-2xl justify-center items-center w-[800px] h-[400px]">
+    <div className="bg-backgroundLightColor flex flex-col  rounded-2xl justify-center items-center h-[492px]">
       <p>{text}</p>
-      <Image src={imgSrc} alt={alt} width={150} height={100} />
+      <div className=" flex flex-row">
+        {image.map((src, index) => (
+          <Image key={index} src={src} alt={alt} width={180} height={180} />
+        ))}
+      </div>
     </div>
   );
 };

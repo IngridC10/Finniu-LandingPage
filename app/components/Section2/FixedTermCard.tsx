@@ -4,27 +4,30 @@ import Check from "/images/Check.png";
 
 const SafeInvestmentComponentReutilizable = () => {
   return (
-    <div className="flex items-center pb-56 justify-center mt-8 ml-[200px]  md:mt-0">
-      <div className="flex flex-col ml-8 p-6 pb-10 pt-10 pr-14 pl-14  rounded-2xl text-black bg-[#F0FBFF] text-xl w-[680px]">
-        <div className="flex flex-row gap-2">
-          <Image src={Check} alt="check-icon" width={28} height={38} />
-          <h2 className="text-darkBlueColor text-xl font-bold">
-            Crecer es simple
-          </h2>
+    <div className="flex flex-col  items-center justify-center mt-8 ml-[200px]  md:mt-0">
+      <div className="flex flex-row gap-2 w-[680px] items-center justify-center">
+        <Image src={Check} alt="check-icon" width={28} height={32} />
+        <h2 className="text-darkBlueColor text-[32px] font-bold">
+          Crecer es simple
+        </h2>
+      </div>
+
+      <div className="flex flex-col shadow-md items-end p-6 h-[300px] pb-10 pt-10 pr-14 pl-14 mt-4 rounded-2xl text-black bg-[#F0FBFF] text-xl w-[592px]">
+        <div className=" w-96 ">
+          <p className="text-justify leading-relaxed">
+            Pero con rentabilidades
+            <span className="font-bold"> mensuales </span> y
+            <span className="font-bold"> sin comisiones. </span>
+            <p>
+              Aprovecha las ventajas de invertir con Finniu: obtén
+              rentabilidades mensuales sin letras pequeñas, similar a un plazo
+              fijo pero con mayores beneficios.
+            </p>
+            <p className="text-darkBlueColor text-base leading-loose">
+              (1) REVISA LOS TÉRMINOS Y CONDICIONES.
+            </p>
+          </p>
         </div>
-        <p className="text-justify leading-relaxed">
-          Pero con rentabilidades
-          <span className="font-bold"> mensuales </span> y
-          <span className="font-bold"> sin comisiones. </span>
-          <p>
-            Aprovecha las ventajas de invertir con Finniu: obtén rentabilidades
-            mensuales sin letras pequeñas, similar a un plazo fijo pero con
-            mayores beneficios.
-          </p>
-          <p className="text-darkBlueColor text-xs leading-loose">
-            (1) REVISA LOS TÉRMINOS Y CONDICIONES.
-          </p>
-        </p>
       </div>
     </div>
   );
