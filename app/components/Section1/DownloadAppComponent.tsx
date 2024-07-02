@@ -7,9 +7,9 @@ import CellphoneDollar from "/images/CellphoneDollar.png";
 import CountUp from "react-countup";
 const DownloadAppComponent = () => {
   return (
-    <section className=" flex flex-col justify-center items-center w-full  min-h-screen bg-blueDarkColor h-screen  ">
-      <div className="flex flex-row container min-h-[90%] justify-center ">
-        <div className="text-left w-[561px] relative z-10 flex justify-center flex-col ">
+    <section className=" flex flex-col justify-center items-center w-full max-h-[90vh] min-h-[100%] bg-blueDarkColor h-screen   ">
+      <div className="flex flex-row container justify-center relative h-full">
+        <div className="text-left w-[561px] z-10 flex justify-center flex-col ">
           <p className="text-white mb-4 text-[32px] leading-tight ">
             Invierte en tu futuro
           </p>
@@ -49,7 +49,9 @@ const DownloadAppComponent = () => {
           </div>
         </div>
 
-        <div className=" flex items-end  pb-56 ml-60 w-[400px] ">
+        <div className="w-[100px]"></div>
+
+        <div className=" flex items-end pb-10 ml-60 w-[400px] ">
           <div className="flex flex-col items-end justify-center  text-white text-xl  ml-8 ">
             <div className="flex items-center justify-center mb-4 space-x-4 w-[476px] leading-[63px] ">
               <div className="text-center">
@@ -96,7 +98,7 @@ const DownloadAppComponent = () => {
           </div>
         </div>
 
-        <div className="absolute  top-[36%] right-[36.5.3%] h-full">
+        <div className="absolute right-[36px] top-[96px] flex flex-row items-center  justify-center h-full w-full">
           <Image
             src={CellphoneDollar}
             alt="CellPhone Dollar"
