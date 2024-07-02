@@ -12,12 +12,14 @@ const NavComponent = () => {
   return (
     <div className="flex justify-around items-center w-full bg-blueDarkColor p-4">
       <div className="flex ">
-        <Image src={LogoFinniu} alt="Logo de Finniu" width={98} height={96} />
+        <Image src={LogoFinniu} alt="Logo de Finniu" width={125} height={83} />
       </div>
 
-      <ul className="flex space-x-20 text-white text-[28px]">
+      <ul className="flex space-x-20 text-white text-[24px]">
         <li>
-          <Link href={"/#HowItWorks"}>¿Cómo funciona?</Link>
+          <Link href={"/#HowItWorks"} legacyBehavior>
+            <a>¿Cómo funciona?</a>
+          </Link>
         </li>
 
         <li>
@@ -48,7 +50,7 @@ const NavComponent = () => {
       <div>
         <ButtonComponent
           text="Ingresar"
-          className="h-12 w-36 text-blueDarkColor bg-lightBlueColor py-2 px-5 font-bold"
+          className="h-12 w-36 text-blueDarkColor bg-lightBlueColor py-2 text-[24px] rounded-lg px-5 "
           onClick={handleButton}
         />
       </div>

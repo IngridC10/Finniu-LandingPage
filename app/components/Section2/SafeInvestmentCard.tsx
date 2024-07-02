@@ -5,12 +5,12 @@ import BusinessMoney from "/images/BusinessMoney.png";
 
 const SafeInvestment = () => {
   return (
-    <div className="flex items-center pb-56 justify-center mt-8 ml-[200px]  md:mt-0">
-      <div className="flex flex-col ml-8 p-6 pb-10 justify-center items-end relative shadow-md rounded-2xl pt-10 pr-14 pl-14 h-[380px] text-black bg-[#F0FBFF] text-xl w-[680px]">
+    <div className="flex items-center justify-center mt-8 ml-[200px] ">
+      <div className="flex flex-col ml-8 p-6 justify-center items-end relative shadow-md rounded-2xl  h-[300px] text-black bg-[#F0FBFF] text-xl w-[592px]">
         <div className=" w-96">
           <div className="flex flex-row gap-2">
-            <Image src={Key} alt="key-icon" width={28} height={28} />
-            <h2 className="text-darkBlueColor text-2xl font-bold leading-relaxed">
+            <Image src={Key} alt="key-icon" width={40} height={40} />
+            <h2 className="text-darkBlueColor text-[32px] leading-relaxed">
               Invierte sin paltas
             </h2>
           </div>
@@ -19,18 +19,18 @@ const SafeInvestment = () => {
               Contamos con diversas herramientas legales para asegurar tu
               inversión.
             </p>
-            <p className="text-darkBlueColor text-base leading-loose">
+            <p className="text-darkBlueColor text-base mt-4 leading-loose">
               (1) REVISA LOS TÉRMINOS Y CONDICIONES.
             </p>
           </div>
         </div>
       </div>
-      <div className="absolute top-[1220px] right-[530px]">
+      <div className="absolute top-[149%] right-[36%]">
         <Image
           src={BusinessMoney}
           alt="business-icon"
-          width={420}
-          style={{ height: "320px" }}
+          width={284}
+          style={{ height: "274px" }}
         />
       </div>
     </div>

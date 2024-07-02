@@ -1,5 +1,4 @@
 "use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import Instagram from "/images/Instagram.png";
@@ -11,8 +10,8 @@ import WhatsappIcon from "/images/WhatsappIcon.png";
 const Footer = () => {
   return (
     <footer className="  bg-grayColor  border-t border-gray-200 py-8 w-full">
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-start md:items-center px-4">
-        <div className="mb-6 md:mb-0">
+      <div className="container mx-auto flex flex-row justify-between items-start  px-4">
+        <div className="mb-6 leading-9">
           <h3 className="text-lg font-semibold mb-2">Acerca de Finniu</h3>
           <ul>
             <li className="mb-1">
@@ -33,7 +32,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className="mb-6 md:mb-0">
+        <div className="mb-6  leading-9">
           <h3 className="text-lg font-semibold mb-2">Legal</h3>
           <ul>
             <li className="mb-1">
@@ -49,7 +48,7 @@ const Footer = () => {
           </ul>
         </div>
 
-        <div className="mb-6 md:mb-0">
+        <div className="mb-6 leading-9 ">
           <h3 className="text-lg font-semibold mb-2">Contactos</h3>
           <p className="text-gray-700 flex items-center mb-1">
             <Image

@@ -5,17 +5,23 @@ interface SliderItemComponentProps {
   text: string;
   image: StaticImageData[];
   alt: string;
+  backgroundColor?: string;
+  textColor?: string;
 }
 
 const SliderComponent: React.FC<SliderItemComponentProps> = ({
   text,
   image,
   alt,
+  backgroundColor,
+  textColor,
 }) => {
   return (
-    <div className="bg-backgroundLightColor flex flex-col  rounded-2xl justify-center items-center h-[492px]">
-      <p>{text}</p>
-      <div className=" flex flex-row">
+    <div
+      className={`flex flex-col rounded-2xl justify-center items-center h-[591px] ${backgroundColor}`}
+    >
+      <p className={` text-[24px] p-5 ${textColor}`}>{text} </p>
+      <div className=" flex flex-row ">
         {image.map((src, index) => (
           <Image key={index} src={src} alt={alt} width={180} height={180} />
         ))}

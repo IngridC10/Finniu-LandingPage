@@ -4,100 +4,159 @@ import CellphoneandAppStore from "/images/CellphoneandAppStore.png";
 import { Carousel } from "flowbite-react";
 import Eyes from "/images/Eyes.png";
 import LoginCellphoneFinniu from "/images/LoginCellphoneFinniu.png";
-import Register from "/images/Register.png";
+import RegisterLight from "/images/RegisterLight.png";
+import RegisterDark from "/images/RegisterDark.png";
 import CellPhoneandGooglePlay from "/images/CellPhoneandGooglePlay.png";
 import SliderComponent from "./SliderItemComponent";
 import { SetStateAction, useState } from "react";
 import ButtonComponent from "@/components/ButtonComponent";
+import ChoosePlan from "/images/ChoosePlan.png";
+import Step3 from "/images/Step3.png";
+import Step4 from "/images/Step4.png";
+import Bill from "/images/Bill.png";
 
-const StepDownloadAppComponent = () => {
+const HowItWorks = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [isWhereToFindButtonActive, setWhereToFindButtonActive] =
+    useState(true);
 
   const handleSlideChange = (index: SetStateAction<number>) => {
     setActiveIndex(index);
   };
 
+  const handleButtonClick = (): void => {
+    setWhereToFindButtonActive(!isWhereToFindButtonActive);
+    setActiveIndex(0);
+  };
+
+  const itemsSliderWhereFindIt = [
+    {
+      text: "Busca Finniu App en la AppStore o Google play.",
+      image: [CellphoneandAppStore, CellPhoneandGooglePlay],
+      alt: "app-store-icon",
+    },
+    {
+      text: "Descarga la aplicación de Finniu.",
+      image: [LoginCellphoneFinniu],
+      alt: "login-cellphone-finniu",
+    },
+    {
+      text: "¡Regístrate y listo!",
+      image: [RegisterLight],
+      alt: "register",
+    },
+  ];
+
+  const itemsSliderInvest = [
+    {
+      text: "Registrate en la App de Finniu.",
+      image: [RegisterDark],
+      alt: "register",
+    },
+
+    {
+      text: "Elige el  plan de inversión que más se ajuste a ti (soles o dólares). ",
+      image: [ChoosePlan],
+      alt: "choose-plan",
+    },
+
+    {
+      text: "Ingresa el monto, el plazo y el banco.",
+      image: [Step3],
+      alt: "step-3",
+    },
+
+    {
+      text: "Realiza la inversión a la cuenta corriente de Finniu y adjunta tu comprobante.",
+      image: [Step4],
+      alt: "step-4",
+    },
+  ];
+
+  const itemsSlider =
+    isWhereToFindButtonActive === true
+      ? itemsSliderWhereFindIt
+      : itemsSliderInvest;
+
+  const containerBackgroundColor = isWhereToFindButtonActive
+    ? "bg-backgroundLightColor"
+    : "bg-blueDarkColor";
+
+  const textColor = isWhereToFindButtonActive
+    ? "text-blueColorBackground"
+    : "text-white";
+
   return (
-    <section className=" bg-grayColorOpcional w-full flex justify-center items-center ">
+    <section className="bg-grayColorOpcional min-h-screen w-full flex justify-center items-center">
       <div
         id="HowItWorks"
-        className="flex flex-col justify-start items-center max-w-[1512px] h-[800px]"
+        className="flex flex-col justify-center items-center container m-5 h-[840px] "
       >
-        <div className="flex flex-row  p-2 ">
-          <h1 className="text-[55px] flex font-bold  ">¿Cómo funciona?</h1>
-          <div className=" w-[350px] "></div>
+        <div className="flex flex-row p-2 m-4 justify-between">
+          <div>
+            <h1 className="text-[55px] flex font-bold">¿Cómo funciona?</h1>
+          </div>
 
-          <div className="flex flex-row m-2 w-[550px] items-center bg-lighBlue ml-[57px] h-[66px] justify-center rounded-3xl bg-lightBlue">
+          <div
+            className={`flex flex-row m-2 w-[805px] items-center  h-[90px] justify-around rounded-full ${
+              isWhereToFindButtonActive ? "bg-lighBlue" : "bg-blueDarkColor "
+            }`}
+          >
             <ButtonComponent
               text="¿Cómo encontrarlo?"
-              className={`h-12 w-[245px] m-1 text-blueDarkColor mr-6 flex justify-center items-center rounded-full bg-lightBlueColor gap-4 py-2 px-5 font-bold`}
+              onClick={() => handleButtonClick()}
+              className={`h-16 text-[28px] shadow-md  w-[333px] gap-2 flex justify-center items-center rounded-full ${
+                isWhereToFindButtonActive === true
+                  ? "bg-lightBlueColor text-blackColorText"
+                  : "bg-blueDarkColor text-white"
+              }`}
             >
-              <Image src={Eyes} alt="eyes" width={20} height={20} />
+              {isWhereToFindButtonActive && (
+                <Image src={Eyes} alt="eyes" width={20} height={20} />
+              )}
             </ButtonComponent>
             <ButtonComponent
               text="¿Cómo invertir?"
-              className={`h-12 w-[245px] m-1 flex justify-center items-center text-blueDarkColor rounded-full bg-lightBlueColor py-2 px-5 font-bold 
-            }`}
-            />
+              onClick={() => handleButtonClick()}
+              className={`h-16 w-[333px] m-1 flex justify-center items-center gap-2 rounded-full text-[28px] ${
+                isWhereToFindButtonActive === false
+                  ? "bg-blueColorButton text-white"
+                  : "bg-lighBlue text-blueDarkColor"
+              }`}
+            >
+              {!isWhereToFindButtonActive && (
+                <Image src={Bill} alt="bill" width={20} height={20} />
+              )}
+            </ButtonComponent>
           </div>
         </div>
 
-        <h1 className="text-blueColorBackground text-3xl font-bold">
+        <h1 className="text-blueColorBackground text-[48px] font-bold">
           Paso {activeIndex + 1}
         </h1>
 
-        <div className="bg-backgroundLightColor flex flex-row  rounded-2xl justify-center items-center w-[80%] h-[600px]">
-          <Carousel onSlideChange={handleSlideChange}>
+        <div className="flex flex-row rounded-2xl justify-center items-center w-[80%] h-[800px]">
+          <Carousel
+            className="p-5"
+            key={isWhereToFindButtonActive ? "findIt" : "invest"}
+            onSlideChange={handleSlideChange}
+            indicators={false}
+          >
             {itemsSlider.map((item, index) => (
               <SliderComponent
                 key={index}
                 text={item.text}
                 image={item.image}
                 alt={item.alt}
+                backgroundColor={containerBackgroundColor}
+                textColor={textColor}
               />
             ))}
           </Carousel>
         </div>
-
-        {/* <div className="flex flex-row justify-center mt-4">
-        {itemsSlider.map((_, index) => (
-          <div
-            key={index}
-            className={`w-3 h-3 rounded-full mx-2 ${
-              activeIndex === index ? "bg-blue-500" : "bg-gray-300"
-            }`}
-          />
-        ))}
-      </div> */}
       </div>
     </section>
   );
 };
 
-// const ButtonSlider = ({
-//   text,
-//   className,
-// }: {
-//   text: string;
-//   className: string;
-// }) => <button className={className}>{text}</button>;
-
-const itemsSlider = [
-  {
-    text: "Busca Finniu App en la AppStore o Google play.",
-    image: [CellphoneandAppStore, CellPhoneandGooglePlay],
-    alt: "app-store-icon",
-  },
-  {
-    text: "Descarga la aplicación de Finniu.",
-    image: [LoginCellphoneFinniu],
-    alt: "login-cellphone-finniu",
-  },
-  {
-    text: "¡Regístrate y listo!",
-    image: [Register],
-    alt: "register",
-  },
-];
-
-export default StepDownloadAppComponent;
+export default HowItWorks;
