@@ -5,8 +5,8 @@ import BusinessMoney from "/images/BusinessMoney.png";
 
 const SafeInvestment = () => {
   return (
-    <div className="flex items-center justify-center mt-8 ml-[200px] ">
-      <div className="flex flex-col ml-8 p-6 justify-center items-end relative shadow-md rounded-2xl  h-[300px] text-black bg-[#F0FBFF] text-xl w-[592px]">
+    <div className="flex items-center justify-center relative mt-8 ml-[200px] ">
+      <div className="flex flex-col ml-8 p-6 justify-center items-end shadow-md rounded-2xl  h-[300px] text-black bg-[#F0FBFF] text-xl w-[592px]">
         <div className=" w-96">
           <div className="flex flex-row gap-2">
             <Image src={Key} alt="key-icon" width={40} height={40} />
@@ -25,7 +25,7 @@ const SafeInvestment = () => {
           </div>
         </div>
       </div>
-      <div className="absolute top-[149%] right-[36%]">
+      <div className="absolute flex flex-row left-[-100px] w-full  items-start  justify-start   ">
         <Image
           src={BusinessMoney}
           alt="business-icon"

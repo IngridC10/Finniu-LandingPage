@@ -92,7 +92,7 @@ const HowItWorks = () => {
         id="HowItWorks"
         className="flex flex-col justify-center items-center container m-5 h-[840px] "
       >
-        <div className="flex flex-row p-2 m-4 justify-between">
+        <div className="flex flex-row p-2 m-4 justify-between w-full">
           <div>
             <h1 className="text-[55px] flex font-bold">¿Cómo funciona?</h1>
           </div>
