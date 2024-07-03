@@ -23,7 +23,7 @@ const SliderComponent: React.FC<SliderItemComponentProps> = ({
       <p className={` text-[24px] p-5 ${textColor}`}>{text} </p>
       <div className=" flex flex-row ">
         {image.map((src, index) => (
-          <Image key={index} src={src} alt={alt} width={180} height={180} />
+          <Image key={index} src={src} alt={alt} height={500} />
         ))}
       </div>
     </div>

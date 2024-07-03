@@ -5,23 +5,25 @@ import InvestmentForm from "./InvestmentForm";
 
 const SimulatorInvestment = () => {
   return (
-    <section className=" w-full bg-blueDarkColor flex justify-center items-center ">
-      <div className=" container  flex min-h-screen items-center justify-center">
-        <div className="text-white text-[50px] w-full h-full font-bold text-left flex items-center">
-          <p className="w-[471px] text-[50px] ">
-            Simula tu inversión y proyecta tus metas.
-          </p>
-          <div className="ml-4">
+    <section className="flex w-full  min-h-screen">
+      <div className="w-3/5 container flex-col bg-blueDarkColor text-white flex items-center justify-center p-8">
+        <div className=" flex flex-center flex-col">
+          <p className=" text-[64px] font-bold"> Simula tu inversión</p>
+          <p className="text-[64px] font-bold "> y proyecta tus</p>
+          <div className="flex flex-row gap-5">
+            <p className="text-[64px] font-bold">metas</p>
             <Image
               src={Bill}
-              alt="Logo de Google Play"
-              width={40}
-              height={40}
+              alt="bill"
+              width={78}
+              height={90}
               style={{ height: "auto" }}
             />
           </div>
-          <InvestmentForm />
         </div>
+      </div>
+      <div className="w-4/5 bg-lightColor flex items-center justify-center p-8">
+        <InvestmentForm />
       </div>
     </section>
   );

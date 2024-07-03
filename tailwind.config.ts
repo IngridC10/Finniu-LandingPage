@@ -12,11 +12,14 @@ const config: Config = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gradient-light": "linear-gradient(to bottom, #C2EFFF, #FFFFFF)",
       },
 
       colors: {
         lightBlueColor: "#B0E5F8",
         lighBlue: "#DFF7FF",
+        lightGradient: "#C2EFFF",
+        whiteGradient: "#FFFFFF",
         skyBlueColor: "#C9F1FF",
         lightSkyBlue: "#DAF3FE",
         lightColor: "#DCF6FF",
@@ -27,6 +30,7 @@ const config: Config = {
         blueColorBackground: "#1A3A5A",
         darkBlueColor: "#0D3A5C",
         grayColorOpcional: "#FAFAFA",
+        grayColorLine: " #D9D9D9",
         grayColorBackground: "#B8B8B8",
         grayColor: "#F4F4F4",
         grayColorText: "#B8B8B8",
@@ -34,7 +38,7 @@ const config: Config = {
         lilaColor: "#D2B7FF",
         lightSecondaryColor: "##F0FBFF",
         backgroundLightColor: "#E7F9FF",
-        whiteColor: " #F7FAFB",
+        whiteColor: "#F7FAFB",
         blackColorText: "#020202",
       },
     },

@@ -47,3 +47,38 @@ button[data-testid="carousel-indicator"] {
 .group {
   border-radius: 80px;
 }
+
+input[type="range"]:focus {
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #1a3a5a;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Elimina el estilo por defecto del thumb */
+  border: 1px solid #1a3a5a;
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  background: #1a3a5a;
+  cursor: pointer;
+  margin-top: -7px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  background: #1a3a5a; /* Color del track */
+  border-radius: 5px;
+  border: 1px solid #1a3a5a; /* Bordes del track */
+}

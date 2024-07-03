@@ -11,7 +11,7 @@ const InvestmentHand = () => {
       className=" w-full bg-#
     #F7FAFB flex flex-col min-h-screen justify-center items-center"
     >
-      <div className=" container flex flex-row justify-center items-center">
+      <div className=" container flex flex-row justify-between items-center">
         <div className=" w-[621px] text-right ">
           <p className="text-[48px]">Todas tus inversiones en la</p>
           <p className=" font-bold text-[50px] text-blackColorText">

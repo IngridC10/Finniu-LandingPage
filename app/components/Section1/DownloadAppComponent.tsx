@@ -98,7 +98,7 @@ const DownloadAppComponent = () => {
           </div>
         </div>
 
-        <div className="absolute right-[36px] top-[96px] flex flex-row items-center  justify-center h-full w-full">
+        <div className="absolute right-[40px] top-[96px] flex flex-row items-center  justify-center h-full w-full">
           <Image
             src={CellphoneDollar}
             alt="CellPhone Dollar"

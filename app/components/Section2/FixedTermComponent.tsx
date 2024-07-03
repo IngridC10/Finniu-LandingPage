@@ -5,37 +5,51 @@ import FixedTermCard from "./FixedTermCard";
 import SafeInvestmentCard from "./SafeInvestmentCard";
 import React, { useState } from "react";
 const FixedTermComponent = () => {
-  const [showComponent, setShowComponent] = useState(false);
+  const [showComponentFixedTermSelected, setShowComponentFixedTermSelected] =
+    useState(false);
+
+  console.log("estado me muestra", showComponentFixedTermSelected);
 
   const handleTextClick = () => {
-    setShowComponent((prevShowComponent) => !prevShowComponent);
+    setShowComponentFixedTermSelected(
+      (prevShowComponentFixedTermSelected) =>
+        !prevShowComponentFixedTermSelected
+    );
   };
 
   return (
     <section className="flex flex-col w-full justify-center items-center  min-h-screen bg-white">
-      <div className="flex  container min-h-screen justify-center ">
+      <div className="flex  relative container min-h-screen justify-between">
         <div className="text-left w-[561px] z-10 flex flex-col justify-center mb-24 ">
           <p
-            className={`text-[55px] mb-4 leading-tight font-bold ${
-              showComponent ? "text-grayColorText" : "text-graySecondaryColor"
+            className={` mb-4 leading-tight font-bold ${
+              showComponentFixedTermSelected
+                ? "text-grayColorText text-[40px]"
+                : "text-graySecondaryColor text-[55px]"
             }`}
             onClick={handleTextClick}
           >
             Como un plazo fijo
           </p>
           <p
-            className={`text-[40px] font-bold mb-4 leading-tight cursor-pointer ${
-              showComponent ? "text-graySecondaryColor" : "text-grayColorText"
+            className={`font-bold mb-4 leading-tight cursor-pointer ${
+              showComponentFixedTermSelected
+                ? "text-graySecondaryColor text-[55px] "
+                : "text-grayColorText text-[40px]"
             }`}
             onClick={handleTextClick}
           >
             Inversión segura
           </p>
         </div>
-        {showComponent ? <FixedTermCard /> : <SafeInvestmentCard />}
+        {showComponentFixedTermSelected ? (
+          <FixedTermCard />
+        ) : (
+          <SafeInvestmentCard />
+        )}
 
-        {showComponent ? (
-          <div className="absolute flex flex-col justify-center items-center h-full ">
+        {showComponentFixedTermSelected ? (
+          <div className="absolute flex left-12 flex-row justify-center w-full items-center h-full ">
             <Image
               src={CellphoneImage}
               alt="cellphone-image"

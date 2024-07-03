@@ -7,7 +7,7 @@ import ProjectYourGoals from "/images/ProjectYourGoals.png";
 const ProjectGoals = () => {
   return (
     <section className=" w-full bg-white flex flex-col min-h-screen justify-center items-center">
-      <div className=" container flex flex-row justify-center items-center">
+      <div className=" container flex flex-row justify-between  items-center">
         <div className=" w-[621px] text-right ">
           <p className="text-[50px] font-bold">Proyecta tus metas</p>
 

@@ -7,7 +7,7 @@ import CustomRightArrow from "../Section4/CustomRightArrow";
 const Wallet = () => {
   return (
     <section className=" w-full bg-lightSkyBlue flex flex-col min-h-screen justify-center items-center">
-      <div className=" container flex flex-row justify-center items-center">
+      <div className=" container flex flex-row justify-between items-center">
         <div className=" w-[621px] text-right ">
           <p className="text-[50px] font-bold">Billetera virtual</p>
 

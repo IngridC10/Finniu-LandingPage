@@ -90,7 +90,7 @@ const HowItWorks = () => {
     <section className="bg-grayColorOpcional min-h-screen w-full flex justify-center items-center">
       <div
         id="HowItWorks"
-        className="flex flex-col justify-center items-center container m-5 h-[840px] "
+        className="flex flex-col justify-center items-center container min-h-screen "
       >
         <div className="flex flex-row p-2 m-4 justify-between w-full">
           <div>
@@ -141,6 +141,7 @@ const HowItWorks = () => {
             key={isWhereToFindButtonActive ? "findIt" : "invest"}
             onSlideChange={handleSlideChange}
             indicators={false}
+            slide={false}
           >
             {itemsSlider.map((item, index) => (
               <SliderComponent
