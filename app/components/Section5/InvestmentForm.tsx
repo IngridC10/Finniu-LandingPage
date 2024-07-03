@@ -113,7 +113,7 @@ const InvestmentForm = () => {
             className="w-8 h-8 mr-2"
           /> */}
 
-          <Image
+          {/* <Image
             src={BillHand}
             alt="Ícono de dinero"
             width={50}
@@ -124,7 +124,7 @@ const InvestmentForm = () => {
               left: `${imagePosition}px`,
               top: "7px",
             }}
-          ></Image>
+          ></Image> */}
           <div className="w-full">
             <input
               type="range"

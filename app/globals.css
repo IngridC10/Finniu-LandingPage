@@ -54,21 +54,34 @@ input[type="range"]:focus {
   border: none;
 }
 
+input[type="range"] {
+  -webkit-appearance: none; /* Elimina el estilo por defecto del control */
+  width: 100%;
+  height: 8px;
+  background: #ddd;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity .2s;
+}
+
+
 input[type="range"]::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  background: #1a3a5a;
+  background: url("https://www.shutterstock.com/shutterstock/photos/2473860347/display_1500/stock-vector-dollar-paper-money-icon-symbol-on-color-background-vector-isolated-design-2473860347.jpg");
+  background-size: contain;
   cursor: pointer;
 }
 
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none; /* Elimina el estilo por defecto del thumb */
-  border: 1px solid #1a3a5a;
+  border: 1px solid red;
   height: 24px;
   width: 24px;
   border-radius: 50%;
-  background: #1a3a5a;
+  background: url("https://www.shutterstock.com/shutterstock/photos/2473860347/display_1500/stock-vector-dollar-paper-money-icon-symbol-on-color-background-vector-isolated-design-2473860347.jpg");
+  background-size: contain;
   cursor: pointer;
   margin-top: -7px;
   box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);

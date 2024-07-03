@@ -6,14 +6,13 @@ import SafeInvestmentCard from "./SafeInvestmentCard";
 import React, { useState } from "react";
 const FixedTermComponent = () => {
   const [showComponentFixedTermSelected, setShowComponentFixedTermSelected] =
-    useState(false);
+    useState(true);
 
   console.log("estado me muestra", showComponentFixedTermSelected);
 
   const handleTextClick = () => {
     setShowComponentFixedTermSelected(
-      (prevShowComponentFixedTermSelected) =>
-        !prevShowComponentFixedTermSelected
+      !showComponentFixedTermSelected
     );
   };
 
@@ -23,9 +22,10 @@ const FixedTermComponent = () => {
         <div className="text-left w-[561px] z-10 flex flex-col justify-center mb-24 ">
           <p
             className={` mb-4 leading-tight font-bold ${
-              showComponentFixedTermSelected
-                ? "text-grayColorText text-[40px]"
-                : "text-graySecondaryColor text-[55px]"
+              showComponentFixedTermSelected ?
+              "text-graySecondaryColor text-[55px]" :
+                "text-grayColorText text-[40px]"
+                 
             }`}
             onClick={handleTextClick}
           >
@@ -34,8 +34,9 @@ const FixedTermComponent = () => {
           <p
             className={`font-bold mb-4 leading-tight cursor-pointer ${
               showComponentFixedTermSelected
-                ? "text-graySecondaryColor text-[55px] "
-                : "text-grayColorText text-[40px]"
+              ?  "text-grayColorText text-[40px]"
+              : "text-graySecondaryColor text-[55px]"
+                
             }`}
             onClick={handleTextClick}
           >

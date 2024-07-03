@@ -11,7 +11,7 @@ const FixedTermCard = () => {
       </div>
       <div className="flex flex-col shadow-md items-end p-6 h-[300px] pb-10 pt-10 pr-14 pl-14 mt-4 rounded-2xl text-black bg-[#F0FBFF] text-xl w-[592px]">
         <div className=" w-96 ">
-          <p className="text-justify leading-relaxed">
+          <div className="text-justify leading-relaxed">
             Pero con rentabilidades
             <span className="font-bold"> mensuales </span> y
             <span className="font-bold"> sin comisiones. </span>
@@ -23,7 +23,7 @@ const FixedTermCard = () => {
             <p className="text-darkBlueColor text-base mt-4 leading-loose">
               (1) REVISA LOS TÉRMINOS Y CONDICIONES.
             </p>
-          </p>
+          </div>
         </div>
       </div>
     </div>
