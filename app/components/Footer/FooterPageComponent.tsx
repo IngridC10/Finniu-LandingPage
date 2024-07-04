@@ -19,13 +19,13 @@ const Footer = () => {
                 href="https://finniuapp.notion.site/Preguntas-Frecuentes-f7f77872d34a4de3a9e12d5fc58421ff"
                 legacyBehavior
               >
-                <a target="_blank" className=" cursor-pointer hover:underline">
+                <a className=" cursor-pointer hover:underline">
                   Preguntas Frecuentes
                 </a>
               </Link>
             </li>
             <li>
-              <Link href="/rentabilidad" legacyBehavior>
+              <Link href="/#simulatorInvestment" legacyBehavior>
                 <a className="hover:underline cursor-pointer">Rentabilidad</a>
               </Link>
             </li>
@@ -57,9 +57,12 @@ const Footer = () => {
               width={38}
               height={96}
             />
-            <a href="tel:+51940206852" className="text-darkBlueColor ">
-              +51 940 206 852
-            </a>
+            <Link
+              href="https://api.whatsapp.com/send?phone=51940206852&text=Hola!%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20info%20sobre%20Finniu.%20Mi%20nombre%20es%20"
+              legacyBehavior
+            >
+              <a className="text-darkBlueColor ">+51 940 206 852</a>
+            </Link>
           </p>
           <p className="flex items-center text-gray-700">
             <Image src={Message} alt="Logo de Finniu" width={38} height={96} />
@@ -79,7 +82,7 @@ const Footer = () => {
               href="https://www.instagram.com/finniu.app?igsh=MWRsZGRpMzdncXZ1MA=="
               legacyBehavior
             >
-              <a target="_blank">
+              <a>
                 <Image
                   src={Instagram}
                   alt="Logo de Finniu"
@@ -93,7 +96,7 @@ const Footer = () => {
               href="https://www.linkedin.com/company/finniu/"
               legacyBehavior
             >
-              <a target="_blank">
+              <a>
                 <Image
                   src={LinkedinIcon}
                   alt="Logo de Finniu"
@@ -106,7 +109,7 @@ const Footer = () => {
               href="https://www.facebook.com/finniuapp?mibextid=ZbWKwL"
               legacyBehavior
             >
-              <a target="_blank">
+              <a>
                 <Image
                   src={Facebook}
                   alt="Logo de Finniu"

@@ -7,7 +7,7 @@ import ButtonComponent from "@/components/ButtonComponent";
 
 const NavComponent = () => {
   const handleButton = () => {
-    window.open("https://app.finniu.com/login", "_blank");
+    window.open("https://app.finniu.com/login");
   };
   return (
     <div className="flex justify-around items-center w-full bg-blueDarkColor p-4">
@@ -29,8 +29,8 @@ const NavComponent = () => {
           </li>
 
           <li>
-            <Link href="StepDownLoaddComponent" legacyBehavior>
-              <a> Simulador</a>
+            <Link href={"/#simulatorInvestment"} legacyBehavior>
+              <a>Simulador</a>
             </Link>
           </li>
           <li>
@@ -38,12 +38,12 @@ const NavComponent = () => {
               href="https://finniuapp.notion.site/Preguntas-Frecuentes-f7f77872d34a4de3a9e12d5fc58421ff"
               legacyBehavior
             >
-              <a target="_blank">Aprende</a>
+              <a>Aprende</a>
             </Link>
           </li>
           <li>
             <Link href="https://finantips.substack.com/" legacyBehavior>
-              <a target="_blank">Finantips</a>
+              <a>Finantips</a>
             </Link>
           </li>
           <li>

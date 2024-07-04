@@ -4,28 +4,23 @@ import CellphoneImage from "/images/CellphoneImage.png";
 import FixedTermCard from "./FixedTermCard";
 import SafeInvestmentCard from "./SafeInvestmentCard";
 import React, { useState } from "react";
-const FixedTermComponent = () => {
+const FixedTermSection = () => {
   const [showComponentFixedTermSelected, setShowComponentFixedTermSelected] =
     useState(true);
 
-  console.log("estado me muestra", showComponentFixedTermSelected);
-
   const handleTextClick = () => {
-    setShowComponentFixedTermSelected(
-      !showComponentFixedTermSelected
-    );
+    setShowComponentFixedTermSelected(!showComponentFixedTermSelected);
   };
 
   return (
-    <section className="flex flex-col w-full justify-center items-center  min-h-screen bg-white">
-      <div className="flex  relative container min-h-screen justify-between">
+    <section className=" section-custom  flex-col bg-white">
+      <div className="flex  relative container  container-section">
         <div className="text-left w-[561px] z-10 flex flex-col justify-center mb-24 ">
           <p
             className={` mb-4 leading-tight font-bold ${
-              showComponentFixedTermSelected ?
-              "text-graySecondaryColor text-[55px]" :
-                "text-grayColorText text-[40px]"
-                 
+              showComponentFixedTermSelected
+                ? "text-graySecondaryColor text-[55px]"
+                : "text-grayColorText text-[40px]"
             }`}
             onClick={handleTextClick}
           >
@@ -34,9 +29,8 @@ const FixedTermComponent = () => {
           <p
             className={`font-bold mb-4 leading-tight cursor-pointer ${
               showComponentFixedTermSelected
-              ?  "text-grayColorText text-[40px]"
-              : "text-graySecondaryColor text-[55px]"
-                
+                ? "text-grayColorText text-[40px]"
+                : "text-graySecondaryColor text-[55px]"
             }`}
             onClick={handleTextClick}
           >
@@ -64,4 +58,4 @@ const FixedTermComponent = () => {
   );
 };
 
-export default FixedTermComponent;
+export default FixedTermSection;

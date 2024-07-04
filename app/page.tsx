@@ -1,31 +1,22 @@
-import DownloadAppComponent from "./components/Section1/DownloadAppComponent";
-import FixedTermComponent from "./components/Section2/FixedTermComponent";
-import HowItWorks from "./components/Section3/HowItWorks";
-import InvestmentHand from "./components/GenericSectionSlider/InvestmentHand";
-// import StepInvestmentGuide from "./components/Section4/StepInvestmentGuide";
-// import InvestmentHand from "./components/Section4/StepInvestmentGuide";
-import SimulatorInvestment from "./components/Section5/SimulatorInvestment";
-import QuarterlyReportsMoney from "./components/GenericSectionSlider/QuarterlyReportsMoney";
-
-import ProjectGoals from "./components/GenericSectionSlider/ProjectGoals";
-import Wallet from "./components/GenericSectionSlider/Wallet";
-import Testimonials from "./components/Section6/Testimonials";
-import Register from "./components/Section7/Register";
+import DownloadAppSection from "./components/Section1/DownloadAppSection";
+import FixedTermSection from "./components/Section2/FixedTermSection";
+import HowItWorksSection from "./components/Section3/HowItWorksSection";
+import SimulatorInvestmentSection from "./components/Section5/SimulatorInvestmentSection";
+import StepInvestmentGuideSection from "./components/Section4/StepInvestmentGuideSection";
+import TestimonialsSection from "./components/Section6/TestimonialsSection";
+import RegisterSection from "./components/Section7/RegisterSection";
 
 export default function Home() {
   return (
     <main className=" flex min-h-screen flex-col items-center  justify-between   ">
-      <DownloadAppComponent />
-      <FixedTermComponent />
-      <HowItWorks />
-      {/* <StepInvestmentGuide /> */}
-      <InvestmentHand />
-      <QuarterlyReportsMoney />
-      <ProjectGoals />
-      <Wallet />
-      <SimulatorInvestment />
-      <Testimonials />
-      <Register />
+      <DownloadAppSection />
+      <FixedTermSection />
+      <HowItWorksSection />
+      <StepInvestmentGuideSection />
+
+      <SimulatorInvestmentSection />
+      <TestimonialsSection />
+      <RegisterSection />
     </main>
   );
 }

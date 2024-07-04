@@ -15,7 +15,7 @@ import Step3 from "/images/Step3.png";
 import Step4 from "/images/Step4.png";
 import Bill from "/images/Bill.png";
 
-const HowItWorks = () => {
+const HowItWorksSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isWhereToFindButtonActive, setWhereToFindButtonActive] =
     useState(true);
@@ -87,12 +87,12 @@ const HowItWorks = () => {
     : "text-white";
 
   return (
-    <section className="bg-grayColorOpcional min-h-screen w-full flex justify-center items-center">
+    <section className="bg-grayColorOpcional section-custom ">
       <div
         id="HowItWorks"
-        className="flex flex-col justify-center items-center container min-h-screen "
+        className="flex flex-col container-section  items-center container"
       >
-        <div className="flex flex-row p-2 m-4 justify-between w-full">
+        <div className="flex flex-row  items-center justify-between w-full">
           <div>
             <h1 className="text-[55px] flex font-bold">¿Cómo funciona?</h1>
           </div>
@@ -141,7 +141,7 @@ const HowItWorks = () => {
             key={isWhereToFindButtonActive ? "findIt" : "invest"}
             onSlideChange={handleSlideChange}
             indicators={false}
-            slide={false}
+            slide={true}
           >
             {itemsSlider.map((item, index) => (
               <SliderComponent
@@ -160,4 +160,4 @@ const HowItWorks = () => {
   );
 };
 
-export default HowItWorks;
+export default HowItWorksSection;

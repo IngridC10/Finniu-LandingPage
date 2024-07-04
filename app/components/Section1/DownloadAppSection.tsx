@@ -5,7 +5,7 @@ import GooglePlay from "/images/GooglePlay.png";
 import AppStore from "/images/AppStore.png";
 import CellphoneDollar from "/images/CellphoneDollar.png";
 import CountUp from "react-countup";
-const DownloadAppComponent = () => {
+const DownloadAppSection = () => {
   return (
     <section className=" flex flex-col justify-center items-center w-full max-h-[90vh] min-h-[100%] bg-blueDarkColor h-screen   ">
       <div className="flex flex-row container justify-center relative h-full">
@@ -111,4 +111,4 @@ const DownloadAppComponent = () => {
   );
 };
 
-export default DownloadAppComponent;
+export default DownloadAppSection;

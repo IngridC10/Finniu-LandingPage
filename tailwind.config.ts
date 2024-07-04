@@ -15,6 +15,10 @@ const config: Config = {
         "gradient-light": "linear-gradient(to bottom, #C2EFFF, #FFFFFF)",
       },
 
+      fontFamily: {
+        myFont: ["comforta-custom", "sans-serif"],
+      },
+
       colors: {
         lightBlueColor: "#B0E5F8",
         lighBlue: "#DFF7FF",

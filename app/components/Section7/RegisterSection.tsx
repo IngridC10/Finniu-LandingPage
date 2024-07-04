@@ -2,11 +2,13 @@ import ButtonComponent from "@/components/ButtonComponent";
 import React from "react";
 import Image from "next/image";
 import Google from "/images/Google.png";
+import IconHand from "/images/IconHand.png";
+import EyeClosed from "/images/EyeClosed.png";
 
-const Register = () => {
+const RegisterSection = () => {
   return (
-    <section className="w-full min-h-screen flex justify-center items-center bg-blueDarkColor">
-      <div className="flex flex-col items-center justify-center min-h-screen mt-3">
+    <section className=" section-custom bg-blueDarkColor">
+      <div className="flex flex-col items-center container-section">
         <div className="flex flex-col justify-center items-center text-center w-[1050px]">
           <h1 className="text-[50px] text-white">
             Finniu, tu App para lograr tus metas financieras
@@ -15,14 +17,16 @@ const Register = () => {
             <h3 className="text-[30px] text-white">
               Tus primeros pasos en el mundo de las inversiones
             </h3>
+
+            <Image src={IconHand} alt="icon-hand" width={50} height={50} />
           </div>
         </div>
 
-        <div className="bg-white p-16 rounded-3xl shadow-md w-[525px] h-[558px] m-auto ">
+        <div className="bg-white p-16 rounded-3xl shadow-md w-[545px] h-[568px] mt-12  m-auto ">
           <h2 className="text-2xl mb-6 text-center">
             Regístrate para obtener tu cuenta
           </h2>
-          <button className="w-full bg-white border-t-0 border shadow-md border-gray-300 text-gray-700 py-2 rounded-md flex items-center justify-center mb-4 h-[53px]">
+          <button className="w-full bg-white border-t-0 border shadow-md border-gray-300 text-gray-700 py-6 rounded-md flex items-center justify-center mb-4 h-[53px]">
             <Image
               src={Google}
               alt="Google-Logo"
@@ -34,7 +38,7 @@ const Register = () => {
           </button>
           <div className="flex items-center justify-center mb-4">
             <span className="border-2 border-lightBlueColor w-full"></span>
-            <span className="mx-2 text-[14px] text-center text-blackColorText">
+            <span className="mx-2 text-[14px] text-center text-blackColorText whitespace-nowrap">
               o también
             </span>
             <span className="border-2 border-lightBlueColor w-full"></span>
@@ -44,7 +48,7 @@ const Register = () => {
               <label className="sr-only">Nombre completo</label>
               <input
                 type="text"
-                id="nombre"
+                id="name"
                 name="nombre"
                 placeholder="Nombre completo"
                 className="w-full px-3 py-2  border-2 border-t-0 border-r-0 border-l-0 border-grayColorLine rounded-md"
@@ -56,7 +60,7 @@ const Register = () => {
               </label>
               <input
                 type="text"
-                id="apellido"
+                id="last-name"
                 name="apellido"
                 placeholder="Apellido completo"
                 className="w-full px-3  border-r-0 border-l-0  border-t-0 py-2 border-2 border-grayColorLine rounded-md "
@@ -64,13 +68,23 @@ const Register = () => {
             </div>
             <div className="mb-6">
               <label className="sr-only">Correo electrónico</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Correo electrónico"
-                className="w-full px-3 py-2 border-2 border-l-0 border-t-0 border-r-0 border-grayColorLine rounded-md focus:outline-none focus:ring focus:border-blue-300"
-              />
+              <div className=" relative">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Correo electrónico"
+                  className="w-full px-3 py-2 border-2 border-l-0 border-t-0 border-r-0 border-grayColorLine rounded-md focus:outline-none focus:ring focus:border-blue-300"
+                />
+                <div className="absolute top-4 left-96 ">
+                  <Image
+                    src={EyeClosed}
+                    alt="eyes"
+                    width={30}
+                    height={20}
+                  ></Image>
+                </div>
+              </div>
             </div>
             <ButtonComponent
               text="Registrarme"
@@ -83,4 +97,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterSection;
