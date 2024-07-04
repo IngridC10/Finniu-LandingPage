@@ -93,8 +93,8 @@ const StepInvestmentGuideSection = () => {
               src={slidesData[currentIndex].imageSrc}
               alt={`slide-${currentIndex + 1}`}
               className="object-cover"
-              width={650}
-              style={{ height: "760px" }}
+              height={650}
+             
             />
           </div>
         </div>

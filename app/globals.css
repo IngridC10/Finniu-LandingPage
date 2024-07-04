@@ -3,10 +3,7 @@
 @tailwind utilities;
 @import "flowbite";
 
-@font-face {
-  font-family: "comforta";
-  src: url(https://fonts.google.com/specimen/Comfortaa) format("truetype");
-}
+
 
 body {
   font-family: "comforta";
