@@ -1,11 +1,11 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import Instagram from "/images/Instagram.png";
-import LinkedinIcon from "/images/LinkedinIcon.png";
-import Facebook from "/images/Facebook.png";
-import Message from "/images/Message.png";
-import WhatsappIcon from "/images/WhatsappIcon.png";
+import Instagram from "/images/Footer/Instagram.png";
+import LinkedinIcon from "/images/Footer/LinkedinIcon.png";
+import Facebook from "/images/Footer/Facebook.png";
+import Message from "/images/Footer/Message.png";
+import WhatsappIcon from "/images/Footer/WhatsappIcon.png";
 
 const Footer = () => {
   return (
@@ -53,7 +53,7 @@ const Footer = () => {
           <p className="text-gray-700 flex items-center mb-1">
             <Image
               src={WhatsappIcon}
-              alt="Logo de Finniu"
+              alt="whatsapp-icon"
               width={38}
               height={96}
             />
@@ -65,7 +65,7 @@ const Footer = () => {
             </Link>
           </p>
           <p className="flex items-center text-gray-700">
-            <Image src={Message} alt="Logo de Finniu" width={38} height={96} />
+            <Image src={Message} alt="message" width={38} height={96} />
             <a
               href="mailto:hola@finniu.com"
               className="ml-2 text-darkBlueColor "
@@ -83,12 +83,7 @@ const Footer = () => {
               legacyBehavior
             >
               <a>
-                <Image
-                  src={Instagram}
-                  alt="Logo de Finniu"
-                  width={38}
-                  height={96}
-                />
+                <Image src={Instagram} alt="instagram" width={38} height={96} />
               </a>
             </Link>
 
@@ -99,7 +94,7 @@ const Footer = () => {
               <a>
                 <Image
                   src={LinkedinIcon}
-                  alt="Logo de Finniu"
+                  alt="LinkedinIcon"
                   width={38}
                   height={96}
                 />
@@ -110,12 +105,7 @@ const Footer = () => {
               legacyBehavior
             >
               <a>
-                <Image
-                  src={Facebook}
-                  alt="Logo de Finniu"
-                  width={38}
-                  height={96}
-                />
+                <Image src={Facebook} alt="Facebook" width={38} height={96} />
               </a>
             </Link>
             <div className=" w-20 h-20"></div>

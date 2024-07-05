@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import QuarterlyReports from "/images/QuarterlyReports.png";
-import CustomLeftArrow from "../Section4/CustomLeftArrow";
-import CustomRightArrow from "../Section4/CustomRightArrow";
+import CustomLeftArrow from "@/components/CustomLeftArrow";
+import CustomRightArrow from "@/components/CustomRightArrow";
 
 const QuarterlyReportsMoney = () => {
   return (

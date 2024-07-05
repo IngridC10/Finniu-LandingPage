@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import CustomLeftArrow from "../Section4/CustomLeftArrow";
-import CustomRightArrow from "../Section4/CustomRightArrow";
+import CustomLeftArrow from "../Section-4/CustomLeftArrow";
+import CustomRightArrow from "../Section-4/CustomRightArrow";
 import ProjectYourGoals from "/images/ProjectYourGoals.png";
 
 const ProjectGoals = () => {

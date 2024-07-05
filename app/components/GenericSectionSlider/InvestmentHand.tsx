@@ -2,8 +2,8 @@ import React from "react";
 import Image from "next/image";
 
 import HandCellPhone from "/images/HandCellPhone.png";
-import CustomLeftArrow from "../Section4/CustomLeftArrow";
-import CustomRightArrow from "../Section4/CustomRightArrow";
+import CustomLeftArrow from "../Section-4/CustomLeftArrow";
+import CustomRightArrow from "../Section-4/CustomRightArrow";
 
 const InvestmentHand = () => {
   return (

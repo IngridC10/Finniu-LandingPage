@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
-import localFont from 'next/font/local';
-// import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import NavComponent from "./components/Navbar/NavComponent";
 import FooterPageComponent from "./components/Footer/FooterPageComponent";
-import local from "next/font/local";
 
-// const inter = Inter({ subsets: ["latin"] });
-
-const comfortaa = localFont({src: '../public/fonts/Comfortaa/Comfortaa-Regular.ttf'});
+const comfortaa = localFont({
+  src: "../public/fonts/Comfortaa/Comfortaa-Regular.ttf",
+});
 
 export const metadata: Metadata = {
   title: "Finniu",

@@ -2,7 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import LogoFinniu from "/images/LogoFinniu.png";
+import LogoFinniu from "/images/Navbar/LogoFinniu.png";
 import ButtonComponent from "@/components/ButtonComponent";
 
 const NavComponent = () => {
@@ -47,7 +47,7 @@ const NavComponent = () => {
             </Link>
           </li>
           <li>
-            <Link href="/nosotros" legacyBehavior>
+            <Link href="/about" legacyBehavior>
               <a>Nosotros</a>
             </Link>
           </li>

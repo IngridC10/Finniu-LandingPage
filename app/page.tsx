@@ -1,10 +1,10 @@
-import DownloadAppSection from "./components/Section1/DownloadAppSection";
-import FixedTermSection from "./components/Section2/FixedTermSection";
-import HowItWorksSection from "./components/Section3/HowItWorksSection";
-import SimulatorInvestmentSection from "./components/Section5/SimulatorInvestmentSection";
-import StepInvestmentGuideSection from "./components/Section4/StepInvestmentGuideSection";
-import TestimonialsSection from "./components/Section6/TestimonialsSection";
-import RegisterSection from "./components/Section7/RegisterSection";
+import DownloadAppSection from "./components/Section-1/DownloadAppSection";
+import FixedTermSection from "./components/Section-2/FixedTermSection";
+import HowItWorksSection from "./components/Section-3/HowItWorksSection";
+import SimulatorInvestmentSection from "./components/Section-5/SimulatorInvestmentSection";
+import StepInvestmentGuideSection from "./components/Section-4/StepInvestmentGuideSection";
+import TestimonialsSection from "./components/Section-6/TestimonialsSection";
+import RegisterSection from "./components/Section-7/RegisterSection";
 
 export default function Home() {
   return (
@@ -13,7 +13,6 @@ export default function Home() {
       <FixedTermSection />
       <HowItWorksSection />
       <StepInvestmentGuideSection />
-
       <SimulatorInvestmentSection />
       <TestimonialsSection />
       <RegisterSection />
