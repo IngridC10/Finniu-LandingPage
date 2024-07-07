@@ -1,0 +1,117 @@
+import React from "react";
+import Image from "next/image";
+import Worker1 from "/images/about/section-5/Worker1.png";
+import Linkedin from "/images/about/section-5/Linkedin.png";
+import Link from "next/link";
+import Worker2 from "/images/about/section-5/Worker2.png";
+import Worker3 from "/images/about/section-5/Worker3.png";
+
+const OurDirectorySection = () => {
+  return (
+    <div className=" section-custom">
+      <div className="container-section container w-full ">
+        <h1>
+          <span className="text-blueColorButton  text-[64px] semi-bold">
+            Conoce a nuestro
+          </span>
+          <span className="text-black text-[64px] font-bold"> directorio</span>
+        </h1>
+
+        <div className=" flex flex-row  justify-between h-[480px] items-end ">
+          <div className=" w-[404px] h-[372px] rounded-2xl p-4 flex relative bg-blueDarkColor">
+            <Image
+              src={Worker1}
+              alt="hand"
+              height={479}
+              className="absolute bottom-1  left-0"
+            />
+            <div className="flex flex-col w-[404px] items-end justify-start ">
+              <div className=" flex items-center justify-center gap-2 ">
+                <h1 className=" font-bold text-[20px] text-right text-white">
+                  Diego Mallqui
+                </h1>
+                <Link
+                  href="https://www.linkedin.com/in/diegomallqui1/?originalSubdomain=pe"
+                  legacyBehavior
+                >
+                  <a>
+                    <Image src={Linkedin} alt="linkedin" height={30} />
+                  </a>
+                </Link>
+              </div>
+
+              <div className=" flex items-center justify-center gap-2">
+                <p className="text-[16px]flex justify-start text-white w-[180px]">
+                  CEO
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className=" w-[404px] h-[372px] rounded-2xl p-4 flex relative bg-blueDarkColor">
+            <Image
+              src={Worker2}
+              alt="worker2"
+              height={479}
+              className="absolute bottom-1 left-0 "
+            />
+            <div className="flex flex-col w-[404px] items-end justify-start ">
+              <div className=" flex items-center justify-center gap-2 ">
+                <h1 className=" font-bold text-[20px] text-right text-white">
+                  Renzo Cateriano
+                </h1>
+                <Link
+                  href="https://www.linkedin.com/in/renzo-cateriano-toledo-564a92156/"
+                  legacyBehavior
+                >
+                  <a>
+                    <Image src={Linkedin} alt="linkedin" height={30} />
+                  </a>
+                </Link>
+              </div>
+
+              <div className=" flex items-center justify-center gap-2">
+                <p className="text-[16px]flex justify-start text-white w-[205px]">
+                  Co-funder
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className=" w-[404px] h-[372px] rounded-2xl  bg-blueDarkColor">
+            <div className=" w-[404px] h-[372px] rounded-2xl p-4 flex relative bg-blueDarkColor">
+              <Image
+                src={Worker3}
+                alt="worker-3"
+                height={479}
+                className="absolute bottom-1 left-0 "
+              />
+              <div className="flex flex-col w-[404px] items-end justify-start ">
+                <div className=" flex items-center justify-center gap-2 ">
+                  <h1 className=" font-bold text-[20px] text-right text-white">
+                    Diego De la Vega
+                  </h1>
+                  <Link
+                    href="https://www.linkedin.com/in/diego-de-la-vega-loayza-92a419a2/"
+                    legacyBehavior
+                  >
+                    <a>
+                      <Image src={Linkedin} alt="linkedin" height={30} />
+                    </a>
+                  </Link>
+                </div>
+
+                <div className=" flex items-center justify-center gap-2">
+                  <p className="text-[16px]flex justify-start text-white w-[209px]">
+                    CTO
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default OurDirectorySection;
