@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import InvestmentForm from "./InvestmentForm";
-import Bill from "/images/Section-5/Bill.png";
+import Bill from "@/images/Section-5/Bill.png";
 
 const SimulatorInvestmentSection = () => {
   return (

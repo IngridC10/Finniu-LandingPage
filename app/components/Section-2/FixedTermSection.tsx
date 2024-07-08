@@ -4,7 +4,7 @@ import Image from "next/image";
 import FixedTermCard from "./FixedTermCard";
 import SafeInvestmentCard from "./SafeInvestmentCard";
 
-import CellphoneImage from "/images/Section-2/CellphoneImage.png";
+import CellphoneImage from "@/images/Section-2/CellphoneImage.png";
 
 const FixedTermSection = () => {
   const [
