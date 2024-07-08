@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import Innovaul from "@/images/about/section-2/Innovaul.png";
-import Incubagraria from "@/images/about/section-2/Incubagraria.png";
-import Emprelatam from "@/images/about/section-2/Emprelatam.png";
+import Innovaul from "@/images/About/Section-2/Innovaul.png";
+import Incubagraria from "@/images/About/Section-2/Incubagraria.png";
+import Emprelatam from "@/images/About/Section-2/Emprelatam.png";
 
 const Sponsored = () => {
   return (
