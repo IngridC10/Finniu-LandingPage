@@ -1,11 +1,11 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import Instagram from "/images/Footer/Instagram.png";
-import LinkedinIcon from "/images/Footer/LinkedinIcon.png";
-import Facebook from "/images/Footer/Facebook.png";
-import Message from "/images/Footer/Message.png";
-import WhatsappIcon from "/images/Footer/WhatsappIcon.png";
+import Instagram from "@/images/Footer/Instagram.png";
+import LinkedinIcon from "@/images/Footer/LinkedinIcon.png";
+import Facebook from "@/images/Footer/Facebook.png";
+import Message from "@/images/Footer/Message.png";
+import WhatsappIcon from "@/images/Footer/WhatsappIcon.png";
 
 const Footer = () => {
   return (

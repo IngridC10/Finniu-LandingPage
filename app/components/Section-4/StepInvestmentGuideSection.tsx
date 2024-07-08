@@ -3,10 +3,10 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import CustomLeftArrow from "@/components/CustomLeftArrow";
 import CustomRightArrow from "@/components/CustomRightArrow";
-import HandCellPhone from "/images/Section-4/HandCellPhone.png";
-import VirtualWallet from "/images/Section-4/VirtualWallet.png";
-import QuarterlyReports from "/images/Section-4/QuarterlyReports.png";
-import ProjectYourGoals from "/images/Section-4/ProjectYourGoals.png";
+import HandCellPhone from "@/images/Section-4/HandCellPhone.png";
+import VirtualWallet from "@/images/Section-4/VirtualWallet.png";
+import QuarterlyReports from "@/images/Section-4/QuarterlyReports.png";
+import ProjectYourGoals from "@/images/Section-4/ProjectYourGoals.png";
 
 const StepInvestmentGuideSection = () => {
   const [currentIndexState, setCurrentIndexState] = useState(0);

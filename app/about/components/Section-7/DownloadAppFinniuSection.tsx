@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import AppStore from "/images/about/section-7/AppStore.png";
-import GooglePlay from "/images/about/section-7/GooglePlay.png";
-import CellPhoneDollar from "/images/about/section-7/CellPhoneDollar.png";
+import AppStore from "@/images/about/section-7/AppStore.png";
+import GooglePlay from "@/images/about/section-7/GooglePlay.png";
+import CellPhoneDollar from "@images/about/section-7/CellPhoneDollar.png";
 
 const DownloadAppSection = () => {
   return (

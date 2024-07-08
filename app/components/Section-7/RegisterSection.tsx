@@ -2,8 +2,8 @@ import React from "react";
 import Image from "next/image";
 import ButtonComponent from "@/components/ButtonComponent";
 // import Google from "/images/Section-7/Google.png";
-import IconHand from "/images/Section-7/IconHand.png";
-import EyeClosed from "/images/Section-7/EyeClosed.png";
+import IconHand from "@/images/Section-7/IconHand.png";
+import EyeClosed from "@/images/Section-7/EyeClosed.png";
 
 const RegisterSection = () => {
   return (

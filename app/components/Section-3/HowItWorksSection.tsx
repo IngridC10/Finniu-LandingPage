@@ -4,16 +4,16 @@ import Image from "next/image";
 import { Carousel } from "flowbite-react";
 import SliderComponent from "./SliderItemComponent";
 import ButtonComponent from "@/components/ButtonComponent";
-import CellphoneandAppStore from "/images/Section-3/CellphoneandAppStore.png";
-import Eyes from "/images/Section-3/Eyes.png";
-import LoginCellphoneFinniu from "/images/Section-3/LoginCellphoneFinniu.png";
-import RegisterLight from "/images/Section-3/RegisterLight.png";
-import RegisterDark from "/images/Section-3/RegisterDark.png";
-import CellPhoneandGooglePlay from "/images/Section-3/CellPhoneandGooglePlay.png";
-import ChoosePlan from "/images/Section-3/ChoosePlan.png";
-import Step3 from "/images/Section-3/Step3.png";
-import Step4 from "/images/Section-3/Step4.png";
-import Bill from "/images/Section-3/Bill.png";
+import CellphoneandAppStore from "@/images/Section-3/CellphoneandAppStore.png";
+import Eyes from "@/images/Section-3/Eyes.png";
+import LoginCellphoneFinniu from "@/images/Section-3/LoginCellphoneFinniu.png";
+import RegisterLight from "@/images/Section-3/RegisterLight.png";
+import RegisterDark from "@/images/Section-3/RegisterDark.png";
+import CellPhoneandGooglePlay from "@/images/Section-3/CellPhoneandGooglePlay.png";
+import ChoosePlan from "@/images/Section-3/ChoosePlan.png";
+import Step3 from "@/images/Section-3/Step3.png";
+import Step4 from "@/images/Section-3/Step4.png";
+import Bill from "@/images/Section-3/Bill.png";
 
 const HowItWorksSection = () => {
   const [activeIndexState, setActiveIndexState] = useState(0);

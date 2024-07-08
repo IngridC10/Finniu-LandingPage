@@ -2,7 +2,9 @@
 import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import HistoryCircle from "./HistoryCircle";
-import TeamFinniu from "/images/about/section-1/TeamFinniu.png";
+import TeamFinniu from "@images/about/section-1/TeamFinniu.png";
+
+
 const WelcomeSection = () => {
   const typingEffectRef = useRef<HTMLSpanElement | null>(null);
 
