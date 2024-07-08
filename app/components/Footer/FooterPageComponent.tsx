@@ -16,17 +16,19 @@ const Footer = () => {
           <ul>
             <li className="mb-1">
               <Link
-                href="https://finniuapp.notion.site/Preguntas-Frecuentes-f7f77872d34a4de3a9e12d5fc58421ff"
-                legacyBehavior
+                target="_blank"
+                href="https://finniuapp.notion.site/Preguntas-Frecuentes-f7f77872d34a4de3a9e12d5fc58421ff "
+                className=" cursor-pointer hover:underline  "
               >
-                <a className=" cursor-pointer hover:underline">
-                  Preguntas Frecuentes
-                </a>
+                Preguntas Frecuentes
               </Link>
             </li>
             <li>
-              <Link href="/#simulatorInvestment" legacyBehavior>
-                <a className="hover:underline cursor-pointer">Rentabilidad</a>
+              <Link
+                href="/#simulatorInvestment"
+                className="hover:underline cursor-pointer"
+              >
+                Rentabilidad
               </Link>
             </li>
           </ul>
@@ -36,13 +38,13 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-2">Legal</h3>
           <ul>
             <li className="mb-1">
-              <Link href="/terminos-condiciones" legacyBehavior>
-                <a className=" hover:underline">Términos & Condiciones</a>
+              <Link href="/terminos-condiciones" className=" hover:underline">
+                Términos & Condiciones
               </Link>
             </li>
             <li>
-              <Link href="/politica-privacidad" legacyBehavior>
-                <a className=" hover:underline">Política & Privacidad</a>
+              <Link href="/politica-privacidad" className=" hover:underline">
+                Política & Privacidad
               </Link>
             </li>
           </ul>
@@ -58,15 +60,17 @@ const Footer = () => {
               height={96}
             />
             <Link
+              target="_blank"
               href="https://api.whatsapp.com/send?phone=51940206852&text=Hola!%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20info%20sobre%20Finniu.%20Mi%20nombre%20es%20"
-              legacyBehavior
+              className="text-darkBlueColor "
             >
-              <a className="text-darkBlueColor ">+51 940 206 852</a>
+              +51 940 206 852
             </Link>
           </p>
           <p className="flex items-center text-gray-700">
             <Image src={Message} alt="message" width={38} height={96} />
             <a
+              target="_blank"
               href="mailto:hola@finniu.com"
               className="ml-2 text-darkBlueColor "
             >
@@ -79,34 +83,28 @@ const Footer = () => {
           <h3 className="text-lg font-semibold mb-4">Encuéntranos en</h3>
           <div className="flex space-x-4">
             <Link
-              href="https://www.instagram.com/finniu.app?igsh=MWRsZGRpMzdncXZ1MA=="
-              legacyBehavior
+              target="_blank"
+              href="https://www.instagram.com/finniu.app?igsh=MWRsZGRpMzdncXZ1MA== "
             >
-              <a>
-                <Image src={Instagram} alt="instagram" width={38} height={96} />
-              </a>
+              <Image src={Instagram} alt="instagram" width={38} height={96} />
             </Link>
 
             <Link
+              target="_blank"
               href="https://www.linkedin.com/company/finniu/"
-              legacyBehavior
             >
-              <a>
-                <Image
-                  src={LinkedinIcon}
-                  alt="LinkedinIcon"
-                  width={38}
-                  height={96}
-                />
-              </a>
+              <Image
+                src={LinkedinIcon}
+                alt="LinkedinIcon"
+                width={38}
+                height={96}
+              />
             </Link>
             <Link
+              target="_blank"
               href="https://www.facebook.com/finniuapp?mibextid=ZbWKwL"
-              legacyBehavior
             >
-              <a>
-                <Image src={Facebook} alt="Facebook" width={38} height={96} />
-              </a>
+              <Image src={Facebook} alt="Facebook" width={38} height={96} />
             </Link>
             <div className=" w-20 h-20"></div>
           </div>

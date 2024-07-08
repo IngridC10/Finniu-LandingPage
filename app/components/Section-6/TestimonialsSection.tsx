@@ -1,11 +1,11 @@
 "use client";
 import React, { useState } from "react";
 import Image from "next/image";
+import CustomLeftArrow from "@/components/CustomLeftArrow";
+import CustomRightArrow from "@/components/CustomRightArrow";
 import Plane from "/images/Section-6/Plane.png";
 import InvestorOne from "/images/Section-6/InvestorOne.png";
 import InvestorTwo from "/images/Section-6/InvestorTwo.png";
-import CustomLeftArrow from "@/components/CustomLeftArrow";
-import CustomRightArrow from "@/components/CustomRightArrow";
 import InvestorThree from "/images/Section-6/InvestorThree.png";
 
 type Testimonial = {
@@ -45,18 +45,23 @@ const testimonialGroups: Testimonial[][] = [
 ];
 
 const TestimonialsSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentIndexState, setCurrentIndexState] = useState(0);
+  const [isSelectedButtonRightState, setSelectedButtonRightState] =
+    useState(true);
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonialGroups.length);
-  };
-
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? testimonialGroups.length - 1 : prevIndex - 1
+    setSelectedButtonRightState(true);
+    setCurrentIndexState(
+      (prevIndex) => (prevIndex + 1) % testimonialGroups.length
     );
   };
 
+  const handlePrev = () => {
+    setSelectedButtonRightState(false);
+    setCurrentIndexState((prevIndex) =>
+      prevIndex === 0 ? testimonialGroups.length - 1 : prevIndex - 1
+    );
+  };
   return (
     <section className="section-custom bg-gradient-light">
       <div className="container flex flex-row container-section">
@@ -70,7 +75,7 @@ const TestimonialsSection = () => {
           </div>
         </div>
         <div className="space-y-4">
-          {testimonialGroups[currentIndex].map((testimonial, index) => (
+          {testimonialGroups[currentIndexState].map((testimonial, index) => (
             <div
               key={index}
               className="bg-lighBlue w-[691px] p-16 h-[332px] rounded-xl shadow-md leading-relaxed"
@@ -94,10 +99,14 @@ const TestimonialsSection = () => {
           ))}
           <div className="flex flex-row justify-end gap-3 mt-10">
             <button onClick={handlePrev}>
-              <CustomLeftArrow />
+              <CustomLeftArrow
+                isSelectedButtonRightState={isSelectedButtonRightState}
+              />
             </button>
             <button onClick={handleNext}>
-              <CustomRightArrow />
+              <CustomRightArrow
+                isSelectedButtonRightState={isSelectedButtonRightState}
+              />
             </button>
           </div>
         </div>

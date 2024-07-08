@@ -1,16 +1,17 @@
 "use client";
+import { useState, useEffect } from "react";
 import Image from "next/image";
+import CustomLeftArrow from "@/components/CustomLeftArrow";
+import CustomRightArrow from "@/components/CustomRightArrow";
 import HandCellPhone from "/images/Section-4/HandCellPhone.png";
 import VirtualWallet from "/images/Section-4/VirtualWallet.png";
 import QuarterlyReports from "/images/Section-4/QuarterlyReports.png";
 import ProjectYourGoals from "/images/Section-4/ProjectYourGoals.png";
-import { useState, useEffect } from "react";
-import CustomLeftArrow from "@/components/CustomLeftArrow";
-import CustomRightArrow from "@/components/CustomRightArrow";
 
 const StepInvestmentGuideSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
+  const [currentIndexState, setCurrentIndexState] = useState(0);
+  const [isSelectedButtonRightState, setSelectedButtonRightState] =
+    useState(true);
   const slidesData = [
     {
       title: "Todas tus inversiones en la palma de tu mano",
@@ -46,15 +47,17 @@ const StepInvestmentGuideSection = () => {
   ];
 
   const handleNextSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === slidesData.length - 1 ? 0 : prevIndex + 1
-    );
+    setSelectedButtonRightState(true),
+      setCurrentIndexState((prevIndex) =>
+        prevIndex === slidesData.length - 1 ? 0 : prevIndex + 1
+      );
   };
 
   const handlePrevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? slidesData.length - 1 : prevIndex - 1
-    );
+    setSelectedButtonRightState(false),
+      setCurrentIndexState((prevIndex) =>
+        prevIndex === 0 ? slidesData.length - 1 : prevIndex - 1
+      );
   };
 
   useEffect(() => {
@@ -64,34 +67,38 @@ const StepInvestmentGuideSection = () => {
 
   return (
     <section
-      className={`section-custom flex justify-center w-full items-center py-10 ${slidesData[currentIndex].bgColor}`}
+      className={`section-custom flex justify-center w-full items-center py-10 ${slidesData[currentIndexState].bgColor}`}
     >
       <div className="container relative container-section">
         <div className="flex flex-row items-center justify-between ">
           <div className="w-[611px] text-right mb-0">
             <p className="text-[44px] font-bold mb-2">
-              {slidesData[currentIndex].title.split(" en ")[0]} <br />
-              {slidesData[currentIndex].title.split(" en ")[1]}
+              {slidesData[currentIndexState].title.split(" en ")[0]} <br />
+              {slidesData[currentIndexState].title.split(" en ")[1]}
             </p>
             <p className="text-[36px] mb-4">
-              {slidesData[currentIndex].subtitle}
+              {slidesData[currentIndexState].subtitle}
             </p>
             <p className="text-[24px] font-medium mb-6">
-              {slidesData[currentIndex].description}
+              {slidesData[currentIndexState].description}
             </p>
             <div className="flex flex-row justify-end gap-3">
               <button onClick={handlePrevSlide}>
-                <CustomLeftArrow />
+                <CustomLeftArrow
+                  isSelectedButtonRightState={isSelectedButtonRightState}
+                />
               </button>
               <button onClick={handleNextSlide}>
-                <CustomRightArrow />
+                <CustomRightArrow
+                  isSelectedButtonRightState={isSelectedButtonRightState}
+                />
               </button>
             </div>
           </div>
           <div className="relative w-1/2 flex justify-end">
             <Image
-              src={slidesData[currentIndex].imageSrc}
-              alt={`slide-${currentIndex + 1}`}
+              src={slidesData[currentIndexState].imageSrc}
+              alt={`slide-${currentIndexState + 1}`}
               className="object-cover"
               height={650}
             />

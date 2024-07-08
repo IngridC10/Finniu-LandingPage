@@ -2,61 +2,55 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import LogoFinniu from "/images/Navbar/LogoFinniu.png";
 import ButtonComponent from "@/components/ButtonComponent";
+import LogoFinniu from "/images/Navbar/LogoFinniu.png";
 
 const NavComponent = () => {
   const handleButton = () => {
     window.open("https://app.finniu.com/login");
   };
+
   return (
-    <div className="flex justify-around items-center w-full bg-blueDarkColor p-4">
-      <div className="container flex flex-row justify-around items-center">
-        <div className="flex ">
+    <div className="w-full flex justify-center items-center bg-blueDarkColor p-4">
+      <div className="container container-section flex flex-row justify-between items-center">
+        <Link href="/components">
           <Image
             src={LogoFinniu}
             alt="Logo de Finniu"
             width={125}
             height={83}
           />
-        </div>
+        </Link>
 
-        <ul className="flex space-x-20 text-white text-[24px]">
+        <ul className="flex text-white text-[24px] space-x-20">
           <li>
-            <Link href={"/#HowItWorks"} legacyBehavior>
-              <a>¿Cómo funciona?</a>
-            </Link>
+            <Link href="/#HowItWorks">¿Cómo funciona?</Link>
           </li>
-
           <li>
-            <Link href={"/#simulatorInvestment"} legacyBehavior>
-              <a>Simulador</a>
-            </Link>
+            <Link href="/#simulatorInvestment">Simulador</Link>
           </li>
           <li>
             <Link
               href="https://finniuapp.notion.site/Preguntas-Frecuentes-f7f77872d34a4de3a9e12d5fc58421ff"
-              legacyBehavior
+              target="_blank"
             >
-              <a>Aprende</a>
+              Aprende
             </Link>
           </li>
           <li>
-            <Link href="https://finantips.substack.com/" legacyBehavior>
-              <a>Finantips</a>
+            <Link href="https://finantips.substack.com/" target="_blank">
+              Finantips
             </Link>
           </li>
           <li>
-            <Link href="/about" legacyBehavior>
-              <a>Nosotros</a>
-            </Link>
+            <Link href="/about">Nosotros</Link>
           </li>
         </ul>
 
         <div>
           <ButtonComponent
             text="Ingresar"
-            className="h-12 w-36 text-blueDarkColor bg-lightBlueColor py-2 text-[24px] rounded-lg px-5 "
+            className="h-12 w-36 text-blueDarkColor bg-lightBlueColor text-[24px] rounded-lg"
             onClick={handleButton}
           />
         </div>
