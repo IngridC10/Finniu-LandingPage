@@ -1,10 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import Worker1 from "@/images/about/section-5/Worker1.png";
-import Linkedin from "@/images/about/section-5/Linkedin.png";
-import Worker2 from "@/images/about/section-5/Worker2.png";
-import Worker3 from "@/images/about/section-5/Worker3.png";
+import Worker1 from "@/images/About/Section-5/Worker1.png";
+import Linkedin from "@/images/About/Section-5/Linkedin.png";
+import Worker2 from "@/images/About/Section-5/Worker2.png";
+import Worker3 from "@/images/About/Section-5/Worker3.png";
 
 const OurDirectorySection = () => {
   return (
