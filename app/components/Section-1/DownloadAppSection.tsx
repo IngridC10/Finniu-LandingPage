@@ -4,7 +4,7 @@ import Image from "next/image";
 import CountUp from "react-countup";
 import GooglePlay from "@/images/Section-1/GooglePlay.png";
 import AppStore from "@/images/Section-1/AppStore.png";
-import CellphoneDollar from "@/images/Section-1/CellphoneDollar.png";
+import CellphoneDollar from "@/images/Section-1/CellPhoneDollar.png";
 
 const DownloadAppSection = () => {
   return (
