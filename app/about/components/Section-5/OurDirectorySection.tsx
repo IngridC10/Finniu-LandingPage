@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Worker1 from "/images/about/section-5/Worker1.png";
 import Linkedin from "/images/about/section-5/Linkedin.png";
-import Link from "next/link";
 import Worker2 from "/images/about/section-5/Worker2.png";
 import Worker3 from "/images/about/section-5/Worker3.png";
 
@@ -30,13 +30,8 @@ const OurDirectorySection = () => {
                 <h1 className=" font-bold text-[20px] text-right text-white">
                   Diego Mallqui
                 </h1>
-                <Link
-                  href="https://www.linkedin.com/in/diegomallqui1/?originalSubdomain=pe"
-                  legacyBehavior
-                >
-                  <a>
-                    <Image src={Linkedin} alt="linkedin" height={30} />
-                  </a>
+                <Link href="https://www.linkedin.com/in/diegomallqui1/?originalSubdomain=pe">
+                  <Image src={Linkedin} alt="linkedin" height={30} />
                 </Link>
               </div>
 
@@ -59,13 +54,8 @@ const OurDirectorySection = () => {
                 <h1 className=" font-bold text-[20px] text-right text-white">
                   Renzo Cateriano
                 </h1>
-                <Link
-                  href="https://www.linkedin.com/in/renzo-cateriano-toledo-564a92156/"
-                  legacyBehavior
-                >
-                  <a>
-                    <Image src={Linkedin} alt="linkedin" height={30} />
-                  </a>
+                <Link href="https://www.linkedin.com/in/renzo-cateriano-toledo-564a92156/">
+                  <Image src={Linkedin} alt="linkedin" height={30} />
                 </Link>
               </div>
 
@@ -90,13 +80,8 @@ const OurDirectorySection = () => {
                   <h1 className=" font-bold text-[20px] text-right text-white">
                     Diego De la Vega
                   </h1>
-                  <Link
-                    href="https://www.linkedin.com/in/diego-de-la-vega-loayza-92a419a2/"
-                    legacyBehavior
-                  >
-                    <a>
-                      <Image src={Linkedin} alt="linkedin" height={30} />
-                    </a>
+                  <Link href="https://www.linkedin.com/in/diego-de-la-vega-loayza-92a419a2/">
+                    <Image src={Linkedin} alt="linkedin" height={30} />
                   </Link>
                 </div>
 
