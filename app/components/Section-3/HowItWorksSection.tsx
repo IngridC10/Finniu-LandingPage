@@ -9,7 +9,7 @@ import Eyes from "@/images/Section-3/Eyes.png";
 import LoginCellphoneFinniu from "@/images/Section-3/LoginCellphoneFinniu.png";
 import RegisterLight from "@/images/Section-3/RegisterLight.png";
 import RegisterDark from "@/images/Section-3/RegisterDark.png";
-import CellPhoneandGooglePlay from "@/images/Section-3/CellPhoneandGooglePlay.png";
+import CellPhoneandGooglePlay from "@/images/Section-3/CellphoneandGooglePlay.png";
 import ChoosePlan from "@/images/Section-3/ChoosePlan.png";
 import Step3 from "@/images/Section-3/Step3.png";
 import Step4 from "@/images/Section-3/Step4.png";
