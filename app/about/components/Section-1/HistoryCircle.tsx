@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import EyesArrow from "@/images/about/section-1/EyesArrow.png";
+import EyesArrow from "@/images/About/Section-1/EyesArrow.png";
 
 const HistoryCircle = () => {
   return (
