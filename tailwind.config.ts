@@ -16,7 +16,7 @@ const config: Config = {
       },
 
       fontFamily: {
-        myFont: ["comforta-custom", "sans-serif"],
+        myFont: ["DmSans-custom", "sans-serif"],
       },
 
       colors: {
