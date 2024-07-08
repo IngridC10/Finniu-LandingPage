@@ -1,32 +1,32 @@
 "use client";
+import { SetStateAction, useState } from "react";
 import Image from "next/image";
-import CellphoneandAppStore from "/images/Section-3/CellphoneandAppStore.png";
 import { Carousel } from "flowbite-react";
+import SliderComponent from "./SliderItemComponent";
+import ButtonComponent from "@/components/ButtonComponent";
+import CellphoneandAppStore from "/images/Section-3/CellphoneandAppStore.png";
 import Eyes from "/images/Section-3/Eyes.png";
 import LoginCellphoneFinniu from "/images/Section-3/LoginCellphoneFinniu.png";
 import RegisterLight from "/images/Section-3/RegisterLight.png";
 import RegisterDark from "/images/Section-3/RegisterDark.png";
 import CellPhoneandGooglePlay from "/images/Section-3/CellPhoneandGooglePlay.png";
-import SliderComponent from "./SliderItemComponent";
-import { SetStateAction, useState } from "react";
-import ButtonComponent from "@/components/ButtonComponent";
 import ChoosePlan from "/images/Section-3/ChoosePlan.png";
 import Step3 from "/images/Section-3/Step3.png";
 import Step4 from "/images/Section-3/Step4.png";
 import Bill from "/images/Section-3/Bill.png";
 
 const HowItWorksSection = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isWhereToFindButtonActive, setWhereToFindButtonActive] =
+  const [activeIndexState, setActiveIndexState] = useState(0);
+  const [isWhereToFindButtonActiveState, setWhereToFindButtonActiveState] =
     useState(true);
 
   const handleSlideChange = (index: SetStateAction<number>) => {
-    setActiveIndex(index);
+    setActiveIndexState(index);
   };
 
   const handleButtonClick = (): void => {
-    setWhereToFindButtonActive(!isWhereToFindButtonActive);
-    setActiveIndex(0);
+    setWhereToFindButtonActiveState(!isWhereToFindButtonActiveState);
+    setActiveIndexState(0);
   };
 
   const itemsSliderWhereFindIt = [
@@ -74,15 +74,15 @@ const HowItWorksSection = () => {
   ];
 
   const itemsSlider =
-    isWhereToFindButtonActive === true
+    isWhereToFindButtonActiveState === true
       ? itemsSliderWhereFindIt
       : itemsSliderInvest;
 
-  const containerBackgroundColor = isWhereToFindButtonActive
+  const containerBackgroundColor = isWhereToFindButtonActiveState
     ? "bg-backgroundLightColor"
     : "bg-blueDarkColor";
 
-  const textColor = isWhereToFindButtonActive
+  const textColor = isWhereToFindButtonActiveState
     ? "text-blueColorBackground"
     : "text-white";
 
@@ -99,19 +99,21 @@ const HowItWorksSection = () => {
 
           <div
             className={`flex flex-row m-2 w-[805px] items-center  h-[90px] justify-around rounded-full ${
-              isWhereToFindButtonActive ? "bg-lighBlue" : "bg-blueDarkColor "
+              isWhereToFindButtonActiveState
+                ? "bg-lighBlue"
+                : "bg-blueDarkColor "
             }`}
           >
             <ButtonComponent
               text="¿Cómo encontrarlo?"
               onClick={() => handleButtonClick()}
               className={`h-16 text-[28px] shadow-md  w-[333px] gap-2 flex justify-center items-center rounded-full ${
-                isWhereToFindButtonActive === true
+                isWhereToFindButtonActiveState === true
                   ? "bg-lightBlueColor text-blackColorText"
                   : "bg-blueDarkColor text-white"
               }`}
             >
-              {isWhereToFindButtonActive && (
+              {isWhereToFindButtonActiveState && (
                 <Image src={Eyes} alt="eyes" width={20} height={20} />
               )}
             </ButtonComponent>
@@ -119,12 +121,12 @@ const HowItWorksSection = () => {
               text="¿Cómo invertir?"
               onClick={() => handleButtonClick()}
               className={`h-16 w-[333px] m-1 flex justify-center items-center gap-2 rounded-full text-[28px] ${
-                isWhereToFindButtonActive === false
+                isWhereToFindButtonActiveState === false
                   ? "bg-blueColorButton text-white"
                   : "bg-lighBlue text-blueDarkColor"
               }`}
             >
-              {!isWhereToFindButtonActive && (
+              {!isWhereToFindButtonActiveState && (
                 <Image src={Bill} alt="bill" width={20} height={20} />
               )}
             </ButtonComponent>
@@ -132,13 +134,13 @@ const HowItWorksSection = () => {
         </div>
 
         <h1 className="text-blueColorBackground text-[48px] font-bold">
-          Paso {activeIndex + 1}
+          Paso {activeIndexState + 1}
         </h1>
 
         <div className="flex flex-row rounded-2xl justify-center items-center w-[80%] h-[800px]">
           <Carousel
             className="p-5"
-            key={isWhereToFindButtonActive ? "findIt" : "invest"}
+            key={isWhereToFindButtonActiveState ? "findIt" : "invest"}
             onSlideChange={handleSlideChange}
             indicators={false}
             slide={true}

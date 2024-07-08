@@ -1,15 +1,21 @@
 "use client";
+import React, { useState } from "react";
 import Image from "next/image";
-import CellphoneImage from "/images/Section-2/CellphoneImage.png";
 import FixedTermCard from "./FixedTermCard";
 import SafeInvestmentCard from "./SafeInvestmentCard";
-import React, { useState } from "react";
+
+import CellphoneImage from "/images/Section-2/CellphoneImage.png";
+
 const FixedTermSection = () => {
-  const [showComponentFixedTermSelected, setShowComponentFixedTermSelected] =
-    useState(true);
+  const [
+    showComponentFixedTermSelectedState,
+    setShowComponentFixedTermSelectedState,
+  ] = useState(true);
 
   const handleTextClick = () => {
-    setShowComponentFixedTermSelected(!showComponentFixedTermSelected);
+    setShowComponentFixedTermSelectedState(
+      !showComponentFixedTermSelectedState
+    );
   };
 
   return (
@@ -18,7 +24,7 @@ const FixedTermSection = () => {
         <div className="text-left w-[561px] z-10 flex flex-col justify-center mb-24 ">
           <p
             className={` mb-4 leading-tight font-bold ${
-              showComponentFixedTermSelected
+              showComponentFixedTermSelectedState
                 ? "text-graySecondaryColor text-[55px]"
                 : "text-grayColorText text-[40px]"
             }`}
@@ -28,7 +34,7 @@ const FixedTermSection = () => {
           </p>
           <p
             className={`font-bold mb-4 leading-tight cursor-pointer ${
-              showComponentFixedTermSelected
+              showComponentFixedTermSelectedState
                 ? "text-grayColorText text-[40px]"
                 : "text-graySecondaryColor text-[55px]"
             }`}
@@ -37,13 +43,13 @@ const FixedTermSection = () => {
             Inversión segura
           </p>
         </div>
-        {showComponentFixedTermSelected ? (
+        {showComponentFixedTermSelectedState ? (
           <FixedTermCard />
         ) : (
           <SafeInvestmentCard />
         )}
 
-        {showComponentFixedTermSelected ? (
+        {showComponentFixedTermSelectedState ? (
           <div className="absolute flex left-12 flex-row justify-center w-full items-center h-full ">
             <Image
               src={CellphoneImage}

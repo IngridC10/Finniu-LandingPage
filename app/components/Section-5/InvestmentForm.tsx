@@ -1,24 +1,25 @@
 "use client";
-import Image from "next/image";
 import React, { useState } from "react";
+import Image from "next/image";
 import ButtonComponent from "@/components/ButtonComponent";
 import LogoFinniuLight from "/images/Section-5/LogoFinniuLight.png";
 
 const InvestmentForm = () => {
-  const [investmentAmount, setInvestmentAmount] = useState("");
-  const [investmentTime, setInvestmentTime] = useState(6);
-  const [isWhereToFindButtonActive, setWhereToFindButtonActive] =
+  const [investmentAmountState, setInvestmentAmountState] = useState("");
+  const [investmentTimeState, setInvestmentTimeState] = useState(6);
+  const [isWhereToFindButtonActiveState, setWhereToFindButtonActiveState] =
     useState(false);
-  const [currency, setCurrency] = useState("Soles");
-  const [isCalculated, setIsCalculated] = useState(false);
-  const [calculatedResult, setCalculatedResult] = useState({
+  const [currencyState, setCurrencyState] = useState("Soles");
+  const [isCalculatedState, setIsCalculatedState] = useState(false);
+  const [calculatedResultState, setCalculatedResultState] = useState({
     initialAmount: 0,
     finalAmount: 0,
-    investmentTime: 0,
+    investmentTimeState: 0,
   });
 
-  const handleButtonClick = () => {
-    setWhereToFindButtonActive(!isWhereToFindButtonActive);
+  const handleButtonClick = (currency: string) => {
+    setCurrencyState(currency === "Dólares" ? "$" : "Soles");
+    setWhereToFindButtonActiveState(!isWhereToFindButtonActiveState);
   };
 
   const calculatePosition = (
@@ -34,27 +35,28 @@ const InvestmentForm = () => {
     target: { value: any; offsetWidth: number };
   }) => {
     const value = Number(e.target.value);
-    setInvestmentTime(value);
+    setInvestmentTimeState(value);
 
-    const position = calculatePosition(value, 6, 36, e.target.offsetWidth);
+    // const position = calculatePosition(value, 6, 36, e.target.offsetWidth);
   };
 
-  const currencySymbol = currency === "Soles" ? "S/" : "$";
+  const currencySymbol = currencyState === "Soles" ? "S/" : "$";
 
   const calculateInvestment = () => {
     const rate = 0.16;
-    const initialAmount = parseFloat(investmentAmount.replace(/,/g, "")) || 0;
-    const investmentTimeInYears = investmentTime / 12;
+    const initialAmount =
+      parseFloat(investmentAmountState.replace(/,/g, "")) || 0;
+    const investmentTimeInYears = investmentTimeState / 12;
 
     const finalAmount = initialAmount * (1 + rate * investmentTimeInYears);
 
-    setCalculatedResult({
+    setCalculatedResultState({
       initialAmount,
       finalAmount,
-      investmentTime,
+      investmentTimeState,
     });
 
-    setIsCalculated(true);
+    setIsCalculatedState(true);
   };
 
   const handleCalculateClick = () => {
@@ -63,25 +65,27 @@ const InvestmentForm = () => {
 
   return (
     <div className="w-[643px] bg-white flex flex-col justify-center items-center p-12 rounded-3xl h-[690px] leading-[75px] shadow-lg">
-      {isCalculated ? (
+      {isCalculatedState ? (
         <div className="text-center">
           <div className=" flex flex-col justify-center items-center">
             <Image src={LogoFinniuLight} alt="Logo" width={90} height={60} />
           </div>
           <p className="text-[16px] text-black mt-4">Si comienzas con</p>
           <p className="text-[32px] font-bold text-black">
-            {currencySymbol} {calculatedResult.initialAmount.toLocaleString()}
+            {currencySymbol}{" "}
+            {calculatedResultState.initialAmount.toLocaleString()}
           </p>
           <p className="text-[32px] text-black text-bold mt-4 font-bold">
             En {}
             <span className="text-blueColorBackground text-[32px] font-bold">
-              {calculatedResult.investmentTime} meses
+              {calculatedResultState.investmentTimeState} meses
             </span>{" "}
             recibirás <span className="text-[32px] font-bold">&#128184;</span>
           </p>
           <div className=" bg-lighBlue w-[298px] h-[92px] m-auto p-4 rounded-xl my-4">
             <p className="text-[32px] font-bold">
-              {currencySymbol} {calculatedResult.finalAmount.toLocaleString()}
+              {currencySymbol}{" "}
+              {calculatedResultState.finalAmount.toLocaleString()}
             </p>
           </div>
           <ButtonComponent
@@ -89,7 +93,7 @@ const InvestmentForm = () => {
             className="w-[441px] h-[77px] text-[24px] bg-blueColorButton text-white rounded-xl mb-4"
           />
           <button
-            onClick={() => setIsCalculated(false)}
+            onClick={() => setIsCalculatedState(false)}
             className="text-blueColorButton font-semibold text-[24px]"
           >
             Volver a calcular
@@ -104,25 +108,25 @@ const InvestmentForm = () => {
 
             <div
               className={`flex flex-row m-2 w-[242px] items-center h-[60px] p-2 bg-blueColorBackground justify-around rounded-full ${
-                isWhereToFindButtonActive
+                isWhereToFindButtonActiveState
                   ? "bg-lightBlueColor"
                   : "bg-blueDarkColor"
               }`}
             >
               <ButtonComponent
                 text="Soles"
-                onClick={() => handleButtonClick()}
+                onClick={() => handleButtonClick("Soles")}
                 className={`h-[45px] text-[20px] shadow-md w-[111px] gap-2 flex justify-center items-center rounded-full ${
-                  isWhereToFindButtonActive
+                  isWhereToFindButtonActiveState
                     ? "bg-lightColor text-blackColorText"
                     : "bg-blueDarkColor text-white"
                 }`}
               ></ButtonComponent>
               <ButtonComponent
                 text="Dólares"
-                onClick={() => handleButtonClick()}
+                onClick={() => handleButtonClick("Dólares")}
                 className={`h-[45px] w-[111px] m-1 flex justify-center items-center gap-2 rounded-full text-[20px] ${
-                  isWhereToFindButtonActive
+                  isWhereToFindButtonActiveState
                     ? "bg-lightBlueColor text-blueDarkColor"
                     : "bg-blueColorButton text-white"
                 }`}
@@ -150,9 +154,9 @@ const InvestmentForm = () => {
                 }}
                 id="investmentAmount"
                 type="text"
-                value={investmentAmount}
-                onChange={(e) => setInvestmentAmount(e.target.value)}
-                className="pl-10 pr-3 py-2 border-b-8  $currency? border-lightBlueColor w-full "
+                value={investmentAmountState}
+                onChange={(e) => setInvestmentAmountState(e.target.value)}
+                className="pl-10 pr-3 py-2 border-b-8  $currency? border-grayColorLine w-full "
                 placeholder="10,000"
               />
             </div>
@@ -169,7 +173,7 @@ const InvestmentForm = () => {
                   min="6"
                   max="36"
                   step="6"
-                  value={investmentTime}
+                  value={investmentTimeState}
                   onChange={handleInputChange}
                   className="w-full"
                 />

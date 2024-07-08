@@ -1,14 +1,15 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import CountUp from "react-countup";
 import GooglePlay from "/images/Section-1/GooglePlay.png";
 import AppStore from "/images/Section-1/AppStore.png";
 import CellphoneDollar from "/images/Section-1/CellphoneDollar.png";
-import CountUp from "react-countup";
+
 const DownloadAppSection = () => {
   return (
     <section className=" flex flex-col justify-center items-center w-full max-h-[90vh] min-h-[100%] bg-blueDarkColor h-screen   ">
-      <div className="flex flex-row container justify-center relative h-full">
+      <div className="flex flex-row container  container-section justify-center relative h-full">
         <div className="text-left w-[561px] z-10 flex justify-center flex-col ">
           <p className="text-white mb-4 text-[32px] leading-tight ">
             Invierte en tu futuro
@@ -51,7 +52,7 @@ const DownloadAppSection = () => {
 
         <div className="w-[100px]"></div>
 
-        <div className=" flex items-end pb-10 ml-60 w-[400px] ">
+        <div className=" flex items-end pb-10 ml-60 w-[523px] ">
           <div className="flex flex-col items-end justify-center  text-white text-xl  ml-8 ">
             <div className="flex items-center justify-center mb-4 space-x-4 w-[476px] leading-[63px] ">
               <div className="text-center">
@@ -98,7 +99,7 @@ const DownloadAppSection = () => {
           </div>
         </div>
 
-        <div className="absolute right-[40px] top-[96px] flex flex-row items-center  justify-center h-full w-full">
+        <div className="absolute right-[75px] top-[96px] flex flex-row items-center  justify-center h-full w-full">
           <Image
             src={CellphoneDollar}
             alt="CellPhone-Dollar"
