@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import EyesArrow from "/images/about/section-1/EyesArrow.png";
+import EyesArrow from "@/images/about/section-1/EyesArrow.png";
 
-const CircleWithText = () => {
+const HistoryCircle = () => {
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <p className="text-white text-4xl ">Conoce nuestra historia aquí</p>
@@ -24,4 +24,4 @@ const CircleWithText = () => {
   );
 };
 
-export default CircleWithText;
+export default HistoryCircle;

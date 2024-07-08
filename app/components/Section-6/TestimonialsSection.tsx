@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import Image from "next/image";
 import CustomLeftArrow from "@/components/CustomLeftArrow";
 import CustomRightArrow from "@/components/CustomRightArrow";
-import Plane from "/images/Section-6/Plane.png";
-import InvestorOne from "/images/Section-6/InvestorOne.png";
-import InvestorTwo from "/images/Section-6/InvestorTwo.png";
-import InvestorThree from "/images/Section-6/InvestorThree.png";
+import Plane from "@/images/Section-6/Plane.png";
+import InvestorOne from "@/images/Section-6/InvestorOne.png";
+import InvestorTwo from "@/images/Section-6/InvestorTwo.png";
+import InvestorThree from "@/images/Section-6/InvestorThree.png";
 
 type Testimonial = {
   text?: string;

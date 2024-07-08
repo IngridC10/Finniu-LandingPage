@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Check from "/images/Section-2/Check.png";
+import Check from "@/images/Section-2/Check.png";
 
 const FixedTermCard = () => {
   return (

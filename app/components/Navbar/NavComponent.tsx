@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ButtonComponent from "@/components/ButtonComponent";
-import LogoFinniu from "/images/Navbar/LogoFinniu.png";
+import LogoFinniu from "@/images/Navbar/LogoFinniu.png";
 
 const NavComponent = () => {
   const handleButton = () => {

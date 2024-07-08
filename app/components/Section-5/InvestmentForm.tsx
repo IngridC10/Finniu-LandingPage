@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import ButtonComponent from "@/components/ButtonComponent";
-import LogoFinniuLight from "/images/Section-5/LogoFinniuLight.png";
+import LogoFinniuLight from "@/images/Section-5/LogoFinniuLight.png";
 
 const InvestmentForm = () => {
   const [investmentAmountState, setInvestmentAmountState] = useState("");

@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import Key from "/images/Section-2/Key.png";
-import BusinessMoney from "/images/Section-2/BusinessMoney.png";
+import Key from "@/images/Section-2/Key.png";
+import BusinessMoney from "@/images/Section-2/BusinessMoney.png";
 
 const SafeInvestment = () => {
   return (
