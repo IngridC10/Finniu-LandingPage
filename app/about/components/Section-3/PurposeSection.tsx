@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import Plane from "@/images/about/section-3/Plane.png";
+import Plane from "@/images/About/Section-3/Plane.png";
 
 const Purpose = () => {
   return (

@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import Hand from "@/images/about/section-4/Hand.png";
-import DollarIncrease from "@/images/about/section-4/DollarIncrease.png";
-import Glass from "@/images/about/section-4/Glass.png";
+import Hand from "@/images/About/Section-4/Hand.png";
+import DollarIncrease from "@/images/About/Section-4/DollarIncrease.png";
+import Glass from "@/images/About/Section-4/Glass.png";
 
 const SolidStrategySection = () => {
   return (
