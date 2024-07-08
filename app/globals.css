@@ -132,7 +132,7 @@ input[type="range"]::-moz-range-thumb {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: url(../images/BillHand.png);
+  background: url(../images/Section-5/BillHand.png);
   background-size: contain;
   cursor: pointer;
 }
@@ -143,7 +143,7 @@ input[type="range"]::-webkit-slider-thumb {
   height: 50px;
   width: 50px;
   border-radius: 50%;
-  background: url(../images/BillHand.png);
+  background: url(../images/Section-5/BillHand.png);
   background-size: contain;
   cursor: pointer;
   margin-top: -7px;
