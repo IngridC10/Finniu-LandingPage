@@ -4,8 +4,8 @@ import "./globals.css";
 import NavComponent from "./components/Navbar/NavComponent";
 import FooterPageComponent from "./components/Footer/FooterPageComponent";
 
-const comfortaa = localFont({
-  src: "../public/fonts/Comfortaa/Comfortaa-Regular.ttf",
+const DMSans = localFont({
+  src: "../public/fonts/Dm-sans/DMSans-Regular.ttf",
 });
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={comfortaa.className}>
+      <body className={DMSans.className}>
         <NavComponent />
         {children}
         <FooterPageComponent />
