@@ -2,14 +2,17 @@
 import React from "react";
 import Image from "next/image";
 import CountUp from "react-countup";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import GooglePlay from "@/images/Section-1/GooglePlay.png";
 import AppStore from "@/images/Section-1/AppStore.png";
 import CellphoneDollar from "@/images/Section-1/CellPhoneDollar.png";
+import HowItWorksButtonResponsive from "./HowItWorksButtonResponsive";
 
 const DownloadAppSection = () => {
   return (
     <section className=" flex flex-col justify-center items-center w-full max-h-[90vh] min-h-[100%] bg-blueDarkColor h-screen   ">
-      <div className="flex flex-row container  container-section justify-center relative h-full">
+      <div className="flex   sm:flex-row  2xl:flex-row container  container-section  justify-center relative h-full ">
         <div className="text-left w-[561px] z-10 flex justify-center flex-col ">
           <p className="text-white  mb-4  text-[20px] lg:text-[32px]  leading-tight ">
             Invierte en tu futuro
@@ -49,6 +52,14 @@ const DownloadAppSection = () => {
                 style={{ height: "auto" }}
               />
             </a>
+            <div className=" sm:block 2xl:hidden ">
+              <FontAwesomeIcon
+                icon={faArrowDown}
+                color="#B0E5F8"
+                width={20}
+                height={350}
+              />
+            </div>
           </div>
         </div>
 
@@ -108,6 +119,8 @@ const DownloadAppSection = () => {
             width={575}
             style={{ height: "auto" }}
           />
+
+          <HowItWorksButtonResponsive />
         </div>
       </div>
     </section>
