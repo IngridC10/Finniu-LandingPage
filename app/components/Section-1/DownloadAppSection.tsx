@@ -2,31 +2,26 @@
 import React from "react";
 import Image from "next/image";
 import CountUp from "react-countup";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import GooglePlay from "@/images/Section-1/GooglePlay.png";
 import AppStore from "@/images/Section-1/AppStore.png";
 import CellphoneDollar from "@/images/Section-1/CellPhoneDollar.png";
-import HowItWorksButtonResponsive from "./HowItWorksButtonResponsive";
 
 const DownloadAppSection = () => {
   return (
     <section className=" flex flex-col justify-center items-center w-full max-h-[90vh] min-h-[100%] bg-blueDarkColor h-screen   ">
-      <div className="flex   sm:flex-row  2xl:flex-row container  container-section  justify-center relative h-full ">
+      <div className="flex flex-row container  container-section justify-center relative h-full">
         <div className="text-left w-[561px] z-10 flex justify-center flex-col ">
-          <p className="text-white  mb-4  text-[20px] lg:text-[32px]  leading-tight ">
+          <p className="text-white mb-4 text-[32px] leading-tight ">
             Invierte en tu futuro
           </p>
-          <p className="text-white text-[28px]  lg:text-[48px] mb-4 leading-tight ">
+          <p className="text-white text-[48px] mb-4 leading-tight ">
             <span className="text-lilaColor">Invierte</span> &
             <span className="text-lightBlueColor"> Genera</span>
           </p>
-          <p className="text-white  text-[28px]  lg:text-[48px] mb-4 leading-tight">
+          <p className="text-white text-[48px] mb-4 leading-tight">
             otra fuente de
           </p>
-          <p className="text-white  text-[28px]  lg:text-[48px] mb-4 leading-tight">
-            ingresos
-          </p>
+          <p className="text-white text-[48px] mb-4 leading-tight">ingresos</p>
           <div className="flex justify-center md:justify-start gap-4 mt-8">
             <a
               href="https://play.google.com/store/apps/details?id=com.finniu"
@@ -52,21 +47,13 @@ const DownloadAppSection = () => {
                 style={{ height: "auto" }}
               />
             </a>
-            <div className=" sm:block 2xl:hidden ">
-              <FontAwesomeIcon
-                icon={faArrowDown}
-                color="#B0E5F8"
-                width={20}
-                height={350}
-              />
-            </div>
           </div>
         </div>
 
         <div className="w-[100px]"></div>
 
         <div className=" flex items-end pb-10 ml-60 w-[523px] ">
-          <div className="flex flex-col items-end justify-center  text-white text-xl  ml-8  sm:hidden 2xl:block">
+          <div className="flex flex-col items-end justify-center  text-white text-xl  ml-8 ">
             <div className="flex items-center justify-center mb-4 space-x-4 w-[476px] leading-[63px] ">
               <div className="text-center">
                 <p className="text-base">Soles invertidos</p>
@@ -119,8 +106,6 @@ const DownloadAppSection = () => {
             width={575}
             style={{ height: "auto" }}
           />
-
-          <HowItWorksButtonResponsive />
         </div>
       </div>
     </section>

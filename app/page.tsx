@@ -5,11 +5,15 @@ import SimulatorInvestmentSection from "./components/Section-5/SimulatorInvestme
 import StepInvestmentGuideSection from "./components/Section-4/StepInvestmentGuideSection";
 import TestimonialsSection from "./components/Section-6/TestimonialsSection";
 import RegisterSection from "./components/Section-7/RegisterSection";
+import DownloadAppResponsiveSection from "./components/Section-1/DownloadAppResponsiveSection";
+import DownloadApp from "./components/Section-1/DownloadApp";
 
 export default function Home() {
   return (
-    <main className=" flex min-h-screen flex-col items-center  justify-between   ">
-      <DownloadAppSection />
+    <main className=" flex min-h-screen flex-col items-center  justify-between  bg-blueDarkColor  ">
+      <DownloadApp />
+      {/* <DownloadAppResponsiveSection /> */}
+      {/* <DownloadAppSection /> */}
       <FixedTermSection />
       <HowItWorksSection />
       <StepInvestmentGuideSection />
