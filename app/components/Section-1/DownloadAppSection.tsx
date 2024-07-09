@@ -9,7 +9,7 @@ import CellphoneDollar from "@/images/Section-1/CellPhoneDollar.png";
 const DownloadAppSection = () => {
   return (
     <section className=" flex flex-col justify-center items-center w-full max-h-[90vh] min-h-[100%] bg-blueDarkColor h-screen   ">
-      <div className="flex flex-row container  container-section justify-center relative h-full">
+      <div className="flex flex-row container container-section justify-center relative h-full">
         <div className="text-left w-[561px] z-10 flex justify-center flex-col ">
           <p className="text-white mb-4 text-[32px] leading-tight ">
             Invierte en tu futuro
