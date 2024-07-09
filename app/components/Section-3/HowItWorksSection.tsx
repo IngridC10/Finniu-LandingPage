@@ -142,7 +142,7 @@ const HowItWorksSection = () => {
             className="p-5"
             key={isWhereToFindButtonActiveState ? "findIt" : "invest"}
             onSlideChange={handleSlideChange}
-            indicators={false}
+            indicators={true}
             slide={true}
           >
             {itemsSlider.map((item, index) => (
