@@ -5,7 +5,7 @@ import NavComponent from "./components/Navbar/NavComponent";
 import FooterPageComponent from "./components/Footer/FooterPageComponent";
 
 const DMSans = localFont({
-  src: "../public/fonts/Dm-sans/DMSans-Regular.ttf",
+  src: "../public/fonts/dm-sans/DMSans-Regular.ttf",
 });
 
 export const metadata: Metadata = {
