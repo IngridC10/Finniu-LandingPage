@@ -5,16 +5,16 @@ import CellphoneImage from "@/images/Section-2/CellphoneImage.png";
 import BusinessMoney from "@/images/Section-2/BusinessMoney.png";
 import Key from "@/images/Section-2/Key.png";
 
-const FixedTermCardSectionResponsive = () => {
+const FixedTermCardSectionMobile = () => {
   return (
     <div className="flex flex-col w-full min-h-screen bg-white justify-center items-center">
       <div>
-        <h1 className="text-[32px] text-blueDarkColor font-bold">
+        <h1 className="text-[32px] text-center text-blueDarkColor font-bold">
           Como un plazo fijo
         </h1>
-        <div className="flex flex-row">
-          <Image src={Check} alt="check" width={24.11} height={19} />
-          <h2 className="text-[20px] text-blueDarkColor ml-2">
+        <div className="flex flex-row justify-center">
+          <Image src={Check} alt="check" width={24.11} height={16} />
+          <h2 className="text-[20px]  text-blueDarkColor ml-2">
             Crecer es simple
           </h2>
         </div>
@@ -37,7 +37,7 @@ const FixedTermCardSectionResponsive = () => {
               rentabilidades mensuales sin letras pequeñas, similar a un plazo
               fijo pero con mayores beneficios.
             </p>
-            <p className="text-[11px] text-darkBlueColor ">
+            <p className="text-[11px] text-darkBlueColor mt-4 ">
               (1)REVISA LOS TÉRMINOS Y CONDICIONES
             </p>
           </div>
@@ -45,10 +45,10 @@ const FixedTermCardSectionResponsive = () => {
       </div>
 
       <div className=" m-3">
-        <h1 className="text-[32px] text-blueDarkColor font-bold">
+        <h1 className="text-[32px] text-blueDarkColor text-center font-bold">
           Inversión segura
         </h1>
-        <div className="flex flex-row">
+        <div className="flex flex-row justify-center">
           <Image src={Key} alt="business-money" width={25} height={35} />
           <h2 className="text-[20px] text-blueDarkColor ml-2">
             Invierte sin paltas
@@ -81,4 +81,4 @@ const FixedTermCardSectionResponsive = () => {
   );
 };
 
-export default FixedTermCardSectionResponsive;
+export default FixedTermCardSectionMobile;

@@ -1,22 +1,22 @@
 import React from "react";
 import Image from "next/image";
 import CellphoneDollar from "@/images/Section-1/CellPhoneDollar.png";
-import HowItWorksButtonResponsive from "./HowItWorksButtonResponsive";
 import GooglePlay from "@/images/Section-1/GooglePlay.png";
 import AppStore from "@/images/Section-1/AppStore.png";
 import ArrowLight from "@/images/Section-1/ArrowLight.png";
-import AppsCellphone from "@/images/Section-1/AppsCellphone.png";
+import HowItWorksButtonMobile from "./HowItWorksButtonMobile";
 
-const DownloadAppResponsiveSection = () => {
+const DownloadAppMobileSection = () => {
   return (
-    <div className="flex flex-col justify-center items-center bg-blueDarkColor h-screen m-3">
+    <div className="flex flex-col  2xl:justify-center justify-start p-6 items-center bg-blueDarkColor h-screen m-0 2xl:m-3">
       <div className="text-white  text-justify ">
         <p className="text-2xl">Invierte en tu futuro</p>
         <p className=" text-[28px]  lg:text-4xl ">
-          <span className="text-lilaColor text-[28px] lg:text-4xl">
-            Invierte {}
+          <span className="text-lilaColor text-[28px] lg:text-4xl mr-2">
+            Invierte
           </span>
-          & {}
+
+          <span>& </span>
           <span className="text-lightBlueColor text-[28px] lg:text-4xl  ">
             Genera
           </span>
@@ -34,7 +34,7 @@ const DownloadAppResponsiveSection = () => {
       </div>
 
       <div className="flex flex-row mt-8">
-        <HowItWorksButtonResponsive />
+        <HowItWorksButtonMobile />
       </div>
 
       <div className="flex justify-center md:justify-start gap-4 mt-8">
@@ -61,4 +61,4 @@ const DownloadAppResponsiveSection = () => {
   );
 };
 
-export default DownloadAppResponsiveSection;
+export default DownloadAppMobileSection;

@@ -63,55 +63,53 @@ const TestimonialsDesktop = () => {
     );
   };
   return (
-    <section className="section-custom bg-gradient-light">
-      <div className="container flex flex-row container-section">
-        <div className="flex flex-col justify-center w-[594px]">
-          <h2 className="text-[45px] font-bold">¿Qué dicen de Finniu?</h2>
-          <p className="text-[36px] flex justify-end">
-            Ellos lograron sus metas, ahora te toca a ti.
-          </p>
-          <div className="flex flex-col justify-items-end items-center">
-            <Image src={Plane} alt="Rocket" width={128} height={128} />
-          </div>
-        </div>
-        <div className="space-y-4">
-          {testimonialGroups[currentIndexState].map((testimonial, index) => (
-            <div
-              key={index}
-              className="bg-lighBlue w-[691px] p-16 h-[332px] rounded-xl shadow-md leading-relaxed"
-            >
-              <p className="mb-2 text-xl text-justify">{testimonial.text}</p>
-              <div className="flex justify-between items-end">
-                <div className="flex-col mt-4">
-                  <p className="font-bold text-2xl">{testimonial.name}</p>
-                  <p className="text-base">{testimonial.title}</p>
-                </div>
-                {testimonial.image && (
-                  <Image
-                    src={testimonial.image}
-                    alt={`Investor-${index + 1}`}
-                    width={60}
-                    style={{ height: "60px" }}
-                  />
-                )}
-              </div>
-            </div>
-          ))}
-          <div className="flex flex-row justify-end gap-3 mt-10">
-            <button onClick={handlePrev}>
-              <CustomLeftArrow
-                isSelectedButtonRightState={isSelectedButtonRightState}
-              />
-            </button>
-            <button onClick={handleNext}>
-              <CustomRightArrow
-                isSelectedButtonRightState={isSelectedButtonRightState}
-              />
-            </button>
-          </div>
+    <div className="container flex flex-row container-section">
+      <div className="flex flex-col justify-center w-[594px]">
+        <h2 className="text-[45px] font-bold">¿Qué dicen de Finniu?</h2>
+        <p className="text-[36px] flex justify-end">
+          Ellos lograron sus metas, ahora te toca a ti.
+        </p>
+        <div className="flex flex-col justify-items-end items-center">
+          <Image src={Plane} alt="Rocket" width={128} height={128} />
         </div>
       </div>
-    </section>
+      <div className="space-y-4">
+        {testimonialGroups[currentIndexState].map((testimonial, index) => (
+          <div
+            key={index}
+            className="bg-lighBlue w-[691px] p-16 h-[332px] rounded-xl shadow-md leading-relaxed"
+          >
+            <p className="mb-2 text-xl text-justify">{testimonial.text}</p>
+            <div className="flex justify-between items-end">
+              <div className="flex-col mt-4">
+                <p className="font-bold text-2xl">{testimonial.name}</p>
+                <p className="text-base">{testimonial.title}</p>
+              </div>
+              {testimonial.image && (
+                <Image
+                  src={testimonial.image}
+                  alt={`Investor-${index + 1}`}
+                  width={60}
+                  style={{ height: "60px" }}
+                />
+              )}
+            </div>
+          </div>
+        ))}
+        <div className="flex flex-row justify-end gap-3 mt-10">
+          <button onClick={handlePrev}>
+            <CustomLeftArrow
+              isSelectedButtonRightState={isSelectedButtonRightState}
+            />
+          </button>
+          <button onClick={handleNext}>
+            <CustomRightArrow
+              isSelectedButtonRightState={isSelectedButtonRightState}
+            />
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 

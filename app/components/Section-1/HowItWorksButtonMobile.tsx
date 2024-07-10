@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ButtonComponent from "@/components/ButtonComponent";
 import AppsCellphone from "@/images/Section-1/AppsCellphone.png";
-const HowItWorksButtonResponsive = () => {
+const HowItWorksButtonMobile = () => {
   return (
     <div className="flex flex-row justify-center items-center">
       <Link href="/#HowItWorks">
@@ -24,4 +24,4 @@ const HowItWorksButtonResponsive = () => {
   );
 };
 
-export default HowItWorksButtonResponsive;
+export default HowItWorksButtonMobile;
