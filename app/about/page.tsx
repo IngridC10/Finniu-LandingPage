@@ -1,5 +1,5 @@
 import DownloadAppSection from "./components/Section-7/DownloadAppFinniuSection";
-import TestimonialsSection from "../components/Section-6/TestimonialsSection";
+import TestimonialsDesktop from "../components/Section-6/TestimonialsDesktop";
 import WelcomeSection from "./components/Section-1/WelcomeSection";
 import SponsoredSection from "./components/Section-2/SponsoredSection";
 import PurposeSection from "./components/Section-3/PurposeSection";
@@ -13,7 +13,7 @@ export default function Home() {
       <PurposeSection />
       <SolidStrategySection />
       <OurDirectorySection />
-      <TestimonialsSection />
+      <TestimonialsDesktop />
       <DownloadAppSection />
     </main>
   );
