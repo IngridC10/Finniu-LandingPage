@@ -64,8 +64,8 @@ const TestimonialsResponsive = () => {
 
   return (
     <section className="section-custom bg-gradient-light">
-      <div className="container flex container-section flex-col">
-        <div className="flex flex-col justify-center w-[594px]">
+      <div className="container flex container-section flex-col justify-center items-center">
+        <div className="flex flex-col justify-center w-[594px] items-center">
           <h2 className=" text-[32px] font-bold">¿Qué dicen de Finniu?</h2>
           <div className=" w-[308px]">
             <p className="text-[16px] flex text-center">
@@ -79,7 +79,7 @@ const TestimonialsResponsive = () => {
         <div className="space-y-4">
           <div
             key={currentIndexState}
-            className="bg-lighBlue w-[333px] p-8 h-[268px] mt-3 rounded-xl shadow-md leading-relaxed"
+            className="bg-lighBlue w-[333px] p-8 h-[268px] rounded-xl shadow-md leading-relaxed"
           >
             <p className="mb-2 text-[13px] text-justify">
               {testimonials[currentIndexState].text}
@@ -103,7 +103,7 @@ const TestimonialsResponsive = () => {
               )}
             </div>
           </div>
-          <div className="flex flex-row justify-start gap-3 mt-10">
+          <div className="flex flex-row  justify-center  2xl:justify-start gap-3 mt-10 ">
             <button onClick={handlePrev}>
               <CustomLeftArrow
                 isSelectedButtonRightState={isSelectedButtonRightState}

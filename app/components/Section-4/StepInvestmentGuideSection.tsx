@@ -76,8 +76,8 @@ const StepInvestmentGuideSection = () => {
       className={`section-custom flex justify-center w-full items-center py-10 ${slidesData[currentIndexState].bgColor}`}
     >
       <div className="container relative container-section">
-        <div className="flex flex-row items-center justify-between ">
-          <div className="w-[611px] text-left  2xl:text-right mb-0">
+        <div className="flex flex-col  2xl:flex-row items-center justify-between ">
+          <div className=" 2xl:w-[611px]  w-[200px] text-left  2xl:text-right mb-0">
             <p className=" text-[21px]   2xl:text-[44px] font-bold mb-2">
               {slidesData[currentIndexState].title.split(" en ")[0]} <br />
               {slidesData[currentIndexState].title.split(" en ")[1]}
