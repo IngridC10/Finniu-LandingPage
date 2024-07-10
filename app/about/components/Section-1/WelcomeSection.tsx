@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import HistoryCircle from "./HistoryCircle";
 import TeamFinniu from "@/images/About/Section-1/TeamFinniu.png";
-
+import Text from "@/images/About/Section-1/Text.png";
 
 const WelcomeSection = () => {
   const typingEffectRef = useRef<HTMLSpanElement | null>(null);
@@ -56,7 +56,7 @@ const WelcomeSection = () => {
   return (
     <section className="section-custom relative bg-blueDarkColor flex flex-col">
       <div className=" h-[1352px] container flex justify-center flex-col items-center">
-        <h1 className="text-[96px] text-white">¿Quiénes somos?</h1>
+        <Image src={Text} alt="text" width={814} height={120} />
         <h2 className="text-[50px] text-white flex justify-center">
           Somos <span className="typing-effect" ref={typingEffectRef}></span>
         </h2>

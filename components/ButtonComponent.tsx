@@ -1,15 +1,23 @@
 import React, { ButtonHTMLAttributes } from "react";
+import Image from "next/image";
 
 interface ButtonComponentProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   text: string;
   className?: string;
   children?: React.ReactNode;
+  image?: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  };
 }
 
 const ButtonComponent: React.FC<ButtonComponentProps> = ({
   className = "",
   text,
   children,
+  image,
 
   ...props
 }) => {
@@ -20,6 +28,16 @@ const ButtonComponent: React.FC<ButtonComponentProps> = ({
         {...props}
       >
         <span>{text} </span>
+
+        {image && (
+          <Image
+            src={image.src}
+            alt={image.alt}
+            width={image.width}
+            height={image.height}
+          />
+        )}
+
         {children}
       </button>
     </div>
