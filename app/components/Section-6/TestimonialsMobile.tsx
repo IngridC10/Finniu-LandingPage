@@ -66,19 +66,19 @@ const TestimonialsMobile = () => {
     <div className="container flex container-section flex-col justify-center items-center">
       <div className="flex flex-col justify-center w-[594px] items-center">
         <h2 className=" text-[32px] font-bold">¿Qué dicen de Finniu?</h2>
-        <div className=" w-[308px]">
+        <div className=" w-[308px] ">
           <p className="text-[16px] flex text-center">
             "Ellos también cumplieron sus metas financieras con Finniu".
           </p>
         </div>
-        <div className="flex flex-col justify-items-end items-center">
+        <div className="flex flex-col w-[300px] justify-items-end items-end">
           <Image src={Plane} alt="Rocket" width={40} height={40} />
         </div>
       </div>
       <div className="space-y-4">
         <div
           key={currentIndexState}
-          className="bg-lighBlue w-[333px] p-8 h-[268px] rounded-xl shadow-md leading-relaxed"
+          className="bg-lighBlue w-[333px] mt-5 p-8 h-[268px] rounded-xl shadow-md leading-relaxed"
         >
           <p className="mb-2 text-[13px] text-justify">
             {testimonials[currentIndexState].text}
