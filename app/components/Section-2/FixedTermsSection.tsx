@@ -1,5 +1,5 @@
 import React from "react";
-import FixedTermCardSectionResponsive from "./FixedTermCardSectionResponsive";
+import FixedTermCardSectionMobile from "./FixedTermCardSectionMobile";
 import FixedTermSectionDesktop from "./FixedTermSectionDesktop";
 
 const FixedTermsSection = () => {
@@ -9,7 +9,7 @@ const FixedTermsSection = () => {
         <FixedTermSectionDesktop />
       </div>
       <div className="block 2xl:hidden">
-        <FixedTermCardSectionResponsive />
+        <FixedTermCardSectionMobile />
       </div>
     </>
   );

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ButtonComponent from "@/components/ButtonComponent";
@@ -7,6 +7,7 @@ import LogoFinniu from "@/images/NavBar/LogoFinniu.png";
 
 const NavComponent = () => {
   const [isMenuOpenState, setIsMenuOpenState] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   const handleButton = () => {
     window.open("https://app.finniu.com/login");
@@ -16,16 +17,28 @@ const NavComponent = () => {
     setIsMenuOpenState(!isMenuOpenState);
   };
 
+  const handleScroll = () => {
+    if (window.scrollY > lastScrollY) {
+      // If scrolling down, close the menu
+      setIsMenuOpenState(false);
+    }
+    setLastScrollY(window.scrollY);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
+
   return (
-    <div className="w-full bg-blueDarkColor p-4 sticky top-0 ">
+    <div className="w-full bg-blueDarkColor p-4 sticky top-0 z-50">
       <div className="container min-h-full flex justify-between items-center mx-auto">
         <Link href="/">
-          <Image
-            src={LogoFinniu}
-            alt="Logo de Finniu"
-            width={125}
-            height={83}
-          />
+          <div className="w-24 2xl:w-[125px]">
+            <Image src={LogoFinniu} alt="Logo de Finniu" height={83} />
+          </div>
         </Link>
         <div className="hidden 2xl:flex flex-row justify-between items-center space-x-20 text-white text-[24px]">
           <Link href="/#HowItWorks">¿Cómo funciona?</Link>
@@ -44,14 +57,14 @@ const NavComponent = () => {
         <div className="hidden 2xl:flex">
           <ButtonComponent
             text="Ingresar"
-            className="h-12 w-36 text-blueDarkColor bg-lightBlueColor text-[24px] rounded-lg"
+            className="h-12 w-36 text-blueDarkColor bg-lightBlueColor text-[24px] font-bold rounded-lg"
             onClick={handleButton}
           />
         </div>
-        <div className="flex items-center space-x-4 2xl:hidden">
+        <div className="flex items-start space-x-4 2xl:hidden">
           <ButtonComponent
             text="Ingresar"
-            className="h-12 w-36 text-blueDarkColor bg-lightBlueColor text-[24px] rounded-lg"
+            className="h-10 2xl:h-12 w-[129px] 2xl:w-36 text-blueDarkColor bg-lightBlueColor text-[15px] 2xl:text-[24px] rounded-lg"
             onClick={handleButton}
           />
           <button onClick={toggleMenu} className="text-white">
@@ -73,12 +86,19 @@ const NavComponent = () => {
         </div>
       </div>
       {isMenuOpenState && (
-        <div className="fixed inset-0 top-0  bg-white h-screen">
-          <div className="flex flex-col items-start space-y-4 text-black text-[24px] p-4 m-5 relative">
-            <button
-              onClick={toggleMenu}
-              className="absolute top-4 right-4 text-black"
-            >
+        <div className="fixed inset-0 top-0 bg-white h-screen flex flex-col p-4">
+          <div className="flex justify-between items-center p-4">
+            <Link href="/">
+              <div className="w-24 2xl:w-[125px]">
+                <Image src={LogoFinniu} alt="Logo de Finniu" height={83} />
+              </div>
+            </Link>
+            <ButtonComponent
+              text="Ingresar"
+              className="h-10 2xl:h-12 w-[129px] 2xl:w-36 text-blueDarkColor bg-lightBlueColor text-[15px] 2xl:text-[24px] rounded-lg"
+              onClick={handleButton}
+            />
+            <button onClick={toggleMenu} className="text-black">
               <svg
                 className="w-8 h-8"
                 fill="none"
@@ -94,6 +114,8 @@ const NavComponent = () => {
                 />
               </svg>
             </button>
+          </div>
+          <div className="flex flex-col items-start space-y-4 text-black text-[24px] p-4">
             <Link href="/#HowItWorks">¿Cómo funciona?</Link>
             <Link href="/#simulatorInvestment">Simulador</Link>
             <Link

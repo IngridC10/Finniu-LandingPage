@@ -8,7 +8,7 @@ import InvestorThree from "@/images/Section-6/InvestorThree.png";
 import CustomLeftArrow from "@/components/CustomLeftArrow";
 import CustomRightArrow from "@/components/CustomRightArrow";
 
-const TestimonialsResponsive = () => {
+const TestimonialsMobile = () => {
   type Testimonial = {
     text?: string;
     name?: string;
@@ -134,4 +134,4 @@ const TestimonialsResponsive = () => {
   );
 };
 
-export default TestimonialsResponsive;
+export default TestimonialsMobile;

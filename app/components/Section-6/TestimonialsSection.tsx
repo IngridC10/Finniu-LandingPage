@@ -1,6 +1,6 @@
 import React from "react";
 import TestimonialsDesktop from "./TestimonialsDesktop";
-import TestimonialsResponsive from "./TestimonialsResponsive";
+import TestimonialsMobile from "./TestimonialsMobile";
 
 const TestimonialsSection = () => {
   return (
@@ -9,7 +9,7 @@ const TestimonialsSection = () => {
         <TestimonialsDesktop />
       </div>
       <div className="block 2xl:hidden">
-        <TestimonialsResponsive />
+        <TestimonialsMobile />
       </div>
     </>
   );
