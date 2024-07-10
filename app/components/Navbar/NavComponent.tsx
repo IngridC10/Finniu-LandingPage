@@ -17,8 +17,8 @@ const NavComponent = () => {
   };
 
   return (
-    <div className="w-full bg-blueDarkColor  p-4 sticky top-0 z-50">
-      <div className="container min-h-full  flex justify-between items-center mx-auto">
+    <div className="w-full bg-blueDarkColor p-4 sticky top-0 z-50">
+      <div className="container min-h-full flex justify-between items-center mx-auto">
         <Link href="/components">
           <Image
             src={LogoFinniu}

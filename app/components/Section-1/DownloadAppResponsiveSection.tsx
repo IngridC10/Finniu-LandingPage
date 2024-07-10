@@ -14,11 +14,10 @@ const DownloadAppResponsiveSection = () => {
         <p className="text-2xl">Invierte en tu futuro</p>
         <p className=" text-[28px]  lg:text-4xl ">
           <span className="text-lilaColor text-[28px] lg:text-4xl">
-            Invierte
-          </span>{" "}
-          &
+            Invierte {}
+          </span>
+          & {}
           <span className="text-lightBlueColor text-[28px] lg:text-4xl  ">
-            {" "}
             Genera
           </span>
         </p>
