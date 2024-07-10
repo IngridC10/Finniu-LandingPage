@@ -8,7 +8,7 @@ import HowItWorksButtonMobile from "./HowItWorksButtonMobile";
 
 const DownloadAppMobileSection = () => {
   return (
-    <div className="flex flex-col  2xl:justify-center justify-start p-6 items-center bg-blueDarkColor h-screen m-0 2xl:m-3">
+    <div className="flex flex-col  2xl:justify-center justify-start p-6 items-center bg-blueDarkColor  m-0 2xl:m-3">
       <div className="text-white  text-justify ">
         <p className="text-2xl">Invierte en tu futuro</p>
         <p className=" text-[28px]  lg:text-4xl ">
