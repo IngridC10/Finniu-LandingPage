@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, SetStateAction } from "react";
 import Image from "next/image";
 import CustomLeftArrow from "@/components/CustomLeftArrow";
 import CustomRightArrow from "@/components/CustomRightArrow";
@@ -12,6 +12,7 @@ const StepInvestmentGuideSection = () => {
   const [currentIndexState, setCurrentIndexState] = useState(0);
   const [isSelectedButtonRightState, setSelectedButtonRightState] =
     useState(true);
+
   const slidesData = [
     {
       title: "Todas tus inversiones en la palma de tu mano",
@@ -47,17 +48,22 @@ const StepInvestmentGuideSection = () => {
   ];
 
   const handleNextSlide = () => {
-    setSelectedButtonRightState(true),
-      setCurrentIndexState((prevIndex) =>
-        prevIndex === slidesData.length - 1 ? 0 : prevIndex + 1
-      );
+    setSelectedButtonRightState(true);
+    setCurrentIndexState((prevIndex) =>
+      prevIndex === slidesData.length - 1 ? 0 : prevIndex + 1
+    );
   };
 
   const handlePrevSlide = () => {
-    setSelectedButtonRightState(false),
-      setCurrentIndexState((prevIndex) =>
-        prevIndex === 0 ? slidesData.length - 1 : prevIndex - 1
-      );
+    setSelectedButtonRightState(false);
+    setCurrentIndexState((prevIndex) =>
+      prevIndex === 0 ? slidesData.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleDotClick = (index: SetStateAction<number>) => {
+    setCurrentIndexState(index);
+    // setSelectedButtonRightState(index > currentIndexState);
   };
 
   useEffect(() => {
@@ -71,18 +77,18 @@ const StepInvestmentGuideSection = () => {
     >
       <div className="container relative container-section">
         <div className="flex flex-row items-center justify-between ">
-          <div className="w-[611px] text-right mb-0">
-            <p className="text-[44px] font-bold mb-2">
+          <div className="w-[611px] text-left  2xl:text-right mb-0">
+            <p className=" text-[21px]   2xl:text-[44px] font-bold mb-2">
               {slidesData[currentIndexState].title.split(" en ")[0]} <br />
               {slidesData[currentIndexState].title.split(" en ")[1]}
             </p>
-            <p className="text-[36px] mb-4">
+            <p className=" text-[21px]  2xl:text-[36px] mb-4">
               {slidesData[currentIndexState].subtitle}
             </p>
-            <p className="text-[24px] font-medium mb-6">
+            <p className=" text-[16px] 2xl:text-[24px] font-medium mb-6  ">
               {slidesData[currentIndexState].description}
             </p>
-            <div className="flex flex-row justify-end gap-3">
+            <div className="flex flex-row gap-8 justify-center 2xl:justify-end 2xl:gap-3">
               <button onClick={handlePrevSlide}>
                 <CustomLeftArrow
                   isSelectedButtonRightState={isSelectedButtonRightState}
@@ -95,7 +101,7 @@ const StepInvestmentGuideSection = () => {
               </button>
             </div>
           </div>
-          <div className="relative w-1/2 flex justify-end">
+          <div className="relative w-1/2  flex justify-end">
             <Image
               src={slidesData[currentIndexState].imageSrc}
               alt={`slide-${currentIndexState + 1}`}
@@ -103,6 +109,19 @@ const StepInvestmentGuideSection = () => {
               height={650}
             />
           </div>
+        </div>
+        <div className="flex justify-center mt-4">
+          {slidesData.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => handleDotClick(index)}
+              className={`w-3 h-3 rounded-full mx-2 ${
+                index === currentIndexState
+                  ? "bg-blueDarkColor"
+                  : "bg-lightBlueColor"
+              }`}
+            />
+          ))}
         </div>
       </div>
     </section>
