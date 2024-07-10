@@ -17,9 +17,9 @@ const NavComponent = () => {
   };
 
   return (
-    <div className="w-full bg-blueDarkColor p-4 sticky top-0 z-50">
+    <div className="w-full bg-blueDarkColor p-4 sticky top-0 ">
       <div className="container min-h-full flex justify-between items-center mx-auto">
-        <Link href="/components">
+        <Link href="/">
           <Image
             src={LogoFinniu}
             alt="Logo de Finniu"
@@ -73,7 +73,7 @@ const NavComponent = () => {
         </div>
       </div>
       {isMenuOpenState && (
-        <div className="fixed inset-0 top-16 z-40 bg-white">
+        <div className="fixed inset-0 top-0  bg-white h-screen">
           <div className="flex flex-col items-start space-y-4 text-black text-[24px] p-4 m-5 relative">
             <button
               onClick={toggleMenu}

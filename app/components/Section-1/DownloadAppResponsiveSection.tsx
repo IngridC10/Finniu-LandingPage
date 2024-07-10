@@ -9,7 +9,7 @@ import AppsCellphone from "@/images/Section-1/AppsCellphone.png";
 
 const DownloadAppResponsiveSection = () => {
   return (
-    <div className="flex flex-col justify-center items-center bg-blueDarkColor h-screen m-3">
+    <div className="flex flex-col justify-center items-center bg-blueDarkColor h-screen m-0 2xl:m-3">
       <div className="text-white  text-justify ">
         <p className="text-2xl">Invierte en tu futuro</p>
         <p className=" text-[28px]  lg:text-4xl ">
