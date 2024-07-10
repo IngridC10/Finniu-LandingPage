@@ -41,7 +41,7 @@ const FixedTermCardSectionResponsive = () => {
           </p>
         </div>
       </div>
-      <h1 className="text-[32px] text-blueDarkColor font-bold">
+      <h1 className="text-[32px] text-blueDarkColor mt-3 font-bold">
         Inversión segura
       </h1>
       <div className="flex flex-row">

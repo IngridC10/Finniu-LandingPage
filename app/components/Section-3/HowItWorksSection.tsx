@@ -87,18 +87,17 @@ const HowItWorksSection = () => {
     : "text-white";
 
   return (
-    <section className="bg-grayColorOpcional section-custom ">
-      <div
-        id="HowItWorks"
-        className="flex flex-col container-section  items-center container"
-      >
-        <div className="flex flex-row  items-center justify-between w-full">
+    <section id="HowItWorks" className="bg-grayColorOpcional section-custom ">
+      <div className="flex flex-col container-section  items-center container">
+        <div className="flex  flex-col  2xl:flex-row  items-center justify-between w-full">
           <div>
-            <h1 className="text-[55px] flex font-bold">¿Cómo funciona?</h1>
+            <h1 className=" text-[32px]  2xl:text-[55px] flex font-bold">
+              ¿Cómo funciona?
+            </h1>
           </div>
 
           <div
-            className={`flex flex-row m-2 w-[805px] items-center  h-[90px] justify-around rounded-full ${
+            className={`flex flex-row m-2  w-[337px]  2xl:w-[805px] items-center  h-[51px]  2xl:h-[90px] justify-around rounded-full ${
               isWhereToFindButtonActiveState
                 ? "bg-lighBlue"
                 : "bg-blueDarkColor "
@@ -107,7 +106,7 @@ const HowItWorksSection = () => {
             <ButtonComponent
               text="¿Cómo encontrarlo?"
               onClick={() => handleButtonClick()}
-              className={`h-16 text-[28px] shadow-md  w-[333px] gap-2 flex justify-center items-center rounded-full ${
+              className={`  h-[35px]  2xl:h-16   text-[14px]  text-center   ml-2 2xl:ml-0 2xl:text-[28px] shadow-md  w-[162px] 2xl:w-[333px] gap-2 flex justify-center items-center rounded-full ${
                 isWhereToFindButtonActiveState === true
                   ? "bg-lightBlueColor text-blackColorText"
                   : "bg-blueDarkColor text-white"
@@ -120,7 +119,7 @@ const HowItWorksSection = () => {
             <ButtonComponent
               text="¿Cómo invertir?"
               onClick={() => handleButtonClick()}
-              className={`h-16 w-[333px] m-1 flex justify-center items-center gap-2 rounded-full text-[28px] ${
+              className={`  h-[35px]  2xl:h-16  w-[162px] ml-0 2xl:w-[333px] m-1 flex justify-center items-center gap-2 rounded-full text-[14px]  2xl:text-[28px] ${
                 isWhereToFindButtonActiveState === false
                   ? "bg-blueColorButton text-white"
                   : "bg-lighBlue text-blueDarkColor"
@@ -133,17 +132,17 @@ const HowItWorksSection = () => {
           </div>
         </div>
 
-        <h1 className="text-blueColorBackground text-[48px] font-bold">
+        <h1 className="text-blueColorBackground text-[24px]  2xl:text-[48px] font-bold">
           Paso {activeIndexState + 1}
         </h1>
 
-        <div className="flex flex-row rounded-2xl justify-center items-center w-[80%] h-[800px]">
+        <div className="flex flex-row rounded-2xl justify-center items-center w-[336px] 2xl:w-[80%] h-[800px]">
           <Carousel
-            className="p-5"
+            className="p-5 "
             key={isWhereToFindButtonActiveState ? "findIt" : "invest"}
             onSlideChange={handleSlideChange}
-            indicators={true}
-            slide={true}
+            indicators={false}
+            slide={false}
           >
             {itemsSlider.map((item, index) => (
               <SliderComponent

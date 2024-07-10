@@ -107,8 +107,15 @@ button[data-testid="carousel-indicator"] {
 
 .inline-flex {
   background-color: #1a3a5a;
-  width: 80px;
-  height: 80px;
+  width: 40px;
+  height: 40px;
+}
+
+@media (min-width: 1536px) {
+  .inline-flex {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 .group {
