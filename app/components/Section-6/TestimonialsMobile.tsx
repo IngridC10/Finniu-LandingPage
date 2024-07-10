@@ -63,74 +63,72 @@ const TestimonialsMobile = () => {
   ];
 
   return (
-    <section className="section-custom bg-gradient-light">
-      <div className="container flex container-section flex-col justify-center items-center">
-        <div className="flex flex-col justify-center w-[594px] items-center">
-          <h2 className=" text-[32px] font-bold">¿Qué dicen de Finniu?</h2>
-          <div className=" w-[308px]">
-            <p className="text-[16px] flex text-center">
-              "Ellos también cumplieron sus metas financieras con Finniu".
-            </p>
-          </div>
-          <div className="flex flex-col justify-items-end items-center">
-            <Image src={Plane} alt="Rocket" width={40} height={40} />
-          </div>
+    <div className="container flex container-section flex-col justify-center items-center">
+      <div className="flex flex-col justify-center w-[594px] items-center">
+        <h2 className=" text-[32px] font-bold">¿Qué dicen de Finniu?</h2>
+        <div className=" w-[308px]">
+          <p className="text-[16px] flex text-center">
+            "Ellos también cumplieron sus metas financieras con Finniu".
+          </p>
         </div>
-        <div className="space-y-4">
-          <div
-            key={currentIndexState}
-            className="bg-lighBlue w-[333px] p-8 h-[268px] rounded-xl shadow-md leading-relaxed"
-          >
-            <p className="mb-2 text-[13px] text-justify">
-              {testimonials[currentIndexState].text}
-            </p>
-            <div className="flex justify-between items-end">
-              <div className="flex-col mt-4">
-                <p className="font-bold text-[14px]">
-                  {testimonials[currentIndexState].name}
-                </p>
-                <p className="text-base">
-                  {testimonials[currentIndexState].title}
-                </p>
-              </div>
-              {testimonials[currentIndexState].image && (
-                <Image
-                  src={testimonials[currentIndexState].image}
-                  alt={`Investor-${currentIndexState + 1}`}
-                  width={35}
-                  style={{ height: "35px" }}
-                />
-              )}
-            </div>
-          </div>
-          <div className="flex flex-row  justify-center  2xl:justify-start gap-3 mt-10 ">
-            <button onClick={handlePrev}>
-              <CustomLeftArrow
-                isSelectedButtonRightState={isSelectedButtonRightState}
-              />
-            </button>
-            <button onClick={handleNext}>
-              <CustomRightArrow
-                isSelectedButtonRightState={isSelectedButtonRightState}
-              />
-            </button>
-          </div>
-          <div className="flex justify-center mt-4">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                className={`w-4 h-4 rounded-full mx-1 ${
-                  index === currentIndexState
-                    ? "bg-blueDarkColor"
-                    : "bg-lightBlueColor"
-                }`}
-                onClick={() => goToIndex(index)}
-              ></button>
-            ))}
-          </div>
+        <div className="flex flex-col justify-items-end items-center">
+          <Image src={Plane} alt="Rocket" width={40} height={40} />
         </div>
       </div>
-    </section>
+      <div className="space-y-4">
+        <div
+          key={currentIndexState}
+          className="bg-lighBlue w-[333px] p-8 h-[268px] rounded-xl shadow-md leading-relaxed"
+        >
+          <p className="mb-2 text-[13px] text-justify">
+            {testimonials[currentIndexState].text}
+          </p>
+          <div className="flex justify-between items-end">
+            <div className="flex-col mt-4">
+              <p className="font-bold text-[14px]">
+                {testimonials[currentIndexState].name}
+              </p>
+              <p className="text-base">
+                {testimonials[currentIndexState].title}
+              </p>
+            </div>
+            {testimonials[currentIndexState].image && (
+              <Image
+                src={testimonials[currentIndexState].image}
+                alt={`Investor-${currentIndexState + 1}`}
+                width={35}
+                style={{ height: "35px" }}
+              />
+            )}
+          </div>
+        </div>
+        <div className="flex flex-row  justify-center  2xl:justify-start gap-3 mt-10 ">
+          <button onClick={handlePrev}>
+            <CustomLeftArrow
+              isSelectedButtonRightState={isSelectedButtonRightState}
+            />
+          </button>
+          <button onClick={handleNext}>
+            <CustomRightArrow
+              isSelectedButtonRightState={isSelectedButtonRightState}
+            />
+          </button>
+        </div>
+        <div className="flex justify-center mt-4">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              className={`w-4 h-4 rounded-full mx-1 ${
+                index === currentIndexState
+                  ? "bg-blueDarkColor"
+                  : "bg-lightBlueColor"
+              }`}
+              onClick={() => goToIndex(index)}
+            ></button>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 
