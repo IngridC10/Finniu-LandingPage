@@ -64,7 +64,7 @@ const InvestmentForm = () => {
   };
 
   return (
-    <div className="w-[643px] bg-white flex flex-col justify-center items-center p-12 rounded-3xl h-[690px] leading-[75px] shadow-lg">
+    <div className="   w-[351px]   2xl:w-[643px] bg-white flex flex-col justify-center items-center p-12 rounded-3xl    h-[652px]  2xl:h-[690px] leading-[75px] shadow-lg">
       {isCalculatedState ? (
         <div className="text-center">
           <div className=" flex flex-col justify-center items-center">
@@ -75,12 +75,15 @@ const InvestmentForm = () => {
             {currencySymbol}{" "}
             {calculatedResultState.initialAmount.toLocaleString()}
           </p>
-          <p className="text-[32px] text-black text-bold mt-4 font-bold">
+          <p className="text-[20px]  2xl:text-[32px] text-black text-bold mt-4 font-bold">
             En {}
-            <span className="text-blueColorBackground text-[32px] font-bold">
+            <span className="text-blueColorBackground  text-[20px]  2xl:text-[32px] font-bold">
               {calculatedResultState.investmentTimeState} meses
             </span>{" "}
-            recibirás <span className="text-[32px] font-bold">&#128184;</span>
+            recibirás{" "}
+            <span className="text-[20px]  2xl:text-[32px] font-bold">
+              &#128184;
+            </span>
           </p>
           <div className=" bg-lighBlue w-[298px] h-[92px] m-auto p-4 rounded-xl my-4">
             <p className="text-[32px] font-bold">
@@ -90,11 +93,11 @@ const InvestmentForm = () => {
           </div>
           <ButtonComponent
             text="Quiero invertir"
-            className="w-[441px] h-[77px] text-[24px] bg-blueColorButton text-white rounded-xl mb-4"
+            className="  w-[314px] 2xl:w-[441px] h-[77px] text-[24px] bg-blueColorButton text-white rounded-xl mb-4"
           />
           <button
             onClick={() => setIsCalculatedState(false)}
-            className="text-blueColorButton font-semibold text-[24px]"
+            className="text-blueColorButton font-semibold text-[20px]  2xl:text-[24px]"
           >
             Volver a calcular
           </button>
@@ -102,12 +105,12 @@ const InvestmentForm = () => {
       ) : (
         <div>
           <div className="flex flex-row justify-between items-center w-full">
-            <h2 className="text-[30px] font-bold text-black ">
+            <h2 className=" text-[17px] 2xl:text-[30px] font-bold text-black ">
               Quiero invertir en
             </h2>
 
             <div
-              className={`flex flex-row m-2 w-[242px] items-center h-[60px] p-2 bg-blueColorBackground justify-around rounded-full ${
+              className={`flex flex-row m-2  w-[162px]   2xl:w-[242px] items-center h-[60px] p-2 bg-blueColorBackground justify-around rounded-full ${
                 isWhereToFindButtonActiveState
                   ? "bg-lightBlueColor"
                   : "bg-blueDarkColor"
@@ -116,7 +119,7 @@ const InvestmentForm = () => {
               <ButtonComponent
                 text="Soles"
                 onClick={() => handleButtonClick("Soles")}
-                className={`h-[45px] text-[20px] shadow-md w-[111px] gap-2 flex justify-center items-center rounded-full ${
+                className={` 2xl:h-[45px] h-[37px]  text-[15px]  2xl:text-[20px] shadow-md  w-[73px] 2xl:w-[111px] gap-2 flex justify-center items-center rounded-full ${
                   isWhereToFindButtonActiveState
                     ? "bg-lightColor text-blackColorText"
                     : "bg-blueDarkColor text-white"
@@ -125,7 +128,7 @@ const InvestmentForm = () => {
               <ButtonComponent
                 text="Dólares"
                 onClick={() => handleButtonClick("Dólares")}
-                className={`h-[45px] w-[111px] m-1 flex justify-center items-center gap-2 rounded-full text-[20px] ${
+                className={`2xl:h-[45px] h-[37px] w-[73px] 2xl:w-[111px] m-1 flex justify-center items-center gap-2 rounded-full text-[15px]  2xl:text-[20px] ${
                   isWhereToFindButtonActiveState
                     ? "bg-lightBlueColor text-blueDarkColor"
                     : "bg-blueColorButton text-white"
@@ -136,7 +139,7 @@ const InvestmentForm = () => {
 
           <div>
             <label
-              className="block text-black text-[20px] font-bold mb-2"
+              className="block text-black text-[15px] 2xl:text-[20px] font-bold mb-2"
               htmlFor="investmentAmount"
             >
               ¿Cuánto quiero invertir?
@@ -156,18 +159,18 @@ const InvestmentForm = () => {
                 type="text"
                 value={investmentAmountState}
                 onChange={(e) => setInvestmentAmountState(e.target.value)}
-                className="pl-10 pr-3 py-2 border-b-8  $currency? border-grayColorLine w-full "
+                className="pl-10 pr-3 py-2 border-b-8  $currency? border-grayColorLine  2xl:w-full  w-[320px]"
                 placeholder="10,000"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-black text-[20px] font-bold mb-2">
+            <label className="block text-black text-[15px] 2xl:text-[20px] font-bold mb-2">
               ¿Por cuánto tiempo?
             </label>
             <div className="flex items-center relative">
-              <div className="w-full">
+              <div className=" 2xl:w-full  w-[320px]">
                 <input
                   type="range"
                   min="6"
@@ -191,7 +194,7 @@ const InvestmentForm = () => {
             <ButtonComponent
               text="Calcular"
               onClick={handleCalculateClick}
-              className="w-[538px] h-[77px] text-[24px] bg-blueColorBackground text-white rounded-xl"
+              className=" w-[289px]    2xl:w-[538px]  2xl:h-[77px] h-[54px] text-[24px] bg-blueColorBackground text-white rounded-xl"
             />
           </div>
         </div>
