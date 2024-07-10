@@ -1,12 +1,12 @@
 import React from "react";
-import FixedTermSection from "./FixedTermSection";
 import FixedTermCardSectionResponsive from "./FixedTermCardSectionResponsive";
+import FixedTermSectionDesktop from "./FixedTermSectionDesktop";
 
-const FixedTerms = () => {
+const FixedTermsSection = () => {
   return (
     <>
       <div className="hidden 2xl:block">
-        <FixedTermSection />
+        <FixedTermSectionDesktop />
       </div>
       <div className="block 2xl:hidden">
         <FixedTermCardSectionResponsive />
@@ -15,4 +15,4 @@ const FixedTerms = () => {
   );
 };
 
-export default FixedTerms;
+export default FixedTermsSection;
