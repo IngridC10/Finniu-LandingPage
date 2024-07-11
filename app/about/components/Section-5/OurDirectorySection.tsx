@@ -36,7 +36,7 @@ const OurDirectorySection = () => {
               </div>
 
               <div className=" flex items-center justify-center gap-2">
-                <p className="text-[16px]flex justify-start text-white w-[180px]">
+                <p className="text-[16px]flex justify-start text-white w-[158px]">
                   CEO
                 </p>
               </div>
@@ -60,7 +60,7 @@ const OurDirectorySection = () => {
               </div>
 
               <div className=" flex items-center justify-center gap-2">
-                <p className="text-[16px]flex justify-start text-white w-[205px]">
+                <p className="text-[16px]flex justify-start   text-white w-[189px]">
                   Co-funder
                 </p>
               </div>
@@ -86,7 +86,7 @@ const OurDirectorySection = () => {
                 </div>
 
                 <div className=" flex items-center justify-center gap-2">
-                  <p className="text-[16px]flex justify-start text-white w-[209px]">
+                  <p className="text-[16px]flex justify-start text-white w-[191px]">
                     CTO
                   </p>
                 </div>

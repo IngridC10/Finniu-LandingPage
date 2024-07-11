@@ -67,8 +67,8 @@ const InvestmentForm = () => {
     <div className="   w-[351px]   2xl:w-[643px] bg-white flex flex-col justify-center items-center p-12 rounded-3xl    h-[652px]  2xl:h-[690px] leading-[75px] shadow-lg">
       {isCalculatedState ? (
         <div className="text-center">
-          <div className=" flex flex-col justify-center items-center">
-            <Image src={LogoFinniuLight} alt="Logo" width={90} height={60} />
+          <div className=" flex flex-col justify-center  items-center">
+            <Image src={LogoFinniuLight} alt="Logo" width={70} height={60} />
           </div>
           <p className="text-[16px] text-black mt-4">Si comienzas con</p>
           <p className="text-[32px] font-bold text-black">
@@ -85,7 +85,7 @@ const InvestmentForm = () => {
               &#128184;
             </span>
           </p>
-          <div className=" bg-lighBlue w-[298px] h-[92px] m-auto p-4 rounded-xl my-4">
+          <div className=" bg-lighBlue  2xl:w-[298px] w-[210px] h-[62px] 2xl:h-[92px] m-auto p-0 2xl:p-4 rounded-xl my-4">
             <p className="text-[32px] font-bold">
               {currencySymbol}{" "}
               {calculatedResultState.finalAmount.toLocaleString()}
@@ -93,11 +93,11 @@ const InvestmentForm = () => {
           </div>
           <ButtonComponent
             text="Quiero invertir"
-            className="  w-[314px] 2xl:w-[441px] h-[77px] text-[24px] bg-blueColorButton text-white rounded-xl mb-4"
+            className="  w-[314px] 2xl:w-[441px] 2xl:h-[77px] h-12 text-[16px] mt-3 2xl:mt-0  2xl:text-[24px] bg-blueColorButton text-white rounded-xl mb-4"
           />
           <button
             onClick={() => setIsCalculatedState(false)}
-            className="text-blueColorButton font-semibold text-[20px]  2xl:text-[24px]"
+            className="text-blueColorButton font-semibold text-[16px]  2xl:text-[24px]"
           >
             Volver a calcular
           </button>
@@ -194,7 +194,7 @@ const InvestmentForm = () => {
             <ButtonComponent
               text="Calcular"
               onClick={handleCalculateClick}
-              className=" w-[289px]    2xl:w-[538px]  2xl:h-[77px] h-[54px] text-[24px] bg-blueColorBackground text-white rounded-xl"
+              className=" w-[289px]    2xl:w-[538px]  2xl:h-[77px] h-[54px] text-[16px]  2xl:text-[24px] bg-blueColorBackground text-white rounded-xl"
             />
           </div>
         </div>

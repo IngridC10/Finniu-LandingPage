@@ -1,13 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import Plane from "@/images/Section-6/Plane.png";
 import InvestorOne from "@/images/Section-6/InvestorOne.png";
 import InvestorTwo from "@/images/Section-6/InvestorTwo.png";
 import InvestorThree from "@/images/Section-6/InvestorThree.png";
-import CustomLeftArrow from "@/components/CustomLeftArrow";
-import CustomRightArrow from "@/components/CustomRightArrow";
-
 const TestimonialsMobile = () => {
   type Testimonial = {
     text?: string;
@@ -17,24 +14,39 @@ const TestimonialsMobile = () => {
   };
 
   const [currentIndexState, setCurrentIndexState] = useState(0);
-  const [isSelectedButtonRightState, setSelectedButtonRightState] =
-    useState(true);
+  const touchStartXRef = useRef<number | null>(null);
+  const touchEndXRef = useRef<number | null>(null);
 
-  const handleNext = () => {
-    setSelectedButtonRightState(true);
-    setCurrentIndexState((prevIndex) => (prevIndex + 1) % testimonials.length);
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    touchStartXRef.current = e.targetTouches[0].clientX;
   };
 
-  const handlePrev = () => {
-    setSelectedButtonRightState(false);
-    setCurrentIndexState((prevIndex) =>
-      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
-    );
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    touchEndXRef.current = e.targetTouches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartXRef.current !== null && touchEndXRef.current !== null) {
+      const touchDiff = touchStartXRef.current - touchEndXRef.current;
+
+      if (touchDiff > 50) {
+        // swipe left
+        goToIndex((currentIndexState + 1) % testimonials.length);
+      }
+
+      if (touchDiff < -50) {
+        // swipe right
+        goToIndex(
+          (currentIndexState - 1 + testimonials.length) % testimonials.length
+        );
+      }
+    }
+    touchStartXRef.current = null;
+    touchEndXRef.current = null;
   };
 
   const goToIndex = (index: number) => {
     setCurrentIndexState(index);
-    setSelectedButtonRightState(index > currentIndexState);
   };
 
   const testimonials: Testimonial[] = [
@@ -66,16 +78,21 @@ const TestimonialsMobile = () => {
     <div className="container flex container-section flex-col justify-center items-center">
       <div className="flex flex-col justify-center w-[594px] items-center">
         <h2 className=" text-[32px] font-bold">¿Qué dicen de Finniu?</h2>
-        <div className=" w-[308px] ">
+        <div className=" w-[308px] mt-5 ">
           <p className="text-[16px] flex text-center">
             "Ellos también cumplieron sus metas financieras con Finniu".
           </p>
         </div>
-        <div className="flex flex-col w-[300px] justify-items-end items-end">
+        <div className="flex flex-col w-[176px] justify-items-end items-end mt-[-22px] ml-12">
           <Image src={Plane} alt="Rocket" width={40} height={40} />
         </div>
       </div>
-      <div className="space-y-4">
+      <div
+        className="space-y-4"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <div
           key={currentIndexState}
           className="bg-lighBlue w-[333px] mt-5 p-8 h-[268px] rounded-xl shadow-md leading-relaxed"
@@ -102,18 +119,7 @@ const TestimonialsMobile = () => {
             )}
           </div>
         </div>
-        <div className="flex flex-row  justify-center  2xl:justify-start gap-3 mt-10 ">
-          <button onClick={handlePrev}>
-            <CustomLeftArrow
-              isSelectedButtonRightState={isSelectedButtonRightState}
-            />
-          </button>
-          <button onClick={handleNext}>
-            <CustomRightArrow
-              isSelectedButtonRightState={isSelectedButtonRightState}
-            />
-          </button>
-        </div>
+        <div className="flex flex-row  justify-center  2xl:justify-start gap-3 mt-10 "></div>
         <div className="flex justify-center mt-4">
           {testimonials.map((_, index) => (
             <button

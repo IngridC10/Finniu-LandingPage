@@ -1,8 +1,10 @@
 import React from "react";
 const CustomLeftArrow = ({
   isSelectedButtonRightState,
+  className,
 }: {
   isSelectedButtonRightState: boolean;
+  className?: string;
 }) => {
   return (
     <div
@@ -10,7 +12,7 @@ const CustomLeftArrow = ({
         isSelectedButtonRightState
           ? "bg-graySelectedColor"
           : "bg-blueColorButton"
-      }`}
+      } ${className}`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

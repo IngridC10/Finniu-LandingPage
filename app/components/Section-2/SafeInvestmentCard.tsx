@@ -19,9 +19,14 @@ const SafeInvestment = () => {
               Contamos con diversas herramientas legales para asegurar tu
               inversión.
             </p>
-            <p className="text-darkBlueColor text-base mt-4 leading-loose">
+
+            <a
+              href="/TermsFinniu/Terminos_Condiciones.pdf"
+              target="_blank"
+              className="hover:underline text-darkBlueColor text-base mt-4 leading-loose absolute z-20"
+            >
               (1) REVISA LOS TÉRMINOS Y CONDICIONES.
-            </p>
+            </a>
           </div>
         </div>
       </div>

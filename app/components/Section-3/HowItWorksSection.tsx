@@ -146,6 +146,7 @@ const HowItWorksSection = () => {
           <button onClick={handlePrevClick}>
             <CustomLeftArrow
               isSelectedButtonRightState={isSelectedButtonRightState}
+              className="relative left-5"
             />
           </button>
           <div
@@ -166,6 +167,7 @@ const HowItWorksSection = () => {
           <button onClick={handleNextClick}>
             <CustomRightArrow
               isSelectedButtonRightState={isSelectedButtonRightState}
+              className="relative right-6"
             />
           </button>
         </div>

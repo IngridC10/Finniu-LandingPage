@@ -38,7 +38,7 @@ const WelcomeSection = () => {
 
         // Toggle between writing and erasing
         setTimeout(() => {
-          typingEffect.style.animation = `delete 4s steps(${word.length}, end), blink-caret 0.75s step-end infinite`;
+          typingEffect.style.animation = `delete 2s steps(${word.length}, end), blink-caret 0.75s step-end infinite`;
         }, 2000);
       }
 
@@ -46,7 +46,7 @@ const WelcomeSection = () => {
       wordIndex = (wordIndex + 1) % words.length;
     }
 
-    const intervalId = setInterval(changeWord, 3000); //Changes every 4 seconds
+    const intervalId = setInterval(changeWord, 4000); //Changes every 4 seconds
 
     return () => {
       clearInterval(intervalId);
@@ -55,9 +55,9 @@ const WelcomeSection = () => {
 
   return (
     <section className="section-custom relative bg-blueDarkColor flex flex-col">
-      <div className=" h-[1352px] container flex justify-center flex-col items-center">
+      <div className=" h-[1322px] pt-[20vh]  container flex justify-start flex-col items-center">
         <Image src={Text} alt="text" width={814} height={120} />
-        <h2 className="text-[50px] text-white flex justify-center">
+        <h2 className="text-[50px] text-white mt-14 flex justify-center">
           Somos <span className="typing-effect" ref={typingEffectRef}></span>
         </h2>
 
