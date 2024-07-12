@@ -76,7 +76,7 @@ const TestimonialsMobile = () => {
 
   return (
     <div className="container flex container-section flex-col justify-center items-center">
-      <div className="flex flex-col justify-center w-[594px] items-center">
+      <div className="flex flex-col justify-center 2xl:w-[594px] w-full items-center">
         <h2 className=" text-[32px] font-bold">¿Qué dicen de Finniu?</h2>
         <div className=" w-[308px] mt-5 ">
         <p className="text-[16px] flex text-center">
