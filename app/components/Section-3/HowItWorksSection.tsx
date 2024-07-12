@@ -1,5 +1,5 @@
 "use client";
-import { SetStateAction, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import ButtonComponent from "@/components/ButtonComponent";
 import CellphoneandAppStore from "@/images/Section-3/CellphoneandAppStore.png";
@@ -14,7 +14,6 @@ import Step4 from "@/images/Section-3/Step4.png";
 import Bill from "@/images/Section-3/Bill.png";
 import CustomLeftArrow from "@/components/CustomLeftArrow";
 import CustomRightArrow from "@/components/CustomRightArrow";
-
 const HowItWorksSection = () => {
   const [activeIndexState, setActiveIndexState] = useState(0);
   const [isWhereToFindButtonActiveState, setWhereToFindButtonActiveState] =
@@ -42,8 +41,14 @@ const HowItWorksSection = () => {
   };
 
   const goToIndex = (index: number) => {
+    setSelectedButtonRightState(index > activeIndexState);
     setActiveIndexState(index);
   };
+
+  useEffect(() => {
+    const interval = setInterval(handleNextClick, 10000);
+    return () => clearInterval(interval);
+  }, [isWhereToFindButtonActiveState]);
 
   const itemsSliderWhereFindIt = [
     {
@@ -139,21 +144,21 @@ const HowItWorksSection = () => {
             </ButtonComponent>
           </div>
         </div>
-        <h1 className={`text-[24px] 2xl:text-[48px] font-bold `}>
+        <h1 className={`text-[24px] 2xl:text-[48px] font-bold`}>
           Paso {activeIndexState + 1}
         </h1>
-        <div className="flex flex-row rounded-2xl justify-center items-center w-[400px] 2xl:w-[80%] ">
+        <div className="flex flex-row rounded-2xl justify-center items-center w-[400px] 2xl:w-[80%]">
           <button onClick={handlePrevClick}>
             <CustomLeftArrow
               isSelectedButtonRightState={isSelectedButtonRightState}
-              className=" relative left-5  2xl:static 2xl:left-0"
+              className="relative left-5 2xl:static 2xl:left-0"
             />
           </button>
           <div
-            className={`p-5  w-full  h-[662px]  flex rounded-2xl flex-col justify-center items-center ${containerBackgroundColor}`}
+            className={`p-5 w-full h-[662px] flex rounded-2xl flex-col justify-center items-center ${containerBackgroundColor}`}
           >
             <p
-              className={`mb-4  text-[14px] 2xl:text-[24px] text-center ${textColor}`}
+              className={`mb-4 text-[14px] 2xl:text-[24px] text-center ${textColor}`}
             >
               {itemsSlider[activeIndexState].text}
             </p>
