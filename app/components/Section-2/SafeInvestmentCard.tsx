@@ -23,7 +23,7 @@ const SafeInvestment = () => {
             <a
               href="/TermsFinniu/Terminos_Condiciones.pdf"
               target="_blank"
-              className="hover:underline text-darkBlueColor text-base mt-4 leading-loose absolute z-20"
+              className="hover:underline text-darkBlueColor cursor-pointer text-base mt-4 leading-loose absolute z-20"
             >
               (1) REVISA LOS TÉRMINOS Y CONDICIONES.
             </a>

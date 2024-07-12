@@ -40,7 +40,7 @@ const FixedTermCardSectionMobile = () => {
             <a
               href="/TermsFinniu/Terminos_Condiciones.pdf"
               target="_blank"
-              className="hover:underline text-[11px] text-darkBlueColor mt-4 "
+              className="hover:underline cursor-pointer text-[11px] text-darkBlueColor mt-4 "
             >
               (1)REVISA LOS TÉRMINOS Y CONDICIONES
             </a>
@@ -77,7 +77,7 @@ const FixedTermCardSectionMobile = () => {
                 <a
                   href="/TermsFinniu/Terminos_Condiciones.pdf"
                   target="_blank"
-                  className="hover:underline text-[11px] text-darkBlueColor mt-4 "
+                  className="hover:underline text-[11px] cursor-pointer text-darkBlueColor mt-4 "
                 >
                   (1)REVISA LOS TÉRMINOS Y CONDICIONES
                 </a>

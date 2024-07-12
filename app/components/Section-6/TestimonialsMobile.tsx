@@ -83,7 +83,7 @@ const TestimonialsMobile = () => {
             "Ellos también cumplieron sus metas financieras con Finniu".
           </p>
         </div>
-        <div className="flex flex-col w-[176px] justify-items-end items-end mt-[-22px] ml-12">
+        <div className="flex flex-col w-[176px] justify-items-end items-end mt-[-22px] ml-20">
           <Image src={Plane} alt="Rocket" width={40} height={40} />
         </div>
       </div>

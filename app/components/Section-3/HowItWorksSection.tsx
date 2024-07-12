@@ -41,7 +41,7 @@ const HowItWorksSection = () => {
     );
   };
 
-  const goToIndex = (index: SetStateAction<number>) => {
+  const goToIndex = (index: number) => {
     setActiveIndexState(index);
   };
 
@@ -146,7 +146,7 @@ const HowItWorksSection = () => {
           <button onClick={handlePrevClick}>
             <CustomLeftArrow
               isSelectedButtonRightState={isSelectedButtonRightState}
-              className="relative left-5"
+              className=" relative left-5  2xl:static 2xl:left-0"
             />
           </button>
           <div
@@ -167,7 +167,7 @@ const HowItWorksSection = () => {
           <button onClick={handleNextClick}>
             <CustomRightArrow
               isSelectedButtonRightState={isSelectedButtonRightState}
-              className="relative right-6"
+              className="relative 2xl:static 2xl:right-0 right-6"
             />
           </button>
         </div>
