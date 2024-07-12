@@ -67,6 +67,7 @@
 
 body {
   font-family: "dmSans";
+  overflow-x: hidden;
 }
 
 @layer utilities {
