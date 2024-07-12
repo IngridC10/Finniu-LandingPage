@@ -1,16 +1,18 @@
 import React from "react";
 const CustomLeftArrow = ({
   isSelectedButtonRightState,
+  className,
 }: {
   isSelectedButtonRightState: boolean;
+  className?: string;
 }) => {
   return (
     <div
-      className={`relative arrow-container flex items-center justify-center transform w-[70px] h-[67px] p-2 rounded-full shadow-md ${
+      className={`relative arrow-container flex items-center justify-center transform w-[40px] 2xl:w-[70px]  h-[40px]   2xl:h-[67px] p-2 rounded-full shadow-md ${
         isSelectedButtonRightState
           ? "bg-graySelectedColor"
           : "bg-blueColorButton"
-      }`}
+      } ${className}`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

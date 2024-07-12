@@ -6,7 +6,7 @@ import SafeInvestmentCard from "./SafeInvestmentCard";
 
 import CellphoneImage from "@/images/Section-2/CellphoneImage.png";
 
-const FixedTermSection = () => {
+const FixedTermSectionDesktop = () => {
   const [
     showComponentFixedTermSelectedState,
     setShowComponentFixedTermSelectedState,
@@ -64,4 +64,4 @@ const FixedTermSection = () => {
   );
 };
 
-export default FixedTermSection;
+export default FixedTermSectionDesktop;

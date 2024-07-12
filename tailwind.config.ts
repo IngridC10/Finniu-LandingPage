@@ -13,6 +13,7 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "gradient-light": "linear-gradient(to bottom, #C2EFFF, #FFFFFF)",
+        gradient: "linear-gradient(to right, #051926 50%,#DCF6FF 50%)",
       },
 
       fontFamily: {
@@ -47,6 +48,15 @@ const config: Config = {
         whiteColor: "#F7FAFB",
         blackColorText: "#020202",
         mustardColor: "#FDEFDF",
+      },
+
+      screens: {
+        xs: "375px",
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        xxl: "1536px",
       },
     },
   },

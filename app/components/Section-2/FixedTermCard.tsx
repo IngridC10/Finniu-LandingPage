@@ -20,9 +20,13 @@ const FixedTermCard = () => {
               rentabilidades mensuales sin letras pequeñas, similar a un plazo
               fijo pero con mayores beneficios.
             </p>
-            <p className="text-darkBlueColor text-base mt-4 leading-loose">
+            <a
+              href="/TermsFinniu/Terminos_Condiciones.pdf"
+              target="_blank"
+              className="hover:underline cursor-pointer text-darkBlueColor text-base mt-4 leading-loose absolute z-20"
+            >
               (1) REVISA LOS TÉRMINOS Y CONDICIONES.
-            </p>
+            </a>
           </div>
         </div>
       </div>

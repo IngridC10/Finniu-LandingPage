@@ -27,25 +27,25 @@
     border-color: transparent;
   }
 }
-.typing {
+/* .typing {
   width: 100%;
-  animation: typing 7s steps(30, end) forwards;
-}
+  animation: typing 15s steps(30, end) forwards;
+} */
 
-.erasing {
+/* .erasing {
   width: 100%;
-  animation: erasing 4s steps(30, end) forwards;
-}
+  animation: erasing 10s steps(30, end) forwards;
+} */
 
 .typing-effect {
   display: inline-block;
   white-space: nowrap;
   overflow: hidden;
   margin-left: 10px;
-  border-right: 2px solid;
+  border-right: 1px solid;
   width: 0;
-  animation: blink-caret 0.75s step-end infinite,
-    blink-cursor 0.75s step-end infinite;
+  /* animation: blink-caret 0.1s step-end infinite,
+    blink-cursor 0.1s step-end infinite; */
 }
 
 .word-finniu {
@@ -107,8 +107,15 @@ button[data-testid="carousel-indicator"] {
 
 .inline-flex {
   background-color: #1a3a5a;
-  width: 70px;
-  height: 67px;
+  width: 40px;
+  height: 40px;
+}
+
+@media (min-width: 1536px) {
+  .inline-flex {
+    width: 80px;
+    height: 80px;
+  }
 }
 
 .group {

@@ -36,7 +36,7 @@ const OurDirectorySection = () => {
               </div>
 
               <div className=" flex items-center justify-center gap-2">
-                <p className="text-[16px]flex justify-start text-white w-[180px]">
+                <p className="text-[16px]flex justify-start text-white w-[158px]">
                   CEO
                 </p>
               </div>
@@ -60,7 +60,7 @@ const OurDirectorySection = () => {
               </div>
 
               <div className=" flex items-center justify-center gap-2">
-                <p className="text-[16px]flex justify-start text-white w-[205px]">
+                <p className="text-[16px]flex justify-start   text-white w-[189px]">
                   Co-funder
                 </p>
               </div>
@@ -68,12 +68,12 @@ const OurDirectorySection = () => {
           </div>
 
           <div className=" w-[404px] h-[372px] rounded-2xl  bg-blueDarkColor">
-            <div className=" w-[404px] h-[372px] rounded-2xl p-4 flex relative bg-blueDarkColor">
+            <div className=" w-[404px] h-[372px] rounded-2xl p-4 flex relative  bg-blueDarkColor">
               <Image
                 src={Worker3}
                 alt="worker-3"
                 height={479}
-                className="absolute bottom-1 left-0 "
+                className="absolute bottom-1 left-0"
               />
               <div className="flex flex-col w-[404px] items-end justify-start ">
                 <div className=" flex items-center justify-center gap-2 ">
@@ -86,7 +86,7 @@ const OurDirectorySection = () => {
                 </div>
 
                 <div className=" flex items-center justify-center gap-2">
-                  <p className="text-[16px]flex justify-start text-white w-[209px]">
+                  <p className="text-[16px]flex justify-start  text-white w-[70px]">
                     CTO
                   </p>
                 </div>

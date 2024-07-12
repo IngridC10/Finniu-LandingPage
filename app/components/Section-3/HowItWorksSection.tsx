@@ -1,8 +1,6 @@
 "use client";
-import { SetStateAction, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Carousel } from "flowbite-react";
-import SliderComponent from "./SliderItemComponent";
 import ButtonComponent from "@/components/ButtonComponent";
 import CellphoneandAppStore from "@/images/Section-3/CellphoneandAppStore.png";
 import Eyes from "@/images/Section-3/Eyes.png";
@@ -14,20 +12,43 @@ import ChoosePlan from "@/images/Section-3/ChoosePlan.png";
 import Step3 from "@/images/Section-3/Step3.png";
 import Step4 from "@/images/Section-3/Step4.png";
 import Bill from "@/images/Section-3/Bill.png";
-
+import CustomLeftArrow from "@/components/CustomLeftArrow";
+import CustomRightArrow from "@/components/CustomRightArrow";
 const HowItWorksSection = () => {
   const [activeIndexState, setActiveIndexState] = useState(0);
   const [isWhereToFindButtonActiveState, setWhereToFindButtonActiveState] =
     useState(true);
+  const [isSelectedButtonRightState, setSelectedButtonRightState] =
+    useState(true);
 
-  const handleSlideChange = (index: SetStateAction<number>) => {
-    setActiveIndexState(index);
-  };
-
-  const handleButtonClick = (): void => {
+  const handleButtonClick = () => {
     setWhereToFindButtonActiveState(!isWhereToFindButtonActiveState);
     setActiveIndexState(0);
   };
+
+  const handlePrevClick = () => {
+    setSelectedButtonRightState(false);
+    setActiveIndexState((prevIndex) =>
+      prevIndex === 0 ? itemsSlider.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleNextClick = () => {
+    setSelectedButtonRightState(true);
+    setActiveIndexState((prevIndex) =>
+      prevIndex === itemsSlider.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const goToIndex = (index: number) => {
+    setSelectedButtonRightState(index > activeIndexState);
+    setActiveIndexState(index);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(handleNextClick, 10000);
+    return () => clearInterval(interval);
+  }, [isWhereToFindButtonActiveState]);
 
   const itemsSliderWhereFindIt = [
     {
@@ -49,23 +70,20 @@ const HowItWorksSection = () => {
 
   const itemsSliderInvest = [
     {
-      text: "Registrate en la App de Finniu.",
+      text: "Regístrate en la App de Finniu.",
       image: [RegisterDark],
       alt: "register",
     },
-
     {
-      text: "Elige el  plan de inversión que más se ajuste a ti (soles o dólares). ",
+      text: "Elige el plan de inversión que más se ajuste a ti (soles o dólares).",
       image: [ChoosePlan],
       alt: "choose-plan",
     },
-
     {
       text: "Ingresa el monto, el plazo y el banco.",
       image: [Step3],
       alt: "step-3",
     },
-
     {
       text: "Realiza la inversión a la cuenta corriente de Finniu y adjunta tu comprobante.",
       image: [Step4],
@@ -73,42 +91,36 @@ const HowItWorksSection = () => {
     },
   ];
 
-  const itemsSlider =
-    isWhereToFindButtonActiveState === true
-      ? itemsSliderWhereFindIt
-      : itemsSliderInvest;
+  const itemsSlider = isWhereToFindButtonActiveState
+    ? itemsSliderWhereFindIt
+    : itemsSliderInvest;
 
   const containerBackgroundColor = isWhereToFindButtonActiveState
     ? "bg-backgroundLightColor"
     : "bg-blueDarkColor";
-
   const textColor = isWhereToFindButtonActiveState
     ? "text-blueColorBackground"
     : "text-white";
 
   return (
-    <section className="bg-grayColorOpcional section-custom ">
-      <div
-        id="HowItWorks"
-        className="flex flex-col container-section  items-center container"
-      >
-        <div className="flex flex-row  items-center justify-between w-full">
-          <div>
-            <h1 className="text-[55px] flex font-bold">¿Cómo funciona?</h1>
-          </div>
-
+    <section id="HowItWorks" className="bg-grayColorOpcional section-custom">
+      <div className="flex flex-col container-section items-center container">
+        <div className="flex flex-col 2xl:flex-row items-center justify-between w-full">
+          <h1 className="text-[32px] 2xl:text-[55px] font-bold">
+            ¿Cómo funciona?
+          </h1>
           <div
-            className={`flex flex-row m-2 w-[805px] items-center  h-[90px] justify-around rounded-full ${
+            className={`flex flex-row m-2 w-[337px] 2xl:w-[805px] items-center h-[51px] 2xl:h-[90px] justify-around rounded-full ${
               isWhereToFindButtonActiveState
                 ? "bg-lighBlue"
-                : "bg-blueDarkColor "
+                : "bg-blueDarkColor"
             }`}
           >
             <ButtonComponent
               text="¿Cómo encontrarlo?"
-              onClick={() => handleButtonClick()}
-              className={`h-16 text-[28px] shadow-md  w-[333px] gap-2 flex justify-center items-center rounded-full ${
-                isWhereToFindButtonActiveState === true
+              onClick={handleButtonClick}
+              className={`h-[35px] 2xl:h-16 text-[14px] text-center ml-2 2xl:ml-0 2xl:text-[28px] shadow-md w-[162px] 2xl:w-[333px] gap-2 flex justify-center items-center rounded-full ${
+                isWhereToFindButtonActiveState
                   ? "bg-lightBlueColor text-blackColorText"
                   : "bg-blueDarkColor text-white"
               }`}
@@ -119,11 +131,11 @@ const HowItWorksSection = () => {
             </ButtonComponent>
             <ButtonComponent
               text="¿Cómo invertir?"
-              onClick={() => handleButtonClick()}
-              className={`h-16 w-[333px] m-1 flex justify-center items-center gap-2 rounded-full text-[28px] ${
-                isWhereToFindButtonActiveState === false
-                  ? "bg-blueColorButton text-white"
-                  : "bg-lighBlue text-blueDarkColor"
+              onClick={handleButtonClick}
+              className={`h-[35px] 2xl:h-16 w-[162px] ml-0 2xl:w-[333px] m-1 flex justify-center items-center gap-2 rounded-full text-[14px] 2xl:text-[28px] ${
+                isWhereToFindButtonActiveState
+                  ? "bg-lighBlue text-blueDarkColor"
+                  : "bg-blueColorButton text-white"
               }`}
             >
               {!isWhereToFindButtonActiveState && (
@@ -132,30 +144,50 @@ const HowItWorksSection = () => {
             </ButtonComponent>
           </div>
         </div>
-
-        <h1 className="text-blueColorBackground text-[48px] font-bold">
+        <h1 className={`text-[24px] 2xl:text-[48px] font-bold`}>
           Paso {activeIndexState + 1}
         </h1>
-
-        <div className="flex flex-row rounded-2xl justify-center items-center w-[80%] h-[800px]">
-          <Carousel
-            className="p-5"
-            key={isWhereToFindButtonActiveState ? "findIt" : "invest"}
-            onSlideChange={handleSlideChange}
-            indicators={false}
-            slide={true}
+        <div className="flex flex-row rounded-2xl justify-center items-center w-[400px] 2xl:w-[80%]">
+          <button onClick={handlePrevClick}>
+            <CustomLeftArrow
+              isSelectedButtonRightState={isSelectedButtonRightState}
+              className="relative left-5 2xl:static 2xl:left-0"
+            />
+          </button>
+          <div
+            className={`p-5 w-full h-[662px] flex rounded-2xl flex-col justify-center items-center ${containerBackgroundColor}`}
           >
-            {itemsSlider.map((item, index) => (
-              <SliderComponent
-                key={index}
-                text={item.text}
-                image={item.image}
-                alt={item.alt}
-                backgroundColor={containerBackgroundColor}
-                textColor={textColor}
-              />
-            ))}
-          </Carousel>
+            <p
+              className={`mb-4 text-[14px] 2xl:text-[24px] text-center ${textColor}`}
+            >
+              {itemsSlider[activeIndexState].text}
+            </p>
+            <Image
+              src={itemsSlider[activeIndexState].image[0]}
+              alt={itemsSlider[activeIndexState].alt}
+              width={200}
+              height={200}
+            />
+          </div>
+          <button onClick={handleNextClick}>
+            <CustomRightArrow
+              isSelectedButtonRightState={isSelectedButtonRightState}
+              className="relative 2xl:static 2xl:right-0 right-6"
+            />
+          </button>
+        </div>
+        <div className="flex justify-center mt-4">
+          {itemsSlider.map((_, index) => (
+            <button
+              key={index}
+              className={`w-4 h-4 rounded-full mx-1 ${
+                index === activeIndexState
+                  ? "bg-blueDarkColor"
+                  : "bg-lightBlueColor"
+              }`}
+              onClick={() => goToIndex(index)}
+            ></button>
+          ))}
         </div>
       </div>
     </section>

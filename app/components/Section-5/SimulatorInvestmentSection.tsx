@@ -7,15 +7,12 @@ const SimulatorInvestmentSection = () => {
   return (
     <section
       id="simulatorInvestment"
-      className="w-full min-h-screen flex section-custom"
-      style={{
-        background: "linear-gradient(to right, #051926 50%,#DCF6FF 50%)",
-      }}
+      className="w-full min-h-screen flex section-custom  bg-lightColor 2xl:bg-gradient "
     >
-      <div className="container flex flex-row container-section">
-        <div className="flex flex-col items-center justify-center ">
-          <div className=" w-[650px] text-left">
-            <p className="text-[64px] font-bold text-white">
+      <div className="container flex flex-row min-h-full p-8 justify-center">
+        <div className="flex flex-col items-center  justify-center ">
+          <div className=" w-[650px] text-left  hidden 2xl:block">
+            <p className="text-[64px] font-bold text-white  ">
               Simula tu inversión
             </p>
             <p className="text-[64px] font-bold text-white">y proyecta tus</p>
@@ -31,7 +28,7 @@ const SimulatorInvestmentSection = () => {
             </div>
           </div>
         </div>
-        <div className="w-3/5 flex items-center justify-end ">
+        <div className="w-3/5 flex items-center justify-center  2xl:justify-end ">
           <InvestmentForm />
         </div>
       </div>
