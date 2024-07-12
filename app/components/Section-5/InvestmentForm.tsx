@@ -3,10 +3,11 @@ import React, { useState } from "react";
 import Image from "next/image";
 import ButtonComponent from "@/components/ButtonComponent";
 import LogoFinniuLight from "@/images/Section-5/LogoFinniuLight.png";
+import Bill from "@/images/Section-5/Bill.png";
 
 const InvestmentForm = () => {
   const [investmentAmountState, setInvestmentAmountState] = useState("");
-  const [investmentTimeState, setInvestmentTimeState] = useState(6);
+  const [investmentTimeState, setInvestmentTimeState] = useState(36);
   const [isWhereToFindButtonActiveState, setWhereToFindButtonActiveState] =
     useState(false);
   const [currencyState, setCurrencyState] = useState("Soles");
@@ -22,22 +23,9 @@ const InvestmentForm = () => {
     setWhereToFindButtonActiveState(!isWhereToFindButtonActiveState);
   };
 
-  const calculatePosition = (
-    value: number,
-    min: number,
-    max: number,
-    width: number
-  ) => {
-    return ((value - min) / (max - min)) * width;
-  };
-
-  const handleInputChange = (e: {
-    target: { value: any; offsetWidth: number };
-  }) => {
+  const handleInputChange = (e: { target: { value: any } }) => {
     const value = Number(e.target.value);
     setInvestmentTimeState(value);
-
-    // const position = calculatePosition(value, 6, 36, e.target.offsetWidth);
   };
 
   const currencySymbol = currencyState === "Soles" ? "S/" : "$";
@@ -64,28 +52,28 @@ const InvestmentForm = () => {
   };
 
   return (
-    <div className="   w-[351px]   2xl:w-[643px] bg-white flex flex-col justify-center items-center p-12 rounded-3xl    h-[652px]  2xl:h-[690px] leading-[75px] shadow-lg">
+    <div className="w-[351px] 2xl:w-[643px] bg-white relative flex flex-col justify-center items-center p-12 rounded-3xl h-[652px] 2xl:h-[690px] leading-[75px] shadow-lg">
       {isCalculatedState ? (
         <div className="text-center">
-          <div className=" flex flex-col justify-center items-center">
-            <Image src={LogoFinniuLight} alt="Logo" width={90} height={60} />
+          <div className="flex flex-col justify-center items-center">
+            <Image src={LogoFinniuLight} alt="Logo" width={70} height={60} />
           </div>
           <p className="text-[16px] text-black mt-4">Si comienzas con</p>
           <p className="text-[32px] font-bold text-black">
             {currencySymbol}{" "}
             {calculatedResultState.initialAmount.toLocaleString()}
           </p>
-          <p className="text-[20px]  2xl:text-[32px] text-black text-bold mt-4 font-bold">
-            En {}
-            <span className="text-blueColorBackground  text-[20px]  2xl:text-[32px] font-bold">
+          <p className="text-[20px] 2xl:text-[32px] text-black font-bold mt-4">
+            En{" "}
+            <span className="text-blueColorBackground text-[20px] 2xl:text-[32px] font-bold">
               {calculatedResultState.investmentTimeState} meses
             </span>{" "}
             recibirás{" "}
-            <span className="text-[20px]  2xl:text-[32px] font-bold">
+            <span className="text-[20px] 2xl:text-[32px] font-bold">
               &#128184;
             </span>
           </p>
-          <div className=" bg-lighBlue w-[298px] h-[92px] m-auto p-4 rounded-xl my-4">
+          <div className="bg-lighBlue 2xl:w-[298px] w-[210px] h-[62px] 2xl:h-[92px] m-auto p-0 2xl:p-4 rounded-xl my-4">
             <p className="text-[32px] font-bold">
               {currencySymbol}{" "}
               {calculatedResultState.finalAmount.toLocaleString()}
@@ -93,24 +81,31 @@ const InvestmentForm = () => {
           </div>
           <ButtonComponent
             text="Quiero invertir"
-            className="  w-[314px] 2xl:w-[441px] h-[77px] text-[24px] bg-blueColorButton text-white rounded-xl mb-4"
+            className="w-[314px] 2xl:w-[441px] 2xl:h-[77px] h-12 text-[16px] mt-3 2xl:mt-0 2xl:text-[24px] bg-blueColorButton text-white rounded-xl mb-4"
           />
           <button
             onClick={() => setIsCalculatedState(false)}
-            className="text-blueColorButton font-semibold text-[20px]  2xl:text-[24px]"
+            className="text-blueColorButton font-semibold text-[16px] 2xl:text-[24px]"
           >
             Volver a calcular
           </button>
         </div>
       ) : (
         <div>
+          <div className="flex flex-row items-center gap-2 block 2xl:hidden absolute -top-20 z-20">
+            <h1 className="text-[32px] font-bold">Simula tu inversión</h1>
+            <div className="h-[38px] mb-3">
+              <Image src={Bill} alt="bill" height={38} />
+            </div>
+          </div>
+
           <div className="flex flex-row justify-between items-center w-full">
-            <h2 className=" text-[17px] 2xl:text-[30px] font-bold text-black ">
+            <h2 className="text-[17px] 2xl:text-[30px] font-bold text-black">
               Quiero invertir en
             </h2>
 
             <div
-              className={`flex flex-row m-2  w-[162px]   2xl:w-[242px] items-center h-[60px] p-2 bg-blueColorBackground justify-around rounded-full ${
+              className={`flex flex-row m-2 w-[162px] 2xl:w-[242px] items-center h-[60px] p-2 bg-blueColorBackground justify-around rounded-full ${
                 isWhereToFindButtonActiveState
                   ? "bg-lightBlueColor"
                   : "bg-blueDarkColor"
@@ -119,7 +114,7 @@ const InvestmentForm = () => {
               <ButtonComponent
                 text="Soles"
                 onClick={() => handleButtonClick("Soles")}
-                className={` 2xl:h-[45px] h-[37px]  text-[15px]  2xl:text-[20px] shadow-md  w-[73px] 2xl:w-[111px] gap-2 flex justify-center items-center rounded-full ${
+                className={`2xl:h-[45px] h-[37px] text-[15px] 2xl:text-[20px] shadow-md w-[73px] 2xl:w-[111px] gap-2 flex justify-center items-center rounded-full ${
                   isWhereToFindButtonActiveState
                     ? "bg-lightColor text-blackColorText"
                     : "bg-blueDarkColor text-white"
@@ -128,7 +123,7 @@ const InvestmentForm = () => {
               <ButtonComponent
                 text="Dólares"
                 onClick={() => handleButtonClick("Dólares")}
-                className={`2xl:h-[45px] h-[37px] w-[73px] 2xl:w-[111px] m-1 flex justify-center items-center gap-2 rounded-full text-[15px]  2xl:text-[20px] ${
+                className={`2xl:h-[45px] h-[37px] w-[73px] 2xl:w-[111px] m-1 flex justify-center items-center gap-2 rounded-full text-[15px] 2xl:text-[20px] ${
                   isWhereToFindButtonActiveState
                     ? "bg-lightBlueColor text-blueDarkColor"
                     : "bg-blueColorButton text-white"
@@ -159,7 +154,7 @@ const InvestmentForm = () => {
                 type="text"
                 value={investmentAmountState}
                 onChange={(e) => setInvestmentAmountState(e.target.value)}
-                className="pl-10 pr-3 py-2 border-b-8  $currency? border-grayColorLine  2xl:w-full  w-[320px]"
+                className="pl-10 pr-3 py-2 border-b-8 border-grayColorLine 2xl:w-full w-[320px]"
                 placeholder="10,000"
               />
             </div>
@@ -170,15 +165,16 @@ const InvestmentForm = () => {
               ¿Por cuánto tiempo?
             </label>
             <div className="flex items-center relative">
-              <div className=" 2xl:w-full  w-[320px]">
+              <div className="2xl:w-full w-[320px]">
                 <input
                   type="range"
                   min="6"
                   max="36"
-                  step="6"
+                  step="10"
                   value={investmentTimeState}
                   onChange={handleInputChange}
                   className="w-full"
+                  style={{ direction: "rtl" }}
                 />
                 <div className="flex justify-between text-sm text-black mt-1">
                   <span>6 meses</span>
@@ -194,7 +190,7 @@ const InvestmentForm = () => {
             <ButtonComponent
               text="Calcular"
               onClick={handleCalculateClick}
-              className=" w-[289px]    2xl:w-[538px]  2xl:h-[77px] h-[54px] text-[24px] bg-blueColorBackground text-white rounded-xl"
+              className="w-[289px] 2xl:w-[538px] 2xl:h-[77px] h-[54px] text-[16px] 2xl:text-[24px] bg-blueColorBackground text-white rounded-xl"
             />
           </div>
         </div>

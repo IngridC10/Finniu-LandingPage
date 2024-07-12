@@ -12,7 +12,7 @@ const SimulatorInvestmentSection = () => {
       <div className="container flex flex-row min-h-full p-8 justify-center">
         <div className="flex flex-col items-center  justify-center ">
           <div className=" w-[650px] text-left  hidden 2xl:block">
-            <p className="text-[64px] font-bold text-white">
+            <p className="text-[64px] font-bold text-white  ">
               Simula tu inversión
             </p>
             <p className="text-[64px] font-bold text-white">y proyecta tus</p>

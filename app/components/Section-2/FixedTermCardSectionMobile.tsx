@@ -37,9 +37,13 @@ const FixedTermCardSectionMobile = () => {
               rentabilidades mensuales sin letras pequeñas, similar a un plazo
               fijo pero con mayores beneficios.
             </p>
-            <p className="text-[11px] text-darkBlueColor mt-4 ">
+            <a
+              href="/TermsFinniu/Terminos_Condiciones.pdf"
+              target="_blank"
+              className="hover:underline cursor-pointer text-[11px] text-darkBlueColor mt-4 "
+            >
               (1)REVISA LOS TÉRMINOS Y CONDICIONES
-            </p>
+            </a>
           </div>
         </div>
       </div>
@@ -69,9 +73,14 @@ const FixedTermCardSectionMobile = () => {
                   Contamos con diversas herramientas legales para asegurar tu
                   inversión.
                 </p>
-                <p className="text-[11px] text-darkBlueColor mt-3">
+
+                <a
+                  href="/TermsFinniu/Terminos_Condiciones.pdf"
+                  target="_blank"
+                  className="hover:underline text-[11px] cursor-pointer text-darkBlueColor mt-4 "
+                >
                   (1)REVISA LOS TÉRMINOS Y CONDICIONES
-                </p>
+                </a>
               </div>
             </div>
           </div>

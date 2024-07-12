@@ -4,7 +4,7 @@ import TestimonialsMobile from "./TestimonialsMobile";
 
 const TestimonialsSection = () => {
   return (
-    <section className="section-custom bg-gradient-light w-full">
+    <section className=" bg-gradient-light  flex justify-center items-center w-full">
       <div className="hidden 2xl:block ">
         <TestimonialsDesktop />
       </div>

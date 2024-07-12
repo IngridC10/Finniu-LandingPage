@@ -63,7 +63,7 @@ const TestimonialsDesktop = () => {
     );
   };
   return (
-    <div className="container flex flex-row container-section">
+    <div className="flex flex-row container container-section justify-between gap-32">
       <div className="flex flex-col justify-center w-[594px]">
         <h2 className="text-[45px] font-bold">¿Qué dicen de Finniu?</h2>
         <p className="text-[36px] flex justify-end">
@@ -73,7 +73,7 @@ const TestimonialsDesktop = () => {
           <Image src={Plane} alt="Rocket" width={128} height={128} />
         </div>
       </div>
-      <div className="space-y-4">
+      <div className="space-y-4 flex flex-col">
         {testimonialGroups[currentIndexState].map((testimonial, index) => (
           <div
             key={index}
@@ -112,5 +112,4 @@ const TestimonialsDesktop = () => {
     </div>
   );
 };
-
 export default TestimonialsDesktop;

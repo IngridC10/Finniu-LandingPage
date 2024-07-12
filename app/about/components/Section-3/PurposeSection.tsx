@@ -8,8 +8,10 @@ const Purpose = () => {
       <div className=" container  container-section flex flex-col ">
         <div className=" flex flex-row justify-between">
           <div className=" text-[64px] font-bold ">
-            <Image src={Plane} alt="plane" width={128} height={128} />
-            <h1>Nuestro propósito</h1>
+            <div className=" mt-12">
+              <Image src={Plane} alt="plane" width={128} height={128} />
+            </div>
+            <h1 className="mt-6">Nuestro propósito</h1>
           </div>
 
           <p className="w-[650px] text-justify text-[24px] leading-9">

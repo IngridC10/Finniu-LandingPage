@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ButtonComponent from "@/components/ButtonComponent";
 import LogoFinniu from "@/images/NavBar/LogoFinniu.png";
+import LogoFinniuDark from "@/images/NavBar/LogoFinniuDark.png";
 
 const NavComponent = () => {
   const [isMenuOpenState, setIsMenuOpenState] = useState(false);
@@ -47,7 +48,7 @@ const NavComponent = () => {
             href="https://finniuapp.notion.site/Preguntas-Frecuentes-f7f77872d34a4de3a9e12d5fc58421ff"
             target="_blank"
           >
-            Aprende
+            FAQ
           </Link>
           <Link href="https://finantips.substack.com/" target="_blank">
             Finantips
@@ -90,7 +91,7 @@ const NavComponent = () => {
           <div className="flex justify-between items-center p-4">
             <Link href="/">
               <div className="w-24 2xl:w-[125px]">
-                <Image src={LogoFinniu} alt="Logo de Finniu" height={83} />
+                <Image src={LogoFinniuDark} alt="Logo de Finniu" height={50} />
               </div>
             </Link>
             <ButtonComponent
@@ -115,7 +116,7 @@ const NavComponent = () => {
               </svg>
             </button>
           </div>
-          <div className="flex flex-col items-start space-y-4 text-black text-[24px] p-4">
+          <div className="flex  mt-10 flex-col items-start space-y-4 text-black text-[24px] p-4">
             <Link href="/#HowItWorks">¿Cómo funciona?</Link>
             <Link href="/#simulatorInvestment">Simulador</Link>
             <Link

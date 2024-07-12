@@ -24,9 +24,9 @@ const RegisterSection = () => {
           </div>
         </div>
 
-        <div className="bg-white p-16 rounded-3xl shadow-md   w-[341px]    2xl:w-[545px]   h-[494px] 2xl:h-[568px] mt-12  m-auto ">
+        <div className="bg-white  2xl:p-16 flex flex-col justify-center  p-4 rounded-3xl shadow-md   w-[341px]    2xl:w-[545px]   h-[494px] 2xl:h-[568px] mt-12  m-auto ">
           <h2 className="text-2xl mb-6 text-center hidden 2xl:block">
-            Regístrate para obtener tu cuenta
+            Regístrate para recibir mayor información
           </h2>
           <button className="w-full bg-white border-t-0 border shadow-md border-gray-300 text-gray-700 py-6 rounded-md flex items-center justify-center mb-4 h-[53px]">
             <Image
@@ -45,7 +45,7 @@ const RegisterSection = () => {
             </span>
             <span className="border-2 border-lightBlueColor w-full"></span>
           </div>
-          <form className="  leading-[50px]   2xl:leading-[67px]">
+          <form className="  leading-[50px]   2xl:leading-[51px]">
             <div className="mb-4">
               <label className="sr-only">Nombre completo</label>
               <input
