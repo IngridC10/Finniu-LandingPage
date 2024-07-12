@@ -86,7 +86,7 @@ const OurDirectorySection = () => {
                 </div>
 
                 <div className=" flex items-center justify-center gap-2">
-                  <p className="text-[16px]flex justify-start  text-white w-[70px]">
+                  <p className="text-[16px]flex justify-start  text-white w-[190px]">
                     CTO
                   </p>
                 </div>
