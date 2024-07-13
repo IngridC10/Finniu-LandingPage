@@ -27,15 +27,6 @@
     border-color: transparent;
   }
 }
-/* .typing {
-  width: 100%;
-  animation: typing 15s steps(30, end) forwards;
-} */
-
-/* .erasing {
-  width: 100%;
-  animation: erasing 10s steps(30, end) forwards;
-} */
 
 .typing-effect {
   display: inline-block;
@@ -44,8 +35,6 @@
   margin-left: 10px;
   border-right: 1px solid;
   width: 0;
-  /* animation: blink-caret 0.1s step-end infinite,
-    blink-cursor 0.1s step-end infinite; */
 }
 
 .word-finniu {
@@ -148,13 +137,13 @@ input[type="range"]::-moz-range-thumb {
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none; /* delite thumb */
 
-  height: 50px;
-  width: 50px;
+  height: 35px;
+  width: 35px;
   border-radius: 50%;
   background: url(../images/Section-5/BillHand.png);
   background-size: contain;
   cursor: pointer;
-  margin-top: -7px;
+  margin-top: -9px;
 }
 
 input[type="range"]::-webkit-slider-runnable-track {

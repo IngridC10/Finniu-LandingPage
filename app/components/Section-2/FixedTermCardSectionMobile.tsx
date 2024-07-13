@@ -12,8 +12,8 @@ const FixedTermCardSectionMobile = () => {
         <h1 className="text-[32px] text-center text-blueDarkColor font-bold">
           Como un plazo fijo
         </h1>
-        <div className="flex flex-row justify-center">
-          <Image src={Check} alt="check" width={24.11} height={16} />
+        <div className="flex flex-row justify-center items-center">
+          <Image src={Check} alt="check" height={23} />
           <h2 className="text-[20px]  text-blueDarkColor ml-2">
             Crecer es simple
           </h2>
@@ -29,8 +29,8 @@ const FixedTermCardSectionMobile = () => {
           <div className="bg-lighBlueColorOpcional w-[333px] rounded-xl h-[260px] shadow-lg flex flex-col justify-center p-4 text-justify relative z-0">
             <p className="text-[16px]">
               Pero con Rentabilidades
-              <span className="font-bold"> mensuales </span> y
-              <span className="font-bold"> sin comisiones. </span>
+              <span className="font-extrabold"> mensuales </span> y
+              <span className="font-extrabold"> sin comisiones. </span>
             </p>
             <p className="text-[13px]">
               Aprovecha las ventajas de invertir con Finniu: obtén
