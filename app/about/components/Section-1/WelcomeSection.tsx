@@ -34,25 +34,29 @@ const WelcomeSection = () => {
         setTimeout(() => {
           typingEffect.textContent = word;
           // Adjust typing duration for faster typing
-          typingEffect.style.animation = `typing 3s steps(${word.length}, end), blink-caret 0.75s step-end infinite`;
+          typingEffect.style.animation = `typing 4s steps(${word.length}, end), blink-caret 0.75s step-end infinite`;
         }, 50);
 
         // Toggle between writing and erasing
-        const readTime = wordIndex === 0 ? 3000 : 6000; // Adjust read time for each word
+        const readTime = 5000; // Time to read each word
+        const deleteTime = 500; // Time to delete the word
         setTimeout(() => {
-          typingEffect.style.animation = `delete 3s steps(${word.length}, end), blink-caret 0.75s step-end infinite`;
-        }, readTime + 3000); // Additional time after read time before starting delete
+          typingEffect.style.animation = `delete 1.7s steps(${word.length}, end), blink-caret 0.75s steps(2, end)`;
+        }, readTime);
 
-        // Switch to next word index
+        // Switch to next word index after the delete animation completes
         wordIndex = (wordIndex + 1) % words.length;
+
+        setTimeout(changeWord, readTime + deleteTime); // Total time for each word cycle
       }
     }
 
-    const intervalId = setInterval(changeWord, 10000); // Changes every 10 seconds
     changeWord(); // Initial call to start immediately
 
     return () => {
-      clearInterval(intervalId);
+      if (typingEffectRef.current) {
+        typingEffectRef.current.style.animation = "none"; // Clear any running animations
+      }
     };
   }, []);
 

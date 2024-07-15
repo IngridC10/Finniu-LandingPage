@@ -155,19 +155,21 @@ const HowItWorksSection = () => {
             />
           </button>
           <div
-            className={`p-5 w-full h-[662px] flex rounded-2xl flex-col justify-center items-center ${containerBackgroundColor}`}
+            className={`p-5 w-full h-[599px] flex rounded-2xl flex-col justify-center items-center ${containerBackgroundColor}`}
           >
             <p
               className={`mb-4 text-[14px] 2xl:text-[24px] text-center ${textColor}`}
-            >
-              {itemsSlider[activeIndexState].text}
-            </p>
-            <Image
-              src={itemsSlider[activeIndexState].image[0]}
-              alt={itemsSlider[activeIndexState].alt}
-              width={200}
-              height={200}
-            />
+            ></p>
+            <div className=" flex flex-row  w-[140px] justify-center items-center  2xl:w-[231px]">
+              {itemsSlider[activeIndexState].image.map((img, idx) => (
+                <Image
+                  key={idx}
+                  src={img}
+                  alt={itemsSlider[activeIndexState].alt}
+                  // width={231}
+                />
+              ))}
+            </div>
           </div>
           <button onClick={handleNextClick}>
             <CustomRightArrow

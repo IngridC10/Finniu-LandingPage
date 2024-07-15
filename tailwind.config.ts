@@ -30,6 +30,7 @@ const config: Config = {
         lightColor: "#DCF6FF",
         lightBlueColorOpcional: "#ECFAFF",
         lightColorOpcional: "#E5F8FF",
+        lighBlueColorSimulador: "#44879F",
         darkBlueColorOpcional: "##091925",
         blueDarkColor: "#051926",
         blueColorButton: "#1A3A5A",

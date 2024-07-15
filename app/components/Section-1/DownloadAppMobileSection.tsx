@@ -24,20 +24,18 @@ const DownloadAppMobileSection = () => {
         <p className="text-[28px] lg:text-4xl">otra fuente de ingresos</p>
       </div>
 
-      <div className="mt-8">
-        <Image
-          src={CellphoneDollar}
-          alt="cellphone-dollar"
-          width={405}
-          height={300}
-        />
-      </div>
+      <Image
+        src={CellphoneDollar}
+        alt="cellphone-dollar"
+        width={405}
+        height={300}
+      />
 
-      <div className="flex flex-row mt-8">
+      <div className="flex flex-row ">
         <HowItWorksButtonMobile />
       </div>
 
-      <div className="flex justify-center md:justify-start gap-4 mt-8">
+      <div className="flex justify-center md:justify-start gap-4 mt-6">
         <a
           href="https://play.google.com/store/apps/details?id=com.finniu"
           target="_blank"
@@ -54,7 +52,7 @@ const DownloadAppMobileSection = () => {
         </a>
       </div>
 
-      <div className="mt-8">
+      <div className="mt-5">
         <Image src={ArrowLight} alt="arrow-light" height={50} />
       </div>
     </div>
