@@ -9,11 +9,14 @@ const WelcomeSection = () => {
   const typingEffectRef = useRef<HTMLSpanElement | null>(null);
 
   useEffect(() => {
-    const words = ["Finniu", "Crecimiento de tu patrimonio"];
+    const words = [
+      { text: "Finniu", readTime: 2500, deleteTime: 1000 },
+      { text: "Crecimiento de tu patrimonio", readTime: 4000, deleteTime: 1000 },
+    ];
     let wordIndex = 0;
 
     function changeWord() {
-      const word = words[wordIndex];
+      const { text, readTime, deleteTime } = words[wordIndex];
       const typingEffect = typingEffectRef.current;
 
       if (typingEffect) {
@@ -32,22 +35,20 @@ const WelcomeSection = () => {
         typingEffect.style.animation = "none";
 
         setTimeout(() => {
-          typingEffect.textContent = word;
+          typingEffect.textContent = text;
           // Adjust typing duration for faster typing
-          typingEffect.style.animation = `typing 4s steps(${word.length}, end), blink-caret 0.75s step-end infinite`;
-        }, 50);
+          typingEffect.style.animation = `typing 3s steps(${text.length}, end), blink-caret 0.75s step-end infinite`;
+        }, 30);
 
         // Toggle between writing and erasing
-        const readTime = 5000; // Time to read each word
-        const deleteTime = 500; // Time to delete the word
         setTimeout(() => {
-          typingEffect.style.animation = `delete 1.7s steps(${word.length}, end), blink-caret 0.75s steps(2, end)`;
+          typingEffect.style.animation = `delete 1s steps(${text.length}, end), blink-caret 0.75s steps(2, end)`;
         }, readTime);
 
         // Switch to next word index after the delete animation completes
         wordIndex = (wordIndex + 1) % words.length;
 
-        setTimeout(changeWord, readTime + deleteTime); // Total time for each word cycle
+        setTimeout(changeWord, readTime + deleteTime - 1000); // Total time for each word cycle
       }
     }
 
