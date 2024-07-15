@@ -155,12 +155,14 @@ const HowItWorksSection = () => {
             />
           </button>
           <div
-            className={`p-5 w-full h-[599px] flex rounded-2xl flex-col justify-center items-center ${containerBackgroundColor}`}
+            className={`p-5 w-full h-[416px]  2xl:h-[599px] flex rounded-2xl flex-col justify-center items-center ${containerBackgroundColor}`}
           >
             <p
               className={`mb-4 text-[14px] 2xl:text-[24px] text-center ${textColor}`}
-            ></p>
-            <div className=" flex flex-row  w-[140px] justify-center items-center  2xl:w-[231px]">
+            >
+              {itemsSlider[activeIndexState].text}
+            </p>
+            <div className="flex flex-row w-[140px] justify-center items-center 2xl:w-[220px]">
               {itemsSlider[activeIndexState].image.map((img, idx) => (
                 <Image
                   key={idx}
