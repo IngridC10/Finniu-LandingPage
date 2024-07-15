@@ -77,10 +77,13 @@ const TestimonialsMobile = () => {
   return (
     <div className="container flex container-section flex-col justify-center items-center">
       <div className="flex flex-col justify-center 2xl:w-[594px] w-full items-center">
-        <h2 className=" text-[32px] font-bold">¿Qué dicen de Finniu?</h2>
+        <h2 className=" text-[32px] text-center  font-bold">
+          ¿Qué dicen de Finniu?
+        </h2>
         <div className=" w-[308px] mt-5 ">
-        <p className="text-[16px] flex text-center">
-        &quot;Ellos también cumplieron sus metas financieras con Finniu&quot;.
+          <p className="text-[16px] flex text-center">
+            &quot;Ellos también cumplieron sus metas financieras con
+            Finniu&quot;.
           </p>
         </div>
         <div className="flex flex-col w-[176px] justify-items-end items-end mt-[-22px] ml-20">

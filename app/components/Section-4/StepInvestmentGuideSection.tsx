@@ -67,7 +67,7 @@ const StepInvestmentGuideSection = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(handleNextSlide, 10000);
+    const interval = setInterval(handleNextSlide, 20000);
     return () => clearInterval(interval);
   }, []);
 
@@ -76,16 +76,15 @@ const StepInvestmentGuideSection = () => {
       className={`section-custom flex justify-center w-full items-center py-10 ${slidesData[currentIndexState].bgColor}`}
     >
       <div className="container relative container-section">
-        <div className="flex flex-col-reverse  2xl:flex-row items-center justify-between      ">
-          <div className=" 2xl:w-[611px]  w-[200px] text-left  2xl:text-right mb-0">
-            <p className=" text-[21px]   2xl:text-[44px] font-bold mb-2">
-              {slidesData[currentIndexState].title.split(" en ")[0]} <br />
-              {slidesData[currentIndexState].title.split(" en ")[1]}
+        <div className="flex flex-col-reverse  2xl:flex-row items-center justify-between">
+          <div className=" 2xl:w-[611px]  w-[210px] text-left  2xl:text-right mb-0">
+            <p className=" text-[21px]   2xl:text-[44px] font-bold  mb-0 2xl:mb-2">
+              {slidesData[currentIndexState].title} <br />
             </p>
-            <p className=" text-[21px]  2xl:text-[36px] mb-4">
+            <p className=" text-[21px]  2xl:text-[36px] mb-0 2xl:mb-4">
               {slidesData[currentIndexState].subtitle}
             </p>
-            <p className=" text-[16px] 2xl:text-[24px] font-medium mb-6  ">
+            <p className=" text-[16px] 2xl:text-[24px] font-medium mb-0  2xl:mb-6 2xl:text-right  text-justify ">
               {slidesData[currentIndexState].description}
             </p>
             <div className="flex flex-row gap-8 justify-center 2xl:justify-end 2xl:gap-3">
@@ -101,12 +100,12 @@ const StepInvestmentGuideSection = () => {
               </button>
             </div>
           </div>
-          <div className="relative  w-[320px]  2xl:w-1/2   flex justify-end">
+          <div className="relative flex justify-end">
             <Image
               src={slidesData[currentIndexState].imageSrc}
               alt={`slide-${currentIndexState + 1}`}
-              className="object-cover"
-              height={650}
+              className="object-cover w-[218px]   2xl:w-[532px]"
+              // height={650}
             />
           </div>
         </div>

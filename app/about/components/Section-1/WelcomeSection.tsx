@@ -9,11 +9,14 @@ const WelcomeSection = () => {
   const typingEffectRef = useRef<HTMLSpanElement | null>(null);
 
   useEffect(() => {
-    const words = ["Finniu", "Crecimiento de tu patrimonio"];
+    const words = [
+      { text: "Finniu", readTime: 2500, deleteTime: 1000 },
+      { text: "Crecimiento de tu patrimonio", readTime: 4000, deleteTime: 1000 },
+    ];
     let wordIndex = 0;
 
     function changeWord() {
-      const word = words[wordIndex];
+      const { text, readTime, deleteTime } = words[wordIndex];
       const typingEffect = typingEffectRef.current;
 
       if (typingEffect) {
@@ -32,27 +35,29 @@ const WelcomeSection = () => {
         typingEffect.style.animation = "none";
 
         setTimeout(() => {
-          typingEffect.textContent = word;
+          typingEffect.textContent = text;
           // Adjust typing duration for faster typing
-          typingEffect.style.animation = `typing 3s steps(${word.length}, end), blink-caret 0.75s step-end infinite`;
-        }, 50);
+          typingEffect.style.animation = `typing 3s steps(${text.length}, end), blink-caret 0.75s step-end infinite`;
+        }, 30);
 
         // Toggle between writing and erasing
-        const readTime = wordIndex === 0 ? 3000 : 6000; // Adjust read time for each word
         setTimeout(() => {
-          typingEffect.style.animation = `delete 3s steps(${word.length}, end), blink-caret 0.75s step-end infinite`;
-        }, readTime + 3000); // Additional time after read time before starting delete
+          typingEffect.style.animation = `delete 1s steps(${text.length}, end), blink-caret 0.75s steps(2, end)`;
+        }, readTime);
 
-        // Switch to next word index
+        // Switch to next word index after the delete animation completes
         wordIndex = (wordIndex + 1) % words.length;
+
+        setTimeout(changeWord, readTime + deleteTime - 1000); // Total time for each word cycle
       }
     }
 
-    const intervalId = setInterval(changeWord, 10000); // Changes every 10 seconds
     changeWord(); // Initial call to start immediately
 
     return () => {
-      clearInterval(intervalId);
+      if (typingEffectRef.current) {
+        typingEffectRef.current.style.animation = "none"; // Clear any running animations
+      }
     };
   }, []);
 
