@@ -162,13 +162,14 @@ const HowItWorksSection = () => {
             >
               {itemsSlider[activeIndexState].text}
             </p>
-            <div className="flex flex-row w-[140px] justify-center items-center 2xl:w-[220px]">
+            <div className="flex flex-row justify-center 2xl:w-[200px] w-[140px] items-center ">
               {itemsSlider[activeIndexState].image.map((img, idx) => (
                 <Image
                   key={idx}
                   src={img}
                   alt={itemsSlider[activeIndexState].alt}
-                  // width={231}
+                  width={200}
+                  // className="h-full"
                 />
               ))}
             </div>
@@ -184,7 +185,7 @@ const HowItWorksSection = () => {
           {itemsSlider.map((_, index) => (
             <button
               key={index}
-              className={`w-4 h-4 rounded-full mx-1 ${
+              className={`2xl:w-5  w-3 h-3 2xl:h-5 rounded-full mx-1 ${
                 index === activeIndexState
                   ? "bg-blueDarkColor"
                   : "bg-lightBlueColor"
