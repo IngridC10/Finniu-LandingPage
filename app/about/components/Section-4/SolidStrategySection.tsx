@@ -11,7 +11,7 @@ const SolidStrategySection = () => {
       <div className="container-section container w-full flex-col">
         <h1 className="text-center 2xl:text-start ">
           <span className="text-black text-[32px]  2xl:text-[64px] font-bold">
-            Estratégia{" "}
+            Estrategia{" "}
           </span>
           <span className="text-blueColorButton  text-[32px] 2xl:text-[64px] font-bold">
             sólida

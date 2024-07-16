@@ -34,8 +34,8 @@ const RegisterSection = () => {
                 className="w-full px-3 py-2 border-2 border-t-0 border-r-0 border-l-0 border-grayColorLine rounded-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-blueColorButton"
               >
                 <option value="DNI">DNI</option>
-                <option value="Carné de Extranjería">
-                  Carné de Extranjería
+                <option value="Carnet de Extranjería">
+                  Carnet de Extranjería
                 </option>
               </select>
             </div>
@@ -60,7 +60,7 @@ const RegisterSection = () => {
               </div>
             </div>
             <ButtonComponent
-              text="Registrarme"
+              text="Enviar"
               className="bg-blueColorButton text-white text-[16px] 2xl:text-[20px] rounded-md w-[250px] 2xl:w-[416px] h-[45px] 2xl:h-[57px]"
             />
           </form>
