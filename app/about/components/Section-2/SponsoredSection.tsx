@@ -11,18 +11,25 @@ const Sponsored = () => {
       style={{ background: "linear-gradient(to bottom, #FDEFDF, #DBF5FF" }}
     >
       <div className=" flex  container flex-col justify-center items-center w-full min-h-full ">
-        <h2 className="text-black text-[48px] font-bold  ">
+        <h2 className="text-black  text-xl 2xl:text-[48px] font-bold  ">
           Con el respaldo de
         </h2>
-        <div className=" flex flex-row w-full gap-[65px] justify-center p-8 ">
-          <Image src={Innovaul} alt="innovaul" width={348} height={200} />
+        <div className="  flex-col   flex 2xl:flex-row w-full gap-5 2xl:gap-[65px] items-center justify-center  p-8 ">
+          <Image
+            src={Innovaul}
+            alt="innovaul"
+            className=" w-[231px]  2xl:w-[348px]"
+          />
           <Image
             src={Incubagraria}
             alt="incubagraria"
-            width={348}
-            height={200}
+            className=" w-[231px]  2xl:w-[348px]"
           />
-          <Image src={Emprelatam} alt="emprelatam" width={348} height={200} />
+          <Image
+            src={Emprelatam}
+            alt="emprelatam"
+            className=" w-[231px]  2xl:w-[348px]"
+          />
         </div>
       </div>
     </section>
