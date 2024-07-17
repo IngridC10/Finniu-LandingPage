@@ -119,7 +119,7 @@ input[type="range"]:focus {
 }
 
 input[type="range"] {
-  -webkit-appearance: none; /*Remove the control's default style*/
+  -webkit-appearance: none;
   width: 100%;
   height: 8px;
   outline: none;
@@ -175,4 +175,9 @@ input[type="range"]::-webkit-slider-runnable-track {
 
 .bg-blueColorButton {
   background-color: #1a3a5a;
+}
+
+.blur-effect {
+  filter: blur(5px);
+  transition: filter 0.3s ease;
 }

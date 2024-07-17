@@ -62,12 +62,12 @@ const WelcomeSection = () => {
 
   return (
     <section className="   section-custom  relative bottom-0 bg-blueDarkColor flex flex-col">
-      <div className="pt-[10vh] container flex  h-[882px]  2xl:h-[120vh] justify-start flex-col items-center">
+      <div className="2xl:pt-[10vh] pt-[13vh]   container flex  h-[882px]  2xl:h-[82vh] justify-start flex-col items-center">
         <Image
           src={Text}
           alt="text"
           width={814}
-          className=" w-[220px] 2xl:w-[814px]"
+          className=" w-[226px] 2xl:w-[814px]"
         />
         <h2 className=" 2xl:text-[50px] text-[20px] text-white mt-14 flex justify-center">
           Somos <span className="typing-effect" ref={typingEffectRef}></span>
