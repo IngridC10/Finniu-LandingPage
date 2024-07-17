@@ -36,6 +36,13 @@ const RegisterSection = () => {
       ...formData,
       [name]: value,
     });
+
+    if (name === "telephoneNumber") {
+      setFormErrors({
+        ...formErrors,
+        telephoneNumber: undefined,
+      });
+    }
   };
 
   const validateForm = (): FormErrors => {
@@ -45,9 +52,14 @@ const RegisterSection = () => {
     }
     if (!formData.dni) {
       errors.dni = "El número de documento es obligatorio";
+    } else if (formData.dni.length !== 8) {
+      errors.dni = "Verifique sus datos";
     }
+
     if (!formData.telephoneNumber) {
       errors.telephoneNumber = "El número telefónico es obligatorio";
+    } else if (formData.telephoneNumber.length !== 9) {
+      errors.telephoneNumber = "Verifique sus datos";
     }
     return errors;
   };
@@ -57,7 +69,7 @@ const RegisterSection = () => {
     const errors = validateForm();
     if (Object.keys(errors).length === 0) {
       setPopupVisibleState(true);
-      // Reset form data
+
       setFormData({
         typeDocument: "DNI",
         dni: "",
@@ -68,16 +80,6 @@ const RegisterSection = () => {
       setFormErrors(errors);
     }
   };
-
-  useEffect(() => {
-    let timer: NodeJS.Timeout;
-    if (isPopupVisibleState) {
-      timer = setTimeout(() => {
-        setPopupVisibleState(false);
-      }, 7000);
-    }
-    return () => clearTimeout(timer);
-  }, [isPopupVisibleState]);
 
   const closePopup = () => {
     setPopupVisibleState(false);
