@@ -5,16 +5,20 @@ import Plane from "@/images/About/Section-3/Plane.png";
 const Purpose = () => {
   return (
     <section className=" section-custom bg-white">
-      <div className=" container  container-section flex flex-col ">
-        <div className=" flex flex-row justify-between">
-          <div className=" text-[64px] font-bold ">
-            <div className=" mt-12">
-              <Image src={Plane} alt="plane" width={128} height={128} />
+      <div className=" container  container-section flex flex-col h-[502px]  2xl:h-auto    ">
+        <div className=" flex  flex-col 2xl:flex-row justify-between items-center">
+          <div className=" text-[32px] 2xl:text-[64px] font-bold ">
+            <div className=" mt-12 flex justify-center 2xl:justify-start">
+              <Image
+                src={Plane}
+                alt="plane"
+                className="  w-[64px]  2xl:w-[128px]"
+              />
             </div>
             <h1 className="mt-6">Nuestro propósito</h1>
           </div>
 
-          <p className="w-[650px] text-justify text-[24px] leading-9">
+          <p className=" w-[329px] 2xl:w-[650px] text-justify text-[14px]  2xl:text-[24px] leading-9">
             Nuestros objetivo es que cada uno de nuestros inversionistas aprenda
             y maneje sus finanzas con facilidad, logrando así sus metas
             financieras. Con un equipo dedicado y una plataforma robusta para

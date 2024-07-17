@@ -49,6 +49,7 @@ const config: Config = {
         whiteColor: "#F7FAFB",
         blackColorText: "#020202",
         mustardColor: "#FDEFDF",
+        greenColor: "#04A260",
       },
 
       screens: {

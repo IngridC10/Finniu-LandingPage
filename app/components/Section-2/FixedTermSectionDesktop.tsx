@@ -23,7 +23,7 @@ const FixedTermSectionDesktop = () => {
       <div className="flex  relative container  container-section">
         <div className="text-left w-[561px] z-10 flex flex-col justify-center mb-24 ">
           <p
-            className={` mb-4 leading-tight font-bold ${
+            className={` mb-4 leading-tight font-bold cursor-pointer ${
               showComponentFixedTermSelectedState
                 ? "text-graySecondaryColor text-[55px]"
                 : "text-grayColorText text-[40px]"
