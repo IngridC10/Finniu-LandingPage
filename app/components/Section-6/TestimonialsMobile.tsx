@@ -5,6 +5,9 @@ import Plane from "@/images/Section-6/Plane.png";
 import InvestorOne from "@/images/Section-6/InvestorOne.png";
 import InvestorTwo from "@/images/Section-6/InvestorTwo.png";
 import InvestorThree from "@/images/Section-6/InvestorThree.png";
+import InvestorFour from "@/images/Section-6/InvestorFour.png";
+import InvestorFive from "@/images/Section-6/InvestorFive.png";
+import InvestorSix from "@/images/Section-6/InvestorSix.png";
 const TestimonialsMobile = () => {
   type Testimonial = {
     text?: string;
@@ -68,6 +71,25 @@ const TestimonialsMobile = () => {
       title: "Comunicadora",
       image: InvestorThree,
     },
+    {
+      text: "No sabía dónde invertir mis ahorros, debido a la baja rentabilidad en varios bancos; sin embargo, Finniu me ha retornado hasta el 18% en un año y además, me ofrece las mejores herramientas para hacerle seguimiento a mis inversiones.",
+      name: "Araceli Ramos",
+      title: "Analista Sr. de Reclutamiento",
+      image: InvestorFour,
+    },
+    {
+      text: "Estoy muy satisfecho con Finniu y los retornos que he obtenido en comparación con muchos bancos tradicionales. La plataforma es fácil de usar y ha sido una excelente manera de hacer crecer mi dinero de manera segura y confiable.",
+      name: "Guillermo Rosas",
+      title: "Ingeniero de Planeamiento",
+      image: InvestorFive,
+    },
+    {
+      text: "Antes desconfiaba en dónde invertir mi dinero, hasta que conocí Finniu. Con ellos, encontré la seguridad de que mi inversión está trabajándose para obtener altos intereses. Además, que permiten hacer seguimiento a todas tus inversiones de manera fácil en su App.",
+      name: "Alexis Pariente",
+      title: "Contadora y Empresaria",
+      image: InvestorSix,
+    },
+
     {
       name: " ¡Tú puedes ser el próximo! 🚀 ",
       text: "Envíanos tu testimonio por nuestros canales de comunicación",
