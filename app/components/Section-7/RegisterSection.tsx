@@ -36,13 +36,6 @@ const RegisterSection = () => {
       ...formData,
       [name]: value,
     });
-
-    if (name === "telephoneNumber") {
-      setFormErrors({
-        ...formErrors,
-        telephoneNumber: undefined,
-      });
-    }
   };
 
   const validateForm = (): FormErrors => {
