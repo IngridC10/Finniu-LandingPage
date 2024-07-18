@@ -74,10 +74,15 @@ a {
   text-decoration: none;
 }
 
-a:hover {
+/* a:hover {
+  text-decoration: underline;
+} */
+
+a:hover,
+a:focus,
+a:active {
   text-decoration: underline;
 }
-
 button[data-testid="carousel-right-control"] {
   background-color: #1a3a5a;
   color: white;

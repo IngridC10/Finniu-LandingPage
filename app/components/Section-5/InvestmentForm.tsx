@@ -93,7 +93,7 @@ const InvestmentForm = () => {
       ) : (
         <div>
           <div className="flex flex-row items-center gap-2 block 2xl:hidden absolute -top-[55px] z-20">
-            <h1 className="text-[32px] font-bold">Simula tu inversión</h1>
+            <h1 className="text-[30px] font-bold">Simula tu inversión</h1>
             <div className="h-[38px] mb-3">
               <Image src={Bill} alt="bill" height={38} />
             </div>
