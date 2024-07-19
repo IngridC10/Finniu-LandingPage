@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import ButtonComponent from "@/components/ButtonComponent";
 // import Google from "/images/Section-7/Google.png";
@@ -134,7 +134,7 @@ const RegisterSection = () => {
                 type="text"
                 id="dni"
                 name="dni"
-                placeholder="Nº de documento"
+                placeholder="Número de documento"
                 className={`w-full px-3 border-r-0 border-l-0 border-t-0 py-2 border-2 ${
                   formErrors.dni ? "border-red-500" : "border-grayColorLine"
                 } rounded-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-blueColorButton`}

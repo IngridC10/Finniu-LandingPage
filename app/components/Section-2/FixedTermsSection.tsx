@@ -4,14 +4,14 @@ import FixedTermSectionDesktop from "./FixedTermSectionDesktop";
 
 const FixedTermsSection = () => {
   return (
-    <>
-      <div className="hidden 2xl:block">
+    <section className=" section-custom flex-col bg-white">
+      <div className="hidden 2xl:block container">
         <FixedTermSectionDesktop />
       </div>
       <div className="block 2xl:hidden">
         <FixedTermCardSectionMobile />
       </div>
-    </>
+    </section>
   );
 };
 

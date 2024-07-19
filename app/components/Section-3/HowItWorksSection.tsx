@@ -144,7 +144,7 @@ const HowItWorksSection = () => {
             </ButtonComponent>
           </div>
         </div>
-        <h1 className={`text-[24px] 2xl:text-[48px] font-bold`}>
+        <h1 className={`text-[24px] 2xl:text-[48px] `}>
           Paso {activeIndexState + 1}
         </h1>
         <div className="flex flex-row rounded-2xl justify-center items-center w-[400px] 2xl:w-[80%]">

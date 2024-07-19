@@ -90,14 +90,15 @@ const TestimonialsDesktop = () => {
   };
 
   return (
-    <div className="flex flex-row container container-section justify-between gap-32">
-      <div className="flex flex-col justify-center w-[594px]">
-        <h2 className="text-[45px] font-bold">¿Qué dicen de Finniu?</h2>
+    <div className="flex flex-row container-section gap-32">
+      <div className="flex flex-col justify-center relative w-[594px]">
+        <h2 className="text-[45px] font-semibold">¿Qué dicen de Finniu?</h2>
+
         <p className="text-[36px] flex justify-end">
           Ellos lograron sus metas, ahora te toca a ti.
         </p>
-        <div className="flex flex-col justify-items-end items-center">
-          <Image src={Plane} alt="Rocket" width={128} height={128} />
+        <div className=" flex absolute inset-0 justify-center items-center right-16 top-[29%]">
+          <Image src={Plane} alt="Rocket" height={128} />
         </div>
       </div>
       <div className="space-y-4 flex flex-col">

@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ButtonComponent from "@/components/ButtonComponent";
@@ -8,6 +8,9 @@ import LogoFinniuDark from "@/images/NavBar/LogoFinniuDark.png";
 
 const NavComponent = () => {
   const [isMenuOpenState, setIsMenuOpenState] = useState(false);
+  const [selectedNavItemState, setSelectedNavItemState] = useState<
+    string | null
+  >(null);
 
   const handleButton = () => {
     window.open("https://app.finniu.com/login");
@@ -21,37 +24,85 @@ const NavComponent = () => {
     setIsMenuOpenState(false);
   };
 
+  const handleItemSelect = (link: string) => {
+    setSelectedNavItemState(link);
+    closeMenu();
+  };
+
   return (
     <div className="w-full bg-blueDarkColor p-4 sticky top-0 z-50">
       <div className="container min-h-full flex justify-between items-center mx-auto">
         <Link href="/">
-          <div className="w-24 2xl:w-[125px]">
-            <Image
-              src={LogoFinniu}
-              alt="Logo de Finniu"
-              height={83}
-              width={125}
-            />
+          <div className="w-20 2xl:w-[100px]">
+            <Image src={LogoFinniu} alt="Logo de Finniu" />
           </div>
         </Link>
         <div className="hidden 2xl:flex flex-row justify-between items-center space-x-20 text-white text-[24px]">
-          <Link href="/#HowItWorks">¿Cómo funciona?</Link>
-          <Link href="/#simulatorInvestment">Simulador</Link>
+          <Link
+            href="/#HowItWorks"
+            className={
+              selectedNavItemState === "/#HowItWorks" ? "underline" : ""
+            }
+            onClick={() => handleItemSelect("/#HowItWorks")}
+          >
+            ¿Cómo funciona?
+          </Link>
+          <Link
+            href="/#simulatorInvestment"
+            className={
+              selectedNavItemState === "/#simulatorInvestment"
+                ? "underline"
+                : ""
+            }
+            onClick={() => handleItemSelect("/#simulatorInvestment")}
+          >
+            Simulador
+          </Link>
           <Link
             href="https://finniuapp.notion.site/Preguntas-Frecuentes-f7f77872d34a4de3a9e12d5fc58421ff"
             target="_blank"
+            className={
+              selectedNavItemState ===
+              "https://finniuapp.notion.site/Preguntas-Frecuentes-f7f77872d34a4de3a9e12d5fc58421ff"
+                ? "underline"
+                : ""
+            }
+            onClick={() =>
+              handleItemSelect(
+                "https://finniuapp.notion.site/Preguntas-Frecuentes-f7f77872d34a4de3a9e12d5fc58421ff"
+              )
+            }
           >
             FAQ
           </Link>
-          <Link href="https://finantips.substack.com/" target="_blank">
+          <Link
+            href="https://finantips.substack.com/"
+            target="_blank"
+            className={
+              selectedNavItemState === "https://finantips.substack.com/"
+                ? "underline"
+                : ""
+            }
+            onClick={() => handleItemSelect("https://finantips.substack.com/")}
+          >
             Finantips
           </Link>
-          <Link href="/about">Nosotros</Link>
+          <Link
+            href="/about"
+            className={
+              selectedNavItemState === "/about"
+                ? "underline text-lightTextNavBar"
+                : ""
+            }
+            onClick={() => handleItemSelect("/about")}
+          >
+            Nosotros
+          </Link>
         </div>
         <div className="hidden 2xl:flex">
           <ButtonComponent
             text="Ingresar"
-            className="h-12 w-36 text-blueDarkColor bg-lightBlueColor text-[24px] font-bold rounded-lg"
+            className="h-12 w-36 text-blueDarkColor bg-lightBlueColor text-[24px]  rounded-lg"
             onClick={handleButton}
           />
         </div>
@@ -80,11 +131,11 @@ const NavComponent = () => {
         </div>
       </div>
       {isMenuOpenState && (
-        <div className="fixed inset-0 top-0 bg-white h-screen flex flex-col p-4">
-          <div className="flex justify-between items-center p-4">
+        <div className="fixed inset-0 top-0 bg-white h-full flex flex-col p-4">
+          <div className="flex justify-between  items-center p-4">
             <Link href="/ " onClick={closeMenu}>
-              <div className="w-24 2xl:w-[125px]">
-                <Image src={LogoFinniuDark} alt="Logo de Finniu" height={50} />
+              <div className=" w-20 2xl:w-[100px]">
+                <Image src={LogoFinniuDark} alt="Logo de Finniu" />
               </div>
             </Link>
             <ButtonComponent
@@ -110,27 +161,66 @@ const NavComponent = () => {
             </button>
           </div>
           <div className="flex mt-10 flex-col items-start space-y-4 text-black text-[24px] p-4">
-            <Link href="/#HowItWorks" onClick={closeMenu}>
+            <Link
+              href="/#HowItWorks"
+              className={
+                selectedNavItemState === "/#HowItWorks" ? "underline" : ""
+              }
+              onClick={() => handleItemSelect("/#HowItWorks")}
+            >
               ¿Cómo funciona?
             </Link>
-            <Link href="/#simulatorInvestment" onClick={closeMenu}>
+            <Link
+              href="/#simulatorInvestment"
+              className={
+                selectedNavItemState === "/#simulatorInvestment"
+                  ? "underline"
+                  : ""
+              }
+              onClick={() => handleItemSelect("/#simulatorInvestment")}
+            >
               Simulador
             </Link>
             <Link
               href="https://finniuapp.notion.site/Preguntas-Frecuentes-f7f77872d34a4de3a9e12d5fc58421ff"
               target="_blank"
-              onClick={closeMenu}
+              className={
+                selectedNavItemState ===
+                "https://finniuapp.notion.site/Preguntas-Frecuentes-f7f77872d34a4de3a9e12d5fc58421ff"
+                  ? "underline"
+                  : ""
+              }
+              onClick={() =>
+                handleItemSelect(
+                  "https://finniuapp.notion.site/Preguntas-Frecuentes-f7f77872d34a4de3a9e12d5fc58421ff"
+                )
+              }
             >
               Aprende
             </Link>
             <Link
               href="https://finantips.substack.com/"
               target="_blank"
-              onClick={closeMenu}
+              className={
+                selectedNavItemState === "https://finantips.substack.com/"
+                  ? "underline"
+                  : ""
+              }
+              onClick={() =>
+                handleItemSelect("https://finantips.substack.com/")
+              }
             >
               Finantips
             </Link>
-            <Link href="/about" onClick={closeMenu}>
+            <Link
+              href="/about"
+              className={
+                selectedNavItemState === "/about"
+                  ? "underline text-lightTextNavBar"
+                  : ""
+              }
+              onClick={() => handleItemSelect("/about")}
+            >
               Nosotros
             </Link>
           </div>
