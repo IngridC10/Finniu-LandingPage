@@ -4,8 +4,8 @@ import Plane from "@/images/About/Section-3/Plane.png";
 
 const Purpose = () => {
   return (
-    <section className=" section-custom bg-white">
-      <div className=" container  container-section flex flex-col h-[502px]  2xl:h-auto    ">
+    <section className=" w-full min-h-screen bg-white  flex items-start justify-center 2xl:items-center">
+      <div className=" container  container-section flex flex-col h-[502px]  2xl:h-auto ">
         <div className=" flex  flex-col 2xl:flex-row justify-between items-center">
           <div className=" text-[32px] 2xl:text-[64px] font-bold ">
             <div className=" mt-12 flex justify-center 2xl:justify-start">
