@@ -62,7 +62,7 @@ const WelcomeSection = () => {
 
   return (
     <section className="   section-custom  relative bottom-0 bg-blueDarkColor flex flex-col">
-      <div className="2xl:pt-[10vh] pt-[13vh]   container flex  h-[882px]  2xl:h-[82vh] justify-start flex-col items-center">
+      <div className=" 2xl:pt-[10vh] pt-[13vh]   container flex  h-[882px]  2xl:h-[82vh] justify-start flex-col items-center">
         <Image
           src={Text}
           alt="text"

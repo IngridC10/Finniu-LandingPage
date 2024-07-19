@@ -121,7 +121,7 @@ const NavComponent = () => {
         <div className="fixed inset-0 top-0 bg-white h-full flex flex-col p-4">
           <div className="flex justify-between  items-center p-4">
             <Link href="/ " onClick={closeMenu}>
-              <div className=" w-20 2xl:w-[100px]">
+              <div className=" w-16 2xl:w-[100px]">
                 <Image src={LogoFinniuDark} alt="Logo de Finniu" />
               </div>
             </Link>
