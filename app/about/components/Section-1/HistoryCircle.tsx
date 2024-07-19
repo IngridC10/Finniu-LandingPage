@@ -20,7 +20,7 @@ const HistoryCircle = () => {
         />
         <div className=" w-[529px] flex justify-center items-center ">
           <div className=" w-[287px]     2xl:w-[407px]">
-            <p className=" text-[18px]  2xl:text-[20px] text-center font-bold mt-16  2xl:mt-[50%]  leading-9  2xl:leading-10 ">
+            <p className=" text-[18px]  2xl:text-[20px] text-center mt-16  2xl:mt-[50%]  leading-9  2xl:leading-10 ">
               Somos un fondo de inversión latinoamericano con la misión de
               democratizar el acceso a las oportunidades financieras. Nuestra
               prioridad es cuidar tu futuro brindándote experiencia y

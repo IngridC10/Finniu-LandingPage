@@ -10,10 +10,10 @@ const SolidStrategySection = () => {
     <section className="section-custom bg-white flex flex-col">
       <div className="container-section container w-full flex-col">
         <h1 className="text-center 2xl:text-start ">
-          <span className="text-black text-[32px]  2xl:text-[64px] font-bold">
+          <span className="text-black text-[32px]  2xl:text-[64px] ">
             Estrategia{" "}
           </span>
-          <span className="text-blueColorButton  text-[32px] 2xl:text-[64px] font-bold">
+          <span className="text-blueColorButton  text-[32px] 2xl:text-[64px] ">
             sólida
           </span>
         </h1>
@@ -30,7 +30,7 @@ const SolidStrategySection = () => {
                   />
                 </div>
 
-                <h1 className=" text-center font-semibold  text-blueColorButton text-[24px]   2xl:text-[32px]">
+                <h1 className=" text-center  text-blueColorButton text-[24px]   2xl:text-[32px]">
                   Relación empresarial
                 </h1>
 
@@ -51,7 +51,7 @@ const SolidStrategySection = () => {
                   />
                 </div>
 
-                <h1 className=" text-center font-semibold  text-blueColorButton  text-[24px]     2xl:text-[27px]">
+                <h1 className=" text-center  text-blueColorButton  text-[24px]     2xl:text-[27px]">
                   Minimización de riesgos
                 </h1>
 
@@ -73,7 +73,7 @@ const SolidStrategySection = () => {
                     className="2xl:w-[192px] w-[100px]"
                   />
                 </div>
-                <h1 className=" text-center  text-blueColorButton text-[24px]    2xl:text-[32px] font-semibold">
+                <h1 className=" text-center  text-blueColorButton text-[24px]    2xl:text-[32px] ">
                   Gestión eficiente
                 </h1>
 
@@ -95,7 +95,7 @@ const SolidStrategySection = () => {
                   />
                 </div>
 
-                <h1 className=" text-center  text-blueColorButton text-[24px]   2xl:text-[32px] font-semibold">
+                <h1 className=" text-center  text-blueColorButton text-[24px]   2xl:text-[32px] ">
                   Diversificación
                 </h1>
 
