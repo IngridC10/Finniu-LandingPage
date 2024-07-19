@@ -100,7 +100,7 @@ const InvestmentForm = () => {
           </div>
 
           <div className="flex flex-row justify-between items-center w-full">
-            <h2 className="text-[17px] 2xl:text-[30px] font-bold text-black">
+            <h2 className="text-[16px] 2xl:text-[30px] font-bold text-black">
               Quiero invertir en
             </h2>
 

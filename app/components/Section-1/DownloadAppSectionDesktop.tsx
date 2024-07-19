@@ -8,7 +8,7 @@ import CellphoneDollar from "@/images/Section-1/CellPhoneDollar.png";
 
 const DownloadAppSectionDesktop = () => {
   return (
-    <div className="flex flex-row container container-section  justify-center relative h-full">
+    <div className="flex flex-row  container-section  justify-center relative h-full">
       <div className="text-left w-[561px] z-10 flex justify-center flex-col ">
         <p className="text-white mb-4 text-[32px] leading-tight ">
           Invierte en tu futuro
@@ -53,18 +53,19 @@ const DownloadAppSectionDesktop = () => {
 
       <div className=" flex items-end pb-10 ml-60 w-[523px] ">
         <div className="flex flex-col items-end justify-center  text-white text-xl  ml-8 ">
-          <div className="flex items-center justify-center mb-4 space-x-4 w-[476px] leading-[63px] ">
+          <div className="flex items-center justify-center mb-4 space-x-4 w-[476px] leading-[43px] ">
             <div className="text-center">
               <p className="text-base">Soles invertidos</p>
-              +
+
               <CountUp
                 start={0}
-                end={3.5}
+                end={7.5}
                 duration={2.5}
-                separator=","
+                separator=""
                 decimals={1}
-                prefix=""
-                suffix="M"
+                decimal=","
+                prefix="+"
+                suffix=" M"
                 style={{ fontSize: "32px" }}
               />
             </div>
@@ -73,7 +74,7 @@ const DownloadAppSectionDesktop = () => {
               <p className="text-base"> Operaciones</p>
               <CountUp
                 start={0}
-                end={780}
+                end={550}
                 duration={2.7}
                 prefix="+"
                 style={{ fontSize: "32px" }}
@@ -84,7 +85,7 @@ const DownloadAppSectionDesktop = () => {
               <p className="text-base">Inversionistas</p>
               <CountUp
                 start={0}
-                end={100}
+                end={300}
                 duration={2.5}
                 prefix="+"
                 style={{ fontSize: "32px" }}
