@@ -40,17 +40,19 @@ const NavComponent = () => {
         <div className="hidden 2xl:flex flex-row justify-between items-center space-x-20 text-white text-[24px]">
           <Link
             href="/#HowItWorks"
-            className={selectedNavItemState === "HowItWorks" ? "underline" : ""}
-            onClick={() => handleItemSelect("HowItWorks")}
+            className={
+              selectedNavItemState === "how-it-works" ? "underline" : ""
+            }
+            onClick={() => handleItemSelect("how-it-works")}
           >
             ¿Cómo funciona?
-          </Link>
+          </Link>{" "}
           <Link
-            href="/#simulatorInvestment"
+            href="/#SimulatorInvestment"
             className={
-              selectedNavItemState === "simulatorInvestment" ? "underline" : ""
+              selectedNavItemState === "simulator-investment" ? "underline" : ""
             }
-            onClick={() => handleItemSelect("simulatorInvestment")}
+            onClick={() => handleItemSelect("simulator-investment")}
           >
             Simulador
           </Link>
@@ -149,20 +151,20 @@ const NavComponent = () => {
             <Link
               href="/#HowItWorks"
               className={
-                selectedNavItemState === "HowItWorks" ? "underline" : ""
+                selectedNavItemState === "how-it-works" ? "underline" : ""
               }
-              onClick={() => handleItemSelect("HowItWorks")}
+              onClick={() => handleItemSelect("how-it-works")}
             >
               ¿Cómo funciona?
             </Link>
             <Link
               href="/#simulatorInvestment"
               className={
-                selectedNavItemState === "simulatorInvestment"
+                selectedNavItemState === "simulator-investment"
                   ? "underline"
                   : ""
               }
-              onClick={() => handleItemSelect("simulatorInvestment")}
+              onClick={() => handleItemSelect("simulator-investment")}
             >
               Simulador
             </Link>
