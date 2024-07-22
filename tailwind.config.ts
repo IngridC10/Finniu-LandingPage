@@ -42,6 +42,7 @@ const config: Config = {
         grayColorLine: " #D9D9D9",
         grayColorBackground: "#B8B8B8",
         grayColor: "#F4F4F4",
+        grayButtonColor: "#E8E8E8",
         grayColorText: "#B8B8B8",
         graySecondaryColor: "#140F0F",
         lilaColor: "#D2B7FF",

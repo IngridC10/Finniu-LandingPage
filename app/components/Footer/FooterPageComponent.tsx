@@ -9,8 +9,8 @@ import WhatsappIcon from "@/images/Footer/WhatsappIcon.png";
 const Footer = () => {
   return (
     <footer className="bg-gray-50 border-t      border-gray-200 py-8 w-full">
-      <div className="container mx-auto flex flex-col md:flex-row justify-between items-start px-12 2xl:px-48">
-        <div className="flex flex-col md:flex-row w-full leading-9">
+      <div className="container mx-auto flex flex-col 2xl:flex-row justify-between items-start px-12 2xl:px-48">
+        <div className="flex flex-col 2xl:flex-row w-full leading-9">
           <div className="flex-1 mb-6 md:mb-0 md:pr-4">
             <h3 className="text-lg font-semibold mb-2">Acerca de Finniu</h3>
             <ul>
@@ -34,7 +34,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="flex-1 leading-9 md:pl-4">
+          <div className="flex-1 leading-9  pl-0 2xl:pl-4">
             <h3 className="text-lg font-semibold mb-2">Legal</h3>
             <ul>
               <li className="mb-1">
@@ -59,7 +59,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row w-full leading-9 mt-6 md:mt-0">
+        <div className="flex flex-col 2xl:flex-row w-full leading-9 mt-6 md:mt-0">
           <div className="flex-1 mb-6 md:mb-0 md:pr-4">
             <h3 className="text-lg font-semibold mb-2">Contactos</h3>
             <div className="flex items-center mb-1">
@@ -89,7 +89,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="flex-1 leading-9 md:pl-4">
+          <div className="flex-1 leading-9  pl-0 2xl:pl-4">
             <h3 className="text-lg font-semibold mb-4">Encuéntranos en</h3>
             <div className="flex space-x-4">
               <Link

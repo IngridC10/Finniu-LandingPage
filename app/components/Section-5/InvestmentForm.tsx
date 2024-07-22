@@ -52,7 +52,7 @@ const InvestmentForm = () => {
   };
 
   return (
-    <div className="w-[351px] 2xl:w-[618px] bg-white relative flex flex-col justify-center items-center p-12 rounded-3xl h-[452px] 2xl:h-[620px] leading-[49px] shadow-lg">
+    <div className="w-[351px] 2xl:w-[618px] mt-4 2xl:mt-0  bg-white relative flex flex-col justify-center items-center p-12 rounded-3xl h-[452px] 2xl:h-[620px] leading-[49px] shadow-lg">
       {isCalculatedState ? (
         <div className="text-center">
           <div className="flex flex-col justify-center items-center">
@@ -114,7 +114,7 @@ const InvestmentForm = () => {
               <ButtonComponent
                 text="Soles"
                 onClick={() => handleButtonClick("Soles")}
-                className={`2xl:h-[45px] h-[33px] text-[15px] 2xl:text-[20px] shadow-md w-[73px] 2xl:w-[111px] gap-2 flex justify-center items-center rounded-full ${
+                className={`  buttonTransition 2xl:h-[45px] h-[33px] text-[15px] 2xl:text-[20px] shadow-md w-[73px] 2xl:w-[111px] gap-2 flex justify-center items-center rounded-full ${
                   isWhereToFindButtonActiveState
                     ? "bg-lightColor text-blackColorText"
                     : "bg-blueDarkColor text-white"
@@ -123,7 +123,7 @@ const InvestmentForm = () => {
               <ButtonComponent
                 text="Dólares"
                 onClick={() => handleButtonClick("Dólares")}
-                className={`2xl:h-[45px] h-[37px] w-[73px] 2xl:w-[111px] m-1 flex justify-center items-center gap-2 rounded-full text-[15px] 2xl:text-[20px] ${
+                className={`  buttonTransition 2xl:h-[45px] h-[37px] w-[73px] 2xl:w-[111px] m-1 flex justify-center items-center gap-2 rounded-full text-[15px] 2xl:text-[20px] ${
                   isWhereToFindButtonActiveState
                     ? "bg-lightBlueColor text-blueDarkColor"
                     : "bg-blueColorButton text-white"

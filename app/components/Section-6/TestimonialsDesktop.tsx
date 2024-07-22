@@ -97,7 +97,7 @@ const TestimonialsDesktop = () => {
         <p className="text-[36px] flex justify-end">
           Ellos lograron sus metas, ahora te toca a ti.
         </p>
-        <div className=" flex absolute inset-0 justify-center items-center right-16 top-[29%]">
+        <div className=" flex absolute inset-0 justify-center items-center top-[217px] right-16 ">
           <Image src={Plane} alt="Rocket" height={128} />
         </div>
       </div>

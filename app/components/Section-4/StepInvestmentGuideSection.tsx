@@ -100,7 +100,7 @@ const StepInvestmentGuideSection = () => {
 
   return (
     <section
-      className={`section-custom flex justify-center w-full items-center py-10 ${slidesData[currentIndexState].bgColor}`}
+      className={` min-h-[598px]   2xl:min-h-screen  flex justify-center w-full items-center py-10 ${slidesData[currentIndexState].bgColor}`}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}

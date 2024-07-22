@@ -79,7 +79,7 @@ const RegisterSection = () => {
   };
 
   return (
-    <section className="section-custom bg-blueDarkColor">
+    <section className="w-full flex justify-center  min-h-[550px] 2xl:min-h-screen items-center bg-blueDarkColor">
       <div className="flex flex-col items-center container-section">
         <div className="flex flex-col justify-center items-center text-center w-[309px] 2xl:w-[1050px]">
           <h1 className="text-[24px] 2xl:text-[50px] text-white">
@@ -200,7 +200,7 @@ const RegisterSection = () => {
               src={IconCheck}
               alt="check"
               height={60}
-              className="mb-4 2xl:h-[60px] h-[44px]"
+              className="mb-4 2xl:h-[60px] h-[58px]"
             />
             <h2 className="text-[16px] 2xl:text-2xl font-bold text-greenColor mb-2">
               ¡Todo listo!
