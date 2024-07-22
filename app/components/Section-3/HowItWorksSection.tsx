@@ -19,8 +19,6 @@ const HowItWorksSection = () => {
 
   const [isWhereToFindButtonActiveState, setWhereToFindButtonActiveState] =
     useState(true);
-  const [isSelectedButtonRightState, setSelectedButtonRightState] =
-    useState(true);
 
   const handleButtonClick = () => {
     setWhereToFindButtonActiveState(!isWhereToFindButtonActiveState);
@@ -28,21 +26,25 @@ const HowItWorksSection = () => {
   };
 
   const handlePrevClick = () => {
-    setSelectedButtonRightState(false);
-    setActiveIndexState((prevIndex) =>
-      prevIndex === 0 ? itemsSlider.length - 1 : prevIndex - 1
-    );
-  };
+    setActiveIndexState((prevIndex) => {
+      if (prevIndex === 0) {
+        return 0;
+      }
 
+      return prevIndex - 1;
+    });
+  };
   const handleNextClick = () => {
-    setSelectedButtonRightState(true);
-    setActiveIndexState((prevIndex) =>
-      prevIndex === itemsSlider.length - 1 ? 0 : prevIndex + 1
-    );
+    setActiveIndexState((prevIndex) => {
+      if (prevIndex === itemsSlider.length - 1) {
+        return prevIndex;
+      }
+
+      return prevIndex + 1;
+    });
   };
 
   const goToIndex = (index: number) => {
-    setSelectedButtonRightState(index > activeIndexState);
     setActiveIndexState(index);
   };
 
@@ -154,7 +156,8 @@ const HowItWorksSection = () => {
         <div className="flex flex-row rounded-2xl justify-center items-center w-[400px] 2xl:w-[80%]">
           <button onClick={handlePrevClick}>
             <CustomLeftArrow
-              isSelectedButtonRightState={isSelectedButtonRightState}
+              isFirstSlide={activeIndexState === 0}
+              isLastSlide={activeIndexState === itemsSlider.length - 1}
               className="relative left-5 2xl:static 2xl:left-0"
             />
           </button>
@@ -180,7 +183,8 @@ const HowItWorksSection = () => {
           </div>
           <button onClick={handleNextClick}>
             <CustomRightArrow
-              isSelectedButtonRightState={isSelectedButtonRightState}
+              isFirstSlide={activeIndexState === 0}
+              isLastSlide={activeIndexState === itemsSlider.length - 1}
               className="relative 2xl:static 2xl:right-0 right-6"
             />
           </button>

@@ -48,19 +48,25 @@ const StepInvestmentGuideSection = () => {
       bgColor: "bg-lightSkyBlue text-blackColorText",
     },
   ];
-
   const handleNextSlide = () => {
     setSelectedButtonRightState(true);
-    setCurrentIndexState((prevIndex) =>
-      prevIndex === slidesData.length - 1 ? 0 : prevIndex + 1
-    );
-  };
+    setCurrentIndexState((prevIndex) => {
+      if (prevIndex === slidesData.length - 1) {
+        return prevIndex;
+      }
 
+      return prevIndex + 1;
+    });
+  };
   const handlePrevSlide = () => {
     setSelectedButtonRightState(false);
-    setCurrentIndexState((prevIndex) =>
-      prevIndex === 0 ? slidesData.length - 1 : prevIndex - 1
-    );
+    setCurrentIndexState((prevIndex) => {
+      if (prevIndex === 0) {
+        return prevIndex;
+      }
+
+      return prevIndex - 1;
+    });
   };
 
   const handleDotClick = (index: SetStateAction<number>) => {
@@ -120,12 +126,14 @@ const StepInvestmentGuideSection = () => {
             <div className="hidden 2xl:flex flex-row gap-8 justify-center 2xl:justify-end 2xl:gap-3">
               <button onClick={handlePrevSlide}>
                 <CustomLeftArrow
-                  isSelectedButtonRightState={isSelectedButtonRightState}
+                  isFirstSlide={currentIndexState === 0}
+                  isLastSlide={currentIndexState === slidesData.length - 1}
                 />
               </button>
               <button onClick={handleNextSlide}>
                 <CustomRightArrow
-                  isSelectedButtonRightState={isSelectedButtonRightState}
+                  isFirstSlide={currentIndexState === 0}
+                  isLastSlide={currentIndexState === slidesData.length - 1}
                 />
               </button>
             </div>
