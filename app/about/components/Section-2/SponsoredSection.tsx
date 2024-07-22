@@ -7,14 +7,14 @@ import Emprelatam from "@/images/About/Section-2/Emprelatam.png";
 const Sponsored = () => {
   return (
     <section
-      className="w-full  justify-center items-center h-[552px] flex flex-col bg-gradientColor"
+      className="w-full  justify-center items-center  h-[638px]  2xl:h-[552px] flex flex-col bg-gradientColor"
       style={{ background: "linear-gradient(to bottom, #FDEFDF, #DBF5FF" }}
     >
-      <div className=" flex  container flex-col justify-center items-center w-full min-h-full ">
-        <h2 className="text-black  text-xl 2xl:text-[48px]   ">
+      <div className=" flex  container flex-col justify-center pt-3 2xl:pt-[66px] items-center w-full min-h-full ">
+        <h2 className="text-black text-xl 2xl:text-[48px]">
           Con el respaldo de
         </h2>
-        <div className="  flex-col   flex 2xl:flex-row w-full gap-5 2xl:gap-[65px] items-center justify-center  p-8 ">
+        <div className="  flex-col   flex 2xl:flex-row w-full gap-5 2xl:gap-[65px] items-center justify-center p-10 2xl:p-16 ">
           <Image
             src={Innovaul}
             alt="innovaul"

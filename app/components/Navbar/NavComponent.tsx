@@ -118,10 +118,12 @@ const NavComponent = () => {
         </div>
       </div>
       {isMenuOpenState && (
-        <div className="fixed inset-0 top-0 bg-white h-full flex flex-col p-4">
+        <div
+          className={`fixed inset-0 top-0 bg-white h-full flex flex-col p-4 menuSlideDown`}
+        >
           <div className="flex justify-between  items-center p-4">
             <Link href="/ " onClick={closeMenu}>
-              <div className=" w-20 2xl:w-[100px]">
+              <div className=" w-14 2xl:w-[100px]">
                 <Image src={LogoFinniuDark} alt="Logo de Finniu" />
               </div>
             </Link>
@@ -176,7 +178,7 @@ const NavComponent = () => {
               }
               onClick={() => handleItemSelect("frequent-questions")}
             >
-              Aprende
+              FAQ
             </Link>
             <Link
               href="https://finantips.substack.com/"

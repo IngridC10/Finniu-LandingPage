@@ -72,20 +72,19 @@ const testimonialGroups: Testimonial[][] = [
 ];
 const TestimonialsDesktop = () => {
   const [currentIndexState, setCurrentIndexState] = useState(0);
-  const [isSelectedButtonRightState, setSelectedButtonRightState] =
-    useState(true);
 
   const handleNext = () => {
-    setSelectedButtonRightState(true);
-    setCurrentIndexState(
-      (prevIndex) => (prevIndex + 1) % testimonialGroups.length
-    );
+    setCurrentIndexState((prevIndex) => {
+      if (prevIndex === testimonialGroups.length - 1) {
+        return prevIndex;
+      } else {
+        return (prevIndex + 1) % testimonialGroups.length;
+      }
+    });
   };
-
   const handlePrev = () => {
-    setSelectedButtonRightState(false);
     setCurrentIndexState((prevIndex) =>
-      prevIndex === 0 ? testimonialGroups.length - 1 : prevIndex - 1
+      prevIndex === 0 ? prevIndex : prevIndex - 1
     );
   };
 
@@ -97,7 +96,7 @@ const TestimonialsDesktop = () => {
         <p className="text-[36px] flex justify-end">
           Ellos lograron sus metas, ahora te toca a ti.
         </p>
-        <div className=" flex absolute inset-0 justify-center items-center right-16 top-[29%]">
+        <div className=" flex absolute inset-0 justify-center items-center top-[217px] right-16 ">
           <Image src={Plane} alt="Rocket" height={128} />
         </div>
       </div>
@@ -127,12 +126,14 @@ const TestimonialsDesktop = () => {
         <div className="flex flex-row justify-end gap-3 mt-10">
           <button onClick={handlePrev}>
             <CustomLeftArrow
-              isSelectedButtonRightState={isSelectedButtonRightState}
+              isFirstSlide={currentIndexState === 0}
+              isLastSlide={currentIndexState === testimonialGroups.length - 1}
             />
           </button>
           <button onClick={handleNext}>
             <CustomRightArrow
-              isSelectedButtonRightState={isSelectedButtonRightState}
+              isFirstSlide={currentIndexState === 0}
+              isLastSlide={currentIndexState === testimonialGroups.length - 1}
             />
           </button>
         </div>
