@@ -16,9 +16,8 @@ import CustomLeftArrow from "@/components/CustomLeftArrow";
 import CustomRightArrow from "@/components/CustomRightArrow";
 const HowItWorksSection = () => {
   const [activeIndexState, setActiveIndexState] = useState(0);
+
   const [isWhereToFindButtonActiveState, setWhereToFindButtonActiveState] =
-    useState(true);
-  const [isSelectedButtonRightState, setSelectedButtonRightState] =
     useState(true);
 
   const handleButtonClick = () => {
@@ -27,21 +26,25 @@ const HowItWorksSection = () => {
   };
 
   const handlePrevClick = () => {
-    setSelectedButtonRightState(false);
-    setActiveIndexState((prevIndex) =>
-      prevIndex === 0 ? itemsSlider.length - 1 : prevIndex - 1
-    );
-  };
+    setActiveIndexState((prevIndex) => {
+      if (prevIndex === 0) {
+        return 0;
+      }
 
+      return prevIndex - 1;
+    });
+  };
   const handleNextClick = () => {
-    setSelectedButtonRightState(true);
-    setActiveIndexState((prevIndex) =>
-      prevIndex === itemsSlider.length - 1 ? 0 : prevIndex + 1
-    );
+    setActiveIndexState((prevIndex) => {
+      if (prevIndex === itemsSlider.length - 1) {
+        return prevIndex;
+      }
+
+      return prevIndex + 1;
+    });
   };
 
   const goToIndex = (index: number) => {
-    setSelectedButtonRightState(index > activeIndexState);
     setActiveIndexState(index);
   };
 
@@ -103,7 +106,10 @@ const HowItWorksSection = () => {
     : "text-white";
 
   return (
-    <section id="HowItWorks" className="bg-grayColorOpcional section-custom">
+    <section
+      id="HowItWorks"
+      className="bg-grayColorOpcional w-full min-h-[550px]  2xl:min-h-screen flex justify-center items-center"
+    >
       <div className="flex flex-col container-section items-center container">
         <div className="flex flex-col 2xl:flex-row items-center justify-between w-full">
           <h1 className="text-[32px] 2xl:text-[55px] font-bold">
@@ -119,7 +125,7 @@ const HowItWorksSection = () => {
             <ButtonComponent
               text="¿Cómo encontrarlo?"
               onClick={handleButtonClick}
-              className={`h-[35px] 2xl:h-16 text-[14px] text-center ml-2 2xl:ml-0 2xl:text-[28px] shadow-md w-[162px] 2xl:w-[333px] gap-2 flex justify-center items-center rounded-full ${
+              className={` buttonTransition h-[35px] 2xl:h-16 text-[12px] text-center ml-2 2xl:ml-0 2xl:text-[28px] shadow-md w-[162px] 2xl:w-[333px] gap-2 flex justify-center items-center rounded-full ${
                 isWhereToFindButtonActiveState
                   ? "bg-lightBlueColor text-blackColorText"
                   : "bg-blueDarkColor text-white"
@@ -132,7 +138,7 @@ const HowItWorksSection = () => {
             <ButtonComponent
               text="¿Cómo invertir?"
               onClick={handleButtonClick}
-              className={`h-[35px] 2xl:h-16 w-[162px] ml-0 2xl:w-[333px] m-1 flex justify-center items-center gap-2 rounded-full text-[14px] 2xl:text-[28px] ${
+              className={`buttonTransition  h-[35px] 2xl:h-16 w-[162px] ml-0 2xl:w-[333px] m-1 flex justify-center items-center gap-2 rounded-full text-[12px] 2xl:text-[28px] ${
                 isWhereToFindButtonActiveState
                   ? "bg-lighBlue text-blueDarkColor"
                   : "bg-blueColorButton text-white"
@@ -150,7 +156,8 @@ const HowItWorksSection = () => {
         <div className="flex flex-row rounded-2xl justify-center items-center w-[400px] 2xl:w-[80%]">
           <button onClick={handlePrevClick}>
             <CustomLeftArrow
-              isSelectedButtonRightState={isSelectedButtonRightState}
+              isFirstSlide={activeIndexState === 0}
+              isLastSlide={activeIndexState === itemsSlider.length - 1}
               className="relative left-5 2xl:static 2xl:left-0"
             />
           </button>
@@ -176,7 +183,8 @@ const HowItWorksSection = () => {
           </div>
           <button onClick={handleNextClick}>
             <CustomRightArrow
-              isSelectedButtonRightState={isSelectedButtonRightState}
+              isFirstSlide={activeIndexState === 0}
+              isLastSlide={activeIndexState === itemsSlider.length - 1}
               className="relative 2xl:static 2xl:right-0 right-6"
             />
           </button>

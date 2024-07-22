@@ -9,7 +9,7 @@ const FixedTermCardSectionMobile = () => {
   return (
     <div className="flex flex-col w-full min-h-screen bg-white justify-center items-center">
       <div>
-        <h1 className="text-[32px] text-center text-blueDarkColor font-bold">
+        <h1 className="text-[32px] text-center mt-5 text-blueDarkColor font-bold">
           Como un plazo fijo
         </h1>
         <div className="flex flex-row justify-center items-center">
@@ -49,7 +49,7 @@ const FixedTermCardSectionMobile = () => {
       </div>
 
       <div className=" m-3">
-        <h1 className="text-[32px] text-blueDarkColor text-center font-bold">
+        <h1 className="text-[32px] text-blueDarkColor text-center mt-5 font-bold">
           Inversión segura
         </h1>
         <div className="flex flex-row justify-center">

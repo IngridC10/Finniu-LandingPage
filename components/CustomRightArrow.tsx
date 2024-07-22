@@ -1,18 +1,19 @@
 import React from "react";
-
 const CustomRightArrow = ({
-  isSelectedButtonRightState,
   className,
+  isLastSlide,
 }: {
-  isSelectedButtonRightState: boolean;
+  isSelectedButtonRightState?: boolean;
   className?: string;
+  isFirstSlide?: boolean;
+  isLastSlide?: boolean;
 }) => {
   return (
     <div
-      className={`relative arrow-container right-0 flex items-center   justify-center transform w-[40px] 2xl:w-[70px]  h-[40px]   2xl:h-[67px] p-2 rounded-full shadow-md ${
-        isSelectedButtonRightState
-          ? "bg-blueColorButton"
-          : "bg-graySelectedColor"
+      className={`relative arrow-container right-0 flex items-center justify-center transform w-[40px] 2xl:w-[70px] h-[40px] 2xl:h-[67px] p-2 rounded-full shadow-md ${
+        isLastSlide
+          ? "bg-grayButtonColor cursor-not-allowed"
+          : "bg-blueColorButton cursor-pointer"
       } ${className}`}
     >
       <svg
@@ -32,5 +33,4 @@ const CustomRightArrow = ({
     </div>
   );
 };
-
 export default CustomRightArrow;
