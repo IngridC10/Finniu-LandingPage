@@ -11,7 +11,7 @@ const HistoryCircle = () => {
       {/* <div className=" mt-10">
         <Image src={EyesArrow} alt="eyes-arrow" height={170} />
       </div> */}
-      <div className=" bg-blueDarkColor text-white 2xl:rounded-full  mb-0 2xl:mb-[68px] flex items-center justify-center  w-[371px] 2xl:w-[675px] h-[556px] 2xl:h-[735px]">
+      <div className=" bg-blueDarkColor text-white 2xl:rounded-full  mb-0 2xl:mb-[68px] flex items-center justify-center  w-[354px] 2xl:w-[675px] h-[556px] 2xl:h-[735px]">
         <Image
           src={EyesArrow}
           alt="eyes-arrow"

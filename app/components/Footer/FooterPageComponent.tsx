@@ -120,7 +120,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="mt-8 text-center text-darkBlueColor text-sm">
+      <div className="mt-8 text-center text-darkBlueColor text-[11px]   2xl:text-sm">
         Finniu © 2024 | Todos los derechos reservados
       </div>
     </footer>
