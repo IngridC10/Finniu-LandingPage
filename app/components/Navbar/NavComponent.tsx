@@ -46,9 +46,9 @@ const NavComponent = () => {
             onClick={() => handleItemSelect("how-it-works")}
           >
             ¿Cómo funciona?
-          </Link>{" "}
+          </Link>
           <Link
-            href="/#SimulatorInvestment"
+            href="/#simulatorInvestment"
             className={
               selectedNavItemState === "simulator-investment" ? "underline" : ""
             }

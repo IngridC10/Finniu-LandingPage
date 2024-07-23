@@ -30,7 +30,7 @@ const SafeInvestment = () => {
           </div>
         </div>
       </div>
-      <div className="absolute flex flex-row left-[-200px] top-[5px] w-full  items-start  justify-start   ">
+      <div className=" absolute flex flex-row left-[-200px] top-[5px] w-full  items-start  justify-start   ">
         <Image
           src={BusinessMoney}
           alt="business-icon"

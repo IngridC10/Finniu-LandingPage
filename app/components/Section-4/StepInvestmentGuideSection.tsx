@@ -10,8 +10,7 @@ import ProjectYourGoals from "@/images/Section-4/ProjectYourGoals.png";
 
 const StepInvestmentGuideSection = () => {
   const [currentIndexState, setCurrentIndexState] = useState(0);
-  const [isSelectedButtonRightState, setSelectedButtonRightState] =
-    useState(true);
+
   const touchStartXRef = useRef<number | null>(null);
   const touchEndXRef = useRef<number | null>(null);
 
@@ -48,28 +47,20 @@ const StepInvestmentGuideSection = () => {
       bgColor: "bg-lightSkyBlue text-blackColorText",
     },
   ];
+
   const handleNextSlide = () => {
-    setSelectedButtonRightState(true);
-    setCurrentIndexState((prevIndex) => {
-      if (prevIndex === slidesData.length - 1) {
-        return prevIndex;
-      }
-
-      return prevIndex + 1;
-    });
+    setCurrentIndexState((prevIndex) =>
+      prevIndex === slidesData.length - 1 ? 0 : prevIndex + 1
+    );
   };
+
   const handlePrevSlide = () => {
-    setSelectedButtonRightState(false);
-    setCurrentIndexState((prevIndex) => {
-      if (prevIndex === 0) {
-        return prevIndex;
-      }
-
-      return prevIndex - 1;
-    });
+    setCurrentIndexState((prevIndex) =>
+      prevIndex === 0 ? slidesData.length - 1 : prevIndex - 1
+    );
   };
 
-  const handleDotClick = (index: SetStateAction<number>) => {
+  const handleDotClick = (index: number) => {
     setCurrentIndexState(index);
   };
 
@@ -106,7 +97,7 @@ const StepInvestmentGuideSection = () => {
 
   return (
     <section
-      className={` min-h-[598px]   2xl:min-h-screen  flex justify-center w-full items-center py-10 ${slidesData[currentIndexState].bgColor}`}
+      className={`min-h-[598px] 2xl:min-h-screen flex justify-center w-full items-center py-10 ${slidesData[currentIndexState].bgColor}`}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
@@ -138,12 +129,17 @@ const StepInvestmentGuideSection = () => {
               </button>
             </div>
           </div>
-          <div className="relative flex justify-end">
-            <Image
-              src={slidesData[currentIndexState].imageSrc}
-              alt={`slide-${currentIndexState + 1}`}
-              className="object-cover w-[235px] 2xl:w-[532px]"
-            />
+          <div className="relative flex justify-end image-step">
+            {slidesData.map((slide, index) => (
+              <Image
+                key={index}
+                src={slide.imageSrc}
+                alt={`slide-${index + 1}`}
+                className={`slide-image ${
+                  index === currentIndexState ? "active" : ""
+                } object-cover w-[235px] 2xl:w-[532px]`}
+              />
+            ))}
           </div>
         </div>
         <div className="flex justify-center mt-4">
@@ -151,10 +147,8 @@ const StepInvestmentGuideSection = () => {
             <button
               key={index}
               onClick={() => handleDotClick(index)}
-              className={`2xl:w-5  w-3 h-3 2xl:h-5 rounded-full mx-2 ${
-                index === 1
-                  ? "bg-lightBlueColor"
-                  : index === currentIndexState
+              className={`2xl:w-5 w-3 h-3 2xl:h-5 rounded-full mx-2 ${
+                index === currentIndexState
                   ? "bg-blueDarkColor"
                   : "bg-lightBlueColor"
               }`}

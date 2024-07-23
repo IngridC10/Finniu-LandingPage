@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import Image from "next/image";
 import ButtonComponent from "@/components/ButtonComponent";
 import CellphoneandAppStore from "@/images/Section-3/CellphoneandAppStore.png";
@@ -14,15 +14,18 @@ import Step4 from "@/images/Section-3/Step4.png";
 import Bill from "@/images/Section-3/Bill.png";
 import CustomLeftArrow from "@/components/CustomLeftArrow";
 import CustomRightArrow from "@/components/CustomRightArrow";
+
 const HowItWorksSection = () => {
   const [activeIndexState, setActiveIndexState] = useState(0);
-
   const [isWhereToFindButtonActiveState, setWhereToFindButtonActiveState] =
     useState(true);
 
+  // Nuevo estado para controlar la clase de animación
+  const [animationClassState, setAnimationClassState] = useState("");
+
   const handleButtonClick = () => {
     setWhereToFindButtonActiveState(!isWhereToFindButtonActiveState);
-    setActiveIndexState(0);
+    setActiveIndexState(0); // Reiniciar al primer slide cuando cambias de sección
   };
 
   const handlePrevClick = () => {
@@ -30,21 +33,20 @@ const HowItWorksSection = () => {
       if (prevIndex === 0) {
         return 0;
       }
-
       return prevIndex - 1;
     });
   };
+
   const handleNextClick = () => {
     setActiveIndexState((prevIndex) => {
       if (prevIndex === itemsSlider.length - 1) {
         return prevIndex;
       }
-
       return prevIndex + 1;
     });
   };
 
-  const goToIndex = (index: number) => {
+  const goToIndex = (index: SetStateAction<number>) => {
     setActiveIndexState(index);
   };
 
@@ -52,6 +54,17 @@ const HowItWorksSection = () => {
     const interval = setInterval(handleNextClick, 10000);
     return () => clearInterval(interval);
   }, [isWhereToFindButtonActiveState]);
+
+  useEffect(() => {
+    setAnimationClassState("fade-in-right");
+
+    // Remover la clase de animación después de que termine
+    const timeout = setTimeout(() => {
+      setAnimationClassState("");
+    }, 800); // Asegúrate de que esto coincida con la duración de tu animación CSS
+
+    return () => clearTimeout(timeout);
+  }, [activeIndexState]); // Se vuelve a ejecutar cada vez que cambia el índice
 
   const itemsSliderWhereFindIt = [
     {
@@ -108,7 +121,7 @@ const HowItWorksSection = () => {
   return (
     <section
       id="HowItWorks"
-      className="bg-grayColorOpcional w-full min-h-[550px]  2xl:min-h-screen flex justify-center items-center"
+      className="bg-grayColorOpcional w-full min-h-[550px] 2xl:min-h-screen flex justify-center items-center"
     >
       <div className="flex flex-col container-section items-center container">
         <div className="flex flex-col 2xl:flex-row items-center justify-between w-full">
@@ -118,14 +131,14 @@ const HowItWorksSection = () => {
           <div
             className={`flex flex-row m-2 w-[337px] 2xl:w-[805px] items-center h-[51px] 2xl:h-[90px] justify-around rounded-full ${
               isWhereToFindButtonActiveState
-                ? "bg-lighBlue"
+                ? "bg-lightBlue"
                 : "bg-blueDarkColor"
             }`}
           >
             <ButtonComponent
               text="¿Cómo encontrarlo?"
               onClick={handleButtonClick}
-              className={` buttonTransition h-[35px] 2xl:h-16 text-[12px] text-center ml-2 2xl:ml-0 2xl:text-[28px] shadow-md w-[162px] 2xl:w-[333px] gap-2 flex justify-center items-center rounded-full ${
+              className={`buttonTransition h-[35px] 2xl:h-16 text-[12px] text-center ml-2 2xl:ml-0 2xl:text-[28px] shadow-md w-[162px] 2xl:w-[333px] gap-2 flex justify-center items-center rounded-full ${
                 isWhereToFindButtonActiveState
                   ? "bg-lightBlueColor text-blackColorText"
                   : "bg-blueDarkColor text-white"
@@ -138,9 +151,9 @@ const HowItWorksSection = () => {
             <ButtonComponent
               text="¿Cómo invertir?"
               onClick={handleButtonClick}
-              className={`buttonTransition  h-[35px] 2xl:h-16 w-[162px] ml-0 2xl:w-[333px] m-1 flex justify-center items-center gap-2 rounded-full text-[12px] 2xl:text-[28px] ${
+              className={`h-[35px] 2xl:h-16 w-[162px] ml-0 2xl:w-[333px] m-1 flex justify-center items-center gap-2 rounded-full text-[12px] 2xl:text-[28px] ${
                 isWhereToFindButtonActiveState
-                  ? "bg-lighBlue text-blueDarkColor"
+                  ? "bg-lightBlue text-blueDarkColor"
                   : "bg-blueColorButton text-white"
               }`}
             >
@@ -150,7 +163,7 @@ const HowItWorksSection = () => {
             </ButtonComponent>
           </div>
         </div>
-        <h1 className={`text-[24px] 2xl:text-[48px] `}>
+        <h1 className="text-[24px] 2xl:text-[48px]">
           Paso {activeIndexState + 1}
         </h1>
         <div className="flex flex-row rounded-2xl justify-center items-center w-[400px] 2xl:w-[80%]">
@@ -162,10 +175,10 @@ const HowItWorksSection = () => {
             />
           </button>
           <div
-            className={`p-5 w-full h-[416px]  2xl:h-[599px] flex rounded-2xl flex-col justify-center items-center ${containerBackgroundColor}`}
+            className={`slider-container p-5 w-full h-[416px] 2xl:h-[599px] flex rounded-2xl flex-col justify-center items-center ${containerBackgroundColor}`}
           >
             <p
-              className={`mb-4 text-[14px] 2xl:text-[24px] text-center ${textColor}`}
+              className={`mb-4 text-[14px] 2xl:text-[24px] text-center ${textColor} ${animationClassState}`}
             >
               {itemsSlider[activeIndexState].text}
             </p>
@@ -176,7 +189,7 @@ const HowItWorksSection = () => {
                   src={img}
                   alt={itemsSlider[activeIndexState].alt}
                   width={200}
-                  // className="h-full"
+                  className={animationClassState}
                 />
               ))}
             </div>
@@ -193,7 +206,7 @@ const HowItWorksSection = () => {
           {itemsSlider.map((_, index) => (
             <button
               key={index}
-              className={`2xl:w-5  w-3 h-3 2xl:h-5 rounded-full mx-1 ${
+              className={`2xl:w-5 w-3 h-3 2xl:h-5 rounded-full mx-1 ${
                 index === activeIndexState
                   ? "bg-blueDarkColor"
                   : "bg-lightBlueColor"

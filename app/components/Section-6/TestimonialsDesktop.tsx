@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import CustomLeftArrow from "@/components/CustomLeftArrow";
 import CustomRightArrow from "@/components/CustomRightArrow";
@@ -10,7 +10,6 @@ import InvestorThree from "@/images/Section-6/InvestorThree.png";
 import InvestorFour from "@/images/Section-6/InvestorFour.png";
 import InvestorFive from "@/images/Section-6/InvestorFive.png";
 import InvestorSix from "@/images/Section-6/InvestorSix.png";
-
 type Testimonial = {
   text?: string;
   name?: string;
@@ -40,7 +39,6 @@ const testimonialGroups: Testimonial[][] = [
       title: "Comunicadora",
       image: InvestorThree,
     },
-
     {
       text: "No sabía dónde invertir mis ahorros, debido a la baja rentabilidad en varios bancos; sin embargo, Finniu me ha retornado hasta el 18% en un año y además, me ofrece las mejores herramientas para hacerle seguimiento a mis inversiones.",
       name: "Araceli Ramos",
@@ -48,7 +46,6 @@ const testimonialGroups: Testimonial[][] = [
       image: InvestorFour,
     },
   ],
-
   [
     {
       text: "Estoy muy satisfecho con Finniu y los retornos que he obtenido en comparación con muchos bancos tradicionales. La plataforma es fácil de usar y ha sido una excelente manera de hacer crecer mi dinero de manera segura y confiable.",
@@ -70,23 +67,32 @@ const testimonialGroups: Testimonial[][] = [
     },
   ],
 ];
+
 const TestimonialsDesktop = () => {
   const [currentIndexState, setCurrentIndexState] = useState(0);
+  const [animateState, setAnimateState] = useState(false);
 
   const handleNext = () => {
-    setCurrentIndexState((prevIndex) => {
-      if (prevIndex === testimonialGroups.length - 1) {
-        return prevIndex;
-      } else {
-        return (prevIndex + 1) % testimonialGroups.length;
-      }
-    });
-  };
-  const handlePrev = () => {
     setCurrentIndexState((prevIndex) =>
-      prevIndex === 0 ? prevIndex : prevIndex - 1
+      prevIndex === testimonialGroups.length - 1 ? 0 : prevIndex + 1
     );
   };
+
+  const handlePrev = () => {
+    setCurrentIndexState((prevIndex) =>
+      prevIndex === 0 ? testimonialGroups.length - 1 : prevIndex - 1
+    );
+  };
+
+  useEffect(() => {
+    setAnimateState(true);
+
+    const timer = setTimeout(() => {
+      setAnimateState(false);
+    }, 600);
+
+    return () => clearTimeout(timer);
+  }, [currentIndexState]);
 
   return (
     <div className="flex flex-row container-section gap-32">
@@ -96,15 +102,19 @@ const TestimonialsDesktop = () => {
         <p className="text-[36px] flex justify-end">
           Ellos lograron sus metas, ahora te toca a ti.
         </p>
-        <div className=" flex absolute inset-0 justify-center items-center top-[217px] right-16 ">
+        <div className="flex absolute inset-0 justify-center items-center top-[217px] right-16">
           <Image src={Plane} alt="Rocket" height={128} />
         </div>
       </div>
-      <div className="space-y-4 flex flex-col">
+      <div
+        className={`space-y-4 flex flex-col ${
+          animateState ? "fade-in-right" : ""
+        } testimonial-group`}
+      >
         {testimonialGroups[currentIndexState].map((testimonial, index) => (
           <div
             key={index}
-            className="bg-lighBlue w-[691px] p-16 h-[332px] min-h-[332px] rounded-xl shadow-md leading-relaxed"
+            className={`bg-lighBlue w-[691px] p-16 h-[332px] min-h-[332px] rounded-xl shadow-md leading-relaxed`}
           >
             <p className="mb-2 text-xl text-justify">{testimonial.text}</p>
             <div className="flex justify-between items-end">
@@ -141,4 +151,5 @@ const TestimonialsDesktop = () => {
     </div>
   );
 };
+
 export default TestimonialsDesktop;

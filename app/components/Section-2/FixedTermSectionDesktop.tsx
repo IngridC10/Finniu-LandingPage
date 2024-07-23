@@ -19,10 +19,10 @@ const FixedTermSectionDesktop = () => {
   };
 
   return (
-    <div className="flex  relative container-section ">
-      <div className="text-left w-[561px] z-10 flex flex-col justify-center mb-24 ">
+    <div className="flex relative container-section">
+      <div className="text-left w-[561px] z-10 flex flex-col justify-center mb-24">
         <p
-          className={` mb-4 leading-tight  font-bold cursor-pointer ${
+          className={`mb-4 leading-tight font-bold cursor-pointer ${
             showComponentFixedTermSelectedState
               ? "text-graySecondaryColor text-[55px]"
               : "text-grayColorText text-[40px]"
@@ -42,22 +42,25 @@ const FixedTermSectionDesktop = () => {
           Inversión segura
         </p>
       </div>
+
       {showComponentFixedTermSelectedState ? (
         <FixedTermCard />
       ) : (
         <SafeInvestmentCard />
       )}
 
-      {showComponentFixedTermSelectedState ? (
-        <div className="absolute flex left-12 flex-row justify-center w-full items-center h-full ">
-          <Image
-            src={CellphoneImage}
-            alt="cellphone-image"
-            width={575}
-            height={575}
-          />
-        </div>
-      ) : null}
+      <div
+        className={`image-container ${
+          showComponentFixedTermSelectedState ? "" : "hidden"
+        }`}
+      >
+        <Image
+          src={CellphoneImage}
+          alt="cellphone-image"
+          width={575}
+          height={575}
+        />
+      </div>
     </div>
   );
 };
