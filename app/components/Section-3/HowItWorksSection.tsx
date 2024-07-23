@@ -20,12 +20,11 @@ const HowItWorksSection = () => {
   const [isWhereToFindButtonActiveState, setWhereToFindButtonActiveState] =
     useState(true);
 
-  // Nuevo estado para controlar la clase de animación
   const [animationClassState, setAnimationClassState] = useState("");
 
   const handleButtonClick = () => {
     setWhereToFindButtonActiveState(!isWhereToFindButtonActiveState);
-    setActiveIndexState(0); // Reiniciar al primer slide cuando cambias de sección
+    setActiveIndexState(0);
   };
 
   const handlePrevClick = () => {
@@ -58,13 +57,12 @@ const HowItWorksSection = () => {
   useEffect(() => {
     setAnimationClassState("fade-in-right");
 
-    // Remover la clase de animación después de que termine
     const timeout = setTimeout(() => {
       setAnimationClassState("");
-    }, 800); // Asegúrate de que esto coincida con la duración de tu animación CSS
+    }, 800);
 
     return () => clearTimeout(timeout);
-  }, [activeIndexState]); // Se vuelve a ejecutar cada vez que cambia el índice
+  }, [activeIndexState]);
 
   const itemsSliderWhereFindIt = [
     {
