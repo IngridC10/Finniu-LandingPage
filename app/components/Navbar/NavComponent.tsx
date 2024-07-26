@@ -37,21 +37,25 @@ const NavComponent = () => {
             <Image src={LogoFinniu} alt="Logo de Finniu" />
           </div>
         </Link>
-        <div className="hidden 2xl:flex flex-row justify-between items-center space-x-20 text-white text-[24px]">
+        <div className="hidden 2xl:flex  flex-row justify-between items-center space-x-20 text-white text-[24px]">
           <Link
             href="/#HowItWorks"
-            className={
-              selectedNavItemState === "how-it-works" ? "underline" : ""
-            }
+            className={`transition-transform duration-300 ${
+              selectedNavItemState === "how-it-works"
+                ? " text-lightTextNavBar"
+                : ""
+            } hover:scale-110`}
             onClick={() => handleItemSelect("how-it-works")}
           >
             ¿Cómo funciona?
           </Link>
           <Link
             href="/#simulatorInvestment"
-            className={
-              selectedNavItemState === "simulator-investment" ? "underline" : ""
-            }
+            className={`transition-transform duration-300 ${
+              selectedNavItemState === "simulator-investment"
+                ? "text-lightTextNavBar"
+                : ""
+            } hover:scale-110`}
             onClick={() => handleItemSelect("simulator-investment")}
           >
             Simulador
@@ -59,9 +63,11 @@ const NavComponent = () => {
           <Link
             href="https://finniuapp.notion.site/Preguntas-Frecuentes-f7f77872d34a4de3a9e12d5fc58421ff"
             target="_blank"
-            className={
-              selectedNavItemState === "frequent-questions" ? "underline" : ""
-            }
+            className={`transition-transform duration-300 ${
+              selectedNavItemState === "frequent-questions"
+                ? "text-lightTextNavBar"
+                : ""
+            } hover:scale-110`}
             onClick={() => handleItemSelect("frequent-questions")}
           >
             Ayuda
@@ -69,18 +75,18 @@ const NavComponent = () => {
           <Link
             href="https://finantips.substack.com/"
             target="_blank"
-            className={selectedNavItemState === "finantips" ? "underline" : ""}
+            className={`transition-transform duration-300 ${
+              selectedNavItemState === "finantips" ? "text-lightTextNavBar" : ""
+            } hover:scale-110`}
             onClick={() => handleItemSelect("finantips")}
           >
             Finantips
           </Link>
           <Link
             href="/about"
-            className={
-              selectedNavItemState === "about"
-                ? "underline text-lightTextNavBar"
-                : ""
-            }
+            className={`transition-transform duration-300 ${
+              selectedNavItemState === "about" ? " text-lightTextNavBar" : ""
+            } hover:scale-110`}
             onClick={() => handleItemSelect("about")}
           >
             Nosotros
@@ -153,7 +159,9 @@ const NavComponent = () => {
             <Link
               href="/#HowItWorks"
               className={
-                selectedNavItemState === "how-it-works" ? "underline" : ""
+                selectedNavItemState === "how-it-works"
+                  ? "text-lightTextNavBar"
+                  : ""
               }
               onClick={() => handleItemSelect("how-it-works")}
             >
@@ -163,7 +171,7 @@ const NavComponent = () => {
               href="/#simulatorInvestment"
               className={
                 selectedNavItemState === "simulator-investment"
-                  ? "underline"
+                  ? "text-lightTextNavBar"
                   : ""
               }
               onClick={() => handleItemSelect("simulator-investment")}
@@ -174,7 +182,9 @@ const NavComponent = () => {
               href="https://finniuapp.notion.site/Preguntas-Frecuentes-f7f77872d34a4de3a9e12d5fc58421ff"
               target="_blank"
               className={
-                selectedNavItemState === "frequent-questions" ? "underline" : ""
+                selectedNavItemState === "frequent-questions"
+                  ? "text-lightTextNavBar"
+                  : ""
               }
               onClick={() => handleItemSelect("frequent-questions")}
             >
@@ -184,7 +194,9 @@ const NavComponent = () => {
               href="https://finantips.substack.com/"
               target="_blank"
               className={
-                selectedNavItemState === "finantips" ? "underline" : ""
+                selectedNavItemState === "finantips"
+                  ? "text-lightTextNavBar"
+                  : ""
               }
               onClick={() => handleItemSelect("finantips")}
             >
@@ -193,9 +205,7 @@ const NavComponent = () => {
             <Link
               href="/about"
               className={
-                selectedNavItemState === "about"
-                  ? "underline text-lightTextNavBar"
-                  : ""
+                selectedNavItemState === "about" ? " text-lightTextNavBar" : ""
               }
               onClick={() => handleItemSelect("about")}
             >

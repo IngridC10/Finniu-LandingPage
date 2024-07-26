@@ -27,8 +27,7 @@ const DownloadAppMobileSection = () => {
       <Image
         src={CellphoneDollar}
         alt="cellphone-dollar"
-        width={405}
-        height={300}
+        className="w-[200px]"
       />
 
       <div className="flex flex-row ">

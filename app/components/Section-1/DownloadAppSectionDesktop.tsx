@@ -100,11 +100,11 @@ const DownloadAppSectionDesktop = () => {
         </div>
       </div>
 
-      <div className="absolute right-[75px] top-[96px] flex flex-row items-center  justify-center h-full w-full">
+      <div className="absolute right-[75px] top-[26px] flex flex-row items-center  justify-center h-full w-full">
         <Image
           src={CellphoneDollar}
           alt="CellPhone-Dollar"
-          width={575}
+          width={390}
           style={{ height: "auto" }}
         />
       </div>

@@ -151,11 +151,11 @@ a {
   text-decoration: underline;
 } */
 
-a:hover,
+/* a:hover,
 a:focus,
 a:active {
-  text-decoration: underline;
-}
+  text-decoration: none;
+} */
 button[data-testid="carousel-right-control"] {
   background-color: #1a3a5a;
   color: white;
@@ -261,7 +261,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 }
 
 .flag-dropdown {
-  height: 40px;
+  height: 38px;
   margin-top: 6px;
   border-color: white !important;
 }

@@ -2,11 +2,13 @@
 import { useState } from "react";
 import Image from "next/image";
 import ButtonComponent from "@/components/ButtonComponent";
-import "react-phone-input-2/lib/style.css";
+// import "react-phone-input-2/lib/style.css";
 // import Google from "/images/Section-7/Google.png";
+import "react-phone-input-2/lib/style.css";
 import IconHand from "@/images/Section-7/IconHand.png";
 import IconCheck from "@/images/Section-7/IconCheck.png";
 import PhoneInput from "react-phone-input-2";
+import { savePreRegistration } from "@/app/actions/register";
 // import EyeClosed from "@/images/Section-7/EyeClosed.png";
 
 interface FormData {
@@ -14,6 +16,7 @@ interface FormData {
   typeDocument: string;
   dni: string;
   telephoneNumber: string;
+  email: string; // Campo de correo electrónico agregado
 }
 
 interface FormErrors {
@@ -21,6 +24,7 @@ interface FormErrors {
   typeDocument?: string;
   dni?: string;
   telephoneNumber?: string;
+  email?: string; // Campo de correo electrónico agregado
 }
 
 const RegisterSection = () => {
@@ -30,8 +34,10 @@ const RegisterSection = () => {
     fullName: "",
     dni: "",
     telephoneNumber: "",
+    email: "",
   });
   const [formErrors, setFormErrors] = useState<FormErrors>({});
+  const [generalError, setGeneralError] = useState<string | null>(null);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -43,8 +49,7 @@ const RegisterSection = () => {
     });
   };
 
-  // Maneja los cambios del input de teléfono
-  const handlePhoneChange = (value: string) => {
+  const handlePhoneChange = (value: string, country: any) => {
     setFormData({
       ...formData,
       telephoneNumber: value,
@@ -69,25 +74,44 @@ const RegisterSection = () => {
     if (!formData.telephoneNumber) {
       errors.telephoneNumber = "Este dato es requerido";
     } else if (formData.telephoneNumber.length < 11) {
-      // Incluye el código del país
       errors.telephoneNumber = "Verifique sus datos";
     }
+
+    if (!formData.email) {
+      errors.email = "Este dato es requerido";
+    }
+
     return errors;
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const errors = validateForm();
+
     if (Object.keys(errors).length === 0) {
       setPopupVisibleState(true);
 
-      setFormData({
-        typeDocument: "DNI",
-        fullName: "",
-        dni: "",
-        telephoneNumber: "",
+      // Llamar a la API para guardar la preinscripción
+      const response = await savePreRegistration({
+        documentNumber: formData.dni,
+        email: formData.email,
+        phoneNumber: formData.telephoneNumber,
+        phonePrefix: "+51", // Puedes ajustar esto según tus necesidades
       });
-      setFormErrors({});
+
+      if (response.success) {
+        setPopupVisibleState(true);
+        setFormData({
+          typeDocument: "DNI",
+          fullName: "",
+          dni: "",
+          telephoneNumber: "",
+          email: "",
+        });
+        setFormErrors({});
+      } else {
+        setGeneralError("Error al guardar la preinscripción");
+      }
     } else {
       setFormErrors(errors);
     }
@@ -186,6 +210,22 @@ const RegisterSection = () => {
                 <p className="text-red-500 text-sm">{formErrors.dni}</p>
               )}
             </div>
+            <div className="mb-4">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Correo electrónico"
+                className={`w-full px-3 border-r-0 border-l-0 border-t-0 py-2 border-2 ${
+                  formErrors.email ? "border-red-500" : "border-grayColorLine"
+                } rounded-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-blueColorButton`}
+                value={formData.email}
+                onChange={handleInputChange}
+              />
+              {formErrors.email && (
+                <p className="text-red-500 text-sm">{formErrors.email}</p>
+              )}
+            </div>
             <div className="mb-10">
               <div className="relative">
                 <PhoneInput
@@ -196,7 +236,8 @@ const RegisterSection = () => {
                   inputProps={{
                     name: "telephoneNumber",
                     required: true,
-                    className: ` w-full px-3 border-2 border-l-0 border-t-0 border-r-0   ${
+                    autoFocus: true,
+                    className: `w-full px-3 border-2 border-l-0 border-t-0 border-r-0 ${
                       formErrors.telephoneNumber
                         ? "border-red-500"
                         : "border-grayColorLine"
@@ -207,6 +248,7 @@ const RegisterSection = () => {
                   }}
                   inputStyle={{
                     width: "100%",
+                    paddingLeft: "58px",
                   }}
                 />
                 {formErrors.telephoneNumber && (
@@ -216,6 +258,9 @@ const RegisterSection = () => {
                 )}
               </div>
             </div>
+            {generalError && (
+              <p className="text-red-500 text-sm">{generalError}</p>
+            )}
             <ButtonComponent
               text="Enviar"
               className="bg-blueColorButton text-white text-[16px] 2xl:text-[20px] rounded-md w-[250px] 2xl:w-[416px] h-[45px] 2xl:h-[57px]"

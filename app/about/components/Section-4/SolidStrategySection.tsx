@@ -31,12 +31,12 @@ const SolidStrategySection = () => {
                 </div>
 
                 <h1 className=" text-center  text-blueColorButton text-[24px]   2xl:text-[32px]">
-                  Relación empresarial
+                  Finanzas para todos
                 </h1>
 
                 <p className=" text-[18px] 2xl:text-[24px] text-center mt-[10px]">
-                  Participación directa en la administración de dinero de las
-                  empresas en el portafolio.
+                  Sabemos encontrar las mejores oportunidades de inversión y
+                  creamos productos sencillos para que todos puedan invertir.
                 </p>
               </div>
             </div>
@@ -52,12 +52,13 @@ const SolidStrategySection = () => {
                 </div>
 
                 <h1 className=" text-center  text-blueColorButton  text-[24px]     2xl:text-[27px]">
-                  Minimización de riesgos
+                  Invierte sin paltas
                 </h1>
 
                 <p className=" text-[18px]    2xl:text-[24px] text-center mt-[10px]">
-                  Solicitud de garantías en las inversiones que tienen un riesgo
-                  medio.
+                  Velamos por tu seguridad, por eso ofrecemos
+                  diversificación,información y transparencia en nuestra
+                  comunicación .
                 </p>
               </div>
             </div>
@@ -74,12 +75,12 @@ const SolidStrategySection = () => {
                   />
                 </div>
                 <h1 className=" text-center  text-blueColorButton text-[24px]    2xl:text-[32px] ">
-                  Gestión eficiente
+                  Crecer es simple
                 </h1>
 
                 <p className=" text-[18px]   2xl:text-[24px] text-center mt-[10px]">
-                  Análisis de la capacidad de endeudamiento y pago de las
-                  empresas del portafolio.
+                  Facilitamos toda la información que necesitas para tomar una
+                  decisión dentro de la App Finniu.
                 </p>
               </div>
             </div>
@@ -96,12 +97,12 @@ const SolidStrategySection = () => {
                 </div>
 
                 <h1 className=" text-center  text-blueColorButton text-[24px]   2xl:text-[32px] ">
-                  Diversificación
+                  Maximiza tu dinero
                 </h1>
 
                 <p className=" text-[18px] 2xl:text-[24px] text-center mt-[10px]">
-                  Distribución del capital en los sectores más rentables y con
-                  mayor crecimiento.
+                  Ayudamos a sacar el máximo potencial de tu dinero generando
+                  valor a través de nuestra experiencia y productos.
                 </p>
               </div>
             </div>

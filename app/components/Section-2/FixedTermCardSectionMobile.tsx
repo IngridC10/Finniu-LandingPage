@@ -50,7 +50,7 @@ const FixedTermCardSectionMobile = () => {
 
       <div className=" m-3">
         <h1 className="text-[32px] text-blueDarkColor text-center mt-5 font-bold">
-          Inversión segura
+          Invierte sin paltas
         </h1>
         <div className="flex flex-row justify-center">
           <Image src={Key} alt="business-money" width={25} height={35} />

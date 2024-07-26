@@ -7,7 +7,9 @@ const FixedTermCard = () => {
     <div className="flex flex-col  items-end justify-center mt-8 ml-[200px] ">
       <div className="flex flex-row gap-2 w-[680px] items-center justify-center">
         <Image src={Check} alt="check-icon" width={40} height={40} />
-        <h2 className="text-darkBlueColor text-[32px] ">Crecer es simple</h2>
+        <h2 className="text-darkBlueColor text-[32px] ">
+          Listos para crecer contigo
+        </h2>
       </div>
       <div className="flex flex-col shadow-md items-end p-3 h-[300px] pb-10  pr-14 pl-14 mt-4 rounded-2xl text-black bg-[#F0FBFF] text-xl w-[644px]">
         <div className=" w-96 ">

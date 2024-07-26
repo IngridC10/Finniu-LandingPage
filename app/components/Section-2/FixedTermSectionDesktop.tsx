@@ -22,14 +22,14 @@ const FixedTermSectionDesktop = () => {
     <div className="flex relative container-section">
       <div className="text-left w-[561px] z-10 flex flex-col justify-center mb-24">
         <p
-          className={`mb-4 leading-tight font-bold cursor-pointer ${
+          className={`mb-4 leading-tight font-bold  transition-all duration-300  cursor-pointer ${
             showComponentFixedTermSelectedState
               ? "text-graySecondaryColor text-[55px]"
               : "text-grayColorText text-[40px]"
           }`}
           onClick={handleTextClick}
         >
-          Como un plazo fijo
+          Crecer es simple
         </p>
         <p
           className={`font-bold mb-4 leading-tight cursor-pointer ${
@@ -39,7 +39,7 @@ const FixedTermSectionDesktop = () => {
           }`}
           onClick={handleTextClick}
         >
-          Inversión segura
+          Invierte sin paltas
         </p>
       </div>
 
