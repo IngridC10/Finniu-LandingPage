@@ -67,7 +67,6 @@ const testimonialGroups: Testimonial[][] = [
     },
   ],
 ];
-
 const TestimonialsDesktop = () => {
   const [currentIndexState, setCurrentIndexState] = useState(0);
   const [animateState, setAnimateState] = useState(false);
@@ -98,7 +97,6 @@ const TestimonialsDesktop = () => {
     <div className="flex flex-row container-section gap-32">
       <div className="flex flex-col justify-center relative w-[594px]">
         <h2 className="text-[45px] font-semibold">¿Qué dicen de Finniu?</h2>
-
         <p className="text-[36px] flex justify-end">
           Ellos lograron sus metas, ahora te toca a ti.
         </p>
@@ -134,13 +132,25 @@ const TestimonialsDesktop = () => {
           </div>
         ))}
         <div className="flex flex-row justify-end gap-3 mt-10">
-          <button onClick={handlePrev}>
+          <button
+            onClick={handlePrev}
+            disabled={currentIndexState === 0} // Deshabilita el botón si estamos en el primer índice
+            className={`${currentIndexState === 0 ? "button-disabled" : ""}`}
+          >
             <CustomLeftArrow
               isFirstSlide={currentIndexState === 0}
               isLastSlide={currentIndexState === testimonialGroups.length - 1}
             />
           </button>
-          <button onClick={handleNext}>
+          <button
+            onClick={handleNext}
+            disabled={currentIndexState === testimonialGroups.length - 1} // Deshabilita el botón si estamos en el último índice
+            className={`${
+              currentIndexState === testimonialGroups.length - 1
+                ? "button-disabled"
+                : ""
+            }`}
+          >
             <CustomRightArrow
               isFirstSlide={currentIndexState === 0}
               isLastSlide={currentIndexState === testimonialGroups.length - 1}

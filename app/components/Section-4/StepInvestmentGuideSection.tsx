@@ -115,13 +115,27 @@ const StepInvestmentGuideSection = () => {
               {slidesData[currentIndexState].description}
             </p>
             <div className="hidden 2xl:flex flex-row gap-8 justify-center 2xl:justify-end 2xl:gap-3">
-              <button onClick={handlePrevSlide}>
+              <button
+                onClick={handlePrevSlide}
+                disabled={currentIndexState === 0}
+                className={`cursor-pointer ${
+                  currentIndexState === 0 ? "opacity-50 cursor-not-allowed" : ""
+                }`}
+              >
                 <CustomLeftArrow
                   isFirstSlide={currentIndexState === 0}
                   isLastSlide={currentIndexState === slidesData.length - 1}
                 />
               </button>
-              <button onClick={handleNextSlide}>
+              <button
+                onClick={handleNextSlide}
+                disabled={currentIndexState === slidesData.length - 1}
+                className={`cursor-pointer ${
+                  currentIndexState === slidesData.length - 1
+                    ? "opacity-50 cursor-not-allowed"
+                    : ""
+                }`}
+              >
                 <CustomRightArrow
                   isFirstSlide={currentIndexState === 0}
                   isLastSlide={currentIndexState === slidesData.length - 1}
