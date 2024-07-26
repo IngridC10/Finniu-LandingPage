@@ -16,7 +16,7 @@ const StepInvestmentGuideSection = () => {
 
   const slidesData = [
     {
-      title: "Todas tus inversiones en la palma de tu mano",
+      title: "Tus finanzas en la palma de tu mano",
       subtitle: "Finanzas fácil",
       description:
         "Visualiza y gestiona todas tus inversiones de manera rápida y sencilla con nuestra aplicación, que te ofrece un vistazo completo de tu historial y activos.",
@@ -104,7 +104,7 @@ const StepInvestmentGuideSection = () => {
     >
       <div className="container relative container-section">
         <div className="flex flex-col-reverse 2xl:flex-row items-center justify-between">
-          <div className="2xl:w-[611px] w-[292px] text-left 2xl:text-right mb-0">
+          <div className="2xl:w-[507px] w-[292px] text-left 2xl:text-right mb-0">
             <p className="text-[21px] 2xl:text-[44px] font-bold mb-0 2xl:mb-2">
               {slidesData[currentIndexState].title} <br />
             </p>

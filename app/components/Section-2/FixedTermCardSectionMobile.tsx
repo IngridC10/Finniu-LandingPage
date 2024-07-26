@@ -33,9 +33,9 @@ const FixedTermCardSectionMobile = () => {
               <span className="font-extrabold"> sin comisiones. </span>
             </p>
             <p className="text-[13px]">
-              Aprovecha las ventajas de invertir con Finniu: obtén
-              rentabilidades mensuales sin letras pequeñas, similar a un plazo
-              fijo pero con mayores beneficios.
+              Disfruta de los beneficios de inversiones como un plazo fijo, pero
+              con la ventaja de obtener rentabilidades mensuales sin letras
+              pequeñas.
             </p>
             <a
               href="/TermsFinniu/Terminos_Condiciones.pdf"

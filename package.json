@@ -9,14 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@apollo/client": "^3.11.0",
+    "@apollo/client": "^3.11.1",
     "flowbite": "^2.3.0",
     "flowbite-react": "^0.10.1",
     "graphql": "^16.9.0",
+    "graphql-request": "^7.1.0",
     "next": "14.2.4",
     "react": "^18",
     "react-countup": "^6.5.3",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-phone-input-2": "^2.15.1"
   },
   "devDependencies": {
     "@types/node": "^20",

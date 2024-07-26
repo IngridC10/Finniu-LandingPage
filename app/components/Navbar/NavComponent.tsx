@@ -64,7 +64,7 @@ const NavComponent = () => {
             }
             onClick={() => handleItemSelect("frequent-questions")}
           >
-            FAQ
+            Ayuda
           </Link>
           <Link
             href="https://finantips.substack.com/"
@@ -178,7 +178,7 @@ const NavComponent = () => {
               }
               onClick={() => handleItemSelect("frequent-questions")}
             >
-              FAQ
+              Ayuda
             </Link>
             <Link
               href="https://finantips.substack.com/"

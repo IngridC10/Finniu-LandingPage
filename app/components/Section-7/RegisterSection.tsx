@@ -2,18 +2,22 @@
 import { useState } from "react";
 import Image from "next/image";
 import ButtonComponent from "@/components/ButtonComponent";
+import "react-phone-input-2/lib/style.css";
 // import Google from "/images/Section-7/Google.png";
 import IconHand from "@/images/Section-7/IconHand.png";
 import IconCheck from "@/images/Section-7/IconCheck.png";
+import PhoneInput from "react-phone-input-2";
 // import EyeClosed from "@/images/Section-7/EyeClosed.png";
 
 interface FormData {
+  fullName: string;
   typeDocument: string;
   dni: string;
   telephoneNumber: string;
 }
 
 interface FormErrors {
+  fullName?: string;
   typeDocument?: string;
   dni?: string;
   telephoneNumber?: string;
@@ -23,6 +27,7 @@ const RegisterSection = () => {
   const [isPopupVisibleState, setPopupVisibleState] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     typeDocument: "DNI",
+    fullName: "",
     dni: "",
     telephoneNumber: "",
   });
@@ -38,20 +43,33 @@ const RegisterSection = () => {
     });
   };
 
+  // Maneja los cambios del input de teléfono
+  const handlePhoneChange = (value: string) => {
+    setFormData({
+      ...formData,
+      telephoneNumber: value,
+    });
+  };
+
   const validateForm = (): FormErrors => {
     const errors: FormErrors = {};
+    if (!formData.fullName) {
+      errors.fullName = "Este dato es requerido";
+    }
+
     if (!formData.typeDocument) {
       errors.typeDocument = "El tipo de documento es obligatorio";
     }
     if (!formData.dni) {
-      errors.dni = "El número de documento es obligatorio";
+      errors.dni = "Este dato es requerido";
     } else if (formData.dni.length !== 8) {
       errors.dni = "Verifique sus datos";
     }
 
     if (!formData.telephoneNumber) {
-      errors.telephoneNumber = "El número telefónico es obligatorio";
-    } else if (formData.telephoneNumber.length !== 9) {
+      errors.telephoneNumber = "Este dato es requerido";
+    } else if (formData.telephoneNumber.length < 11) {
+      // Incluye el código del país
       errors.telephoneNumber = "Verifique sus datos";
     }
     return errors;
@@ -65,6 +83,7 @@ const RegisterSection = () => {
 
       setFormData({
         typeDocument: "DNI",
+        fullName: "",
         dni: "",
         telephoneNumber: "",
       });
@@ -79,7 +98,10 @@ const RegisterSection = () => {
   };
 
   return (
-    <section className="w-full flex justify-center  min-h-[550px] 2xl:min-h-screen items-center bg-blueDarkColor">
+    <section
+      id="register"
+      className="w-full flex justify-center min-h-[550px] 2xl:min-h-screen items-center bg-blueDarkColor"
+    >
       <div className="flex flex-col items-center container-section">
         <div className="flex flex-col justify-center items-center text-center w-[309px] 2xl:w-[1050px]">
           <h1 className="text-[24px] 2xl:text-[50px] text-white">
@@ -106,6 +128,25 @@ const RegisterSection = () => {
             className="leading-[50px] 2xl:leading-[51px] relative"
             onSubmit={handleSubmit}
           >
+            <div className="mb-4">
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                placeholder="Nombres y apellidos"
+                className={`w-full px-3 border-r-0 border-l-0 border-t-0 py-2 border-2 ${
+                  formErrors.fullName
+                    ? "border-red-500"
+                    : "border-grayColorLine"
+                } rounded-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-blueColorButton`}
+                value={formData.fullName}
+                onChange={handleInputChange}
+              />
+              {formErrors.fullName && (
+                <p className="text-red-500 text-sm">{formErrors.fullName}</p>
+              )}
+            </div>
+
             <div className="mb-4 relative z-10">
               <select
                 id="type-document"
@@ -147,18 +188,26 @@ const RegisterSection = () => {
             </div>
             <div className="mb-10">
               <div className="relative">
-                <input
-                  type="tel"
-                  id="telephone"
-                  name="telephoneNumber"
-                  placeholder="Número telefónico"
-                  className={`w-full px-3 border-2 border-l-0 border-t-0 border-r-0 ${
-                    formErrors.telephoneNumber
-                      ? "border-red-500"
-                      : "border-grayColorLine"
-                  } rounded-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-blueColorButton`}
+                <PhoneInput
+                  country={"pe"}
                   value={formData.telephoneNumber}
-                  onChange={handleInputChange}
+                  onChange={handlePhoneChange}
+                  enableSearch={true}
+                  inputProps={{
+                    name: "telephoneNumber",
+                    required: true,
+                    className: ` w-full px-3 border-2 border-l-0 border-t-0 border-r-0   ${
+                      formErrors.telephoneNumber
+                        ? "border-red-500"
+                        : "border-grayColorLine"
+                    } rounded-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-blueColorButton`,
+                  }}
+                  containerStyle={{
+                    width: "100%",
+                  }}
+                  inputStyle={{
+                    width: "100%",
+                  }}
                 />
                 {formErrors.telephoneNumber && (
                   <p className="text-red-500 text-sm">

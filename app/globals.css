@@ -115,7 +115,7 @@
 }
 
 .word-crecimiento {
-  color: blueviolet;
+  color: #9381ff;
 }
 @keyframes blink-caret {
   from,
@@ -258,4 +258,19 @@ input[type="range"]::-webkit-slider-runnable-track {
 .blur-effect {
   filter: blur(5px);
   transition: filter 0.3s ease;
+}
+
+.flag-dropdown {
+  height: 40px;
+  margin-top: 6px;
+  border-color: white !important;
+}
+.react-tel-input .selected-flag {
+  border-color: white;
+  background-color: white;
+  border: 0px solid white;
+}
+
+.react-tel-input .country-list {
+  width: 220px !important;
 }

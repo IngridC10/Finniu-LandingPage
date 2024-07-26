@@ -149,7 +149,7 @@ const HowItWorksSection = () => {
             <ButtonComponent
               text="¿Cómo invertir?"
               onClick={handleButtonClick}
-              className={`h-[35px] 2xl:h-16 w-[162px] ml-0 2xl:w-[333px] m-1 flex justify-center items-center gap-2 rounded-full text-[12px] 2xl:text-[28px] ${
+              className={`buttonTransition h-[35px] 2xl:h-16 w-[162px] ml-0 2xl:w-[333px] m-1 flex justify-center items-center gap-2 rounded-full text-[12px] 2xl:text-[28px] ${
                 isWhereToFindButtonActiveState
                   ? "bg-lightBlue text-blueDarkColor"
                   : "bg-blueColorButton text-white"
