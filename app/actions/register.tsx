@@ -8,6 +8,7 @@ export async function savePreRegistration(input: {
   email: string;
   phoneNumber: string;
   phonePrefix: string;
+  typeDocument: string;
 }) {
   try {
     const variables = {
@@ -15,6 +16,7 @@ export async function savePreRegistration(input: {
       email: input.email,
       phoneNumber: input.phoneNumber,
       phonePrefix: input.phonePrefix,
+      typeDocument: input.typeDocument,
     };
     const result = await client.request(SAVE_PRE_REGISTRATION, variables);
 

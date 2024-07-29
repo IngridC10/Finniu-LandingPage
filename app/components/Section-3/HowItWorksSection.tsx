@@ -1,5 +1,5 @@
 "use client";
-import { SetStateAction, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import ButtonComponent from "@/components/ButtonComponent";
 import CellphoneandAppStore from "@/images/Section-3/CellphoneandAppStore.png";
@@ -14,13 +14,13 @@ import Step4 from "@/images/Section-3/Step4.png";
 import Bill from "@/images/Section-3/Bill.png";
 import CustomLeftArrow from "@/components/CustomLeftArrow";
 import CustomRightArrow from "@/components/CustomRightArrow";
-
 const HowItWorksSection = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
   const [activeIndexState, setActiveIndexState] = useState(0);
   const [isWhereToFindButtonActiveState, setWhereToFindButtonActiveState] =
     useState(true);
-
   const [animationClassState, setAnimationClassState] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleButtonClick = () => {
     setWhereToFindButtonActiveState(!isWhereToFindButtonActiveState);
@@ -28,31 +28,56 @@ const HowItWorksSection = () => {
   };
 
   const handlePrevClick = () => {
-    setActiveIndexState((prevIndex) => {
-      if (prevIndex === 0) {
-        return 0;
-      }
-      return prevIndex - 1;
-    });
+    setActiveIndexState((prevIndex) => (prevIndex === 0 ? 0 : prevIndex - 1));
   };
 
   const handleNextClick = () => {
-    setActiveIndexState((prevIndex) => {
-      if (prevIndex === itemsSlider.length - 1) {
-        return prevIndex;
-      }
-      return prevIndex + 1;
-    });
+    setActiveIndexState((prevIndex) =>
+      prevIndex === itemsSlider.length - 1 ? 0 : prevIndex + 1
+    );
   };
 
-  const goToIndex = (index: SetStateAction<number>) => {
-    setActiveIndexState(index);
-  };
+  // const goToIndex = (index: number) => {
+  //   setActiveIndexState(index);
+  // };
 
   useEffect(() => {
-    const interval = setInterval(handleNextClick, 10000);
-    return () => clearInterval(interval);
-  }, [isWhereToFindButtonActiveState]);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsVisible(entry.isIntersecting);
+          if (entry.isIntersecting) {
+            setActiveIndexState(0);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout | null = null;
+
+    if (isVisible) {
+      interval = setInterval(handleNextClick, 10000); // change 10 seconds
+    } else {
+      if (interval) clearInterval(interval);
+    }
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [isVisible, isWhereToFindButtonActiveState]);
 
   useEffect(() => {
     setAnimationClassState("fade-in-right");
@@ -119,6 +144,7 @@ const HowItWorksSection = () => {
   return (
     <section
       id="HowItWorks"
+      ref={sectionRef}
       className="bg-grayColorOpcional w-full min-h-[550px] 2xl:min-h-screen flex justify-center items-center"
     >
       <div className="flex flex-col container-section items-center container">
@@ -186,8 +212,7 @@ const HowItWorksSection = () => {
                   key={idx}
                   src={img}
                   alt={itemsSlider[activeIndexState].alt}
-                  width={200}
-                  className={animationClassState}
+                  className={`w-[140px] 2xl:w-[350px]`}
                 />
               ))}
             </div>
@@ -196,22 +221,9 @@ const HowItWorksSection = () => {
             <CustomRightArrow
               isFirstSlide={activeIndexState === 0}
               isLastSlide={activeIndexState === itemsSlider.length - 1}
-              className="relative 2xl:static 2xl:right-0 right-6"
+              className="relative right-5 2xl:static 2xl:right-0"
             />
           </button>
-        </div>
-        <div className="flex justify-center mt-4">
-          {itemsSlider.map((_, index) => (
-            <button
-              key={index}
-              className={`2xl:w-5 w-3 h-3 2xl:h-5 rounded-full mx-1 ${
-                index === activeIndexState
-                  ? "bg-blueDarkColor"
-                  : "bg-lightBlueColor"
-              }`}
-              onClick={() => goToIndex(index)}
-            ></button>
-          ))}
         </div>
       </div>
     </section>

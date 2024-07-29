@@ -52,14 +52,14 @@ const InvestmentForm = () => {
         currency: currencyState,
       });
 
-      console.log("Datos devueltos:", data);
+      // console.log("Datos devueltos:", data);
 
       if (success) {
         const { calculateInvestment: investmentData } = data as {
           calculateInvestment: any;
         };
 
-        console.log("investmentData:", investmentData);
+        // console.log("investmentData:", investmentData);
 
         setCalculatedResultState({
           initialAmount,

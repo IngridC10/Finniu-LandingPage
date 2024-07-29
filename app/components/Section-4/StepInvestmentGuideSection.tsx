@@ -9,7 +9,9 @@ import QuarterlyReports from "@/images/Section-4/QuarterlyReports.png";
 import ProjectYourGoals from "@/images/Section-4/ProjectYourGoals.png";
 
 const StepInvestmentGuideSection = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
   const [currentIndexState, setCurrentIndexState] = useState(0);
+  const [isVisibleState, setIsVisible] = useState(false);
 
   const touchStartXRef = useRef<number | null>(null);
   const touchEndXRef = useRef<number | null>(null);
@@ -65,9 +67,42 @@ const StepInvestmentGuideSection = () => {
   };
 
   useEffect(() => {
-    const interval = setInterval(handleNextSlide, 20000);
-    return () => clearInterval(interval);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsVisible(entry.isIntersecting);
+          if (entry.isIntersecting) {
+            setCurrentIndexState(0);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
   }, []);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout | null = null;
+
+    if (isVisibleState) {
+      interval = setInterval(handleNextSlide, 20000); // change 20 seconds
+    } else {
+      if (interval) clearInterval(interval);
+    }
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [isVisibleState]);
 
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     touchStartXRef.current = e.targetTouches[0].clientX;
@@ -82,12 +117,10 @@ const StepInvestmentGuideSection = () => {
       const touchDiff = touchStartXRef.current - touchEndXRef.current;
 
       if (touchDiff > 50) {
-        // swipe left
         handleNextSlide();
       }
 
       if (touchDiff < -50) {
-        // swipe right
         handlePrevSlide();
       }
     }
@@ -97,6 +130,7 @@ const StepInvestmentGuideSection = () => {
 
   return (
     <section
+      ref={sectionRef}
       className={`min-h-[598px] 2xl:min-h-screen flex justify-center w-full items-center py-10 ${slidesData[currentIndexState].bgColor}`}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
@@ -104,7 +138,7 @@ const StepInvestmentGuideSection = () => {
     >
       <div className="container relative container-section">
         <div className="flex flex-col-reverse 2xl:flex-row items-center justify-between">
-          <div className="2xl:w-[507px] w-[292px] text-left 2xl:text-right mb-0">
+          <div className="2xl:w-[578px] w-[292px] text-left 2xl:text-right mb-0">
             <p className="text-[21px] 2xl:text-[44px] font-bold mb-0 2xl:mb-2">
               {slidesData[currentIndexState].title} <br />
             </p>

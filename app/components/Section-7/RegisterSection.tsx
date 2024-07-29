@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import ButtonComponent from "@/components/ButtonComponent";
 // import "react-phone-input-2/lib/style.css";
@@ -10,21 +10,27 @@ import IconCheck from "@/images/Section-7/IconCheck.png";
 import PhoneInput from "react-phone-input-2";
 import { savePreRegistration } from "@/app/actions/register";
 // import EyeClosed from "@/images/Section-7/EyeClosed.png";
+enum DocumentType {
+  DNI = "DNI",
+  CARNET_EXTRAJERIA = "CARNET_EXTRAJERIA",
+}
 
 interface FormData {
   fullName: string;
   typeDocument: string;
-  dni: string;
-  telephoneNumber: string;
-  email: string; // Campo de correo electrónico agregado
+  documentNumber: string;
+  email: string;
+  phoneNumber: string;
+  phonePrefix: string;
 }
 
 interface FormErrors {
   fullName?: string;
   typeDocument?: string;
-  dni?: string;
-  telephoneNumber?: string;
-  email?: string; // Campo de correo electrónico agregado
+  documentNumber?: string;
+  phoneNumber?: string;
+  email?: string;
+  phonePrefix?: string;
 }
 
 const RegisterSection = () => {
@@ -32,12 +38,31 @@ const RegisterSection = () => {
   const [formData, setFormData] = useState<FormData>({
     typeDocument: "DNI",
     fullName: "",
-    dni: "",
-    telephoneNumber: "",
+    documentNumber: "",
+    phoneNumber: "",
     email: "",
+    phonePrefix: "+51",
   });
   const [formErrors, setFormErrors] = useState<FormErrors>({});
   const [generalError, setGeneralError] = useState<string | null>(null);
+
+  const fullNameRef = useRef<HTMLInputElement>(null);
+  const typeDocumentRef = useRef<HTMLSelectElement>(null);
+  const documentNumberRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const phoneInputRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (isPopupVisibleState && fullNameRef.current) {
+      fullNameRef.current.focus();
+    }
+  }, [isPopupVisibleState]);
+
+  useEffect(() => {
+    if (fullNameRef.current) {
+      fullNameRef.current.focus();
+    }
+  }, []);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -49,10 +74,11 @@ const RegisterSection = () => {
     });
   };
 
-  const handlePhoneChange = (value: string, country: any) => {
+  const handlePhoneChange = (value: string | undefined, country: any) => {
     setFormData({
       ...formData,
-      telephoneNumber: value,
+      phoneNumber: value || "",
+      phonePrefix: country?.dialCode || formData.phonePrefix,
     });
   };
 
@@ -65,20 +91,24 @@ const RegisterSection = () => {
     if (!formData.typeDocument) {
       errors.typeDocument = "El tipo de documento es obligatorio";
     }
-    if (!formData.dni) {
-      errors.dni = "Este dato es requerido";
-    } else if (formData.dni.length !== 8) {
-      errors.dni = "Verifique sus datos";
+    if (!formData.documentNumber) {
+      errors.documentNumber = "Este dato es requerido";
+    } else if (formData.documentNumber.length !== 8) {
+      errors.documentNumber = "Verifique sus datos";
     }
 
-    if (!formData.telephoneNumber) {
-      errors.telephoneNumber = "Este dato es requerido";
-    } else if (formData.telephoneNumber.length < 11) {
-      errors.telephoneNumber = "Verifique sus datos";
+    if (!formData.phoneNumber) {
+      errors.phoneNumber = "Este dato es requerido";
+    } else if (formData.phoneNumber.length < 11) {
+      errors.phoneNumber = "Verifique sus datos";
     }
 
     if (!formData.email) {
       errors.email = "Este dato es requerido";
+    }
+
+    if (!formData.phonePrefix) {
+      errors.phonePrefix = "Este dato es requerido";
     }
 
     return errors;
@@ -91,12 +121,12 @@ const RegisterSection = () => {
     if (Object.keys(errors).length === 0) {
       setPopupVisibleState(true);
 
-      // Llamar a la API para guardar la preinscripción
       const response = await savePreRegistration({
-        documentNumber: formData.dni,
+        documentNumber: formData.documentNumber,
         email: formData.email,
-        phoneNumber: formData.telephoneNumber,
-        phonePrefix: "+51", // Puedes ajustar esto según tus necesidades
+        phoneNumber: formData.phoneNumber,
+        phonePrefix: formData.phonePrefix,
+        typeDocument: formData.typeDocument,
       });
 
       if (response.success) {
@@ -104,9 +134,10 @@ const RegisterSection = () => {
         setFormData({
           typeDocument: "DNI",
           fullName: "",
-          dni: "",
-          telephoneNumber: "",
+          documentNumber: "",
+          phoneNumber: "",
           email: "",
+          phonePrefix: "+51",
         });
         setFormErrors({});
       } else {
@@ -119,6 +150,21 @@ const RegisterSection = () => {
 
   const closePopup = () => {
     setPopupVisibleState(false);
+  };
+
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLInputElement | HTMLSelectElement>,
+    ref: React.RefObject<any>,
+    nextRef: React.RefObject<any>
+  ) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      if (nextRef.current) {
+        nextRef.current.focus();
+      } else {
+        handleSubmit(e as any);
+      }
+    }
   };
 
   return (
@@ -136,12 +182,12 @@ const RegisterSection = () => {
               Tus primeros pasos en el mundo de las inversiones
             </h3>
             <div className="w-[30px] 2xl:w-[50px]">
-              <Image src={IconHand} alt="icon-hand" />
+              <Image src={IconHand} alt="icon-hand" width={50} height={50} />
             </div>
           </div>
         </div>
         <div
-          className={`bg-white 2xl:p-16 flex flex-col justify-center p-12 rounded-3xl shadow-md w-[341px] 2xl:w-[545px] h-auto mt-4 m-auto overflow-y-auto ${
+          className={`bg-white 2xl:p-16 flex flex-col justify-center p-12 rounded-3xl shadow-md w-[341px] 2xl:w-[545px] h-auto mt-4 m-auto ${
             isPopupVisibleState ? "blur-effect" : ""
           }`}
         >
@@ -165,6 +211,10 @@ const RegisterSection = () => {
                 } rounded-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-blueColorButton`}
                 value={formData.fullName}
                 onChange={handleInputChange}
+                onKeyDown={(e) =>
+                  handleKeyDown(e, fullNameRef, typeDocumentRef)
+                }
+                ref={fullNameRef}
               />
               {formErrors.fullName && (
                 <p className="text-red-500 text-sm">{formErrors.fullName}</p>
@@ -182,9 +232,13 @@ const RegisterSection = () => {
                 } rounded-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-blueColorButton`}
                 value={formData.typeDocument}
                 onChange={handleInputChange}
+                onKeyDown={(e) =>
+                  handleKeyDown(e, typeDocumentRef, documentNumberRef)
+                }
+                ref={typeDocumentRef}
               >
-                <option value="DNI">DNI</option>
-                <option value="Carnet de Extranjería">
+                <option value={DocumentType.DNI}>DNI</option>
+                <option value={DocumentType.CARNET_EXTRAJERIA}>
                   Carnet de Extranjería
                 </option>
               </select>
@@ -197,17 +251,23 @@ const RegisterSection = () => {
             <div className="mb-4">
               <input
                 type="text"
-                id="dni"
-                name="dni"
+                id="documentNumber"
+                name="documentNumber"
                 placeholder="Número de documento"
                 className={`w-full px-3 border-r-0 border-l-0 border-t-0 py-2 border-2 ${
-                  formErrors.dni ? "border-red-500" : "border-grayColorLine"
+                  formErrors.documentNumber
+                    ? "border-red-500"
+                    : "border-grayColorLine"
                 } rounded-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-blueColorButton`}
-                value={formData.dni}
+                value={formData.documentNumber}
                 onChange={handleInputChange}
+                onKeyDown={(e) => handleKeyDown(e, documentNumberRef, emailRef)}
+                ref={documentNumberRef}
               />
-              {formErrors.dni && (
-                <p className="text-red-500 text-sm">{formErrors.dni}</p>
+              {formErrors.documentNumber && (
+                <p className="text-red-500 text-sm">
+                  {formErrors.documentNumber}
+                </p>
               )}
             </div>
             <div className="mb-4">
@@ -221,39 +281,44 @@ const RegisterSection = () => {
                 } rounded-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-blueColorButton`}
                 value={formData.email}
                 onChange={handleInputChange}
+                onKeyDown={(e) => handleKeyDown(e, emailRef, phoneInputRef)}
+                ref={emailRef}
               />
               {formErrors.email && (
                 <p className="text-red-500 text-sm">{formErrors.email}</p>
               )}
             </div>
             <div className="mb-10">
-              <div className="relative">
+              <div className="relative phone-input-container">
                 <PhoneInput
-                  country={"pe"}
-                  value={formData.telephoneNumber}
+                  country="pe"
+                  value={formData.phoneNumber}
                   onChange={handlePhoneChange}
+                  placeholder="Número telefónico"
                   enableSearch={true}
                   inputProps={{
                     name: "telephoneNumber",
                     required: true,
                     autoFocus: true,
                     className: `w-full px-3 border-2 border-l-0 border-t-0 border-r-0 ${
-                      formErrors.telephoneNumber
+                      formErrors.phoneNumber
                         ? "border-red-500"
                         : "border-grayColorLine"
                     } rounded-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-blueColorButton`,
                   }}
                   containerStyle={{
                     width: "100%",
+                    position: "relative",
+                    zIndex: 1000,
                   }}
                   inputStyle={{
                     width: "100%",
-                    paddingLeft: "58px",
+                    paddingLeft: "58px", // Ajusta según el tamaño del prefijo
                   }}
                 />
-                {formErrors.telephoneNumber && (
+                {formErrors.phoneNumber && (
                   <p className="text-red-500 text-sm">
-                    {formErrors.telephoneNumber}
+                    {formErrors.phoneNumber}
                   </p>
                 )}
               </div>
@@ -293,8 +358,9 @@ const RegisterSection = () => {
             <Image
               src={IconCheck}
               alt="check"
+              width={60}
               height={60}
-              className="mb-4 2xl:h-[60px] h-[58px]"
+              className="mb-4"
             />
             <h2 className="text-[16px] 2xl:text-2xl font-bold text-greenColor mb-2">
               ¡Todo listo!
