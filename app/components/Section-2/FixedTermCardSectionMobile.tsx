@@ -10,12 +10,12 @@ const FixedTermCardSectionMobile = () => {
     <div className="flex flex-col w-full min-h-screen bg-white justify-center items-center">
       <div>
         <h1 className="text-[32px] text-center mt-5 text-blueDarkColor font-bold">
-          Como un plazo fijo
+          Crecer es simple
         </h1>
         <div className="flex flex-row justify-center items-center">
           <Image src={Check} alt="check" height={23} />
           <h2 className="text-[20px]  text-blueDarkColor ml-2">
-            Crecer es simple
+            Listos para crecer es simple
           </h2>
         </div>
         <div className="w-[333px] h-[516px] flex flex-col justify-end relative">
@@ -28,14 +28,13 @@ const FixedTermCardSectionMobile = () => {
           />
           <div className="bg-lighBlueColorOpcional w-[333px] rounded-xl h-[260px] shadow-lg flex flex-col justify-center p-4 text-justify relative z-0">
             <p className="text-[16px]">
-              Pero con Rentabilidades
-              <span className="font-extrabold"> mensuales </span> y
+              <span className="font-extrabold"> Sin requisitos ocultos </span> y
               <span className="font-extrabold"> sin comisiones. </span>
             </p>
-            <p className="text-[13px]">
-              Disfruta de los beneficios de inversiones como un plazo fijo, pero
-              con la ventaja de obtener rentabilidades mensuales sin letras
-              pequeñas.
+            <p className="text-[13px] mt-2">
+              Obtén más ganancias con tus ahorros y disfruta de los beneficios
+              de una renta fija. Genera un ingreso extra al mes. Invertir es
+              para todos.
             </p>
             <a
               href="/TermsFinniu/Terminos_Condiciones.pdf"
@@ -55,7 +54,7 @@ const FixedTermCardSectionMobile = () => {
         <div className="flex flex-row justify-center">
           <Image src={Key} alt="business-money" width={25} height={35} />
           <h2 className="text-[20px] text-blueDarkColor ml-2">
-            Invierte sin paltas
+            Seguridad y confianza
           </h2>
         </div>
         <div className="">
@@ -70,8 +69,8 @@ const FixedTermCardSectionMobile = () => {
               />
               <div className="bg-lighBlueColorOpcional relative w-[333px] rounded-xl h-[176px] shadow-lg flex flex-col justify-center p-4 text-justify">
                 <p className="text-[13px]">
-                  Contamos con diversas herramientas legales para asegurar tu
-                  inversión.
+                  Minimiza el riesgo diversificando tu cartera de inversiones.
+                  Con informes y documentos que te brinden seguridad.
                 </p>
 
                 <a

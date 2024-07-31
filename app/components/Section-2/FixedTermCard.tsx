@@ -11,16 +11,15 @@ const FixedTermCard = () => {
           Listos para crecer contigo
         </h2>
       </div>
-      <div className="flex flex-col shadow-md items-end p-3 h-[300px] pb-10  pr-14 pl-14 mt-4 rounded-2xl text-black bg-[#F0FBFF] text-xl w-[644px]">
+      <div className="flex flex-col shadow-md items-center justify-center  p-3 h-[300px] pb-10  pl-14 mt-4 rounded-2xl text-black bg-[#F0FBFF] text-xl w-[644px]">
         <div className=" w-96 ">
           <div className="text-justify leading-relaxed">
-            Pero con rentabilidades
-            <span className="font-bold"> mensuales </span> y
+            <span className="font-bold"> Sin requisitos ocultos </span> y
             <span className="font-bold"> sin comisiones. </span>
             <p>
-              Disfruta de los beneficios de inversiones como un plazo fijo, pero
-              con la ventaja de obtener rentabilidades mensuales sin letras
-              pequeñas.
+              Obtén más ganancias con tus ahorros y disfruta de los beneficios
+              de una renta fija. Genera un ingreso extra al mes. Invertir es
+              para todos.
             </p>
             <a
               href="/TermsFinniu/Terminos_Condiciones.pdf"

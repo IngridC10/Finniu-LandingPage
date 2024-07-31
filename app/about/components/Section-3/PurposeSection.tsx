@@ -19,15 +19,14 @@ const Purpose = () => {
           </div>
           <div className=" mt-4    2xl:mt-0">
             <p className=" w-[314px] 2xl:w-[650px] text-justify text-[14px]  2xl:text-[24px] leading-8 2xl:leading-9">
-              Nuestros objetivo es que cada uno de nuestros inversionistas
-              aprenda y maneje sus finanzas con facilidad, logrando así sus
-              metas financieras. Con un equipo dedicado y una plataforma robusta
-              para invertir, estamos aquí para proporcionarte el conocimiento y
-              las herramientas necesarias. Queremos que tomes decisiones
-              informadas y estratégicas, adaptadas a tus necesidades y objetivos
-              personales. Ya sea que estés empezando a invertir o buscando
-              optimizar tu dinero, nuestro compromiso es guiarte en cada paso
-              del camino hacia el éxito financiero.
+              Nuestro objetivo es que las personas aprendan y manejen sus
+              finanzas con facilidad y autonomía. Con un equipo experto y una
+              plataforma robusta para invertir, estamos listos para crecer
+              contigo. Queremos que tomes decisiones informadas y estratégicas,
+              adaptadas a tus necesidades y objetivos personales. Ya sea que
+              estés empezando a invertir o buscando optimizar tu dinero, nuestro
+              compromiso es guiarte en cada paso del camino hacia tu éxito
+              financiero.
             </p>
           </div>
         </div>

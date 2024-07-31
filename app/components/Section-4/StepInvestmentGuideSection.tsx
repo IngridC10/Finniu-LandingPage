@@ -21,12 +21,12 @@ const StepInvestmentGuideSection = () => {
       title: "Tus finanzas en la palma de tu mano",
       subtitle: "Finanzas fácil",
       description:
-        "Visualiza y gestiona todas tus inversiones de manera rápida y sencilla con nuestra aplicación, que te ofrece un vistazo completo de tu historial y activos.",
+        " Visualiza y gestiona todas tus finanzas de forma sencilla y rápida, brindándote un vistazo completo de tus operaciones desde nuestra app.",
       imageSrc: HandCellPhone,
       bgColor: "bg-whiteColor text-blackColorText",
     },
     {
-      title: "Reportes Trimestrales",
+      title: "Informes Trimestrales",
       subtitle: "Optimizamos tu dinero",
       description:
         "Maximizamos tu inversión. Es por eso que ofrecemos una visibilidad contínua sobre el rendimiento de tus inversiones a través de informes trimestrales.",

@@ -52,7 +52,7 @@ const DownloadAppSectionDesktop = () => {
 
       <div className="w-[100px]"></div>
 
-      <div className=" flex items-end pb-10 ml-60 w-[523px] ">
+      <div className=" flex items-end pb-28 ml-60 w-[523px] ">
         <div className="flex flex-col items-end justify-center  text-white text-xl  ml-8 ">
           <div className="flex items-center justify-center mb-4 space-x-4 w-[476px] leading-[43px] ">
             <div className="text-center">
@@ -100,11 +100,11 @@ const DownloadAppSectionDesktop = () => {
         </div>
       </div>
 
-      <div className="absolute right-[75px] top-[26px] flex flex-row items-center  justify-center h-full w-full">
+      <div className="absolute top-24 flex flex-row items-center  justify-center h-full w-full">
         <Image
           src={CellphoneDollar}
           alt="CellPhone-Dollar"
-          width={390}
+          width={670}
           style={{ height: "auto" }}
         />
       </div>

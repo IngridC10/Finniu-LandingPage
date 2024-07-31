@@ -11,23 +11,19 @@ const DownloadAppMobileSection = () => {
     <div className="flex flex-col  2xl:justify-center justify-start p-6 items-center bg-blueDarkColor  m-0 2xl:m-3">
       <div className="text-white  text-justify ">
         <p className="text-2xl">Invierte en tu futuro</p>
-        <p className=" text-[28px]  lg:text-4xl ">
-          <span className="text-lilaColor text-[28px] lg:text-4xl mr-2">
-            Invierte
-          </span>
-
-          <span>& </span>
-          <span className="text-lightBlueColor text-[28px] lg:text-4xl  ">
-            Genera
-          </span>
+        <p className="text-[28px] lg:text-4xl">
+          <span className="text-white mr-2">Logra todas tus</span>
+          <span className="text-lilaColor mr-2">metas financieras</span>
+          <span>con</span>
+          <span className="text-lightBlueColor"> Finniu.</span>
         </p>
-        <p className="text-[28px] lg:text-4xl">otra fuente de ingresos</p>
       </div>
 
       <Image
         src={CellphoneDollar}
         alt="cellphone-dollar"
-        className="w-[200px]"
+        height={240}
+        className="ml-14 m-8"
       />
 
       <div className="flex flex-row ">

@@ -2,14 +2,12 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import ButtonComponent from "@/components/ButtonComponent";
-// import "react-phone-input-2/lib/style.css";
-// import Google from "/images/Section-7/Google.png";
 import "react-phone-input-2/lib/style.css";
 import IconHand from "@/images/Section-7/IconHand.png";
 import IconCheck from "@/images/Section-7/IconCheck.png";
 import PhoneInput from "react-phone-input-2";
 import { savePreRegistration } from "@/app/actions/register";
-// import EyeClosed from "@/images/Section-7/EyeClosed.png";
+
 enum DocumentType {
   DNI = "DNI",
   CARNET_EXTRAJERIA = "CARNET_EXTRAJERIA",
@@ -58,11 +56,11 @@ const RegisterSection = () => {
     }
   }, [isPopupVisibleState]);
 
-  useEffect(() => {
-    if (fullNameRef.current) {
-      fullNameRef.current.focus();
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (fullNameRef.current) {
+  //     fullNameRef.current.focus();
+  //   }
+  // }, []);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -208,7 +206,7 @@ const RegisterSection = () => {
                   formErrors.fullName
                     ? "border-red-500"
                     : "border-grayColorLine"
-                } rounded-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-blueColorButton`}
+                } rounded-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-blueColorButton `}
                 value={formData.fullName}
                 onChange={handleInputChange}
                 onKeyDown={(e) =>
@@ -299,12 +297,12 @@ const RegisterSection = () => {
                   inputProps={{
                     name: "telephoneNumber",
                     required: true,
-                    autoFocus: true,
+                    // autoFocus: true,
                     className: `w-full px-3 border-2 border-l-0 border-t-0 border-r-0 ${
                       formErrors.phoneNumber
                         ? "border-red-500"
                         : "border-grayColorLine"
-                    } rounded-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-blueColorButton`,
+                    } rounded-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-blueColorButton `,
                   }}
                   containerStyle={{
                     width: "100%",
