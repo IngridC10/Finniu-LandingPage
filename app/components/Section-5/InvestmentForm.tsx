@@ -80,6 +80,28 @@ const InvestmentForm = () => {
     setInvestmentAmountState("");
   };
 
+  const handleInvestClick = () => {
+    const userAgent = navigator.userAgent || navigator.vendor;
+
+    if (/iPad|iPhone|iPod/.test(userAgent) && !(window as any).MSStream) {
+      // iOS
+      window.location.href =
+        "https://apps.apple.com/pe/app/finniu/id6449205870"; //  App Store
+    } else if (/android/i.test(userAgent)) {
+      //  Android
+      window.location.href =
+        "https://play.google.com/store/apps/details?id=com.finniu"; //  Google Play
+    } else if (/Macintosh/.test(userAgent)) {
+      // macOS
+      window.location.href =
+        "https://apps.apple.com/pe/app/finniu/id6449205870"; // macOS
+    } else {
+      // Another device or operating system
+      window.location.href =
+        "https://play.google.com/store/apps/details?id=com.finniu"; // Generic
+    }
+  };
+
   return (
     <div className="w-[351px] 2xl:w-[618px] mt-4 2xl:mt-0 bg-white relative flex flex-col justify-center items-center p-12 rounded-3xl h-[474px] 2xl:h-[620px] leading-[49px] shadow-lg">
       {isCalculatedState ? (
@@ -111,6 +133,7 @@ const InvestmentForm = () => {
           <a href="#register">
             <ButtonComponent
               text="Quiero invertir"
+              onClick={handleInvestClick}
               className="w-[314px] 2xl:w-[441px] 2xl:h-[77px] h-12 text-[16px] mt-3 2xl:mt-0 2xl:text-[24px] bg-blueColorButton text-white rounded-xl mb-4"
             />
           </a>

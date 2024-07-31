@@ -206,7 +206,7 @@ const RegisterSection = () => {
                   formErrors.fullName
                     ? "border-red-500"
                     : "border-grayColorLine"
-                } rounded-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-blueColorButton `}
+                } rounded-sm bg-white text-black  `}
                 value={formData.fullName}
                 onChange={handleInputChange}
                 onKeyDown={(e) =>
@@ -227,7 +227,7 @@ const RegisterSection = () => {
                   formErrors.typeDocument
                     ? "border-red-500"
                     : "border-grayColorLine"
-                } rounded-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-blueColorButton`}
+                } rounded-sm bg-white text-black `}
                 value={formData.typeDocument}
                 onChange={handleInputChange}
                 onKeyDown={(e) =>
@@ -256,7 +256,7 @@ const RegisterSection = () => {
                   formErrors.documentNumber
                     ? "border-red-500"
                     : "border-grayColorLine"
-                } rounded-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-blueColorButton`}
+                } rounded-sm bg-white text-black `}
                 value={formData.documentNumber}
                 onChange={handleInputChange}
                 onKeyDown={(e) => handleKeyDown(e, documentNumberRef, emailRef)}
@@ -302,7 +302,7 @@ const RegisterSection = () => {
                       formErrors.phoneNumber
                         ? "border-red-500"
                         : "border-grayColorLine"
-                    } rounded-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-blueColorButton `,
+                    } rounded-sm bg-white text-black `,
                   }}
                   containerStyle={{
                     width: "100%",
@@ -311,7 +311,7 @@ const RegisterSection = () => {
                   }}
                   inputStyle={{
                     width: "100%",
-                    paddingLeft: "58px", // Ajusta según el tamaño del prefijo
+                    paddingLeft: "58px",
                   }}
                 />
                 {formErrors.phoneNumber && (

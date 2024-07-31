@@ -18,7 +18,7 @@ const Purpose = () => {
             <h1 className="mt-6">Nuestro propósito</h1>
           </div>
           <div className=" mt-4    2xl:mt-0">
-            <p className=" w-[314px] 2xl:w-[650px] text-justify text-[14px]  2xl:text-[24px] leading-8 2xl:leading-9">
+            <p className=" w-[314px] 2xl:w-[540px] text-justify text-[14px]  2xl:text-[24px] leading-8 2xl:leading-[3rem]">
               Nuestro objetivo es que las personas aprendan y manejen sus
               finanzas con facilidad y autonomía. Con un equipo experto y una
               plataforma robusta para invertir, estamos listos para crecer

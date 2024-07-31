@@ -16,7 +16,7 @@ export async function calculateInvestment(input: {
     };
     const result = await client.request(CALCULATE_INVESTMENT, variables);
 
-    // console.log("Resultado de la mutación GraphQL:", result);
+    // console.log("result:", result);
 
     return { success: true, data: result };
   } catch (error) {
