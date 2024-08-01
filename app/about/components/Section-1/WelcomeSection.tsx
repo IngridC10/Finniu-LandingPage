@@ -76,7 +76,7 @@ const WelcomeSection = () => {
         <HistoryCircle />
       </div>
 
-      <Image src={TeamFinniu} alt="team-finniu" width={1915} />
+      <Image src={TeamFinniu} alt="team-finniu" className="w-full" />
     </section>
   );
 };

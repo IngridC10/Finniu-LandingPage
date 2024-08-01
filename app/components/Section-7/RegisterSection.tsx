@@ -1,32 +1,66 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import ButtonComponent from "@/components/ButtonComponent";
-// import Google from "/images/Section-7/Google.png";
+import "react-phone-input-2/lib/style.css";
 import IconHand from "@/images/Section-7/IconHand.png";
 import IconCheck from "@/images/Section-7/IconCheck.png";
-// import EyeClosed from "@/images/Section-7/EyeClosed.png";
+import PhoneInput from "react-phone-input-2";
+import { savePreRegistration } from "@/app/actions/register";
+
+enum DocumentType {
+  DNI = "DNI",
+  CARNET_EXTRAJERIA = "CARNET_EXTRAJERIA",
+}
 
 interface FormData {
+  fullName: string;
   typeDocument: string;
-  dni: string;
-  telephoneNumber: string;
+  documentNumber: string;
+  email: string;
+  phoneNumber: string;
+  phonePrefix: string;
 }
 
 interface FormErrors {
+  fullName?: string;
   typeDocument?: string;
-  dni?: string;
-  telephoneNumber?: string;
+  documentNumber?: string;
+  phoneNumber?: string;
+  email?: string;
+  phonePrefix?: string;
 }
 
 const RegisterSection = () => {
   const [isPopupVisibleState, setPopupVisibleState] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     typeDocument: "DNI",
-    dni: "",
-    telephoneNumber: "",
+    fullName: "",
+    documentNumber: "",
+    phoneNumber: "",
+    email: "",
+    phonePrefix: "+51",
   });
   const [formErrors, setFormErrors] = useState<FormErrors>({});
+  const [generalError, setGeneralError] = useState<string | null>(null);
+
+  const fullNameRef = useRef<HTMLInputElement>(null);
+  const typeDocumentRef = useRef<HTMLSelectElement>(null);
+  const documentNumberRef = useRef<HTMLInputElement>(null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const phoneInputRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (isPopupVisibleState && fullNameRef.current) {
+      fullNameRef.current.focus();
+    }
+  }, [isPopupVisibleState]);
+
+  // useEffect(() => {
+  //   if (fullNameRef.current) {
+  //     fullNameRef.current.focus();
+  //   }
+  // }, []);
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -38,37 +72,75 @@ const RegisterSection = () => {
     });
   };
 
+  const handlePhoneChange = (value: string | undefined, country: any) => {
+    setFormData({
+      ...formData,
+      phoneNumber: value || "",
+      phonePrefix: country?.dialCode || formData.phonePrefix,
+    });
+  };
+
   const validateForm = (): FormErrors => {
     const errors: FormErrors = {};
+    if (!formData.fullName) {
+      errors.fullName = "Este dato es requerido";
+    }
+
     if (!formData.typeDocument) {
       errors.typeDocument = "El tipo de documento es obligatorio";
     }
-    if (!formData.dni) {
-      errors.dni = "El número de documento es obligatorio";
-    } else if (formData.dni.length !== 8) {
-      errors.dni = "Verifique sus datos";
+    if (!formData.documentNumber) {
+      errors.documentNumber = "Este dato es requerido";
+    } else if (formData.documentNumber.length !== 8) {
+      errors.documentNumber = "Verifique sus datos";
     }
 
-    if (!formData.telephoneNumber) {
-      errors.telephoneNumber = "El número telefónico es obligatorio";
-    } else if (formData.telephoneNumber.length !== 9) {
-      errors.telephoneNumber = "Verifique sus datos";
+    if (!formData.phoneNumber) {
+      errors.phoneNumber = "Este dato es requerido";
+    } else if (formData.phoneNumber.length < 11) {
+      errors.phoneNumber = "Verifique sus datos";
     }
+
+    if (!formData.email) {
+      errors.email = "Este dato es requerido";
+    }
+
+    if (!formData.phonePrefix) {
+      errors.phonePrefix = "Este dato es requerido";
+    }
+
     return errors;
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const errors = validateForm();
+
     if (Object.keys(errors).length === 0) {
       setPopupVisibleState(true);
 
-      setFormData({
-        typeDocument: "DNI",
-        dni: "",
-        telephoneNumber: "",
+      const response = await savePreRegistration({
+        documentNumber: formData.documentNumber,
+        email: formData.email,
+        phoneNumber: formData.phoneNumber,
+        phonePrefix: formData.phonePrefix,
+        typeDocument: formData.typeDocument,
       });
-      setFormErrors({});
+
+      if (response.success) {
+        setPopupVisibleState(true);
+        setFormData({
+          typeDocument: "DNI",
+          fullName: "",
+          documentNumber: "",
+          phoneNumber: "",
+          email: "",
+          phonePrefix: "+51",
+        });
+        setFormErrors({});
+      } else {
+        setGeneralError("Error al guardar la preinscripción");
+      }
     } else {
       setFormErrors(errors);
     }
@@ -78,8 +150,26 @@ const RegisterSection = () => {
     setPopupVisibleState(false);
   };
 
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLInputElement | HTMLSelectElement>,
+    ref: React.RefObject<any>,
+    nextRef: React.RefObject<any>
+  ) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      if (nextRef.current) {
+        nextRef.current.focus();
+      } else {
+        handleSubmit(e as any);
+      }
+    }
+  };
+
   return (
-    <section className="w-full flex justify-center  min-h-[550px] 2xl:min-h-screen items-center bg-blueDarkColor">
+    <section
+      id="register"
+      className="w-full flex justify-center min-h-[550px] 2xl:min-h-screen items-center bg-blueDarkColor"
+    >
       <div className="flex flex-col items-center container-section">
         <div className="flex flex-col justify-center items-center text-center w-[309px] 2xl:w-[1050px]">
           <h1 className="text-[24px] 2xl:text-[50px] text-white">
@@ -90,12 +180,12 @@ const RegisterSection = () => {
               Tus primeros pasos en el mundo de las inversiones
             </h3>
             <div className="w-[30px] 2xl:w-[50px]">
-              <Image src={IconHand} alt="icon-hand" />
+              <Image src={IconHand} alt="icon-hand" width={50} height={50} />
             </div>
           </div>
         </div>
         <div
-          className={`bg-white 2xl:p-16 flex flex-col justify-center p-12 rounded-3xl shadow-md w-[341px] 2xl:w-[545px] h-auto mt-4 m-auto overflow-y-auto ${
+          className={`bg-white 2xl:p-16 flex flex-col justify-center p-12 rounded-3xl shadow-md w-[341px] 2xl:w-[545px] h-auto mt-4 m-auto ${
             isPopupVisibleState ? "blur-effect" : ""
           }`}
         >
@@ -106,6 +196,29 @@ const RegisterSection = () => {
             className="leading-[50px] 2xl:leading-[51px] relative"
             onSubmit={handleSubmit}
           >
+            <div className="mb-4">
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                placeholder="Nombres y apellidos"
+                className={`w-full px-3 border-r-0 border-l-0 border-t-0 py-2 border-2 ${
+                  formErrors.fullName
+                    ? "border-red-500"
+                    : "border-grayColorLine"
+                } rounded-sm bg-white text-black  `}
+                value={formData.fullName}
+                onChange={handleInputChange}
+                onKeyDown={(e) =>
+                  handleKeyDown(e, fullNameRef, typeDocumentRef)
+                }
+                ref={fullNameRef}
+              />
+              {formErrors.fullName && (
+                <p className="text-red-500 text-sm">{formErrors.fullName}</p>
+              )}
+            </div>
+
             <div className="mb-4 relative z-10">
               <select
                 id="type-document"
@@ -114,12 +227,16 @@ const RegisterSection = () => {
                   formErrors.typeDocument
                     ? "border-red-500"
                     : "border-grayColorLine"
-                } rounded-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-blueColorButton`}
+                } rounded-sm bg-white text-black `}
                 value={formData.typeDocument}
                 onChange={handleInputChange}
+                onKeyDown={(e) =>
+                  handleKeyDown(e, typeDocumentRef, documentNumberRef)
+                }
+                ref={typeDocumentRef}
               >
-                <option value="DNI">DNI</option>
-                <option value="Carnet de Extranjería">
+                <option value={DocumentType.DNI}>DNI</option>
+                <option value={DocumentType.CARNET_EXTRAJERIA}>
                   Carnet de Extranjería
                 </option>
               </select>
@@ -132,41 +249,81 @@ const RegisterSection = () => {
             <div className="mb-4">
               <input
                 type="text"
-                id="dni"
-                name="dni"
+                id="documentNumber"
+                name="documentNumber"
                 placeholder="Número de documento"
                 className={`w-full px-3 border-r-0 border-l-0 border-t-0 py-2 border-2 ${
-                  formErrors.dni ? "border-red-500" : "border-grayColorLine"
-                } rounded-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-blueColorButton`}
-                value={formData.dni}
+                  formErrors.documentNumber
+                    ? "border-red-500"
+                    : "border-grayColorLine"
+                } rounded-sm bg-white text-black `}
+                value={formData.documentNumber}
                 onChange={handleInputChange}
+                onKeyDown={(e) => handleKeyDown(e, documentNumberRef, emailRef)}
+                ref={documentNumberRef}
               />
-              {formErrors.dni && (
-                <p className="text-red-500 text-sm">{formErrors.dni}</p>
+              {formErrors.documentNumber && (
+                <p className="text-red-500 text-sm">
+                  {formErrors.documentNumber}
+                </p>
+              )}
+            </div>
+            <div className="mb-4">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Correo electrónico"
+                className={`w-full px-3 border-r-0 border-l-0 border-t-0 py-2 border-2 ${
+                  formErrors.email ? "border-red-500" : "border-grayColorLine"
+                } rounded-sm bg-white text-black `}
+                value={formData.email}
+                onChange={handleInputChange}
+                onKeyDown={(e) => handleKeyDown(e, emailRef, phoneInputRef)}
+                ref={emailRef}
+              />
+              {formErrors.email && (
+                <p className="text-red-500 text-sm">{formErrors.email}</p>
               )}
             </div>
             <div className="mb-10">
-              <div className="relative">
-                <input
-                  type="tel"
-                  id="telephone"
-                  name="telephoneNumber"
-                  placeholder="Número telefónico"
-                  className={`w-full px-3 border-2 border-l-0 border-t-0 border-r-0 ${
-                    formErrors.telephoneNumber
-                      ? "border-red-500"
-                      : "border-grayColorLine"
-                  } rounded-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-blueColorButton`}
-                  value={formData.telephoneNumber}
-                  onChange={handleInputChange}
+              <div className="relative phone-input-container">
+                <PhoneInput
+                  country="pe"
+                  value={formData.phoneNumber}
+                  onChange={handlePhoneChange}
+                  enableSearch={true}
+                  inputProps={{
+                    name: "telephoneNumber",
+                    placeholder: " Número telefónico",
+                    required: true,
+                    // autoFocus: true,
+                    className: ` w-full px-3 border-2 border-l-0 border-t-0 border-r-0 ${
+                      formErrors.phoneNumber
+                        ? "border-red-500"
+                        : "border-grayColorLine"
+                    } rounded-sm bg-white text-black`,
+                  }}
+                  containerStyle={{
+                    width: "100%",
+                    position: "relative",
+                    zIndex: 1000,
+                  }}
+                  inputStyle={{
+                    width: "100%",
+                    paddingLeft: "58px",
+                  }}
                 />
-                {formErrors.telephoneNumber && (
+                {formErrors.phoneNumber && (
                   <p className="text-red-500 text-sm">
-                    {formErrors.telephoneNumber}
+                    {formErrors.phoneNumber}
                   </p>
                 )}
               </div>
             </div>
+            {generalError && (
+              <p className="text-red-500 text-sm">{generalError}</p>
+            )}
             <ButtonComponent
               text="Enviar"
               className="bg-blueColorButton text-white text-[16px] 2xl:text-[20px] rounded-md w-[250px] 2xl:w-[416px] h-[45px] 2xl:h-[57px]"
@@ -199,8 +356,9 @@ const RegisterSection = () => {
             <Image
               src={IconCheck}
               alt="check"
+              width={60}
               height={60}
-              className="mb-4 2xl:h-[60px] h-[58px]"
+              className="mb-4"
             />
             <h2 className="text-[16px] 2xl:text-2xl font-bold text-greenColor mb-2">
               ¡Todo listo!

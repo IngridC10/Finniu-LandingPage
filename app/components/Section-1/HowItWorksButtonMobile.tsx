@@ -9,7 +9,7 @@ const HowItWorksButtonMobile = () => {
       <Link href="/#HowItWorks">
         <ButtonComponent
           text="¿Cómo funciona?"
-          className="bg-blueDarkColor rounded-lg text-[14px] text-lightBlueColor border border-lightBlueColor w-[194px] h-[46px]"
+          className="bg-blueDarkColor mt-2 rounded-lg text-[14px] text-lightBlueColor border border-lightBlueColor w-[194px] h-[46px]"
         >
           <Image
             src={AppsCellphone}

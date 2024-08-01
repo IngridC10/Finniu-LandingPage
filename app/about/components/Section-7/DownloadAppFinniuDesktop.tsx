@@ -6,8 +6,8 @@ import CellPhoneDollar from "@/images/About/Section-7/CellPhoneDollar.png";
 
 const DownloadAppFinniuDesktop = () => {
   return (
-    <div className=" container-section w-[1536px] h-[637px] shadow-md bg-lightColorOpcional rounded-3xl flex-col">
-      <div className="  flex flex-row justify-center items-center">
+    <div className=" p-[30px] min-h-full w-[1536px] flex justify-center items-start h-[637px] shadow-md relative bg-lightColorOpcional rounded-3xl flex-col">
+      <div className="  flex flex-row justify-center ml-10 items-center">
         <div className=" flex flex-col w-[540px]">
           <p className=" text-[32px] ">
             <strong>Descarga la app de Finniu, </strong>
@@ -35,7 +35,12 @@ const DownloadAppFinniuDesktop = () => {
           </div>
         </div>
 
-        <Image src={CellPhoneDollar} alt="Cellphone-Dollar" width={600} />
+        <Image
+          src={CellPhoneDollar}
+          alt="Cellphone-Dollar"
+          width={600}
+          className=" absolute right-0 bottom-0"
+        />
       </div>
     </div>
   );
