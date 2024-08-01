@@ -83,23 +83,23 @@ const InvestmentForm = () => {
   const handleInvestClick = () => {
     const userAgent = navigator.userAgent || navigator.vendor;
 
+    let url = "";
+
     if (/iPad|iPhone|iPod/.test(userAgent) && !(window as any).MSStream) {
       // iOS
-      window.location.href =
-        "https://apps.apple.com/pe/app/finniu/id6449205870"; //  App Store
+      url = "https://apps.apple.com/pe/app/finniu/id6449205870"; // App Store
     } else if (/android/i.test(userAgent)) {
-      //  Android
-      window.location.href =
-        "https://play.google.com/store/apps/details?id=com.finniu"; //  Google Play
+      // Android
+      url = "https://play.google.com/store/apps/details?id=com.finniu"; // Google Play
     } else if (/Macintosh/.test(userAgent)) {
       // macOS
-      window.location.href =
-        "https://apps.apple.com/pe/app/finniu/id6449205870"; // macOS
+      url = "https://apps.apple.com/pe/app/finniu/id6449205870"; // macOS
     } else {
-      // Another device or operating system
-      window.location.href =
-        "https://play.google.com/store/apps/details?id=com.finniu"; // Generic
+      // other systems
+      url = "https://play.google.com/store/apps/details?id=com.finniu"; // generic
     }
+
+    window.open(url, "_blank");
   };
 
   return (
@@ -130,13 +130,13 @@ const InvestmentForm = () => {
               {calculatedResultState.finalAmount.toLocaleString()}
             </p>
           </div>
-          <a href="#register">
-            <ButtonComponent
-              text="Quiero invertir"
-              onClick={handleInvestClick}
-              className="w-[314px] 2xl:w-[441px] 2xl:h-[77px] h-12 text-[16px] mt-3 2xl:mt-0 2xl:text-[24px] bg-blueColorButton text-white rounded-xl mb-4"
-            />
-          </a>
+
+          <ButtonComponent
+            text="Quiero invertir"
+            onClick={handleInvestClick}
+            className="w-[314px] 2xl:w-[441px] 2xl:h-[77px] h-12 text-[16px] mt-3 2xl:mt-0 2xl:text-[24px] bg-blueColorButton text-white rounded-xl mb-4"
+          />
+
           <button
             onClick={handleRecalculateClick}
             className="text-blueColorButton font-semibold text-[16px] 2xl:text-[24px]"
