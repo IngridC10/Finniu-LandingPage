@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import ButtonComponent from "@/components/ButtonComponent";
 import CellphoneandAppStore from "@/images/Section-3/CellphoneandAppStore.png";
@@ -15,10 +15,12 @@ import Bill from "@/images/Section-3/Bill.png";
 import CustomLeftArrow from "@/components/CustomLeftArrow";
 import CustomRightArrow from "@/components/CustomRightArrow";
 const HowItWorksSection = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
   const [activeIndexState, setActiveIndexState] = useState(0);
-
   const [isWhereToFindButtonActiveState, setWhereToFindButtonActiveState] =
     useState(true);
+  const [animationClassState, setAnimationClassState] = useState("");
+  const [isVisible, setIsVisible] = useState(false);
 
   const handleButtonClick = () => {
     setWhereToFindButtonActiveState(!isWhereToFindButtonActiveState);
@@ -26,32 +28,64 @@ const HowItWorksSection = () => {
   };
 
   const handlePrevClick = () => {
-    setActiveIndexState((prevIndex) => {
-      if (prevIndex === 0) {
-        return 0;
-      }
-
-      return prevIndex - 1;
-    });
+    setActiveIndexState((prevIndex) =>
+      prevIndex === 0 ? prevIndex : prevIndex - 1
+    );
   };
+
   const handleNextClick = () => {
-    setActiveIndexState((prevIndex) => {
-      if (prevIndex === itemsSlider.length - 1) {
-        return prevIndex;
-      }
-
-      return prevIndex + 1;
-    });
-  };
-
-  const goToIndex = (index: number) => {
-    setActiveIndexState(index);
+    setActiveIndexState((prevIndex) =>
+      prevIndex === itemsSlider.length - 1 ? prevIndex : prevIndex + 1
+    );
   };
 
   useEffect(() => {
-    const interval = setInterval(handleNextClick, 10000);
-    return () => clearInterval(interval);
-  }, [isWhereToFindButtonActiveState]);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          setIsVisible(entry.isIntersecting);
+          if (entry.isIntersecting) {
+            setActiveIndexState(0);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout | null = null;
+
+    if (isVisible) {
+      interval = setInterval(handleNextClick, 10000); // change 10 seconds
+    } else {
+      if (interval) clearInterval(interval);
+    }
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [isVisible, isWhereToFindButtonActiveState]);
+
+  useEffect(() => {
+    setAnimationClassState("fade-in-right");
+
+    const timeout = setTimeout(() => {
+      setAnimationClassState("");
+    }, 800);
+
+    return () => clearTimeout(timeout);
+  }, [activeIndexState]);
 
   const itemsSliderWhereFindIt = [
     {
@@ -108,7 +142,8 @@ const HowItWorksSection = () => {
   return (
     <section
       id="HowItWorks"
-      className="bg-grayColorOpcional w-full min-h-[550px]  2xl:min-h-screen flex justify-center items-center"
+      ref={sectionRef}
+      className="bg-grayColorOpcional w-full min-h-[550px] 2xl:min-h-screen flex justify-center items-center"
     >
       <div className="flex flex-col container-section items-center container">
         <div className="flex flex-col 2xl:flex-row items-center justify-between w-full">
@@ -118,14 +153,14 @@ const HowItWorksSection = () => {
           <div
             className={`flex flex-row m-2 w-[337px] 2xl:w-[805px] items-center h-[51px] 2xl:h-[90px] justify-around rounded-full ${
               isWhereToFindButtonActiveState
-                ? "bg-lighBlue"
+                ? "bg-lightBlue"
                 : "bg-blueDarkColor"
             }`}
           >
             <ButtonComponent
               text="¿Cómo encontrarlo?"
               onClick={handleButtonClick}
-              className={` buttonTransition h-[35px] 2xl:h-16 text-[12px] text-center ml-2 2xl:ml-0 2xl:text-[28px] shadow-md w-[162px] 2xl:w-[333px] gap-2 flex justify-center items-center rounded-full ${
+              className={`buttonTransition h-[35px] 2xl:h-16 text-[12px] text-center ml-2 2xl:ml-0 2xl:text-[28px] shadow-md w-[162px] 2xl:w-[333px] gap-2 flex justify-center items-center rounded-full ${
                 isWhereToFindButtonActiveState
                   ? "bg-lightBlueColor text-blackColorText"
                   : "bg-blueDarkColor text-white"
@@ -138,9 +173,9 @@ const HowItWorksSection = () => {
             <ButtonComponent
               text="¿Cómo invertir?"
               onClick={handleButtonClick}
-              className={`buttonTransition  h-[35px] 2xl:h-16 w-[162px] ml-0 2xl:w-[333px] m-1 flex justify-center items-center gap-2 rounded-full text-[12px] 2xl:text-[28px] ${
+              className={`buttonTransition h-[35px] 2xl:h-16 w-[162px] ml-0 2xl:w-[333px] m-1 flex justify-center items-center gap-2 rounded-full text-[12px] 2xl:text-[28px] ${
                 isWhereToFindButtonActiveState
-                  ? "bg-lighBlue text-blueDarkColor"
+                  ? "bg-lightBlue text-blueDarkColor"
                   : "bg-blueColorButton text-white"
               }`}
             >
@@ -150,11 +185,17 @@ const HowItWorksSection = () => {
             </ButtonComponent>
           </div>
         </div>
-        <h1 className={`text-[24px] 2xl:text-[48px] `}>
+        <h1 className="text-[24px] 2xl:text-[48px]">
           Paso {activeIndexState + 1}
         </h1>
         <div className="flex flex-row rounded-2xl justify-center items-center w-[400px] 2xl:w-[80%]">
-          <button onClick={handlePrevClick}>
+          <button
+            onClick={handlePrevClick}
+            disabled={activeIndexState === 0}
+            className={`mr-4 ${
+              activeIndexState === 0 ? "cursor-not-allowed opacity-50" : ""
+            }`}
+          >
             <CustomLeftArrow
               isFirstSlide={activeIndexState === 0}
               isLastSlide={activeIndexState === itemsSlider.length - 1}
@@ -162,10 +203,10 @@ const HowItWorksSection = () => {
             />
           </button>
           <div
-            className={`p-5 w-full h-[416px]  2xl:h-[599px] flex rounded-2xl flex-col justify-center items-center ${containerBackgroundColor}`}
+            className={`slider-container p-5 w-full h-[416px] 2xl:h-[599px] flex rounded-2xl flex-col justify-center items-center ${containerBackgroundColor}`}
           >
             <p
-              className={`mb-4 text-[14px] 2xl:text-[24px] text-center ${textColor}`}
+              className={`mb-4 text-[14px] 2xl:text-[24px] text-center ${textColor} ${animationClassState}`}
             >
               {itemsSlider[activeIndexState].text}
             </p>
@@ -175,32 +216,26 @@ const HowItWorksSection = () => {
                   key={idx}
                   src={img}
                   alt={itemsSlider[activeIndexState].alt}
-                  width={200}
-                  // className="h-full"
+                  className={`w-[140px] 2xl:w-[350px]`}
                 />
               ))}
             </div>
           </div>
-          <button onClick={handleNextClick}>
+          <button
+            onClick={handleNextClick}
+            disabled={activeIndexState === itemsSlider.length - 1}
+            className={`ml-4 ${
+              activeIndexState === itemsSlider.length - 1
+                ? "cursor-not-allowed opacity-50"
+                : ""
+            }`}
+          >
             <CustomRightArrow
               isFirstSlide={activeIndexState === 0}
               isLastSlide={activeIndexState === itemsSlider.length - 1}
-              className="relative 2xl:static 2xl:right-0 right-6"
+              className="relative right-5 2xl:static 2xl:right-0"
             />
           </button>
-        </div>
-        <div className="flex justify-center mt-4">
-          {itemsSlider.map((_, index) => (
-            <button
-              key={index}
-              className={`2xl:w-5  w-3 h-3 2xl:h-5 rounded-full mx-1 ${
-                index === activeIndexState
-                  ? "bg-blueDarkColor"
-                  : "bg-lightBlueColor"
-              }`}
-              onClick={() => goToIndex(index)}
-            ></button>
-          ))}
         </div>
       </div>
     </section>

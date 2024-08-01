@@ -1,4 +1,3 @@
-import FixedTermSection from "./components/Section-2/FixedTermSectionDesktop";
 import HowItWorksSection from "./components/Section-3/HowItWorksSection";
 import SimulatorInvestmentSection from "./components/Section-5/SimulatorInvestmentSection";
 import StepInvestmentGuideSection from "./components/Section-4/StepInvestmentGuideSection";

@@ -11,13 +11,13 @@ const SafeInvestment = () => {
           <div className="flex flex-row gap-2 items-center mb-2">
             <Image src={Key} alt="key-icon" width={40} height={40} />
             <h2 className="text-darkBlueColor text-[32px] leading-relaxed">
-              Invierte sin paltas
+              Seguridad y confianza
             </h2>
           </div>
           <div className="text-justify leading-relaxed ">
             <p>
-              Contamos con diversas herramientas legales para asegurar tu
-              inversión.
+              Minimiza el riesgo diversificando tu cartera de inversiones. Con
+              informes y documentos que te brinden seguridad.
             </p>
 
             <a
@@ -30,7 +30,7 @@ const SafeInvestment = () => {
           </div>
         </div>
       </div>
-      <div className="absolute flex flex-row left-[-200px] top-[5px] w-full  items-start  justify-start   ">
+      <div className=" absolute flex flex-row left-[-200px] top-[5px] w-full  items-start  justify-start   ">
         <Image
           src={BusinessMoney}
           alt="business-icon"
