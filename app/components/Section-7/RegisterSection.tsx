@@ -276,7 +276,7 @@ const RegisterSection = () => {
                 placeholder="Correo electrónico"
                 className={`w-full px-3 border-r-0 border-l-0 border-t-0 py-2 border-2 ${
                   formErrors.email ? "border-red-500" : "border-grayColorLine"
-                } rounded-sm bg-white text-black focus:outline-none focus:ring-2 focus:ring-blueColorButton`}
+                } rounded-sm bg-white text-black `}
                 value={formData.email}
                 onChange={handleInputChange}
                 onKeyDown={(e) => handleKeyDown(e, emailRef, phoneInputRef)}
@@ -292,17 +292,17 @@ const RegisterSection = () => {
                   country="pe"
                   value={formData.phoneNumber}
                   onChange={handlePhoneChange}
-                  placeholder="Número telefónico"
                   enableSearch={true}
                   inputProps={{
                     name: "telephoneNumber",
+                    placeholder: " Número telefónico",
                     required: true,
                     // autoFocus: true,
-                    className: `w-full px-3 border-2 border-l-0 border-t-0 border-r-0 ${
+                    className: ` w-full px-3 border-2 border-l-0 border-t-0 border-r-0 ${
                       formErrors.phoneNumber
                         ? "border-red-500"
                         : "border-grayColorLine"
-                    } rounded-sm bg-white text-black `,
+                    } rounded-sm bg-white text-black`,
                   }}
                   containerStyle={{
                     width: "100%",

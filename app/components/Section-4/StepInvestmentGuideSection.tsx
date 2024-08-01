@@ -138,7 +138,7 @@ const StepInvestmentGuideSection = () => {
     >
       <div className="container relative container-section">
         <div className="flex flex-col-reverse 2xl:flex-row items-center justify-between">
-          <div className="2xl:w-[578px] w-[292px] text-left 2xl:text-right mb-0">
+          <div className="2xl:w-[498px] w-[292px] text-left 2xl:text-right mb-0">
             <p className="text-[21px] 2xl:text-[44px] font-bold mb-0 2xl:mb-2">
               {slidesData[currentIndexState].title} <br />
             </p>

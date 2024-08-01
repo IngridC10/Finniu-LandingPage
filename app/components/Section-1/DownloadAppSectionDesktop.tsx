@@ -100,7 +100,7 @@ const DownloadAppSectionDesktop = () => {
         </div>
       </div>
 
-      <div className="absolute top-24 flex flex-row items-center  justify-center h-full w-full">
+      <div className="absolute top-12 flex flex-row items-center  justify-center h-full w-full">
         <Image
           src={CellphoneDollar}
           alt="CellPhone-Dollar"
