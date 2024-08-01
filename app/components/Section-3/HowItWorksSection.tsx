@@ -28,18 +28,16 @@ const HowItWorksSection = () => {
   };
 
   const handlePrevClick = () => {
-    setActiveIndexState((prevIndex) => (prevIndex === 0 ? 0 : prevIndex - 1));
+    setActiveIndexState((prevIndex) =>
+      prevIndex === 0 ? prevIndex : prevIndex - 1
+    );
   };
 
   const handleNextClick = () => {
     setActiveIndexState((prevIndex) =>
-      prevIndex === itemsSlider.length - 1 ? 0 : prevIndex + 1
+      prevIndex === itemsSlider.length - 1 ? prevIndex : prevIndex + 1
     );
   };
-
-  // const goToIndex = (index: number) => {
-  //   setActiveIndexState(index);
-  // };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -191,7 +189,13 @@ const HowItWorksSection = () => {
           Paso {activeIndexState + 1}
         </h1>
         <div className="flex flex-row rounded-2xl justify-center items-center w-[400px] 2xl:w-[80%]">
-          <button onClick={handlePrevClick}>
+          <button
+            onClick={handlePrevClick}
+            disabled={activeIndexState === 0}
+            className={`mr-4 ${
+              activeIndexState === 0 ? "cursor-not-allowed opacity-50" : ""
+            }`}
+          >
             <CustomLeftArrow
               isFirstSlide={activeIndexState === 0}
               isLastSlide={activeIndexState === itemsSlider.length - 1}
@@ -217,7 +221,15 @@ const HowItWorksSection = () => {
               ))}
             </div>
           </div>
-          <button onClick={handleNextClick}>
+          <button
+            onClick={handleNextClick}
+            disabled={activeIndexState === itemsSlider.length - 1}
+            className={`ml-4 ${
+              activeIndexState === itemsSlider.length - 1
+                ? "cursor-not-allowed opacity-50"
+                : ""
+            }`}
+          >
             <CustomRightArrow
               isFirstSlide={activeIndexState === 0}
               isLastSlide={activeIndexState === itemsSlider.length - 1}
