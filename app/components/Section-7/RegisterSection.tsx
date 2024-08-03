@@ -124,10 +124,9 @@ const RegisterSection = () => {
         email: formData.email,
         phoneNumber: formData.phoneNumber,
         phonePrefix: formData.phonePrefix,
-        typeDocument: formData.typeDocument,
       });
 
-      if (response.success) {
+      if (response) {
         setPopupVisibleState(true);
         setFormData({
           typeDocument: "DNI",
@@ -298,7 +297,7 @@ const RegisterSection = () => {
                     placeholder: " Número telefónico",
                     required: true,
                     // autoFocus: true,
-                    className: ` w-full px-3 border-2 border-l-0 border-t-0 border-r-0 ${
+                    className: `w-full px-3 border-2 border-l-0 border-t-0 border-r-0 ${
                       formErrors.phoneNumber
                         ? "border-red-500"
                         : "border-grayColorLine"

@@ -45,34 +45,18 @@ const InvestmentForm = () => {
       setErrorState("");
     }
 
-    try {
-      const { success, data } = await calculateInvestment({
-        ammount: initialAmount,
-        deadline: investmentTimeState,
-        currency: currencyState,
-      });
+    const investmentResult = await calculateInvestment({
+      ammount: initialAmount,
+      deadline: investmentTimeState,
+      currency: currencyState,
+    });
 
-      // console.log("Datos devueltos:", data);
-
-      if (success) {
-        const { calculateInvestment: investmentData } = data as {
-          calculateInvestment: any;
-        };
-
-        // console.log("investmentData:", investmentData);
-
-        setCalculatedResultState({
-          initialAmount,
-          finalAmount: investmentData.profitability.preInvestmentAmount,
-          investmentTimeState,
-        });
-        setIsCalculatedState(true);
-      } else {
-        console.error("Failed to calculate investment");
-      }
-    } catch (error) {
-      console.error("Error calculating investment:", error);
-    }
+    setCalculatedResultState({
+      initialAmount,
+      finalAmount: investmentResult.investmentTotalAmount || 0,
+      investmentTimeState,
+    });
+    setIsCalculatedState(true);
   };
 
   const handleRecalculateClick = () => {
