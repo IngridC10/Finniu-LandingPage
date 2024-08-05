@@ -9,7 +9,6 @@ export async function savePreRegistration(input: {
   phoneNumber: string;
   phonePrefix: string;
 }): Promise<boolean> {
-  console.log("savePreregistration:");
   try {
     const parameters = {
       documentNumber: input.documentNumber,
