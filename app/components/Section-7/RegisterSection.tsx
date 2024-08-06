@@ -7,7 +7,6 @@ import IconHand from "@/images/Section-7/IconHand.png";
 import IconCheck from "@/images/Section-7/IconCheck.png";
 import PhoneInput from "react-phone-input-2";
 import { savePreRegistration } from "@/app/actions/register";
-
 enum DocumentType {
   DNI = "DNI",
   CARNET_EXTRAJERIA = "CARNET_EXTRAJERIA",
@@ -56,12 +55,6 @@ const RegisterSection = () => {
     }
   }, [isPopupVisibleState]);
 
-  // useEffect(() => {
-  //   if (fullNameRef.current) {
-  //     fullNameRef.current.focus();
-  //   }
-  // }, []);
-
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
@@ -70,6 +63,13 @@ const RegisterSection = () => {
       ...formData,
       [name]: value,
     });
+
+    if (formErrors[name as keyof FormErrors]) {
+      setFormErrors({
+        ...formErrors,
+        [name]: undefined,
+      });
+    }
   };
 
   const handlePhoneChange = (value: string | undefined, country: any) => {
@@ -78,6 +78,13 @@ const RegisterSection = () => {
       phoneNumber: value || "",
       phonePrefix: country?.dialCode || formData.phonePrefix,
     });
+
+    if (formErrors.phoneNumber) {
+      setFormErrors({
+        ...formErrors,
+        phoneNumber: undefined,
+      });
+    }
   };
 
   const validateForm = (): FormErrors => {
@@ -91,13 +98,18 @@ const RegisterSection = () => {
     }
     if (!formData.documentNumber) {
       errors.documentNumber = "Este dato es requerido";
-    } else if (formData.documentNumber.length !== 8) {
+    } else if (
+      (formData.typeDocument === DocumentType.DNI &&
+        formData.documentNumber.length !== 8) ||
+      (formData.typeDocument === DocumentType.CARNET_EXTRAJERIA &&
+        formData.documentNumber.length > 20)
+    ) {
       errors.documentNumber = "Verifique sus datos";
     }
 
     if (!formData.phoneNumber) {
       errors.phoneNumber = "Este dato es requerido";
-    } else if (formData.phoneNumber.length < 11) {
+    } else if (formData.phoneNumber.length !== 11) {
       errors.phoneNumber = "Verifique sus datos";
     }
 
