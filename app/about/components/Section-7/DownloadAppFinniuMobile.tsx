@@ -25,7 +25,7 @@ const DownloadAppFinniuMobile = () => {
             </a>
 
             <a
-              href="https://play.google.com/store/apps/details?id=com.finniu"
+              href="https://apps.apple.com/pe/app/finniu/id6449205870"
               target="_blank"
             >
               <Image src={AppStore} alt="App-Store" width={140} />

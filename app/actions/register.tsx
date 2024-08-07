@@ -8,23 +8,21 @@ export async function savePreRegistration(input: {
   email: string;
   phoneNumber: string;
   phonePrefix: string;
-  typeDocument: string;
-}) {
+}): Promise<boolean> {
   try {
-    const variables = {
+    const parameters = {
       documentNumber: input.documentNumber,
       email: input.email,
       phoneNumber: input.phoneNumber,
       phonePrefix: input.phonePrefix,
-      typeDocument: input.typeDocument,
     };
-    const result = await client.request(SAVE_PRE_REGISTRATION, variables);
+    const result: any = await client.request(SAVE_PRE_REGISTRATION, parameters);
 
-    console.log("Resultado de la mutación GraphQL:", result);
+    const success = result.savePreRegistration.success;
 
-    return { success: true, data: result };
+    return success;
   } catch (error) {
-    console.error("Error saving pre-registration:", error);
-    return { success: false, error: "Failed to save pre-registration" };
+    const success = false;
+    return success;
   }
 }
