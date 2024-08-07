@@ -12,17 +12,6 @@ export const CALCULATE_INVESTMENT = gql`
       profitability {
         preInvestmentAmount
       }
-      plan {
-        uuid
-        name
-        description
-        minAmount
-        value
-        twelveMonthsReturn
-        sixMonthsReturn
-        returnDateEstimate
-        planImageUrl
-      }
     }
   }
 `;
