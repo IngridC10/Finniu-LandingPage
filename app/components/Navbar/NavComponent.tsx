@@ -12,9 +12,9 @@ const NavComponent = () => {
     string | null
   >(null);
 
-  const handleButton = () => {
-    window.open("https://app.finniu.com/login");
-  };
+  // const handleButton = () => {
+  //   window.open("https://app.finniu.com/login");
+  // };
 
   const toggleMenu = () => {
     setIsMenuOpenState(!isMenuOpenState);
@@ -93,17 +93,19 @@ const NavComponent = () => {
           </Link>
         </div>
         <div className="hidden 2xl:flex">
-          <ButtonComponent
-            text="Ingresar"
-            className="h-12 w-36 text-blueDarkColor bg-lightBlueColor text-[24px]  rounded-lg"
-            onClick={handleButton}
-          />
+          <Link href="/login">
+            <ButtonComponent
+              text="Ingresar"
+              className="h-12 w-36 text-blueDarkColor bg-lightBlueColor text-[24px] rounded-lg"
+              onClick={() => handleItemSelect("login")}
+            />
+          </Link>
         </div>
         <div className="flex items-start space-x-4 2xl:hidden">
           <ButtonComponent
             text="Ingresar"
             className="h-10 2xl:h-12 w-[129px] 2xl:w-36 text-blueDarkColor bg-lightBlueColor text-[15px] 2xl:text-[24px] rounded-lg"
-            onClick={handleButton}
+            // onClick={handleButton}
           />
           <button onClick={toggleMenu} className="text-white">
             <svg
@@ -136,7 +138,7 @@ const NavComponent = () => {
             <ButtonComponent
               text="Ingresar"
               className="h-10 2xl:h-12 w-[129px] 2xl:w-36 text-blueDarkColor bg-lightBlueColor text-[15px] 2xl:text-[24px] rounded-lg"
-              onClick={handleButton}
+              // onClick={handleButton}
             />
             <button onClick={toggleMenu} className="text-black">
               <svg
