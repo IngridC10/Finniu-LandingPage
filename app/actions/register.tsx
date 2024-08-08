@@ -18,11 +18,7 @@ export async function savePreRegistration(input: {
     };
     const result: any = await client.request(SAVE_PRE_REGISTRATION, parameters);
 
-    console.log(result, "result");
-
     const success = result.savePreRegistration.success;
-
-    console.log(success, "success");
 
     return success;
   } catch (error) {
