@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Padlock from "@/images/Dashboard/Login/Padlock.png";
 
-const ForgotPasswordPage = () => {
+const ForgotPasswordBody = () => {
   return (
     <div>
       <div className="h-full pt-10 pb-20">
@@ -50,4 +50,4 @@ const ForgotPasswordPage = () => {
   );
 };
 
-export default ForgotPasswordPage;
+export default ForgotPasswordBody;

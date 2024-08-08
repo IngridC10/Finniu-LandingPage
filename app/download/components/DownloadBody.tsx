@@ -4,7 +4,7 @@ import logoTextLight from "@/images/Dashboard/Login/logoTextLight.png";
 import googlePlay from "@/images/Dashboard/Login/googlePlay.png";
 import appStore from "@/images/Dashboard/Login/appStore.png";
 
-const DownloadPage = () => {
+const DownloadBody = () => {
   return (
     <div
       style={{ height: "100vh" }}
@@ -62,4 +62,4 @@ const DownloadPage = () => {
   );
 };
 
-export default DownloadPage;
+export default DownloadBody;

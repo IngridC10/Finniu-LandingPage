@@ -10,7 +10,7 @@ import { faEyeSlash } from "@fortawesome/free-solid-svg-icons/faEyeSlash";
 // import { messageNotify } from "@/components/MessageNotification";
 import { loginUser } from "@/app/actions/tokenAuth";
 
-const LoginPage = () => {
+const LoginBody = () => {
   const [emailState, setEmailState] = useState("");
   const [passwordState, setPasswordState] = useState("");
   const [showPasswordState, setShowPasswordState] = useState(false);
@@ -111,4 +111,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default LoginBody;

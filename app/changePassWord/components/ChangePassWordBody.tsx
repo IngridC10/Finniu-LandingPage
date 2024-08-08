@@ -5,7 +5,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import padlock from "@/images/Dashboard/Login/padlock.png";
 
-const ChangePassWordPage = () => {
+const ChangePassWordBody = () => {
   // const location = useLocation();
   const [showPasswordState, setShowPasswordState] = useState(false);
   const [newPassword, setNewPassword] = useState("");
@@ -115,4 +115,4 @@ const ChangePassWordPage = () => {
   );
 };
 
-export default ChangePassWordPage;
+export default ChangePassWordBody;

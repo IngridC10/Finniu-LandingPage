@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import padlockVerification from "@/images/Dashboard/Login/padlockVerification.png";
-import CountDownTimer from "./CountDownTimer";
+import CountDownTimerComponent from "./CountDownTimerComponent";
 import CodeActivationComponent from "./CodeActivationComponent";
 
-const CodeVerificationPage = () => {
+const CodeVerificationBody = () => {
   // const location = useLocation();
   // const navigate = useNavigate();
   const [codesState, setCodesState] = useState({
@@ -94,7 +94,7 @@ const CodeVerificationPage = () => {
             <h2 className="mt-3 text-lg text-custom-blue">
               Reenviar el código en
             </h2>
-            <CountDownTimer onFinish={handleTimerFinish} />
+            <CountDownTimerComponent onFinish={handleTimerFinish} />
           </>
         )}
 
@@ -113,4 +113,4 @@ const CodeVerificationPage = () => {
   );
 };
 
-export default CodeVerificationPage;
+export default CodeVerificationBody;
