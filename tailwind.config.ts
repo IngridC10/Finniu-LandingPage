@@ -52,6 +52,9 @@ const config: Config = {
         blackColorText: "#020202",
         mustardColor: "#FDEFDF",
         greenColor: "#04A260",
+        cremeColor: "#FFEEDD",
+        customLightBlue: "#A2E6FA",
+        blueCustom: "#DBF7FF",
       },
 
       screens: {

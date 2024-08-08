@@ -40,6 +40,7 @@ const RegisterSection = () => {
     email: "",
     phonePrefix: "+51",
   });
+
   const [formErrors, setFormErrors] = useState<FormErrors>({});
   const [generalError, setGeneralError] = useState<string | null>(null);
 
@@ -126,6 +127,7 @@ const RegisterSection = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     const errors = validateForm();
 
     if (Object.keys(errors).length === 0) {

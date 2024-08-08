@@ -33,3 +33,12 @@ export const SAVE_PRE_REGISTRATION = gql`
     }
   }
 `;
+
+export const LOGIN_USER = gql`
+  mutation TokenAuth($email: String!, $password: String!) {
+    tokenAuth(email: $email, password: $password) {
+      token
+      refreshToken
+    }
+  }
+`;
