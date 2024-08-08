@@ -42,3 +42,12 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+export const RECOVERY_PASSWORD = gql`
+  mutation RecoveryPassword($email: String!) {
+    recoveryPassword(email: $email) {
+      success
+      successSendCode
+    }
+  }
+`;

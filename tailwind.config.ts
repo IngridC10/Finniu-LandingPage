@@ -55,6 +55,8 @@ const config: Config = {
         cremeColor: "#FFEEDD",
         customLightBlue: "#A2E6FA",
         blueCustom: "#DBF7FF",
+        customRed: "#EC4852",
+        customGreen: "#55B63D",
       },
 
       screens: {

@@ -16,7 +16,7 @@ const MessageNotification = ({ type = "error", message = "Hubo un error" }) => {
   return (
     <div
       className={`relative flex flex-row rounded-tl-[50px] rounded-br-[27px] rounded-tr-[15px] rounded-bl-[20px] border-[2px] ${
-        type === "error" ? "border-custom-red" : "border-custom-green"
+        type === "error" ? "border-customRed" : "border-customGreen"
       } w-[306px] h-[90px] bg-[white]`}
     >
       <div className="relative">
@@ -41,7 +41,7 @@ const MessageNotification = ({ type = "error", message = "Hubo un error" }) => {
         />
         <h1
           className={`text-[13px] ${
-            type === "error" ? "text-custom-red" : "text-custom-green"
+            type === "error" ? "text-customRed" : "text-customGreen"
           } font-bold leading-[2.0]`}
         >
           {type === "error" ? "Upss, algo salió mal" : "Completado con éxito"}
