@@ -1,7 +1,6 @@
 "use server";
 import { RECOVERY_PASSWORD } from "../../graphql/mutation";
-import { GraphQLClient } from "graphql-request";
-
+import { client } from "../../graphql/client";
 interface RecoveryPasswordResponse {
   recoveryPassword: {
     success: boolean;
@@ -12,8 +11,6 @@ interface RecoveryPasswordResponse {
 interface RecoveryPasswordInput {
   email: string;
 }
-
-const client = new GraphQLClient("https://finniu.com/api/v1/graph/finniu/");
 
 export async function recoveryPassword(
   input: RecoveryPasswordInput

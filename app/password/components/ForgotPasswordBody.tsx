@@ -5,6 +5,7 @@ import Image from "next/image";
 import Padlock from "@/images/Dashboard/Login/Padlock.png";
 import { recoveryPassword } from "@/app/actions/recoveryPassword";
 import { messageNotify } from "@/components/MessageNotification";
+import Link from "next/link";
 
 const ForgotPasswordBody = () => {
   const [email, setEmail] = useState("");

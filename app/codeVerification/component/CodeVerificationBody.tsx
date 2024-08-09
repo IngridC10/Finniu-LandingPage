@@ -1,14 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import padlockVerification from "@/images/Dashboard/Login/padlockVerification.png";
 import CountDownTimerComponent from "./CountDownTimerComponent";
 import CodeActivationComponent from "./CodeActivationComponent";
-
+import { recoveryPassword } from "@/app/actions/recoveryPassword";
 const CodeVerificationBody = () => {
-  // const location = useLocation();
-  // const navigate = useNavigate();
   const [codesState, setCodesState] = useState({
     code1: "",
     code2: "",
@@ -17,16 +15,15 @@ const CodeVerificationBody = () => {
   });
   const [showResendButton, setShowResendButton] = useState(false);
   const [showTimer, setShowTimer] = useState(true);
-  // const [recoveryPassword] = useMutation(RECOVERY_PASSWORD, { client });
+  const [email, setEmail] = useState("");
 
-  // const emailParams = new URLSearchParams(location.search);
-  // const email = emailParams.get("email");
-
-  // useEffect(() => {
-  //   if (!email) {
-  //     navigate("/wrong-password");
-  //   }
-  // }, [email, navigate]);
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const emailParam = urlParams.get("email");
+    if (emailParam) {
+      setEmail(emailParam);
+    }
+  }, []);
 
   const handleTimerFinish = () => {
     setShowTimer(false);
@@ -39,15 +36,34 @@ const CodeVerificationBody = () => {
     });
   };
 
-  // const handleResendCode = async () => {
-  //   try {
-  //     await recoveryPassword({ variables: { email } });
-  //     setShowTimer(true);
-  //     setShowResendButton(false);
-  //   } catch (error) {
-  //     console.error("Error al reenviar el código:", error);
-  //   }
-  // };
+  const handleResendCode = async () => {
+    try {
+      // Ensure email is not empty
+      if (!email) {
+        throw new Error("Email no está definido.");
+      }
+
+      const response = await recoveryPassword({ email });
+
+      console.log("Respuesta del servidor de reenviar código:", response);
+
+      const { success, successSendCode } = response;
+
+      if (success && successSendCode) {
+        console.log("Código de recuperación reenviado con éxito");
+      } else {
+        console.warn("Error al reenviar el código de recuperación");
+      }
+
+      setShowTimer(true);
+      setShowResendButton(false);
+    } catch (error) {
+      console.error(
+        "Error al reenviar el código:",
+        (error as any).message || error
+      );
+    }
+  };
 
   const handleResendButtonClick = async () => {
     setCodesState({
@@ -56,7 +72,7 @@ const CodeVerificationBody = () => {
       code3: "",
       code4: "",
     });
-    // await handleResendCode();
+    await handleResendCode();
   };
 
   return (
@@ -75,7 +91,7 @@ const CodeVerificationBody = () => {
           </div>
         </div>
         <CodeActivationComponent
-          email={"email"}
+          email={email}
           setCodesState={setCodesState}
           codesState={codesState}
         />

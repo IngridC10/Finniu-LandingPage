@@ -51,3 +51,11 @@ export const RECOVERY_PASSWORD = gql`
     }
   }
 `;
+
+export const VALIDATE_OTP = gql`
+  mutation validateOtp($email: String!, $otpCode: String!, $action: String!) {
+    validOtpUser(input: { otpCode: $otpCode, email: $email, action: $action }) {
+      success
+    }
+  }
+`;
