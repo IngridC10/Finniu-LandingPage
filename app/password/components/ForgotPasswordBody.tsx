@@ -1,10 +1,38 @@
-import React from "react";
-import { Toaster } from "react-hot-toast";
+"use client";
+import React, { useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Padlock from "@/images/Dashboard/Login/Padlock.png";
+import { recoveryPassword } from "@/app/actions/recoveryPassword";
+import { messageNotify } from "@/components/MessageNotification";
+import { Toaster } from "react-hot-toast";
 
 const ForgotPasswordBody = () => {
+  const [email, setEmail] = useState("");
+  const router = useRouter();
+
+  const handleRecoveryPassword = async () => {
+    if (email.trim() === "") {
+      messageNotify({
+        message: "Por favor ingresa tu correo electrónico",
+      });
+
+      return;
+    }
+
+    const response = await recoveryPassword({
+      email: email,
+    });
+
+    if (response && response.success) {
+      router.push(`/code-verification?email=${email}`);
+    }
+
+    if (response && !response.success) {
+      messageNotify({ message: "El correo ingresado no existe" });
+    }
+  };
+
   return (
     <div>
       <div className="h-full pt-10 pb-20">
@@ -13,7 +41,7 @@ const ForgotPasswordBody = () => {
             ¿Olvidaste tu contraseña ?
           </h1>
           <h2 className="mt-3 text-lg font-semibold leading-10 text-center text-black">
-            No te preocupes es posible recuperarla{" "}
+            No te preocupes es posible recuperarla
           </h2>
           <div className="w-[328px] sm:w-[334px] md:w-[350px] lg:w-[358px] h-[163px] rounded-[20px] bg-[rgba(255,_238,_221,_1)] m-[30px] flex flex-row relative">
             <Image
@@ -31,18 +59,18 @@ const ForgotPasswordBody = () => {
             className="m-[15px] self-center pl-[22px] w-[267px] h-[46px] rounded-[26px] border-[1.9px] border-[solid] border-[#0d3a5c] mt-[2px] text-[20px]"
             type="text"
             placeholder="Correo electrónico"
-            // value={email}
-            // onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
-          <Link href="/codeVerification" className="flex justify-center">
-            <button
-              // onClick={handleRecoveryPassword}
-              className="w-[267px] h-[46px] text-white rounded-[20px] bg-[rgba(13,58,92,1)] font-bold text-lg self-center mt-[26px]"
-              style={{ cursor: "pointer" }}
-            >
-              Enviar Correo
-            </button>
-          </Link>
+
+          <button
+            onClick={handleRecoveryPassword}
+            className="w-[267px] h-[46px] text-white rounded-[20px] bg-[rgba(13,58,92,1)] font-bold text-lg self-center mt-[26px]"
+            style={{ cursor: "pointer" }}
+          >
+            Enviar Correo
+          </button>
+
           <Toaster />
         </div>
       </div>

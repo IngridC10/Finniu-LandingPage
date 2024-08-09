@@ -30,8 +30,8 @@ const CountDownTimer = ({ onFinish }: CountDownTimerProps) => {
       <div className="timer-wrapper">
         <CountdownCircleTimer
           isPlaying
-          duration={120}
-          size={200}
+          duration={110}
+          size={110}
           colors={["#9381FF", "#0D3A5C"]}
           colorsTime={[0, 40]}
         >

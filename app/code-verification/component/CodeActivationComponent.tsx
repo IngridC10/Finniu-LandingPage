@@ -1,7 +1,9 @@
 "useClient";
+import { validateOtp } from "@/app/actions/validateOtp";
 import { messageNotify } from "@/components/MessageNotification";
 import React, { useEffect, useRef } from "react";
 import { Toaster } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 interface CodeActivationComponentProps {
   email: string;
@@ -14,52 +16,46 @@ const CodeActivationComponent = ({
   codesState,
   setCodesState,
 }: CodeActivationComponentProps) => {
-  // const navigate = useNavigate();
-  const firstInputRef = useRef(null);
+  const firstInputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
-    //   if (firstInputRef.current) {
-    //     firstInputRef.current.focus();
-    //   }
+    if (firstInputRef.current) {
+      firstInputRef.current.focus();
+    }
   }, []);
 
-  // const [validOtpUser] = useMutation(VALIDATE_OTP, { client });
+  const router = useRouter();
 
-  useEffect(
-    () => {
-      async function fetchData() {
-        const otpCode = Object.values(codesState).join("");
-        if (otpCode.length === 4) {
-          try {
-            const { data } = await validOtpUser({
-              variables: {
-                email: email,
-                action: "recovery_password",
-                otpCode: otpCode,
-              },
-            });
-            if (data.validOtpUser.success) {
-              //   navigate(`/change-password?email=${email}`);
-            } else {
-              messageNotify({
-                message: "No se pudo validar el código de verificación",
-              });
-            }
-          } catch (error) {
-            console.error("Error:", error);
+  useEffect(() => {
+    async function fetchData() {
+      const otpCode = Object.values(codesState).join("");
+      if (otpCode.length === 4) {
+        try {
+          const success = await validateOtp({
+            email: email,
+            action: "recovery_password",
+            otpCode: otpCode,
+          });
+
+          if (success) {
+            router.push(`/change-password?email=${email}`);
+          } else {
             messageNotify({
               message: "No se pudo validar el código de verificación",
             });
           }
+        } catch (error) {
+          console.error("Error:", error);
+          messageNotify({
+            message: "No se pudo validar el código de verificación",
+          });
         }
       }
-      fetchData();
     }
+    fetchData();
+  }, [email, codesState]);
 
-    // [email, codesState, validOtpUser, navigate]
-  );
-
-  const handleChange = (e: { target: { name: any; value: any } }) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setCodesState((prevCode: any) => ({
       ...prevCode,
@@ -72,10 +68,7 @@ const CodeActivationComponent = ({
     }
   };
 
-  const handlePaste = (e: {
-    preventDefault: () => void;
-    clipboardData: { getData: (arg0: string) => string | any[] };
-  }) => {
+  const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
     e.preventDefault();
     const pastedData = e.clipboardData.getData("text").slice(0, 4);
     const codeInputs = Object.keys(codesState);
@@ -138,9 +131,3 @@ const CodeActivationComponent = ({
 };
 
 export default CodeActivationComponent;
-
-function validOtpUser(arg0: {
-  variables: { email: string; action: string; otpCode: string };
-}): { data: any } | PromiseLike<{ data: any }> {
-  throw new Error("Function not implemented.");
-}
