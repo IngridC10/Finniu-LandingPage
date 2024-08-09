@@ -279,3 +279,40 @@ input[type="range"]::-webkit-slider-runnable-track {
   opacity: 0.5;
   cursor: not-allowed;
 }
+/* 
+.time-wrapper {
+  position: relative;
+  font-size: 35px;
+  top: 10px;
+}
+
+.time-wrapper .time {
+  position: absolute;
+  left: -30px;
+  top: -229px;
+  display: flex;
+  transform: translateY(0);
+  transition: all 0.2s;
+}
+
+.time-wrapper .time.up {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+
+.time-wrapper .time.down {
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.timer-wrapper svg {
+  width: 480px;
+  height: 120px;
+} */
+
+.App {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  min-height: 100vh;
+}

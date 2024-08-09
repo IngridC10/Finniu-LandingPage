@@ -3,6 +3,7 @@ import { validateOtp } from "@/app/actions/validateOtp";
 import { messageNotify } from "@/components/MessageNotification";
 import React, { useEffect, useRef } from "react";
 import { Toaster } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 interface CodeActivationComponentProps {
   email: string;
@@ -23,6 +24,8 @@ const CodeActivationComponent = ({
     }
   }, []);
 
+  const router = useRouter();
+
   useEffect(() => {
     async function fetchData() {
       const otpCode = Object.values(codesState).join("");
@@ -35,9 +38,7 @@ const CodeActivationComponent = ({
           });
 
           if (success) {
-            console.log("OTP validado con éxito");
-            // Optionally navigate to the next page
-            // navigate(`/change-password?email=${email}`);
+            router.push(`/change-password?email=${email}`);
           } else {
             messageNotify({
               message: "No se pudo validar el código de verificación",

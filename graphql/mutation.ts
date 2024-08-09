@@ -59,3 +59,11 @@ export const VALIDATE_OTP = gql`
     }
   }
 `;
+
+export const CHANGE_PASSWORD = gql`
+  mutation changePasswordMinimal($email: String!, $newPassword: String!) {
+    changePasswordMinimal(input: { email: $email, newPassword: $newPassword }) {
+      success
+    }
+  }
+`;

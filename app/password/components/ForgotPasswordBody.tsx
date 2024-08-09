@@ -1,14 +1,15 @@
 "use client";
 import React, { useState } from "react";
-import { Toaster } from "react-hot-toast";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import Padlock from "@/images/Dashboard/Login/Padlock.png";
 import { recoveryPassword } from "@/app/actions/recoveryPassword";
 import { messageNotify } from "@/components/MessageNotification";
-import Link from "next/link";
+import { Toaster } from "react-hot-toast";
 
 const ForgotPasswordBody = () => {
   const [email, setEmail] = useState("");
+  const router = useRouter();
 
   const handleRecoveryPassword = async () => {
     if (email.trim() === "") {
@@ -24,13 +25,12 @@ const ForgotPasswordBody = () => {
     });
 
     if (response && response.success) {
-      // navigate(`/account-verification?email=${email}`);
+      router.push(`/code-verification?email=${email}`);
     }
-    console.log("response:", response);
+
     if (response && !response.success) {
       messageNotify({ message: "El correo ingresado no existe" });
     }
-    console.log("response:", response);
   };
 
   return (

@@ -25,8 +25,6 @@ export async function validateOtp(input: ValidateOtpInput): Promise<boolean> {
       input
     );
 
-    console.log("Respuesta de GraphQL:", result);
-
     const { success } = result.validOtpUser;
 
     console.log("Resultado de la función validateOtp:", {

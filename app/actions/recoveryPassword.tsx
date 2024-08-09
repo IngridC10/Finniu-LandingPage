@@ -29,8 +29,6 @@ export async function recoveryPassword(
       parameters
     );
 
-    console.log("Respuesta de GraphQL:", result);
-
     const { success, successSendCode } = result.recoveryPassword;
 
     if (!successSendCode) {

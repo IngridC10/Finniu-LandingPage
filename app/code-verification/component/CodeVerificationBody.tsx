@@ -1,12 +1,14 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import padlockVerification from "@/images/Dashboard/Login/padlockVerification.png";
 import CountDownTimerComponent from "./CountDownTimerComponent";
 import CodeActivationComponent from "./CodeActivationComponent";
+import { useRouter } from "next/navigation";
 import { recoveryPassword } from "@/app/actions/recoveryPassword";
+
 const CodeVerificationBody = () => {
+  const router = useRouter();
   const [codesState, setCodesState] = useState({
     code1: "",
     code2: "",
@@ -20,10 +22,13 @@ const CodeVerificationBody = () => {
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const emailParam = urlParams.get("email");
+
     if (emailParam) {
       setEmail(emailParam);
+    } else {
+      router.push("/password");
     }
-  }, []);
+  }, [router]);
 
   const handleTimerFinish = () => {
     setShowTimer(false);
@@ -38,19 +43,14 @@ const CodeVerificationBody = () => {
 
   const handleResendCode = async () => {
     try {
-      // Ensure email is not empty
       if (!email) {
         throw new Error("Email no está definido.");
       }
-
       const response = await recoveryPassword({ email });
-
-      console.log("Respuesta del servidor de reenviar código:", response);
 
       const { success, successSendCode } = response;
 
       if (success && successSendCode) {
-        console.log("Código de recuperación reenviado con éxito");
       } else {
         console.warn("Error al reenviar el código de recuperación");
       }
@@ -113,17 +113,6 @@ const CodeVerificationBody = () => {
             <CountDownTimerComponent onFinish={handleTimerFinish} />
           </>
         )}
-
-        <Link href="/changePassWord">
-          <button
-            className="w-[184px] h-[48px] text-[white] rounded-[20px] bg-gray-500 font-bold text-[18px] self-center"
-            style={{ cursor: "pointer" }}
-            // onClick={handleLogin}
-          >
-            {" "}
-            Next{" "}
-          </button>
-        </Link>
       </div>
     </div>
   );
