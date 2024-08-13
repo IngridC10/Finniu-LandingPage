@@ -16,7 +16,7 @@ const UserMenu = ({
   //   const UserPhoto = imageProfileUrl ? imageProfileUrl : defaultImageUser;
 
   return (
-    <div className="flex justify-end gap-10">
+    <div className="flex justify-end gap-10 w-full p-5">
       <SwitchLightandDark
         // className="ml-auto"
         isDarkModeState={isDarkModeState}

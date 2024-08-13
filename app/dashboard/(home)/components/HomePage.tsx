@@ -5,6 +5,9 @@ import UserMenu from "./UserMenu";
 
 const HomePage = () => {
   const [isDarkModeState, setIsDarkModeState] = useState<boolean>(false);
+  const [isSolesState, setIsSolesState] =
+    useState();
+    // getIsSoles() === "true" ? true : false
   return (
     <div className=" bg-lightBlueColor">
       {/* <SideBarComponent isDarkModeState={false} currentPage={""} />

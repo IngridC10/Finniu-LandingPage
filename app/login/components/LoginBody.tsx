@@ -12,7 +12,10 @@ import { loginUser } from "@/app/actions/tokenAuth";
 import { messageNotify } from "@/components/MessageNotification";
 import { saveToken } from "@/app/cookies/TokenCookies";
 import { saveRefreshToken } from "@/app/cookies/TokenCookies";
-import { saveCredentials } from "@/app/cookies/CredentialsCookies";
+import {
+  getCredentials,
+  saveCredentials,
+} from "@/app/cookies/CredentialsCookies";
 import { removeCredentials } from "@/app/cookies/CredentialsCookies";
 import { saveRememberPasswordChecked } from "@/app/cookies/CredentialsCookies";
 import { isRememberPasswordChecked } from "@/app/cookies/CredentialsCookies";
@@ -30,7 +33,15 @@ const LoginBody = () => {
     if (window.innerWidth <= 640) {
       router.push("/download");
     }
-  }, []);
+
+    if (rememberCredentialsState) {
+      const savedCredentials = getCredentials();
+      if (savedCredentials.email && savedCredentials.password) {
+        setEmailState(savedCredentials.email);
+        setPasswordState(savedCredentials.password.toString());
+      }
+    }
+  }, [rememberCredentialsState]);
 
   const handleLogin = async () => {
     try {
@@ -51,7 +62,7 @@ const LoginBody = () => {
           saveRememberPasswordChecked(false);
         }
 
-        router.push("/home-page");
+        router.push("/dashboard");
       } else {
         messageNotify({ message: "Usuario y/o contraseña incorrectos" });
       }

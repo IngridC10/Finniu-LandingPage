@@ -1,7 +1,7 @@
 import cookie from "js-cookie";
 
 export const saveToken = (token) => {
-  cookie.set("token", token, { expires: 7 }); //expired seven days
+  cookie.set("token", token, { expires: 7 });
 };
 
 export const getToken = () => {
@@ -13,7 +13,7 @@ export const removeToken = () => {
 };
 
 export const saveRefreshToken = (refreshToken) => {
-  cookie.set("refreshToken", refreshToken, { expires: 7 }); // expired seven days
+  cookie.set("refreshToken", refreshToken, { expires: 7 });
 };
 
 export const getRefreshToken = () => {

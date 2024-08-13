@@ -1,19 +1,27 @@
+import secureLocalStorage from "react-secure-storage";
 import cookie from "js-cookie";
 
 export const saveCredentials = (email, password) => {
-  cookie.set("userEmail", email, { expires: 7 }); // Expira en 7 días
-  cookie.set("userPassword", password, { expires: 7 });
+  cookie.set("userEmail", email, { expires: 7 });
+  secureLocalStorage.setItem("userPassword", password);
+  console.log("Saving email:", email);
+  console.log("Saving password:", password);
 };
 
 export const getCredentials = () => {
   const email = cookie.get("userEmail");
-  const password = cookie.get("userPassword");
+  const password = secureLocalStorage.getItem("userPassword");
+
   return { email, password };
 };
 
 export const removeCredentials = () => {
+  const { email, password } = getCredentials();
+
   cookie.remove("userEmail");
-  cookie.remove("userPassword");
+  secureLocalStorage.removeItem("userPassword");
+  console.log("Retrieved email:", email);
+  console.log("Retrieved password:", password);
 };
 
 export const saveRememberPasswordChecked = (isChecked) => {
