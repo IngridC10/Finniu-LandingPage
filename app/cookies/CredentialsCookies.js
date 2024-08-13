@@ -4,8 +4,6 @@ import cookie from "js-cookie";
 export const saveCredentials = (email, password) => {
   cookie.set("userEmail", email, { expires: 7 });
   secureLocalStorage.setItem("userPassword", password);
-  console.log("Saving email:", email);
-  console.log("Saving password:", password);
 };
 
 export const getCredentials = () => {
@@ -20,8 +18,6 @@ export const removeCredentials = () => {
 
   cookie.remove("userEmail");
   secureLocalStorage.removeItem("userPassword");
-  console.log("Retrieved email:", email);
-  console.log("Retrieved password:", password);
 };
 
 export const saveRememberPasswordChecked = (isChecked) => {
