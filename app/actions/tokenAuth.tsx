@@ -14,12 +14,15 @@ export async function loginUser(input: {
 
     const result: any = await client.request(LOGIN_USER, parameters);
 
-    const token = result.loginUser.token;
-    const refreshToken = result.loginUser.refreshToken;
+    if (result && result.tokenAuth) {
+      const token = result.tokenAuth.token;
+      const refreshToken = result.tokenAuth.refreshToken;
 
-    return { token, refreshToken };
+      return { token, refreshToken };
+    } else {
+      return null;
+    }
   } catch (error) {
-    console.error("Error al autenticar el usuario:", error);
     return null;
   }
 }

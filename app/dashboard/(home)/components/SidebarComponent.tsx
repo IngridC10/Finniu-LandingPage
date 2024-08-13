@@ -142,7 +142,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({
   //   };
 
   return (
-    <div className="flex flex-col sidebar h-screen">
+    <div className="flex flex-col sidebar h-screen bg-lighBlue ">
       <div
         className={`${
           isDarkModeState ? "bg-custom-blue" : "bg-custom-light-blue"
@@ -154,7 +154,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({
           <Image
             src={logoSmallLight}
             alt="Logo"
-            height={47}
+            height={50}
             width={43}
             className={` ${isSidebarOpenState ? "h-10" : "h-6"}`}
             // src={
