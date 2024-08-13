@@ -1,30 +1,26 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import padlock from "@/images/Dashboard/Login/padlock.png";
-import { useRouter } from "next/navigation";
-import { useSearchParams } from "next/navigation";
+// import { useRouter } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 import { messageNotify } from "@/components/MessageNotification";
 import { changePassword } from "@/app/actions/changePassWord";
 import { Toaster } from "react-hot-toast";
+interface ChangePassWordBodyProps {
+  email: string;
+  redirectToLogin: () => void;
+}
 
-const ChangePassWordBody = () => {
-  const router = useRouter();
-  const searchParams = useSearchParams();
+const ChangePassWordBody: React.FC<ChangePassWordBodyProps> = ({
+  email,
+  redirectToLogin,
+}) => {
   const [showPasswordState, setShowPasswordState] = useState(false);
   const [newPassword, setNewPassword] = useState("");
-  const [redirect, setRedirect] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  const email = searchParams.get("email");
-
-  useEffect(() => {
-    if (!email) {
-      router.push("/password");
-    }
-  }, [email, router]);
 
   const togglePasswordVisibility = () => {
     setShowPasswordState(!showPasswordState);
@@ -48,7 +44,7 @@ const ChangePassWordBody = () => {
     setLoading(true);
     try {
       const result = await changePassword({
-        email: email || "",
+        email,
         newPassword,
       });
 
@@ -58,7 +54,7 @@ const ChangePassWordBody = () => {
           message: "Contraseña cambiada con éxito",
         });
 
-        setRedirect(true);
+        redirectToLogin();
       } else {
         messageNotify({
           type: "error",
@@ -75,18 +71,6 @@ const ChangePassWordBody = () => {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    let timer: string | number | NodeJS.Timeout | undefined;
-
-    if (redirect) {
-      timer = setTimeout(() => {
-        router.push("/login");
-      }, 5000);
-    }
-
-    return () => clearTimeout(timer);
-  }, [redirect, router]);
 
   return (
     <div style={{ height: "100vh", overflowX: "hidden" }}>

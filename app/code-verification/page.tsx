@@ -1,5 +1,5 @@
 import React from "react";
-import CodeVerificationBody from "./component/CodeVerificationBody";
+import CodeVerificationBody from "./components/CodeVerificationBody";
 
 const page = () => {
   return (
