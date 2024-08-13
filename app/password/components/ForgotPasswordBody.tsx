@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import Padlock from "@/images/Dashboard/Login/Padlock.png";
+import padlock from "@/images/Dashboard/Login/padlock.png";
 import { recoveryPassword } from "@/app/actions/recoveryPassword";
 import { messageNotify } from "@/components/MessageNotification";
 import { Toaster } from "react-hot-toast";
@@ -46,7 +46,7 @@ const ForgotPasswordBody = () => {
           <div className="w-[328px] sm:w-[334px] md:w-[350px] lg:w-[358px] h-[163px] rounded-[20px] bg-[rgba(255,_238,_221,_1)] m-[30px] flex flex-row relative">
             <Image
               className="w-[89px] h-[76px] absolute -left-[44px] bottom-[52px]"
-              src={Padlock}
+              src={padlock}
               alt="Padlock"
             />
             <h3 className="text-sm font-light flex flex-row pl-[29px] m-[22px] leading-[1.8]">
