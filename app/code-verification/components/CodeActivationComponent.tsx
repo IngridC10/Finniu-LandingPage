@@ -38,7 +38,7 @@ const CodeActivationComponent = ({
           });
 
           if (success) {
-            router.push(`/change-password?email=${email}`);
+            router.push(`/change-password ?email=${email}`);
           } else {
             messageNotify({
               message: "No se pudo validar el código de verificación",
