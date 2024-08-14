@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { GoBell } from "react-icons/go";
 import UserPhoto from "@/images/Dashboard/UserMenu/userPhoto.jpg";
