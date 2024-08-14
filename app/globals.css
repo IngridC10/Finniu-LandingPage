@@ -334,3 +334,13 @@ input[type="range"]::-webkit-slider-runnable-track {
 .icon-revenue svg {
   height: 19px;
 }
+
+:root {
+  --background-color: #ffffff;
+  --text-color: #000000;
+}
+
+[data-theme="dark"] {
+  --background-color: #0d3a5c;
+  --text-color: #ffffff;
+}

@@ -1,14 +1,14 @@
 "use client";
 import React, { useState } from "react";
-import HomePage from "./components/HomePage";
 import SideBarComponent from "./components/SidebarComponent";
 import UserMenu from "./components/UserMenu";
 import SwitchSolesComponent from "./components/SwitchSolesComponent";
+import { useTheme } from "@/app/contexts/ThemeProvider";
 
 const page = () => {
+  const { darkMode } = useTheme();
   return (
     <main className=" flex min-h-screen flex-col items-start bg-customBackgroundLight">
-      <HomePage />
       <UserMenu
         isDarkModeState={false}
         setIsDarkModeState={function (
