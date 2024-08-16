@@ -48,6 +48,7 @@ const config: Config = {
         lilaColor: "#D2B7FF",
         lightSecondaryColor: "##F0FBFF",
         backgroundLightColor: "#E7F9FF",
+        backgroundDarkColor: "#212121",
         whiteColor: "#F7FAFB",
         blackColorText: "#020202",
         mustardColor: "#FDEFDF",
@@ -58,6 +59,7 @@ const config: Config = {
         customRed: "#EC4852",
         customGreen: "#55B63D",
         customBackgroundLight: "#F5FDFF",
+        customDarkblue: "#8FE6FF",
       },
 
       screens: {

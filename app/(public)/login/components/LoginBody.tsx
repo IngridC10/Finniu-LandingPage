@@ -130,7 +130,7 @@ const LoginBody = () => {
             </p>
           </Link>
 
-          <div className="flex ml-[28px] mb-[23px] gap-[5px]">
+          <div className="flex w-[400px] mb-[23px] gap-[5px]">
             <input
               className="w-5 h-5 bg-white border-2 border-gray-300 rounded-md checked:bg-black checked:border-transparent checked:border-2 checked:border-black"
               type="checkbox"

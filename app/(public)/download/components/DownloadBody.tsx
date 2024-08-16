@@ -23,14 +23,14 @@ const DownloadBody = () => {
 
           <div className="flex flex-col items-center h-full mt-2 sm:items-center md:items-center lg:items-center xl:items-end xxl:items-end xs:h-auto sm:h-auto md:h-auto lg:h-full xxl:h-full sm:flex-col lg:flex-col xl:flex-row xxl:flex-row lg:mt-10 xl:mt-35">
             <img
-              className="h-[299.73px] w-[237px] md:w-[374px] md:h-[518px] lg:w-[442px] lg:h-[625.14px] sm:relative lg:relative xl:relative animationPreview"
+              className="h-[255.73px] w-[211px] md:w-[374px] md:h-[518px] lg:w-[442px] lg:h-[625.14px] sm:relative lg:relative xl:relative animationPreview"
               src="https://finniu-statics.s3.amazonaws.com/images/logos/DpreviewApp.gif"
               alt="animation-app"
             />
 
             <div className="flex flex-col items-center justify-start h-full p-5 sm:justify-center md:justify-center lg:justify-start xl:justify-center xxl:justify-center xl:mt-32 ">
               <Image
-                className="w-[63px] h-[53px] xs:w-[63px] xs:h-[53px] sm:w-[105px] md:w-[89px] md:h-[64px] lg:w-[109px]  self-center"
+                className="w-[63px] h-[53px] xs:w-[55px] xs:h-[41px] sm:w-[105px] md:w-[89px] md:h-[64px] lg:w-[109px]  self-center"
                 src={logoTextLight}
                 alt="logo-text"
               />

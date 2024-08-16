@@ -1,15 +1,11 @@
 import React from "react";
-// import { saveIsDarkModeStorage } from "../helpers/IsDarkModeStorage";
-const SwitchLightandDark = ({
-  isDarkModeState,
-  setIsDarkModeState,
-}: {
-  isDarkModeState: boolean;
-  setIsDarkModeState: React.Dispatch<React.SetStateAction<boolean>>;
-}) => {
+import { saveIsDarkMode } from "@/app/cookies/IsDarkModeCookies";
+import { useTheme } from "@/app/contexts/ThemeProvider";
+const SwitchLightandDark = () => {
+  const { darkMode, toggleDarkMode } = useTheme();
+
   const toggleSwitch = () => {
-    setIsDarkModeState(!isDarkModeState);
-    // saveIsDarkModeStorage(!isDarkModeState);
+    toggleDarkMode();
   };
 
   return (
@@ -28,27 +24,26 @@ const SwitchLightandDark = ({
           marginRight: "34px",
           display: "flex",
           width: "29px",
-          color: isDarkModeState ? "white" : "#0d3a5c",
+          color: darkMode ? "white" : "#0d3a5c",
           whiteSpace: "nowrap",
         }}
-      >
-        {/* {isDarkModeState ? "DarkMode" : "LightMode"} */}
-      </span>
+      ></span>
       <input
         type="checkbox"
         style={{
           appearance: "none",
           width: "100px",
           height: "40px",
+          border: "none",
           left: "18px",
           borderRadius: "15px",
-          backgroundColor: isDarkModeState ? "#18507B" : "#DBF7FF",
+          backgroundColor: darkMode ? "#18507B" : "#DBF7FF",
           position: "relative",
           cursor: "pointer",
-          opacity: isDarkModeState ? "0.8" : "1",
+          opacity: darkMode ? "0.8" : "1",
           transition: "background-color 0.3s ease, opacity 0.3s ease",
         }}
-        checked={isDarkModeState}
+        checked={darkMode}
         onChange={toggleSwitch}
       />
       <button
@@ -58,20 +53,20 @@ const SwitchLightandDark = ({
           width: "40px",
           height: "40px",
           borderRadius: "50%",
-          backgroundColor: isDarkModeState ? "#0D3A5C" : "#A2E6FA",
-          left: isDarkModeState ? "calc(100% - 84px)" : "154px",
+          backgroundColor: darkMode ? "#0D3A5C" : "#A2E6FA",
+          left: darkMode ? "calc(100% - 84px)" : "154px",
           transition: "left 0.3s ease",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          color: isDarkModeState ? "#FFFFFF" : "#0D3A5C",
+          color: darkMode ? "#FFFFFF" : "#0D3A5C",
           fontSize: "24px",
           zIndex: "0",
           border: "none",
           cursor: "pointer",
         }}
       >
-        {isDarkModeState ? "\u263E" : "\u2600"}
+        {darkMode ? "\u263E" : "\u2600"}
       </button>
     </div>
   );

@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
+import "../../globals.css";
+import NavComponent from "../(home)/Navbar/NavComponent";
+import FooterPageComponent from "../(home)/Footer/FooterPageComponent";
 
 const DMSans = localFont({
   src: [
     {
-      path: "../public/fonts/dm-sans/DMSans-Regular.ttf",
+      path: "../../../public/fonts/dm-sans/DMSans-Regular.ttf",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../public/fonts/dm-sans/DMSans-Bold.ttf",
+      path: "../../../public/fonts/dm-sans/DMSans-Bold.ttf",
       weight: "700",
       style: "normal",
     },
@@ -29,7 +31,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={DMSans.className}>{children}</body>
+      <body className={DMSans.className}>
+        <NavComponent />
+        {children}
+        <FooterPageComponent />
+      </body>
     </html>
   );
 }

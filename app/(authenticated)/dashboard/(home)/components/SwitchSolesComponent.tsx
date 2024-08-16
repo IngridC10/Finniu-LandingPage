@@ -1,14 +1,15 @@
+import { useTheme } from "@/app/contexts/ThemeProvider";
 import React from "react";
 
 const SwitchSolesComponent = ({
   isSolesState,
   onSwitchChange,
-  isDarkModeState,
 }: {
   isSolesState: boolean;
   onSwitchChange: () => void;
-  isDarkModeState: boolean;
 }) => {
+  const { darkMode } = useTheme();
+
   const toggleSwitch = () => {
     onSwitchChange();
   };
@@ -17,7 +18,13 @@ const SwitchSolesComponent = ({
     width: "80px",
     height: "35px",
     borderRadius: "15px",
-    backgroundColor: isSolesState ? "#A2E6FA" : "#0d3a5c",
+    backgroundColor: isSolesState
+      ? darkMode
+        ? "#A2E6FA"
+        : "#A2E6FA"
+      : darkMode
+      ? "#0d3a5c"
+      : "#0d3a5c",
     position: "relative" as const,
     cursor: "pointer",
   };
@@ -26,7 +33,13 @@ const SwitchSolesComponent = ({
     width: "22px",
     height: "22px",
     borderRadius: "50%",
-    backgroundColor: isSolesState ? "#0d3a5c" : "#A2E6FA",
+    backgroundColor: isSolesState
+      ? darkMode
+        ? "#0d3a5c"
+        : "#0d3a5c"
+      : darkMode
+      ? "#A2E6FA"
+      : "#A2E6FA",
     position: "absolute" as const,
     top: "6.5px",
     left: isSolesState ? "50px" : "10px",
@@ -42,7 +55,7 @@ const SwitchSolesComponent = ({
           alignItems: "center",
           justifyContent: "center",
           width: "60px",
-          color: isDarkModeState ? "#EEEEEE" : "#0D3A5C",
+          color: darkMode ? "#EEEEEE" : "#0D3A5C",
           padding: "15px",
         }}
       >

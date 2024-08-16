@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { AiOutlineDollar, AiOutlineHistory } from "react-icons/ai";
@@ -11,180 +11,199 @@ import logoSmallDark from "@/images/Dashboard/NavBar/logoSmallDark.png";
 import logoSmallLight from "@/images/Dashboard/NavBar/logoSmallLight.png";
 import logoTextDark from "@/images/Dashboard/NavBar/logoTextDark.png";
 import logoTextlight from "@/images/Dashboard/NavBar/logoTextLight.png";
+import { useTheme } from "@/app/contexts/ThemeProvider";
+import { removeToken } from "@/app/cookies/TokenCookies";
+import { removeProfile } from "@/app/cookies/UserProfileCookies";
+import { removeInfoAllInvestment } from "@/app/cookies/UserInfoAllInvestmentCookies";
+import {
+  getIsOpenSidebar,
+  getSelectedMenu,
+  removeIsOpenSidebar,
+  saveIsOpenSidebar,
+  saveSelectedMenu,
+} from "@/app/cookies/SidebarCookies";
+import { removeSelectedMenu } from "@/app/cookies/SidebarCookies";
+import { removeIsSoles } from "@/app/cookies/IsSolesCookies";
+import { removeIsDarkMode } from "@/app/cookies/IsDarkModeCookies";
+import { removeShowTour } from "@/app/cookies/ShowTourCookies";
 
 interface SideBarComponentProps {
-  isDarkModeState: boolean;
   currentPage: string;
 }
 
-const SideBarComponent: React.FC<SideBarComponentProps> = ({
-  isDarkModeState,
-  currentPage,
-}) => {
+const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
   const [selectedMenu, setSelectedMenu] = useState("home");
   const [isSidebarOpenState, setSidebarOpen] = useState(false);
-  const [hoverStates, setHoverStates] = useState({});
 
-  //   useEffect(() => {
-  //     const isOpenStorage = getIsOpenSidebarStorage();
+  console.log("isSidebarOpenState", isSidebarOpenState);
+  const [hoverStates, setHoverStates] = useState<{ [key: string]: boolean }>(
+    {}
+  );
 
-  //     if (isOpenStorage !== null) {
-  //       if (isOpenStorage === "true") {
-  //         setSidebarOpen(true);
-  //       } else {
-  //         setSidebarOpen(false);
-  //       }
-  //     } else {
-  //       setSidebarOpen(false);
-  //     }
-  //     // check the selected menu stored in local storage
+  const { darkMode } = useTheme();
 
-  //     const selectedMenuStorage = getSelectedMenuStorage();
+  useEffect(() => {
+    const isOpenStorage = getIsOpenSidebar();
 
-  //     if (selectedMenuStorage !== null) {
-  //       setSelectedMenu(selectedMenuStorage);
-  //     }
-  //   }, []);
+    if (isOpenStorage !== null) {
+      if (Boolean(isOpenStorage)) {
+        setSidebarOpen(true);
+      } else {
+        setSidebarOpen(false);
+      }
+    } else {
+      setSidebarOpen(false);
+    }
+    // check the selected menu stored in local storage
 
-  //   useEffect(() => {
-  //     if (currentPage) {
-  //       setSelectedMenu(currentPage);
-  //     }
-  //   }, [currentPage]);
+    const selectedMenu = getSelectedMenu();
 
-  //   let handleLogout = () => {
-  //     removeToken();
-  //     removeRefreshToken();
-  //     removeProfile();
-  //     removeInfoAllInvestment();
-  //     removeIsOpenSidebarStorage();
-  //     removeSelectedMenuStorage();
-  //     removeIsSoles();
-  //     removeIsDarkModeStorage();
-  //     // removeShowTourStorage();
-  //   };
+    if (selectedMenu !== null) {
+      setSelectedMenu(selectedMenu as string);
+    }
+  }, []);
 
-  //   const handleMenuClick = (menu) => {
-  //     setSelectedMenu(menu);
-  //     saveSelectedMenuStorage(menu);
-  //   };
-  //   const handleMouseEnter = (id) => {
-  //     setHoverStates((prev) => ({ ...prev, [id]: true }));
-  //   };
-  //   const handleMouseLeave = (id) => {
-  //     setHoverStates((prev) => ({ ...prev, [id]: false }));
-  //   };
+  useEffect(() => {
+    if (currentPage) {
+      setSelectedMenu(currentPage);
+    }
+  }, [currentPage]);
 
-  //   const handleOpenIconClick = () => {
-  //     setSidebarOpen(!isSidebarOpenState);
-  //     saveIsOpenSidebarStorage(!isSidebarOpenState);
-  //   };
+  let handleLogout = () => {
+    removeToken();
+    // removeRefreshToken();
+    removeProfile();
+    removeInfoAllInvestment();
+    removeIsOpenSidebar();
+    removeSelectedMenu();
+    removeIsSoles();
+    removeIsDarkMode();
+    removeShowTour();
+  };
 
-  //   const getContainerMenuStyle = (menuID) => {
-  //     const isHovered = hoverStates[menuID];
-  //     const isSelected = selectedMenu === menuID;
+  const handleMenuClick = (menu: React.SetStateAction<string>) => {
+    setSelectedMenu(menu);
+    saveSelectedMenu(menu);
+  };
+  const handleMouseEnter = (id: string) => {
+    setHoverStates((prev) => ({ ...prev, [id]: true }));
+  };
+  const handleMouseLeave = (id: string) => {
+    setHoverStates((prev) => ({ ...prev, [id]: false }));
+  };
 
-  //     if (isSidebarOpenState) {
-  //       return {
-  //         display: "flex",
-  //         width: "100%",
-  //         flexDirection: "row",
-  //         justifyContent: "left",
-  //         alignItems: "center",
-  //         height: "80px",
-  //         background: isSelected
-  //           ? isDarkModeState
-  //             ? "#18507b"
-  //             : "#A2E6FA"
-  //           : isHovered
-  //           ? isDarkModeState
-  //             ? "#18507b"
-  //             : "#A2E6FA"
-  //           : isDarkModeState
-  //           ? "inherit"
-  //           : "inherit",
-  //         marginBottom: "30px",
-  //       };
-  //     } else {
-  //       return {
-  //         display: "flex",
-  //         flexDirection: "column",
-  //         justifyContent: "center",
-  //         alignItems: "center",
-  //         width: "100%",
-  //         height: "60px",
-  //         gap: "40px",
-  //         marginBottom: "50px",
-  //       };
-  //     }
-  //   };
+  const handleOpenIconClick = () => {
+    setSidebarOpen(!isSidebarOpenState);
+    saveIsOpenSidebar(!isSidebarOpenState);
+  };
 
-  //   const getIconStyle = (menuID) => {
-  //     const isSelected = selectedMenu === menuID;
-  //     const isHovered = hoverStates[menuID];
+  const getContainerMenuStyle = (menuID: string) => {
+    const isSelected = selectedMenu === menuID;
+    const isHovered = hoverStates[menuID];
 
-  //     if (isSidebarOpenState) {
-  //       return {
-  //         color: isDarkModeState ? "#A2E6FA" : "#0D3A5C",
-  //       };
-  //     } else {
-  //       return {
-  //         color:
-  //           isSelected || isHovered
-  //             ? isDarkModeState
-  //               ? "#0D3A5C"
-  //               : "#0D3A5C"
-  //             : isDarkModeState
-  //             ? "#A2E6FA"
-  //             : "inherit",
-  //       };
-  //     }
-  //   };
+    if (isSidebarOpenState) {
+      return {
+        display: "flex",
+        width: "100%",
+        flexDirection: "row",
+        justifyContent: "left",
+        alignItems: "center",
+        height: "80px",
+        background: isSelected
+          ? darkMode
+            ? "#18507b"
+            : "#A2E6FA"
+          : isHovered
+          ? darkMode
+            ? "#18507b"
+            : "#A2E6FA"
+          : darkMode
+          ? "inherit"
+          : "inherit",
+        marginBottom: "30px",
+      };
+    } else {
+      return {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+        height: "60px",
+        gap: "40px",
+        // marginBottom: "50px",
+      };
+    }
+  };
+
+  const getIconStyle = (menuID: string) => {
+    const isSelected = selectedMenu === menuID;
+    const isHovered = hoverStates[menuID];
+
+    if (isSidebarOpenState) {
+      return {
+        color: darkMode ? "#A2E6FA" : "#0D3A5C",
+      };
+    } else {
+      return {
+        color:
+          isSelected || isHovered
+            ? darkMode
+              ? "#0D3A5C"
+              : "#0D3A5C"
+            : darkMode
+            ? "#A2E6FA"
+            : "inherit",
+      };
+    }
+  };
 
   return (
-    <div className="flex flex-col sidebar h-screen bg-lighBlue ">
+    <div
+      className="flex flex-col sidebar h-screen"
+      style={{ color: darkMode ? "#A2E6FA" : "#0D3A5C" }}
+    >
       <div
         className={`${
-          isDarkModeState ? "bg-custom-blue" : "bg-custom-light-blue"
-        } h-full pt-24 ${
-          isSidebarOpenState ? "w-80" : "w-28"
-        } duration-300 relative`}
+          darkMode ? "bg-darkBlueColor" : "bg-lighBlue"
+        } h-full pt-24 
+        
+        
+        
+        ${isSidebarOpenState ? "w-80" : "w-28"} duration-300 relative`}
       >
         <div className="flex items-center justify-center h-6 ">
-          <Image
-            src={logoSmallLight}
+          <img
+            src={
+              darkMode
+                ? isSidebarOpenState
+                  ? logoTextDark.src
+                  : logoSmallDark.src
+                : isSidebarOpenState
+                ? logoTextlight.src
+                : logoSmallLight.src
+            }
             alt="Logo"
             height={50}
             width={43}
             className={` ${isSidebarOpenState ? "h-10" : "h-6"}`}
-            // src={
-            //   isDarkModeState
-            //     ? isSidebarOpenState
-            //       ? logoTextDark.toString()
-            //       : logoSmallDark.toString()
-            //     : isSidebarOpenState
-            //     ? logoTextlight.toString()
-            //     : logoSmallLight.toString()
-            // }
-            // alt="Logo"
           />
         </div>
         <div className="flex flex-col items-center justify-center w-full mt-10 gap-[75px]">
           <RiLogoutCircleLine
-            className={`bg-custom-dark-blue text-custom-blue text-3xl w-8 h-10 rounded-full absolute right-[-56px] top-[157px] cursor-pointer ${
+            className={`bg-customDarkblue text-darkBlueColor text-3xl w-10 h-10  rounded-full absolute right-[-56px] top-[170px] cursor-pointer ${
               !isSidebarOpenState && "rotate-180"
             }`}
-            // onClick={() => handleOpenIconClick()}
+            onClick={() => handleOpenIconClick()}
           />
           <div
-            // className="style{}"
             className={`flex w-full containerMenu ${
               isSidebarOpenState ? "flex-row mb-24" : "flex-col mb-1"
             } ${isSidebarOpenState ? "" : "justify-center"} items-center`}
-            // style={getContainerMenuStyle("home")}
-            // onMouseEnter={() => handleMouseEnter("home")}
-            // onMouseLeave={() => handleMouseLeave("home")}
-            // id="home"
+            style={{ ...getContainerMenuStyle("home"), flexDirection: "row" }}
+            onMouseEnter={() => handleMouseEnter("home")}
+            onMouseLeave={() => handleMouseLeave("home")}
+            id="home"
           >
             <Link
               href="/home"
@@ -195,7 +214,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({
                 alignItems: "center",
               }}
               onClick={() => {
-                // handleMenuClick("home");
+                handleMenuClick("home");
               }}
             >
               <div
@@ -209,9 +228,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({
               >
                 <AiOutlineDollar
                   className={`cursor-pointer block  mr-2  text-3xl ml-[10px]  iconCloseSidebar      color-${
-                    isDarkModeState
-                      ? "text-custom-lightblue"
-                      : "text-custom-blue"
+                    darkMode ? "text-#a2e6fa" : "text-#0d3a5c"
                   } ${isSidebarOpenState && "rotate-[360deg]"} `}
                   //   style={getIconStyle("home")}
                 />
@@ -219,7 +236,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({
 
               <h1
                 className={`text-black origin-left font-medium text-xl duration-300 
-                  ${isDarkModeState ? "text-white" : "text-black"}
+                  ${darkMode ? "text-white" : "text-black"}
                 
                   
                   ${!isSidebarOpenState && "hidden"}`}
@@ -229,18 +246,19 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({
             </Link>
           </div>
           <div
-          // className={` ${
-          //   isSidebarOpenState ? "flex-row mb-24" : "flex-col mb-1"
-          // } items-center  containerMenu`}
-          // style={getContainerMenuStyle("history")}
-          // onMouseEnter={() => handleMouseEnter("history")}
-          // onMouseLeave={() => handleMouseLeave("history")}
-          // id="history"
+            className={` ${
+              isSidebarOpenState ? "flex-row mb-24" : "flex-col mb-1"
+            } items-center  containerMenu`}
+            style={{
+              ...getContainerMenuStyle("history"),
+              flexDirection: "row",
+            }}
+            onMouseEnter={() => handleMouseEnter("history")}
+            onMouseLeave={() => handleMouseLeave("history")}
+            id="history"
           >
-            {/* <Link
-              to="/my-history"
-              // to="/"
-
+            <Link
+              href="/my-history"
               style={{
                 display: "flex",
                 flexDirection: "row",
@@ -250,45 +268,46 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({
               onClick={() => {
                 // handleMenuClick("history");
               }}
-            > */}
-            <div
-              className={`${
-                isSidebarOpenState ? "containerIconOpen" : "containerIcon"
-              } ${
-                selectedMenu === "history" && isSidebarOpenState === false
-                  ? "containerIconHover"
-                  : ""
-              }`}
             >
-              <AiOutlineHistory
-                className={`cursor-pointer block  mr-2 iconCloseSidebar  text-3xl ml-[10px]
+              <div
+                className={`${
+                  isSidebarOpenState ? "containerIconOpen" : "containerIcon"
+                } ${
+                  selectedMenu === "history" && isSidebarOpenState === false
+                    ? "containerIconHover"
+                    : ""
+                }`}
+              >
+                <AiOutlineHistory
+                  className={`cursor-pointer block  mr-2 iconCloseSidebar  text-3xl ml-[10px]
                       } ${isSidebarOpenState && "rotate-[360deg]"} `}
-                //   style={getIconStyle("history")}
-              />
-            </div>
-            <h1
-              className={`text-black origin-left font-medium text-xl duration-300 
-                  ${isDarkModeState ? "text-white" : "text-black"}
+                  style={getIconStyle("history")}
+                />
+              </div>
+              <h1
+                className={`text-black origin-left font-medium text-xl duration-300 
+                  ${darkMode ? "text-white" : "text-black"}
                 
                   
                   ${!isSidebarOpenState && "hidden"}`}
-            >
-              Mi Historial
-            </h1>
-            {/* </Link> */}
+              >
+                Mi Historial
+              </h1>
+            </Link>
           </div>
           <div
-            // className="style{}"
             className={`flex w-full justify-center containerMenu ${
               isSidebarOpenState ? "flex-row mb-24" : "flex-col mb-1"
             } ${isSidebarOpenState ? "" : "justify-center"} items-center`}
-            // style={getContainerMenuStyle("calendar")}
-            // onMouseEnter={() => handleMouseEnter("calendar")}
-            // onMouseLeave={() => handleMouseLeave("calendar")}
-            // id="calendar"
+            style={{
+              ...getContainerMenuStyle("calendar"),
+              flexDirection: "row",
+            }}
+            onMouseEnter={() => handleMouseEnter("calendar")}
+            onMouseLeave={() => handleMouseLeave("calendar")}
+            id="calendar"
           >
             <Link
-              // to="/"
               href="/calendar"
               style={{
                 display: "flex",
@@ -296,9 +315,9 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({
                 justifyContent: isSidebarOpenState ? "left" : "center",
                 alignItems: "center",
               }}
-              //   onClick={() => {
-              //     handleMenuClick("calendar");
-              //   }}
+              onClick={() => {
+                handleMenuClick("calendar");
+              }}
             >
               <div
                 className={`${
@@ -311,17 +330,15 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({
               >
                 <LuCalendarDays
                   className={`cursor-pointer block  mr-2  iconCloseSidebar text-3xl ml-[10px] color-${
-                    isDarkModeState
-                      ? "text-custom-lightblue"
-                      : "text-custom-blue"
+                    darkMode ? "text-custom-lightblue" : "text-custom-blue"
                   } ${isSidebarOpenState && " rotate-[360deg]"} `}
-                  //   style={getIconStyle("calendar")}
+                  style={getIconStyle("calendar")}
                 />
               </div>
 
               <h1
                 className={` text-black origin-left font-medium text-xl duration-300
-                       ${isDarkModeState ? "text-white" : "text-black"}
+                       ${darkMode ? "text-white" : "text-black"}
                 
                   
                        ${!isSidebarOpenState && "hidden"}`}
@@ -331,13 +348,12 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({
             </Link>
           </div>
           <div
-            // className="style{}"
             className={`flex w-full justify-center containerMenu ${
               isSidebarOpenState ? "flex-row mb-24" : "flex-col mb-1"
             } ${isSidebarOpenState ? "" : "justify-center"} items-center`}
             // style={getContainerMenuStyle("tour")}
-            // onMouseEnter={() => handleMouseEnter("tour")}
-            // onMouseLeave={() => handleMouseLeave("tour")}
+            onMouseEnter={() => handleMouseEnter("tour")}
+            onMouseLeave={() => handleMouseLeave("tour")}
             id="tour"
           >
             <Link
@@ -349,7 +365,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({
                 alignItems: "center",
               }}
               onClick={() => {
-                // handleMenuClick("tour");
+                handleMenuClick("tour");
                 window.location.href = "/home?forceTourVisible=true";
               }}
             >
@@ -364,16 +380,14 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({
               >
                 <HiMiniComputerDesktop
                   className={`cursor-pointer block  mr-2  iconCloseSidebar text-3xl ml-[10px] color-${
-                    isDarkModeState
-                      ? "text-custom-lightblue"
-                      : "text-custom-blue"
+                    darkMode ? "text-custom-lightblue" : "text-custom-blue"
                   } ${isSidebarOpenState && "rotate-[360deg]"} `}
                   //   style={getIconStyle("tour")}
                 />
               </div>
               <h1
                 className={`text-black origin-left font-medium text-xl duration-300
-                    ${isDarkModeState ? "text-white" : "text-black"}
+                    ${darkMode ? "text-white" : "text-black"}
                     ${!isSidebarOpenState && "hidden"}`}
               >
                 Tour
@@ -385,8 +399,8 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({
               isSidebarOpenState ? "flex-row mb-24" : "flex-col mb-1"
             } items-center  containerMenu`}
             // style={getContainerMenuStyle("logout")}
-            // onMouseEnter={() => handleMouseEnter("logout")}
-            // onMouseLeave={() => handleMouseLeave("logout")}
+            onMouseEnter={() => handleMouseEnter("logout")}
+            onMouseLeave={() => handleMouseLeave("logout")}
             id="logout"
           >
             <Link
@@ -399,10 +413,8 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({
                 alignItems: "center",
               }}
               onClick={() => {
-                // handleMenuClick("logout");
-                // handleLogout();
-                // handleOpenIconClick();
-                // resetStates();
+                handleMenuClick("logout");
+                handleLogout();
               }}
             >
               <div
@@ -416,16 +428,14 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({
               >
                 <FaArrowRightToBracket
                   className={`cursor-pointer block  mr-2  iconCloseSidebar text-3xl ml-[10px] color-${
-                    isDarkModeState
-                      ? "text-custom-lightblue"
-                      : "text-custom-blue"
+                    darkMode ? "text-custom-lightblue" : "text-custom-blue"
                   } ${isSidebarOpenState && "rotate-[360deg]"} `}
-                  //   style={getIconStyle("logout")}
+                  style={getIconStyle("logout")}
                 />
               </div>
               <h1
                 className={`text-black origin-left font-medium text-xl duration-300 ${
-                  isDarkModeState ? "text-white" : "text-black"
+                  darkMode ? "text-white" : "text-black"
                 }  ${!isSidebarOpenState && "hidden"}`}
               >
                 Cerrar sesión
