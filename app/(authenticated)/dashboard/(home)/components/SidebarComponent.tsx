@@ -95,6 +95,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
   const handleOpenIconClick = () => {
     setSidebarOpen(!isSidebarOpenState);
     saveIsOpenSidebar(!isSidebarOpenState);
+    console.log("isSidebarOpenStateeeeeeeeeeeeee", isSidebarOpenState);
   };
 
   const getContainerMenuStyle = (menuID: string) => {
@@ -191,10 +192,10 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
         </div>
         <div className="flex flex-col items-center justify-center w-full mt-10 gap-[75px]">
           <RiLogoutCircleLine
-            className={`bg-customDarkblue text-darkBlueColor text-3xl w-10 h-10  rounded-full absolute right-[-56px] top-[170px] cursor-pointer ${
+            className={`bg-customDarkblue text-darkBlueColor text-3xl w-10 h-10 rounded-full absolute right-[-56px] top-[170px] cursor-pointer ${
               !isSidebarOpenState && "rotate-180"
             }`}
-            onClick={() => handleOpenIconClick()}
+            onClick={handleOpenIconClick}
           />
           <div
             className={`flex w-full containerMenu ${
