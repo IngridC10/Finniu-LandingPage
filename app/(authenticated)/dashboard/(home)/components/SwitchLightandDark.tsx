@@ -1,5 +1,4 @@
 import React from "react";
-import { saveIsDarkMode } from "@/app/cookies/IsDarkModeCookies";
 import { useTheme } from "@/app/contexts/ThemeProvider";
 const SwitchLightandDark = () => {
   const { darkMode, toggleDarkMode } = useTheme();

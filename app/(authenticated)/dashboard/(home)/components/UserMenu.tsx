@@ -4,7 +4,7 @@ import { GoBell } from "react-icons/go";
 import defaultImageUser from "@/images/Dashboard/UserMenu/userPhoto.jpg";
 import Image from "next/image";
 import SwitchLightandDark from "./SwitchLightandDark";
-import { getProfile } from "@/app/cookies/UserProfileCookies";
+import { getProfile } from "@/app/cookies/client/UserProfileCookies";
 import { useTheme } from "@/app/contexts/ThemeProvider";
 
 const UserMenu = () => {
@@ -22,7 +22,7 @@ const UserMenu = () => {
         />
       </div>
 
-      <Image className="w-16 h-16 rounded-full" src={UserPhoto} alt="User" />
+      <Image className="w-16 h-16 rounded-full" src={UserPhoto} alt="User" width={50}  height={50}/>
     </div>
   );
 };

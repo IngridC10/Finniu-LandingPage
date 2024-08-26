@@ -1,18 +1,30 @@
 "use server";
 import { USER_PROFILE } from "../../graphql/querys";
-import { client } from "../../graphql/client";
+import { useGraphQLClient } from "../../graphql/client";
 
 export async function getUserProfile(): Promise<any> {
   try {
+    const client = useGraphQLClient();
+
     const result: any = await client.request(USER_PROFILE);
-    console.log("User profile:", result);
+
+    if (!result || !result.userProfile) {
+      throw new Error('Invalid API response');
+    }
 
     const userProfile = result.userProfile;
-    console.log("User profile:", userProfile);
+    console.log('Parsed user profile:', userProfile);
 
     return userProfile;
   } catch (error) {
-    console.error("Error fetching user profile:", error);
-    throw new Error("Unable to fetch user profile");
+    if (error instanceof Error) {
+      console.error('Error details:', {
+        message: error.message,
+        stack: error.stack,
+      });
+    } else {
+      console.error('Unknown error:', error);
+    }
+    throw new Error('Unable to fetch user profile');
   }
 }

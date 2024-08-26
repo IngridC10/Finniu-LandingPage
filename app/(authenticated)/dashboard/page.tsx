@@ -1,10 +1,10 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useTheme } from "@/app/contexts/ThemeProvider";
-import { getIsSoles, saveIsSoles } from "@/app/cookies/IsSolesCookies";
+import { getIsSoles, saveIsSoles } from "@/app/cookies/client/IsSolesCookies";
 import { useRouter } from "next/navigation";
-import { getProfile } from "@/app/cookies/UserProfileCookies";
-import { getToken } from "@/app/cookies/TokenCookies";
+import { getProfile } from "@/app/cookies/client/UserProfileCookies";
+import { getToken } from "@/app/cookies/client/TokenCookies";
 import SideBarComponent from "./(home)/components/SidebarComponent";
 import UserMenu from "./(home)/components/UserMenu";
 import SwitchSolesComponent from "./(home)/components/SwitchSolesComponent";
@@ -45,7 +45,7 @@ const Page = () => {
       }`}
     >
       <SideBarComponent currentPage={""} />
-      <div className="relative z-20 flex flex-col items-end w-full p-8 ">
+      <div className="relative flex flex-col items-end w-full p-8 ">
         <UserMenu />
         <div className="flex items-center w-[87%] justify-between mb-10">
           <p

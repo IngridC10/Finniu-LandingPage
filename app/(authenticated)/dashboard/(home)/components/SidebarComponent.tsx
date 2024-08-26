@@ -12,20 +12,20 @@ import logoSmallLight from "@/images/Dashboard/NavBar/logoSmallLight.png";
 import logoTextDark from "@/images/Dashboard/NavBar/logoTextDark.png";
 import logoTextlight from "@/images/Dashboard/NavBar/logoTextLight.png";
 import { useTheme } from "@/app/contexts/ThemeProvider";
-import { removeToken } from "@/app/cookies/TokenCookies";
-import { removeProfile } from "@/app/cookies/UserProfileCookies";
-import { removeInfoAllInvestment } from "@/app/cookies/UserInfoAllInvestmentCookies";
+import { removeToken } from "@/app/cookies/client/TokenCookies";
+import { removeProfile } from "@/app/cookies/client/UserProfileCookies";
+import { removeInfoAllInvestment } from "@/app/cookies/client/UserInfoAllInvestmentCookies";
 import {
   getIsOpenSidebar,
   getSelectedMenu,
   removeIsOpenSidebar,
   saveIsOpenSidebar,
   saveSelectedMenu,
-} from "@/app/cookies/SidebarCookies";
-import { removeSelectedMenu } from "@/app/cookies/SidebarCookies";
-import { removeIsSoles } from "@/app/cookies/IsSolesCookies";
-import { removeIsDarkMode } from "@/app/cookies/IsDarkModeCookies";
-import { removeShowTour } from "@/app/cookies/ShowTourCookies";
+} from "@/app/cookies/client/SidebarCookies";
+import { removeSelectedMenu } from "@/app/cookies/client/SidebarCookies";
+import { removeIsSoles } from "@/app/cookies/client/IsSolesCookies";
+import { removeIsDarkMode } from "@/app/cookies/client/IsDarkModeCookies";
+import { removeShowTour } from "@/app/cookies/client/ShowTourCookies";
 
 interface SideBarComponentProps {
   currentPage: string;
@@ -192,7 +192,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
         </div>
         <div className="flex flex-col items-center justify-center w-full mt-10 gap-[75px]">
           <RiLogoutCircleLine
-            className={`bg-customDarkblue text-darkBlueColor text-3xl w-10 h-10 rounded-full absolute right-[-56px] top-[170px] cursor-pointer ${
+            className={`bg-customDarkblue text-darkBlueColor text-3xl w-10 h-10 rounded-full absolute right-[-56px] top-[170px] cursor-pointer z-10 ${
               !isSidebarOpenState && "rotate-180"
             }`}
             onClick={handleOpenIconClick}

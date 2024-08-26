@@ -10,15 +10,17 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons/faEyeSlash";
 import { loginUser } from "@/app/actions/tokenAuth";
 import { messageNotify } from "@/components/MessageNotification";
-import { saveToken } from "@/app/cookies/TokenCookies";
-import { saveRefreshToken } from "@/app/cookies/TokenCookies";
+import { saveToken } from "@/app/cookies/client/TokenCookies";
+import { saveRefreshToken } from "@/app/cookies/client/TokenCookies";
 import {
   getCredentials,
   saveCredentials,
-} from "@/app/cookies/CredentialsCookies";
-import { removeCredentials } from "@/app/cookies/CredentialsCookies";
-import { saveRememberPasswordChecked } from "@/app/cookies/CredentialsCookies";
-import { isRememberPasswordChecked } from "@/app/cookies/CredentialsCookies";
+} from "@/app/cookies/client/CredentialsCookies";
+import { removeCredentials } from "@/app/cookies/client/CredentialsCookies";
+import { saveRememberPasswordChecked } from "@/app/cookies/client/CredentialsCookies";
+import { isRememberPasswordChecked } from "@/app/cookies/client/CredentialsCookies";
+import { getUserProfile } from "@/app/actions/userProfile";
+import { setProfile } from "@/app/cookies/client/UserProfileCookies";
 
 const LoginBody = () => {
   const [emailState, setEmailState] = useState("");
@@ -50,6 +52,8 @@ const LoginBody = () => {
         password: passwordState,
       });
 
+      console.log("loginResponse:", loginResponse);
+
       if (loginResponse?.token) {
         saveToken(loginResponse.token);
         saveRefreshToken(loginResponse.refreshToken);
@@ -61,8 +65,21 @@ const LoginBody = () => {
           removeCredentials();
           saveRememberPasswordChecked(false);
         }
+        const userProfile = getUserProfile();
+        console.log("userProfile:", userProfile);
 
-        router.push("/dashboard");
+        if (!userProfile) {
+          messageNotify({ message: "No se pudo obtener el perfil del usuario" });
+        }else{
+          userProfile.then((profile) => {
+            console.log("userProfile:", profile);
+            setProfile(profile);
+            router.push("/dashboard");
+          });
+        }
+        
+        
+       
       } else {
         messageNotify({ message: "Usuario y/o contraseña incorrectos" });
       }

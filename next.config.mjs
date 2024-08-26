@@ -3,7 +3,7 @@ import { hostname } from "os";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["example.com", "www.shutterstock.com"],
+    domains: ["example.com", "www.shutterstock.com", "finniu-statics.s3.amazonaws.com"],
   },
 };
 
