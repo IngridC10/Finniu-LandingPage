@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import padlock from "@/images/Dashboard/Login/padlock.png";
-import { recoveryPassword } from "@/app/actions/recoveryPassword";
+import { recoveryPasswordAction } from "@/app/actions/recoveryPasswordAction";
 import { messageNotify } from "@/components/MessageNotification";
 import { Toaster } from "react-hot-toast";
 
@@ -20,7 +20,7 @@ const ForgotPasswordBody = () => {
       return;
     }
 
-    const response = await recoveryPassword({
+    const response = await recoveryPasswordAction({
       email: email,
     });
 

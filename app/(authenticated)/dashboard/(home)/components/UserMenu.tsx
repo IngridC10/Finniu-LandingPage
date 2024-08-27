@@ -4,11 +4,13 @@ import { GoBell } from "react-icons/go";
 import defaultImageUser from "@/images/Dashboard/UserMenu/userPhoto.jpg";
 import Image from "next/image";
 import SwitchLightandDark from "./SwitchLightandDark";
-import { getProfile } from "@/app/cookies/client/UserProfileCookies";
+import { getProfileCookies } from "@/app/cookies/client/UserProfileCookies";
 import { useTheme } from "@/app/contexts/ThemeProvider";
 
 const UserMenu = () => {
-  const { imageProfileUrl } = getProfile() ? getProfile() : defaultImageUser;
+  const { imageProfileUrl } = getProfileCookies()
+    ? getProfileCookies()
+    : defaultImageUser;
   const UserPhoto = imageProfileUrl ? imageProfileUrl : defaultImageUser;
   const { darkMode, toggleDarkMode } = useTheme();
 
@@ -22,7 +24,13 @@ const UserMenu = () => {
         />
       </div>
 
-      <Image className="w-16 h-16 rounded-full" src={UserPhoto} alt="User" width={50}  height={50}/>
+      <Image
+        className="w-16 h-16 rounded-full"
+        src={UserPhoto}
+        alt="User"
+        width={50}
+        height={50}
+      />
     </div>
   );
 };

@@ -8,26 +8,26 @@ import logoTextLight from "@/images/Dashboard/Login/logoTextLight.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons/faEyeSlash";
-import { loginUser } from "@/app/actions/tokenAuth";
+import { loginUserAction } from "@/app/actions/tokenAuthAction";
 import { messageNotify } from "@/components/MessageNotification";
-import { saveToken } from "@/app/cookies/client/TokenCookies";
-import { saveRefreshToken } from "@/app/cookies/client/TokenCookies";
+import { saveTokenCookies } from "@/app/cookies/client/TokenCookies";
+import { saveRefreshTokenCookies } from "@/app/cookies/client/TokenCookies";
 import {
-  getCredentials,
-  saveCredentials,
+  getCredentialsCookies,
+  saveCredentialsCookies,
 } from "@/app/cookies/client/CredentialsCookies";
-import { removeCredentials } from "@/app/cookies/client/CredentialsCookies";
-import { saveRememberPasswordChecked } from "@/app/cookies/client/CredentialsCookies";
-import { isRememberPasswordChecked } from "@/app/cookies/client/CredentialsCookies";
-import { getUserProfile } from "@/app/actions/userProfile";
-import { setProfile } from "@/app/cookies/client/UserProfileCookies";
+import { removeCredentialsCookies } from "@/app/cookies/client/CredentialsCookies";
+import { saveRememberPasswordCheckedCookies } from "@/app/cookies/client/CredentialsCookies";
+import { isRememberPasswordCheckedCookies } from "@/app/cookies/client/CredentialsCookies";
+import { getUserProfileAction } from "@/app/actions/userProfileAction";
+import { setProfileCookies } from "@/app/cookies/client/UserProfileCookies";
 
 const LoginBody = () => {
   const [emailState, setEmailState] = useState("");
   const [passwordState, setPasswordState] = useState("");
   const [showPasswordState, setShowPasswordState] = useState(false);
   const [rememberCredentialsState, setRememberCredentialsState] = useState(
-    isRememberPasswordChecked()
+    isRememberPasswordCheckedCookies()
   );
   const router = useRouter();
 
@@ -37,7 +37,7 @@ const LoginBody = () => {
     }
 
     if (rememberCredentialsState) {
-      const savedCredentials = getCredentials();
+      const savedCredentials = getCredentialsCookies();
       if (savedCredentials.email && savedCredentials.password) {
         setEmailState(savedCredentials.email);
         setPasswordState(savedCredentials.password.toString());
@@ -47,39 +47,34 @@ const LoginBody = () => {
 
   const handleLogin = async () => {
     try {
-      const loginResponse = await loginUser({
+      const loginResponse = await loginUserAction({
         email: emailState,
         password: passwordState,
       });
 
-      console.log("loginResponse:", loginResponse);
-
       if (loginResponse?.token) {
-        saveToken(loginResponse.token);
-        saveRefreshToken(loginResponse.refreshToken);
+        saveTokenCookies(loginResponse.token);
+        saveRefreshTokenCookies(loginResponse.refreshToken);
 
         if (rememberCredentialsState) {
-          saveCredentials(emailState, passwordState);
-          saveRememberPasswordChecked(true);
+          saveCredentialsCookies(emailState, passwordState);
+          saveRememberPasswordCheckedCookies(true);
         } else {
-          removeCredentials();
-          saveRememberPasswordChecked(false);
+          removeCredentialsCookies();
+          saveRememberPasswordCheckedCookies(false);
         }
-        const userProfile = getUserProfile();
-        console.log("userProfile:", userProfile);
+        const userProfile = getUserProfileAction();
 
         if (!userProfile) {
-          messageNotify({ message: "No se pudo obtener el perfil del usuario" });
-        }else{
+          messageNotify({
+            message: "No se pudo obtener el perfil del usuario",
+          });
+        } else {
           userProfile.then((profile) => {
-            console.log("userProfile:", profile);
-            setProfile(profile);
+            setProfileCookies(profile);
             router.push("/dashboard");
           });
         }
-        
-        
-       
       } else {
         messageNotify({ message: "Usuario y/o contraseña incorrectos" });
       }
@@ -142,7 +137,7 @@ const LoginBody = () => {
           </div>
 
           <Link href="/password" className=" flex justify-end w-[70%]">
-            <p className="text-[14px] md:text-[16px] lg:text-[18px] font-normal pb-[10px] self-end my-5 cursor-pointer">
+            <p className="text-[14px] md:text-[16px] lg:text-[18px] font-normal self-end mb-5 cursor-pointer">
               ¿Olvidaste tu contraseña?
             </p>
           </Link>

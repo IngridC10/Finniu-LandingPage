@@ -1,15 +1,15 @@
 import cookie from "js-cookie";
 
-export const setProfile = (profile) => {
+export const setProfileCookies = (profile: any) => {
   cookie.set("userProfile", JSON.stringify(profile), { expires: 7 });
 };
 
-export const getProfile = () => {
+export const getProfileCookies = () => {
   const userProfileString = cookie.get("userProfile");
   console.log("Perfil recuperado de cookies:", userProfileString);
   return userProfileString ? JSON.parse(userProfileString) : null;
 };
 
-export const removeProfile = () => {
+export const removeProfileCookies = () => {
   cookie.remove("userProfile");
 };

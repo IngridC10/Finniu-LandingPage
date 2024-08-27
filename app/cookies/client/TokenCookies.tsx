@@ -2,28 +2,26 @@
 
 import cookie from "js-cookie";
 
-export const saveToken = (token: string) => {
+export const saveTokenCookies = (token: string) => {
   cookie.set("token", token, { expires: 7 });
 };
 
-export const getToken = (): string | undefined => {
+export const getTokenCookies = (): string | undefined => {
   return cookie.get("token");
 };
 
-export const removeToken = () => {
+export const removeTokenCookies = () => {
   cookie.remove("token");
 };
 
-export const saveRefreshToken = (refreshToken: string) => {
+export const saveRefreshTokenCookies = (refreshToken: string) => {
   cookie.set("refreshToken", refreshToken, { expires: 7 });
 };
 
-export const getRefreshToken = (): string | undefined => {
+export const getRefreshTokenCookies = (): string | undefined => {
   return cookie.get("refreshToken");
 };
 
-export const removeRefreshToken = () => {
+export const removeRefreshTokenCookies = () => {
   cookie.remove("refreshToken");
 };
-
-

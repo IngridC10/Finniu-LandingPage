@@ -44,6 +44,7 @@ const config: Config = {
         grayColor: "#F4F4F4",
         grayButtonColor: "#E8E8E8",
         grayColorText: "#B8B8B8",
+        customGray: "#555454",
         graySecondaryColor: "#140F0F",
         lilaColor: "#D2B7FF",
         lightSecondaryColor: "##F0FBFF",
@@ -60,6 +61,9 @@ const config: Config = {
         customGreen: "#55B63D",
         customBackgroundLight: "#F5FDFF",
         customDarkblue: "#8FE6FF",
+        customGreenSecondary: "#32a071",
+        customGreenPrimary: "#388923",
+        customBlack: "#2c2c2c",
       },
 
       screens: {

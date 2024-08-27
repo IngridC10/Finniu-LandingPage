@@ -1,6 +1,6 @@
 "use server";
 import { CHANGE_PASSWORD } from "../../graphql/mutation";
-import { client } from "../../graphql/client";
+import { useGraphQLClient } from "../../graphql/client";
 
 interface ChangePasswordResponse {
   changePasswordMinimal: {
@@ -13,10 +13,11 @@ interface ChangePasswordInput {
   newPassword: string;
 }
 
-export async function changePassword(
+export async function changePassWordAction(
   input: ChangePasswordInput
 ): Promise<{ success: boolean }> {
   try {
+    const client = useGraphQLClient();
     if (!input.email || !input.email.includes("@")) {
       throw new Error("El correo electrónico es inválido.");
     }

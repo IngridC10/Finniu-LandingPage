@@ -1,13 +1,15 @@
 import cookie from "js-cookie";
 
-export const saveUserInfoAllInvestment = (userInfoInvestment) => {
+export const saveUserInfoAllInvestmentCookies = (
+  userInfoInvestment: string
+) => {
   cookie.set("userInfoInvestment", userInfoInvestment, { expires: 7 });
 };
 
-export const getInfoAllInvestment = () => {
+export const getInfoAllInvestmentCookies = () => {
   return cookie.get("userInfoInvestment");
 };
 
-export const removeInfoAllInvestment = () => {
+export const removeInfoAllInvestmentCookies = () => {
   cookie.remove("userInfoInvestment");
 };

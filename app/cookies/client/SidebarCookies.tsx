@@ -1,24 +1,24 @@
 import Cookies from "js-cookie";
-export const saveIsOpenSidebar = (isOpen) => {
+export const saveIsOpenSidebarCookies = (isOpen: any) => {
   Cookies.set("isOpen", String(isOpen), { expires: 7 });
 };
 
-export const getIsOpenSidebar = () => {
+export const getIsOpenSidebarCookies = () => {
   const value = Cookies.get("isOpen");
   return value === "true";
 };
 
-export const removeIsOpenSidebar = () => {
+export const removeIsOpenSidebarCookies = () => {
   Cookies.remove("isOpen");
 };
 
-export const saveSelectedMenu = (selectedMenu) => {
+export const saveSelectedMenuCookies = (selectedMenu: string) => {
   Cookies.set("selectedMenu", selectedMenu, { expires: 7 });
 };
-export const getSelectedMenu = () => {
+export const getSelectedMenuCookies = () => {
   return Cookies.get("selectedMenu");
 };
 
-export const removeSelectedMenu = () => {
+export const removeSelectedMenuCookies = () => {
   Cookies.remove("selectedMenu");
 };

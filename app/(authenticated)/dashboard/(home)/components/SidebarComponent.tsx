@@ -12,20 +12,20 @@ import logoSmallLight from "@/images/Dashboard/NavBar/logoSmallLight.png";
 import logoTextDark from "@/images/Dashboard/NavBar/logoTextDark.png";
 import logoTextlight from "@/images/Dashboard/NavBar/logoTextLight.png";
 import { useTheme } from "@/app/contexts/ThemeProvider";
-import { removeToken } from "@/app/cookies/client/TokenCookies";
-import { removeProfile } from "@/app/cookies/client/UserProfileCookies";
-import { removeInfoAllInvestment } from "@/app/cookies/client/UserInfoAllInvestmentCookies";
+import { removeTokenCookies } from "@/app/cookies/client/TokenCookies";
+import { removeProfileCookies } from "@/app/cookies/client/UserProfileCookies";
+import { removeInfoAllInvestmentCookies } from "@/app/cookies/client/UserInfoAllInvestmentCookies";
 import {
-  getIsOpenSidebar,
-  getSelectedMenu,
-  removeIsOpenSidebar,
-  saveIsOpenSidebar,
-  saveSelectedMenu,
+  getIsOpenSidebarCookies,
+  getSelectedMenuCookies,
+  removeIsOpenSidebarCookies,
+  saveIsOpenSidebarCookies,
+  saveSelectedMenuCookies,
 } from "@/app/cookies/client/SidebarCookies";
-import { removeSelectedMenu } from "@/app/cookies/client/SidebarCookies";
-import { removeIsSoles } from "@/app/cookies/client/IsSolesCookies";
-import { removeIsDarkMode } from "@/app/cookies/client/IsDarkModeCookies";
-import { removeShowTour } from "@/app/cookies/client/ShowTourCookies";
+import { removeSelectedMenuCookies } from "@/app/cookies/client/SidebarCookies";
+import { removeIsSolesCookies } from "@/app/cookies/client/IsSolesCookies";
+import { removeIsDarkModeCookies } from "@/app/cookies/client/IsDarkModeCookies";
+import { removeShowTourCookies } from "@/app/cookies/client/ShowTourCookies";
 
 interface SideBarComponentProps {
   currentPage: string;
@@ -35,7 +35,6 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
   const [selectedMenu, setSelectedMenu] = useState("home");
   const [isSidebarOpenState, setSidebarOpen] = useState(false);
 
-  console.log("isSidebarOpenState", isSidebarOpenState);
   const [hoverStates, setHoverStates] = useState<{ [key: string]: boolean }>(
     {}
   );
@@ -43,7 +42,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
   const { darkMode } = useTheme();
 
   useEffect(() => {
-    const isOpenStorage = getIsOpenSidebar();
+    const isOpenStorage = getIsOpenSidebarCookies();
 
     if (isOpenStorage !== null) {
       if (Boolean(isOpenStorage)) {
@@ -56,7 +55,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
     }
     // check the selected menu stored in local storage
 
-    const selectedMenu = getSelectedMenu();
+    const selectedMenu = getSelectedMenuCookies();
 
     if (selectedMenu !== null) {
       setSelectedMenu(selectedMenu as string);
@@ -70,20 +69,20 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
   }, [currentPage]);
 
   let handleLogout = () => {
-    removeToken();
+    removeTokenCookies();
     // removeRefreshToken();
-    removeProfile();
-    removeInfoAllInvestment();
-    removeIsOpenSidebar();
-    removeSelectedMenu();
-    removeIsSoles();
-    removeIsDarkMode();
-    removeShowTour();
+    removeProfileCookies();
+    removeInfoAllInvestmentCookies();
+    removeIsOpenSidebarCookies();
+    removeSelectedMenuCookies();
+    removeIsSolesCookies();
+    removeIsDarkModeCookies();
+    removeShowTourCookies();
   };
 
-  const handleMenuClick = (menu: React.SetStateAction<string>) => {
+  const handleMenuClick = (menu: string) => {
     setSelectedMenu(menu);
-    saveSelectedMenu(menu);
+    saveSelectedMenuCookies(menu);
   };
   const handleMouseEnter = (id: string) => {
     setHoverStates((prev) => ({ ...prev, [id]: true }));
@@ -94,11 +93,9 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
 
   const handleOpenIconClick = () => {
     setSidebarOpen(!isSidebarOpenState);
-    saveIsOpenSidebar(!isSidebarOpenState);
-    console.log("isSidebarOpenStateeeeeeeeeeeeee", isSidebarOpenState);
+    saveIsOpenSidebarCookies(!isSidebarOpenState);
   };
-
-  const getContainerMenuStyle = (menuID: string) => {
+  const getContainerMenuStyle = (menuID: string): React.CSSProperties => {
     const isSelected = selectedMenu === menuID;
     const isHovered = hoverStates[menuID];
 
@@ -106,7 +103,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
       return {
         display: "flex",
         width: "100%",
-        flexDirection: "row",
+        flexDirection: "row" as "row",
         justifyContent: "left",
         alignItems: "center",
         height: "80px",
@@ -126,13 +123,13 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
     } else {
       return {
         display: "flex",
-        flexDirection: "column",
+        flexDirection: "column" as "column",
         justifyContent: "center",
         alignItems: "center",
         width: "100%",
         height: "60px",
         gap: "40px",
-        // marginBottom: "50px",
+        marginBottom: "50px",
       };
     }
   };
@@ -165,9 +162,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
       style={{ color: darkMode ? "#A2E6FA" : "#0D3A5C" }}
     >
       <div
-        className={`${
-          darkMode ? "bg-darkBlueColor" : "bg-lighBlue"
-        } h-full pt-24 
+        className={`${darkMode ? "bg-darkBlueColor" : "bg-lighBlue"}  pt-24 
         
         
         
@@ -190,7 +185,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
             className={` ${isSidebarOpenState ? "h-10" : "h-6"}`}
           />
         </div>
-        <div className="flex flex-col items-center justify-center w-full mt-10 gap-[75px]">
+        <div className="flex flex-col items-center justify-center w-full mt-10 gap-[75px] ">
           <RiLogoutCircleLine
             className={`bg-customDarkblue text-darkBlueColor text-3xl w-10 h-10 rounded-full absolute right-[-56px] top-[170px] cursor-pointer z-10 ${
               !isSidebarOpenState && "rotate-180"
@@ -231,7 +226,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
                   className={`cursor-pointer block  mr-2  text-3xl ml-[10px]  iconCloseSidebar      color-${
                     darkMode ? "text-#a2e6fa" : "text-#0d3a5c"
                   } ${isSidebarOpenState && "rotate-[360deg]"} `}
-                  //   style={getIconStyle("home")}
+                  style={getIconStyle("home")}
                 />
               </div>
 
@@ -267,7 +262,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
                 alignItems: "center",
               }}
               onClick={() => {
-                // handleMenuClick("history");
+                handleMenuClick("history");
               }}
             >
               <div
@@ -352,7 +347,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
             className={`flex w-full justify-center containerMenu ${
               isSidebarOpenState ? "flex-row mb-24" : "flex-col mb-1"
             } ${isSidebarOpenState ? "" : "justify-center"} items-center`}
-            // style={getContainerMenuStyle("tour")}
+            style={getContainerMenuStyle("tour")}
             onMouseEnter={() => handleMouseEnter("tour")}
             onMouseLeave={() => handleMouseLeave("tour")}
             id="tour"
@@ -363,7 +358,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: isSidebarOpenState ? "left" : "center",
-                alignItems: "center",
+                alignItems: "left",
               }}
               onClick={() => {
                 handleMenuClick("tour");
@@ -383,7 +378,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
                   className={`cursor-pointer block  mr-2  iconCloseSidebar text-3xl ml-[10px] color-${
                     darkMode ? "text-custom-lightblue" : "text-custom-blue"
                   } ${isSidebarOpenState && "rotate-[360deg]"} `}
-                  //   style={getIconStyle("tour")}
+                  style={getIconStyle("tour")}
                 />
               </div>
               <h1
@@ -399,7 +394,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
             className={`flex ${
               isSidebarOpenState ? "flex-row mb-24" : "flex-col mb-1"
             } items-center  containerMenu`}
-            // style={getContainerMenuStyle("logout")}
+            style={getContainerMenuStyle("logout")}
             onMouseEnter={() => handleMouseEnter("logout")}
             onMouseLeave={() => handleMouseLeave("logout")}
             id="logout"

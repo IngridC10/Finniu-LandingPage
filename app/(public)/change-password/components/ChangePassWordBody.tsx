@@ -7,7 +7,7 @@ import padlock from "@/images/Dashboard/Login/padlock.png";
 // import { useRouter } from "next/navigation";
 // import { useSearchParams } from "next/navigation";
 import { messageNotify } from "@/components/MessageNotification";
-import { changePassword } from "@/app/actions/changePassWord";
+import { changePassWordAction } from "@/app/actions/changePassWordAction";
 import { Toaster } from "react-hot-toast";
 interface ChangePassWordBodyProps {
   email: string;
@@ -43,7 +43,7 @@ const ChangePassWordBody: React.FC<ChangePassWordBodyProps> = ({
 
     setLoading(true);
     try {
-      const result = await changePassword({
+      const result = await changePassWordAction({
         email,
         newPassword,
       });

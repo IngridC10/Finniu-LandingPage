@@ -28,7 +28,7 @@
     ".next/types/**/*.ts",
     "app/contexts/ThemeProvider.jsx",
     "app/contexts/ThemeContext.js",
-    "app/cookies/client/SidebarCookies.js"
+    "app/cookies/client/SidebarCookies.tsx"
   ],
   "exclude": ["node_modules"]
 }

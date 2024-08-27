@@ -1,6 +1,6 @@
 "use server";
 import { VALIDATE_OTP } from "../../graphql/mutation";
-import { client } from "../../graphql/client";
+import { useGraphQLClient } from "../../graphql/client";
 
 interface ValidateOtpInput {
   email: string;
@@ -14,8 +14,11 @@ interface ValidateOtpResponse {
   };
 }
 
-export async function validateOtp(input: ValidateOtpInput): Promise<boolean> {
+export async function validateOtpAction(
+  input: ValidateOtpInput
+): Promise<boolean> {
   try {
+    const client = useGraphQLClient();
     if (!input.email || !input.otpCode || !input.action) {
       throw new Error("Todos los campos son requeridos.");
     }

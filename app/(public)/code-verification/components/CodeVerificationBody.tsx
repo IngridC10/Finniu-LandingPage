@@ -5,7 +5,7 @@ import padlockVerification from "@/images/Dashboard/Login/padlockVerification.pn
 import CountDownTimerComponent from "./CountDownTimerComponent";
 import CodeActivationComponent from "./CodeActivationComponent";
 import { useRouter } from "next/navigation";
-import { recoveryPassword } from "@/app/actions/recoveryPassword";
+import { recoveryPasswordAction } from "@/app/actions/recoveryPasswordAction";
 
 const CodeVerificationBody = () => {
   const router = useRouter();
@@ -46,7 +46,7 @@ const CodeVerificationBody = () => {
       if (!email) {
         throw new Error("Email no está definido.");
       }
-      const response = await recoveryPassword({ email });
+      const response = await recoveryPasswordAction({ email });
 
       const { success, successSendCode } = response;
 

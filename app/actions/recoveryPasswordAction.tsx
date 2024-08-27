@@ -1,6 +1,6 @@
 "use server";
 import { RECOVERY_PASSWORD } from "../../graphql/mutation";
-import { client } from "../../graphql/client";
+import { useGraphQLClient } from "../../graphql/client";
 interface RecoveryPasswordResponse {
   recoveryPassword: {
     success: boolean;
@@ -12,10 +12,11 @@ interface RecoveryPasswordInput {
   email: string;
 }
 
-export async function recoveryPassword(
+export async function recoveryPasswordAction(
   input: RecoveryPasswordInput
 ): Promise<{ success: boolean; successSendCode: boolean }> {
   try {
+    const client = useGraphQLClient();
     if (!input.email || !input.email.includes("@")) {
       throw new Error("El correo electrónico es inválido");
     }

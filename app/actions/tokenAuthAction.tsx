@@ -2,7 +2,7 @@
 import { LOGIN_USER } from "../../graphql/mutation";
 import { useGraphQLClient } from "../../graphql/client";
 
-export async function loginUser(input: {
+export async function loginUserAction(input: {
   email: string;
   password: string;
 }): Promise<{ token: string; refreshToken: string } | null> {

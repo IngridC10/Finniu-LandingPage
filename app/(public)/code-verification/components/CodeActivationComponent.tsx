@@ -1,5 +1,5 @@
 "useClient";
-import { validateOtp } from "@/app/actions/validateOtp";
+import { validateOtpAction } from "@/app/actions/validateOtpAction";
 import { messageNotify } from "@/components/MessageNotification";
 import React, { useEffect, useRef } from "react";
 import { Toaster } from "react-hot-toast";
@@ -31,7 +31,7 @@ const CodeActivationComponent = ({
       const otpCode = Object.values(codesState).join("");
       if (otpCode.length === 4) {
         try {
-          const success = await validateOtp({
+          const success = await validateOtpAction({
             email: email,
             action: "recovery_password",
             otpCode: otpCode,
