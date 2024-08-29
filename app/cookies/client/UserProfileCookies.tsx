@@ -6,7 +6,7 @@ export const setProfileCookies = (profile: any) => {
 
 export const getProfileCookies = () => {
   const userProfileString = cookie.get("userProfile");
-  console.log("Perfil recuperado de cookies:", userProfileString);
+
   return userProfileString ? JSON.parse(userProfileString) : null;
 };
 

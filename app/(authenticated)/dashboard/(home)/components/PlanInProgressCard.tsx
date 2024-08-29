@@ -1,6 +1,7 @@
 import React from "react";
 import { FiArrowUp } from "react-icons/fi";
 import CountUp from "react-countup";
+import { useTheme } from "@/app/contexts/ThemeProvider";
 
 interface PlanInProgressCardProps {
   rentabilityIncreased: number;
@@ -8,7 +9,6 @@ interface PlanInProgressCardProps {
   finishDateInvestment: string;
   rentabilityPercent: number;
   planName: string;
-  isDarkModeState: boolean;
   amount: string;
   rentabilityAmmount: string;
   isSoles: boolean;
@@ -23,12 +23,13 @@ const PlanInProgressCard = ({
   finishDateInvestment,
   rentabilityPercent,
   planName,
-  isDarkModeState,
   amount,
   rentabilityAmmount,
   isSoles,
   deadline,
 }: PlanInProgressCardProps) => {
+  const { darkMode } = useTheme();
+
   const rentabilityFloat = parseFloat(rentabilityAmmount);
   const amountFloat = parseFloat(amount);
   const currentMoney = isSoles
@@ -41,12 +42,12 @@ const PlanInProgressCard = ({
       <div>
         <div
           className={`w-[429px]  ${
-            isDarkModeState ? "bg-customBlack" : "bg-white"
+            darkMode ? "bg-customBlack" : "bg-white"
           }  p-5 flex flex-col ml-2 mt-2.5 rounded-2xl `}
         >
           <div
             className={`text-lg font-bold flex flex-row justify-between ${
-              isDarkModeState ? "text-customLightBlue" : "text-darkBlueColor"
+              darkMode ? "text-customLightBlue" : "text-darkBlueColor"
             }`}
           >
             <h1>{planName}</h1>
@@ -54,7 +55,7 @@ const PlanInProgressCard = ({
               <div className="w-2.5 h-2.5 rounded-full bg-customGreen mr-1.5"></div>
               <div
                 className={`${
-                  isDarkModeState ? "text-white" : "text-darkBlueColor"
+                  darkMode ? "text-white" : "text-darkBlueColor"
                 } text-xs font-normal `}
               >
                 <h2>En curso</h2>
@@ -63,7 +64,7 @@ const PlanInProgressCard = ({
           </div>
           <h2
             className={`${
-              isDarkModeState ? "text-white" : "text-customGray"
+              darkMode ? "text-white" : "text-customGray"
             } text-xs font-normal `}
           >
             Plazo de {deadline.name} : {rentabilityPercent}%
@@ -116,16 +117,12 @@ const PlanInProgressCard = ({
               {" "}
             </div>
             <div className="text-15px font-normal h-[45px] leading-1.4 flex flex-col items-center ">
-              <h4
-                className={`${isDarkModeState ? "text-white" : "text-black"}`}
-              >
+              <h4 className={`${darkMode ? "text-white" : "text-black"}`}>
                 Dinero Invertido
               </h4>
               <h2
                 className={`text-center text-xl ${
-                  isDarkModeState
-                    ? "text-customLightBlue"
-                    : "text-darkBlueColor"
+                  darkMode ? "text-customLightBlue" : "text-darkBlueColor"
                 }`}
               >
                 {moneySymbol}
@@ -142,7 +139,7 @@ const PlanInProgressCard = ({
             <div className="text-15px leading-1.4 h-[45px]">
               <h4
                 className={`font-normal ${
-                  isDarkModeState ? "text-white" : "text-black"
+                  darkMode ? "text-white" : "text-black"
                 }`}
               >
                 Intereses Generados

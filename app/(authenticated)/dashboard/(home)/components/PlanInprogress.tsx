@@ -1,27 +1,23 @@
 import { getUserInfoAllInvestmentAction } from "@/app/actions/userInfoAllInvestmentAction";
 import { Key, useEffect, useState } from "react";
 import PlanInProgressCard from "./PlanInProgressCard";
-
-const PlansInProgress = ({
-  isSolesState,
-  isDarkModeState,
-}: {
-  isSolesState: any;
-  isDarkModeState: boolean;
-}) => {
-  const isSoles = isSolesState;
-  const [dataReport, setDataReport] = useState<null | any>(null);
+import { useTheme } from "@/app/contexts/ThemeProvider";
+import { useCurrency } from "@/app/contexts/CurrencyProvider";
+const PlansInProgress: React.FC = () => {
+  const { darkMode } = useTheme();
+  const { isSoles } = useCurrency();
+  const [dataReport, setDataReport] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await getUserInfoAllInvestmentAction();
         setDataReport(result);
-      } catch (error) {
-        setError("Unable to fetch data" as any);
-        console.error("Error fetching data:", error);
+      } catch (err) {
+        setError("Unable to fetch data");
+        console.error("Error fetching data:", err);
       } finally {
         setLoading(false);
       }
@@ -33,9 +29,7 @@ const PlansInProgress = ({
   if (loading) {
     return (
       <div className="flex items-center justify-center">
-        <p
-          className={`text-xl ${isDarkModeState ? "text-white" : "text-black"}`}
-        >
+        <p className={`text-xl ${darkMode ? "text-white" : "text-black"}`}>
           Loading...
         </p>
       </div>
@@ -45,9 +39,7 @@ const PlansInProgress = ({
   if (error) {
     return (
       <div className="flex items-center justify-center">
-        <p
-          className={`text-xl ${isDarkModeState ? "text-white" : "text-black"}`}
-        >
+        <p className={`text-xl ${darkMode ? "text-white" : "text-black"}`}>
           {error}
         </p>
       </div>
@@ -57,9 +49,7 @@ const PlansInProgress = ({
   if (!dataReport) {
     return (
       <div className="flex items-center justify-center">
-        <p
-          className={`text-xl ${isDarkModeState ? "text-white" : "text-black"}`}
-        >
+        <p className={`text-xl ${darkMode ? "text-white" : "text-black"}`}>
           No data available
         </p>
       </div>
@@ -75,7 +65,7 @@ const PlansInProgress = ({
     <div>
       <div
         className={`cursor-pointer box-border p-[30px] max-w-[598px] min-w-[300px] h-[347px] w-[550px] rounded-[20px] shadow-md hover:shadow-lg ${
-          isDarkModeState
+          darkMode
             ? "bg-gradient-to-b from-darkBlueColor to-blueCustom"
             : "bg-gradient-to-t from-cremeColor to-blueCustom"
         }`}
@@ -83,7 +73,7 @@ const PlansInProgress = ({
         <div className="h-full overflow-auto">
           <div
             className={`font-bold flex-col justify-start items-start ${
-              isDarkModeState ? "text-blueCustom" : "text-darkBlueColor"
+              darkMode ? "text-blueCustom" : "text-darkBlueColor"
             }`}
           >
             <h1 className="flex text-xl">Mis planes en curso</h1>
@@ -93,9 +83,9 @@ const PlansInProgress = ({
                   (plan: any, index: Key | null | undefined) => (
                     <PlanInProgressCard
                       key={index}
-                      isDarkModeState={isDarkModeState}
+                      isDarkModeState={darkMode}
                       {...plan}
-                      isSoles={isSoles}
+                      isSoles={isSoles} // Se usa el contexto para pasar isSoles
                     />
                   )
                 )}
@@ -104,7 +94,7 @@ const PlansInProgress = ({
               <div>
                 <p
                   className={`text-xl m-24 ${
-                    isDarkModeState ? "text-white" : "text-black"
+                    darkMode ? "text-white" : "text-black"
                   }`}
                 >
                   {isSoles

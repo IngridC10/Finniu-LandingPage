@@ -1,21 +1,28 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { GoBell } from "react-icons/go";
 import defaultImageUser from "@/images/Dashboard/UserMenu/userPhoto.jpg";
 import Image from "next/image";
 import SwitchLightandDark from "./SwitchLightandDark";
 import { getProfileCookies } from "@/app/cookies/client/UserProfileCookies";
 import { useTheme } from "@/app/contexts/ThemeProvider";
-
 const UserMenu = () => {
-  const { imageProfileUrl } = getProfileCookies()
-    ? getProfileCookies()
-    : defaultImageUser;
-  const UserPhoto = imageProfileUrl ? imageProfileUrl : defaultImageUser;
-  const { darkMode, toggleDarkMode } = useTheme();
+  const [userPhoto, setUserPhoto] = useState(defaultImageUser);
+  const { darkMode } = useTheme();
+
+  useEffect(() => {
+    const profileData = getProfileCookies();
+    if (profileData && profileData.imageProfileUrl) {
+      setUserPhoto(profileData.imageProfileUrl);
+    }
+  }, []);
 
   return (
-    <div className="flex justify-end gap-10 w-full p-5">
+    <div
+      className={`flex justify-end gap-10 w-full p-5 ${
+        darkMode ? "bg-backgroundDarkColor" : "bg-customBackgroundLight"
+      }`}
+    >
       <SwitchLightandDark />
       <div className="flex items-center iconBell">
         <GoBell
@@ -26,7 +33,7 @@ const UserMenu = () => {
 
       <Image
         className="w-16 h-16 rounded-full"
-        src={UserPhoto}
+        src={userPhoto}
         alt="User"
         width={50}
         height={50}

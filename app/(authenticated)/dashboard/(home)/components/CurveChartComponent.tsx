@@ -19,6 +19,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { getRentabilityGraphAction } from "@/app/actions/rentabilityGraphAction";
+import { useTheme } from "@/app/contexts/ThemeProvider";
 
 type CurveChartComponentProps = {
   isDarkModeState: boolean;
@@ -26,10 +27,10 @@ type CurveChartComponentProps = {
 };
 
 const CurveChartComponent: React.FC<CurveChartComponentProps> = ({
-  isDarkModeState,
   isSolesState,
 }) => {
   const isSoles = isSolesState;
+  const { darkMode } = useTheme();
   const [selectedValue, setSelectedValue] = useState("all_months");
   const [dataValues, setDataValues] = useState<
     { name: string; Monto: number; date: Date; year: string }[]
@@ -91,7 +92,7 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = ({
     <div className="flex flex-col items-center">
       <div
         className={`w-[550px] h-[347px] mt-6 cursor-pointer rounded-[20px] p-5 ${
-          isDarkModeState ? "bg-black" : "bg-white"
+          darkMode ? "bg-black" : "bg-white"
         } shadow-md hover:shadow-lg `}
       >
         <div className="flex justify-end gap-2.5">
@@ -99,17 +100,17 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = ({
             onClick={() => setIsLineChart(true)}
             className={`w-[30px] h-[30px] shadow-md ${
               isLineChart
-                ? isDarkModeState
+                ? darkMode
                   ? "bg-darkBlueColor"
                   : "bg-blueCustom"
-                : isDarkModeState
+                : darkMode
                 ? "transparent"
                 : "bg-white"
             } border-1 border-white rounded-[5px] ml-[10px] relative`}
           >
             <FontAwesomeIcon
               style={{
-                color: isDarkModeState ? "#A2E6FA" : "#0D3A5C",
+                color: darkMode ? "#A2E6FA" : "#0D3A5C",
               }}
               icon={faArrowTrendDown}
             />
@@ -118,16 +119,16 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = ({
             onClick={() => setIsLineChart(false)}
             className={`w-[30px] h-[30px] shadow-md ${
               isLineChart
-                ? isDarkModeState
+                ? darkMode
                   ? "transparent "
                   : "bg-white"
-                : isDarkModeState
+                : darkMode
                 ? "bg-darkBlueColor"
                 : "bg-blueCustom"
             } border-1 border-white rounded-[5px] ml-1 mr-1`}
           >
             <FontAwesomeIcon
-              style={{ color: isDarkModeState ? "#A2E6FA" : "#0D3A5C" }}
+              style={{ color: darkMode ? "#A2E6FA" : "#0D3A5C" }}
               icon={faChartSimple}
             />
           </button>
@@ -135,7 +136,7 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = ({
         <div className="flex flex-row flex-wrap items-center justify-between pr-2">
           <h1
             className={`text-xl font-bold ${
-              isDarkModeState ? "text-customLightBlue" : "text-darkBlueColor"
+              darkMode ? "text-customLightBlue" : "text-darkBlueColor"
             }`}
           >
             Mi rentabilidad
@@ -175,7 +176,7 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = ({
                     <CartesianGrid horizontal={true} vertical={false} />
                     <XAxis
                       dataKey="name"
-                      tick={{ fill: isDarkModeState ? "#ffffff" : "#0D3A5C" }}
+                      tick={{ fill: darkMode ? "#ffffff" : "#0D3A5C" }}
                     />
                     <Tooltip
                       content={({ active, payload, label }) => {
@@ -183,7 +184,7 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = ({
                           return (
                             <div
                               style={{
-                                backgroundColor: isDarkModeState
+                                backgroundColor: darkMode
                                   ? "#A2E6FA"
                                   : "#f3f3f3",
                                 padding: "10px",
@@ -204,13 +205,13 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = ({
 
                     <YAxis
                       tickFormatter={formatYAxis}
-                      tick={{ fill: isDarkModeState ? "#ffffff" : "#0D3A5C" }}
+                      tick={{ fill: darkMode ? "#ffffff" : "#0D3A5C" }}
                     />
                     <Area
                       type="monotone"
                       dataKey="Monto"
-                      stroke={isDarkModeState ? "#a2e6fa" : "#a2e6fa"}
-                      fill={isDarkModeState ? "#0D3A5C" : "#a2e6fa"}
+                      stroke={darkMode ? "#a2e6fa" : "#a2e6fa"}
+                      fill={darkMode ? "#0D3A5C" : "#a2e6fa"}
                       strokeWidth={4}
                       dot={{ r: 6, fill: "#8FE6FF" }}
                     />
@@ -220,26 +221,26 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = ({
                     <CartesianGrid horizontal={true} vertical={false} />
                     <XAxis
                       dataKey="name"
-                      tick={{ fill: isDarkModeState ? "#ffffff" : "#0D3A5C" }}
+                      tick={{ fill: darkMode ? "#ffffff" : "#0D3A5C" }}
                     />
                     <YAxis
                       tickFormatter={formatYAxis}
-                      tick={{ fill: isDarkModeState ? "#ffffff" : "#0D3A5C" }}
+                      tick={{ fill: darkMode ? "#ffffff" : "#0D3A5C" }}
                     />
                     <Bar
                       isAnimationActive={false}
                       dataKey="Monto"
-                      fill={isDarkModeState ? "#0D3A5C" : "#a2e6fa"}
+                      fill={darkMode ? "#0D3A5C" : "#a2e6fa"}
                       onMouseEnter={(data, index, e) => {
                         (e.target as HTMLElement).setAttribute(
                           "fill",
-                          isDarkModeState ? "#a2e6fa" : "#0D3A5C"
+                          darkMode ? "#a2e6fa" : "#0D3A5C"
                         );
                       }}
                       onMouseLeave={(data, index, e) => {
                         (e.target as HTMLElement).setAttribute(
                           "fill",
-                          isDarkModeState ? "#0D3A5C" : "#a2e6fa"
+                          darkMode ? "#0D3A5C" : "#a2e6fa"
                         );
                       }}
                     />
@@ -250,7 +251,7 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = ({
                           return (
                             <div
                               style={{
-                                backgroundColor: isDarkModeState
+                                backgroundColor: darkMode
                                   ? "#A2E6FA"
                                   : "#f3f3f3",
                                 padding: "10px",
@@ -284,7 +285,7 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = ({
             ) : (
               <p
                 className={`text-xl m-24 font-bold ${
-                  isDarkModeState ? "text-white" : "text-black"
+                  darkMode ? "text-white" : "text-black"
                 }`}
               >
                 {isSoles

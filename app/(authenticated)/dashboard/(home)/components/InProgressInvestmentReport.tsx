@@ -3,20 +3,16 @@ import React, { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import { getUserInfoAllInvestmentAction } from "@/app/actions/userInfoAllInvestmentAction";
 import { saveUserInfoAllInvestmentCookies } from "@/app/cookies/client/UserInfoAllInvestmentCookies";
-
-const InprogressInvestmentReport = ({
-  isSolesState,
-}: {
-  isSolesState: boolean;
-}) => {
+import { useCurrency } from "@/app/contexts/CurrencyProvider";
+const InprogressInvestmentReport = () => {
   const [dataReport, setDataReport] = useState<any>(null);
   const [error, setError] = useState<string | null>(null);
+  const { isSoles } = useCurrency();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const userInfo = await getUserInfoAllInvestmentAction();
-        const isSoles = isSolesState;
         const reportSoles = userInfo["invesmentInSoles"][0];
         const reportDollar = userInfo["invesmentInDolares"][0];
 
@@ -32,7 +28,7 @@ const InprogressInvestmentReport = ({
     };
 
     fetchData();
-  }, [isSolesState]);
+  }, [isSoles]);
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -54,7 +50,7 @@ const InprogressInvestmentReport = ({
   return (
     <div
       className={`cursor-pointer ${
-        isSolesState ? "bg-blueCustom" : "bg-cremeColor"
+        isSoles ? "bg-blueCustom" : "bg-cremeColor"
       } p-10 w-[550px] h-[319px] rounded-[20px] shadow-md hover:shadow-lg`}
     >
       <div className="flex justify-start text-xl font-bold text-custom-blue">
@@ -67,7 +63,7 @@ const InprogressInvestmentReport = ({
           </div>
           <div>
             <h1 className="text-2xl font-bold">
-              {getMoneySymbol(isSolesState)}
+              {getMoneySymbol(isSoles)}
               <CountUp
                 start={0}
                 end={totalBalanceAmmount}
@@ -82,7 +78,7 @@ const InprogressInvestmentReport = ({
           </div>
           <div>
             <h4 className="text-2xl">
-              {getMoneySymbol(isSolesState)}
+              {getMoneySymbol(isSoles)}
               <CountUp
                 start={0}
                 end={totalBalanceRentability}
@@ -96,7 +92,7 @@ const InprogressInvestmentReport = ({
 
         <div
           className={`${
-            isSolesState ? "border-customLightBlue" : "border-darkBlueColor"
+            isSoles ? "border-customLightBlue" : "border-darkBlueColor"
           } h-44 w-0 flex items-center justify-center rounded-xl border-4`}
         ></div>
 
@@ -106,7 +102,7 @@ const InprogressInvestmentReport = ({
           </div>
           <div>
             <h4 className="text-2xl text-customGreenSecondary">
-              {getMoneySymbol(isSolesState)}
+              {getMoneySymbol(isSoles)}
               <CountUp
                 start={0}
                 end={capitalInCourse}
@@ -122,7 +118,7 @@ const InprogressInvestmentReport = ({
           </div>
           <div>
             <h4 className="text-2xl text-customGreenSecondary">
-              {getMoneySymbol(isSolesState)}
+              {getMoneySymbol(isSoles)}
               <CountUp
                 start={0}
                 end={totalBalanceRentabilityIncreased}

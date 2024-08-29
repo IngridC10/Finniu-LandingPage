@@ -64,6 +64,10 @@ const config: Config = {
         customGreenSecondary: "#32a071",
         customGreenPrimary: "#388923",
         customBlack: "#2c2c2c",
+        customBorderLilac: "#9381FF",
+        customLilac: "#e4dfff",
+        customChartRentability: "#B8dcf7",
+        customBlueRentability: "#18507b",
       },
 
       screens: {

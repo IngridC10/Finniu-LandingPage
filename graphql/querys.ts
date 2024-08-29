@@ -12,27 +12,6 @@ export const USER_PROFILE = gql`
   }
 `;
 
-export const GET_NEXT_PAYMENTS = gql`
-  query getNextPayments {
-    nextPayments {
-      paymentInSoles {
-        planName
-        amount
-        rentability
-        totalAmount
-        paymentDate
-      }
-      paymentInDolares {
-        planName
-        amount
-        rentability
-        totalAmount
-        paymentDate
-      }
-    }
-  }
-`;
-
 export const RENTABILITY_GRAPH = gql`
   query rentabilityGraph($timeLine: TimeLineEnum) {
     rentabilityGraph(timeLine: $timeLine) {
@@ -49,6 +28,77 @@ export const RENTABILITY_GRAPH = gql`
         year
         amountPoint
         details
+      }
+    }
+  }
+`;
+
+export const GET_CALENDAR = gql`
+  query getImportantDays {
+    importantDays {
+      month
+      date
+      description
+    }
+  }
+`;
+
+export const PAYMENT_DAY = gql`
+  query getPaymentDays {
+    paymentDays {
+      month
+      date
+      description
+    }
+  }
+`;
+
+export const IMPORTANT_DAYS = gql`
+  query getImportantDays {
+    importantDays {
+      month
+      date
+      description
+    }
+  }
+`;
+
+export const REMAINING_PAYMENT_DAYS = gql`
+  query getRemainingPaymentDays {
+    remainingPaymentDays {
+      month
+      date
+      description
+    }
+  }
+`;
+
+export const PAST_PAYMENT_DAYS = gql`
+  query pastPaymentDays {
+    pastPaymentDays {
+      month
+      date
+      description
+    }
+  }
+`;
+
+export const GET_NEXT_PAYMENTS = gql`
+  query getNextPayments {
+    nextPayments {
+      paymentInSoles {
+        planName
+        amount
+        rentability
+        totalAmount
+        paymentDate
+      }
+      paymentInDolares {
+        planName
+        amount
+        rentability
+        totalAmount
+        paymentDate
       }
     }
   }

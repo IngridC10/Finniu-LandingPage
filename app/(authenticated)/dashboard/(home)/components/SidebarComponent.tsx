@@ -185,7 +185,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
             className={` ${isSidebarOpenState ? "h-10" : "h-6"}`}
           />
         </div>
-        <div className="flex flex-col items-center justify-center w-full mt-10 gap-[75px] ">
+        <div className="flex flex-col items-center justify-center w-full mt-10 gap-[45px] ">
           <RiLogoutCircleLine
             className={`bg-customDarkblue text-darkBlueColor text-3xl w-10 h-10 rounded-full absolute right-[-56px] top-[170px] cursor-pointer z-10 ${
               !isSidebarOpenState && "rotate-180"
@@ -202,7 +202,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
             id="home"
           >
             <Link
-              href="/home"
+              href="/dashboard"
               style={{
                 display: "flex",
                 flexDirection: "row",
@@ -304,7 +304,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
             id="calendar"
           >
             <Link
-              href="/calendar"
+              href="/dashboard/calendar"
               style={{
                 display: "flex",
                 flexDirection: "row",

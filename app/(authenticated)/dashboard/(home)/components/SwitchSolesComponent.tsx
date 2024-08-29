@@ -1,24 +1,20 @@
+import { useCurrency } from "@/app/contexts/CurrencyProvider";
 import { useTheme } from "@/app/contexts/ThemeProvider";
 import React from "react";
 
-const SwitchSolesComponent = ({
-  isSolesState,
-  onSwitchChange,
-}: {
-  isSolesState: boolean;
-  onSwitchChange: () => void;
-}) => {
+const SwitchSolesComponent = () => {
+  const { isSoles, toggleCurrency } = useCurrency();
   const { darkMode } = useTheme();
 
   const toggleSwitch = () => {
-    onSwitchChange();
+    toggleCurrency(); // Usa el contexto para cambiar la moneda
   };
 
   const switchStyles = {
     width: "80px",
     height: "35px",
     borderRadius: "15px",
-    backgroundColor: isSolesState
+    backgroundColor: isSoles
       ? darkMode
         ? "#A2E6FA"
         : "#A2E6FA"
@@ -33,7 +29,7 @@ const SwitchSolesComponent = ({
     width: "22px",
     height: "22px",
     borderRadius: "50%",
-    backgroundColor: isSolesState
+    backgroundColor: isSoles
       ? darkMode
         ? "#0d3a5c"
         : "#0d3a5c"
@@ -42,7 +38,7 @@ const SwitchSolesComponent = ({
       : "#A2E6FA",
     position: "absolute" as const,
     top: "6.5px",
-    left: isSolesState ? "50px" : "10px",
+    left: isSoles ? "50px" : "10px",
     transition: "left 0.1s",
   };
 
@@ -59,7 +55,7 @@ const SwitchSolesComponent = ({
           padding: "15px",
         }}
       >
-        {isSolesState ? "Soles" : "Dólares"}
+        {isSoles ? "Soles" : "Dólares"}
       </div>
 
       <div style={switchStyles} onClick={toggleSwitch}>

@@ -8,8 +8,6 @@ import {
 import { useRouter } from "next/navigation";
 import { getProfileCookies } from "@/app/cookies/client/UserProfileCookies";
 import { getTokenCookies } from "@/app/cookies/client/TokenCookies";
-import SideBarComponent from "./(home)/components/SidebarComponent";
-import UserMenu from "./(home)/components/UserMenu";
 import SwitchSolesComponent from "./(home)/components/SwitchSolesComponent";
 import InprogressInvestmentReport from "./(home)/components/InProgressInvestmentReport";
 import RevenuePaymentsReport from "./(home)/components/RevenuePaymentsReport";
@@ -30,7 +28,6 @@ const Page = () => {
       router.push("/login");
     } else {
       const profile = getProfileCookies();
-      console.log("Perfil del usuario:", profile);
 
       if (profile && profile.firstName) {
         setUserName(profile.firstName);
@@ -51,10 +48,8 @@ const Page = () => {
         darkMode ? "bg-backgroundDarkColor" : "bg-customBackgroundLight"
       }`}
     >
-      <SideBarComponent currentPage={""} />
       <div className="relative flex flex-col items-end w-full p-8 container ">
-        <UserMenu />
-        <div className="flex items-center w-[87%] justify-between mb-10">
+        <div className="flex items-center w-[98%] justify-between mb-10">
           <p
             className={`text-3xl font-bold flex  w-[237px] flex-row justify-start ${
               darkMode ? "text-customLightBlue" : "text-darkBlueColor"
@@ -63,28 +58,22 @@ const Page = () => {
             Hola {userName}
           </p>
 
-          <SwitchSolesComponent
-            isSolesState={isSolesState}
-            onSwitchChange={handleSwitchChange}
-          />
+          <SwitchSolesComponent />
         </div>
 
-        <div className="flex justify-center flex-col gap-[30px] md:flex-col lg:flex-col xl:flex-row items-center lg:text-center mt-6">
+        <div className="flex justify-center flex-col gap-[30px]  md:flex-col lg:flex-col xl:flex-row w-full items-center  lg:text-center mt-6">
           <div className="flex flex-col">
             <InprogressInvestmentReport
-              isSolesState={isSolesState}
-              // dataReport={dataReport}
+
+            // dataReport={dataReport}
             />
           </div>
           <div className="flex flex-col">
-            <RevenuePaymentsReport
-              isDarkModeState={darkMode}
-              isSolesState={isSolesState}
-            />
+            <RevenuePaymentsReport />
           </div>
         </div>
 
-        <div className="flex justify-center flex-col gap-[30px] md:flex-col lg:flex-col xl:flex-row  items-center lg:text-center mt-6">
+        <div className="flex justify-center flex-col  gap-[30px] w-full  md:flex-col lg:flex-col xl:flex-row  items-center lg:text-center mt-6">
           <div className="flex flex-col">
             <CurveChartComponent
               isDarkModeState={darkMode}
@@ -92,10 +81,7 @@ const Page = () => {
             />
           </div>
           <div className="flex flex-col mt-6">
-            <PlansInProgress
-              isDarkModeState={darkMode}
-              isSolesState={isSolesState}
-            />
+            <PlansInProgress />
           </div>
         </div>
       </div>
