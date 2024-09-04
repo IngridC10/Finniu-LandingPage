@@ -162,7 +162,9 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
       style={{ color: darkMode ? "#A2E6FA" : "#0D3A5C" }}
     >
       <div
-        className={`${darkMode ? "bg-darkBlueColor" : "bg-lighBlue"}  pt-24 
+        className={`${
+          darkMode ? "bg-darkBlueColor" : "bg-lighBlue"
+        } h-full pt-24 
         
         
         
@@ -254,7 +256,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
             id="history"
           >
             <Link
-              href="/my-history"
+              href="/dashboard/myHistory"
               style={{
                 display: "flex",
                 flexDirection: "row",
@@ -353,17 +355,18 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
             id="tour"
           >
             <Link
-              href="/home?forceTourVisible=true"
+              // href="/home?forceTourVisible=true"
+              href="/dashboard/tour"
               style={{
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: isSidebarOpenState ? "left" : "center",
                 alignItems: "left",
               }}
-              onClick={() => {
-                handleMenuClick("tour");
-                window.location.href = "/home?forceTourVisible=true";
-              }}
+              // onClick={() => {
+              //   handleMenuClick("tour");
+              //   window.location.href = "/home?forceTourVisible=true";
+              // }}
             >
               <div
                 className={`${

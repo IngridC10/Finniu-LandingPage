@@ -30,10 +30,6 @@ export async function validateOtpAction(
 
     const { success } = result.validOtpUser;
 
-    console.log("Resultado de la función validateOtp:", {
-      success,
-    });
-
     return success;
   } catch (error: any) {
     console.error("Error al validar OTP:", error.message || error);

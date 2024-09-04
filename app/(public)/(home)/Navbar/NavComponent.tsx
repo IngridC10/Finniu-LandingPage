@@ -102,11 +102,13 @@ const NavComponent = () => {
           </Link>
         </div>
         <div className="flex items-start space-x-4 2xl:hidden">
-          <ButtonComponent
-            text="Ingresar"
-            className="h-10 2xl:h-12 w-[129px] 2xl:w-36 text-blueDarkColor bg-lightBlueColor text-[15px] 2xl:text-[24px] rounded-lg"
-            // onClick={handleButton}
-          />
+          <Link href="/login">
+            <ButtonComponent
+              text="Ingresar"
+              className="h-10 2xl:h-12 w-[129px] 2xl:w-36 text-blueDarkColor bg-lightBlueColor text-[15px] 2xl:text-[24px] rounded-lg"
+              onClick={() => handleItemSelect("login")}
+            />
+          </Link>
           <button onClick={toggleMenu} className="text-white">
             <svg
               className="w-8 h-8"
@@ -135,11 +137,14 @@ const NavComponent = () => {
                 <Image src={LogoFinniuDark} alt="Logo de Finniu" />
               </div>
             </Link>
-            <ButtonComponent
-              text="Ingresar"
-              className="h-10 2xl:h-12 w-[129px] 2xl:w-36 text-blueDarkColor bg-lightBlueColor text-[15px] 2xl:text-[24px] rounded-lg"
-              // onClick={handleButton}
-            />
+
+            <Link href="/login">
+              <ButtonComponent
+                text="Ingresar"
+                className="h-10 2xl:h-12 w-[129px] 2xl:w-36 text-blueDarkColor bg-lightBlueColor text-[15px] 2xl:text-[24px] rounded-lg"
+                onClick={() => handleItemSelect("login")}
+              />
+            </Link>
             <button onClick={toggleMenu} className="text-black">
               <svg
                 className="w-8 h-8"

@@ -8,18 +8,19 @@ interface CalendarComponentProps {
     pastPaymentDays: { date: string }[];
     remainingPaymentDays: { date: string }[];
   };
-  onSelectDay: (date: Date) => void; // Añadido onSelectDay
-  selectedDateState: Date; // Añadido selectedDateState
+  onSelectDay: (date: Date) => void;
+  selectedDateState: Date;
 }
 
 const CalendarComponent = ({
   setCurrentMonthState,
   setCurrentYearState,
   importantDays,
-  onSelectDay, // Añadido onSelectDay
-  selectedDateState, // Añadido selectedDateState
+  onSelectDay,
+  selectedDateState,
 }: CalendarComponentProps) => {
   const { darkMode } = useTheme();
+
   const pastPaymentDates = importantDays.pastPaymentDays.map((day) => {
     let parts = day.date.split("-");
     return `${parts[2]}-${parts[1]}-${parts[0]}`;
@@ -75,7 +76,7 @@ const CalendarComponent = ({
 
   return (
     <div
-      className={` md:w-[468px] lg:w-[550px] lg:h-[619px] md:h-[517px] md:pb-0 md:pt-0  overflow-hidden cursor-pointer relative rounded-3xl 
+      className={`md:w-[468px] lg:w-[550px] lg:h-[619px] md:h-[517px] md:pb-0 md:pt-0  overflow-hidden cursor-pointer relative rounded-3xl 
         shadow-md hover:shadow-lg
         bg-${
           darkMode ? "darkBlueColor" : "white"
@@ -94,8 +95,8 @@ const CalendarComponent = ({
             setCurrentYearState(activeStartDate.getFullYear());
           }
         }}
-        value={selectedDateState} // Utilizando selectedDateState aquí
-        onClickDay={onSelectDay} // Utilizando onSelectDay aquí
+        value={selectedDateState}
+        onClickDay={onSelectDay}
         selectRange={false}
         prev2Label={
           <span style={{ color: darkMode ? "#A2E6FA" : "#0D3A5C" }}>«</span>
@@ -110,6 +111,18 @@ const CalendarComponent = ({
           <span style={{ color: darkMode ? "#A2E6FA" : "#0D3A5C" }}>»</span>
         }
         formatMonth={formatMonthYear}
+        navigationLabel={({ date }) => (
+          <span
+            className="react-calendar__navigation__label__labelText"
+            style={{ color: darkMode ? "#A2E6FA" : "#0d3a5c" }}
+          >
+            {date.toLocaleDateString("es-ES", {
+              month: "long",
+              year: "numeric",
+            })}
+          </span>
+        )}
+        className={`${darkMode ? "dark-mode-weekdays" : "light-mode-weekdays"}`}
       />
 
       <div className="flex flex-row items-center justify-center p-3 md:p-0 mb-7">
@@ -137,7 +150,7 @@ const CalendarComponent = ({
               darkMode ? "text-white" : "text-black"
             }`}
           >
-            Pagos pasados{" "}
+            Pagos pasados
           </h3>
         </div>
         <div className="flex items-center justify-center ">
@@ -152,7 +165,7 @@ const CalendarComponent = ({
               darkMode ? "text-white" : "text-black"
             }`}
           >
-            Fechas importantes{" "}
+            Fechas importantes
           </h3>
         </div>
       </div>

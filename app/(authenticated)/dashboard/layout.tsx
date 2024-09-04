@@ -3,6 +3,7 @@ import { ThemeProvider, useTheme } from "../../contexts/ThemeProvider";
 import SideBarComponent from "./(home)/components/SidebarComponent";
 import UserMenu from "./(home)/components/UserMenu";
 import { CurrencyProvider } from "@/app/contexts/CurrencyProvider";
+import { DMSans } from "@/app/fonts";
 
 interface LayoutProps {
   children: ReactNode;
@@ -12,11 +13,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <CurrencyProvider>
       <ThemeProvider>
-        <div className="flex flex-col h-screen w-full">
+        <div className={`flex flex-col h-screen w-full ${DMSans.className}`}>
           <div className="flex h-full w-full">
-            <SideBarComponent currentPage={""} />
-            <main className="flex-1 flex flex-col items-center justify-center bg-customBackgroundLight max-w-[1800px]">
-              <div className="w-full max-w-7xl h-full mx-auto px-4 bg-customBackgroundLight">
+            <SideBarComponent currentPage={"home"} />
+            <main className="mx-auto">
+              <div
+                className="flex-1 flex flex-col items-center justify-center bg-customBackgroundLight max-w-[1800px]
+                   p-10 mx-auto my-15"
+              >
                 <UserMenu />
                 {children}
               </div>

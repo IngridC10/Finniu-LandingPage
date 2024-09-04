@@ -19,7 +19,7 @@ const UserMenu = () => {
 
   return (
     <div
-      className={`flex justify-end gap-10 w-full p-5 ${
+      className={`flex justify-end gap-10 w-full ${
         darkMode ? "bg-backgroundDarkColor" : "bg-customBackgroundLight"
       }`}
     >

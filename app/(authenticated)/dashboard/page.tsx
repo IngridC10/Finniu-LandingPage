@@ -48,8 +48,8 @@ const Page = () => {
         darkMode ? "bg-backgroundDarkColor" : "bg-customBackgroundLight"
       }`}
     >
-      <div className="relative flex flex-col items-end w-full p-8 container ">
-        <div className="flex items-center w-[98%] justify-between mb-10">
+      <div className="relative flex flex-col items-end w-full  container ">
+        <div className="flex items-center w-full justify-between mb-10">
           <p
             className={`text-3xl font-bold flex  w-[237px] flex-row justify-start ${
               darkMode ? "text-customLightBlue" : "text-darkBlueColor"

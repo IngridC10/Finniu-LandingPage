@@ -30,7 +30,6 @@ export async function getRentabilityGraphAction(timeLine: string) {
     }
 
     const rentabilityGraph = result.rentabilityGraph;
-    console.log("Parsed rentability graph:", rentabilityGraph);
 
     return rentabilityGraph;
   } catch (error) {

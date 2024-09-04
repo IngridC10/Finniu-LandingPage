@@ -1,8 +1,8 @@
 "use server";
+import { useGraphQLClient } from "@/graphql/client";
 import { CALCULATE_INVESTMENT } from "../../graphql/mutation";
-import { GraphQLClient } from "graphql-request";
 
-const client = new GraphQLClient("https://finniu.com/api/v1/graph/finniu/");
+const client = useGraphQLClient();
 
 export type InvestmentResult = {
   success: boolean;

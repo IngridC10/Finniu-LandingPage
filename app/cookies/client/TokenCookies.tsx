@@ -6,7 +6,7 @@ export const saveTokenCookies = (token: string) => {
   cookie.set("token", token, { expires: 7 });
 };
 
-export const getTokenCookies = (): string | undefined => {
+export const getTokenCookies = (request?: unknown): string | undefined => {
   return cookie.get("token");
 };
 

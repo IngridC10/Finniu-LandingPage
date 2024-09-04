@@ -9,6 +9,7 @@ export async function getUserInfoAllInvestmentAction() {
     const result: { userInfoAllInvestment: any } = await client.request(
       USER_INFO_ALL_INVESTMENT
     );
+    console.log("API Response Result:", JSON.stringify(result, null, 2));
 
     if (!result || !result.userInfoAllInvestment) {
       throw new Error("Invalid API response");

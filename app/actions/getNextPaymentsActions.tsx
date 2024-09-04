@@ -1,5 +1,4 @@
 "use server";
-
 import { useGraphQLClient } from "@/graphql/client";
 import { GET_NEXT_PAYMENTS } from "@/graphql/querys";
 

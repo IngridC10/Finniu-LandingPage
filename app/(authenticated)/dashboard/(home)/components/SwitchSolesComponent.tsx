@@ -7,7 +7,7 @@ const SwitchSolesComponent = () => {
   const { darkMode } = useTheme();
 
   const toggleSwitch = () => {
-    toggleCurrency(); // Usa el contexto para cambiar la moneda
+    toggleCurrency();
   };
 
   const switchStyles = {
@@ -43,7 +43,7 @@ const SwitchSolesComponent = () => {
   };
 
   return (
-    <div className="flex flex-row items-center justify-end w-full p-5">
+    <div className="flex flex-row items-center justify-end w-full ">
       <div
         style={{
           marginRight: "15px",

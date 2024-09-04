@@ -428,8 +428,20 @@ react-calendar__navigation {
   height: 41px;
 }
 
-.react-calendar__navigation__label__labelText .light-mode-tile {
-  color: #8fe6ff;
+/* .react-calendar__navigation__label__labelText {
+  color: #0d3a5c;
+}
+
+.dark-mode .react-calendar__navigation__label__labelText {
+  color: #a2e6fa;
+} */
+
+.light-mode-weekdays .react-calendar__month-view__weekdays__weekday {
+  color: #0d3a5c;
+}
+
+.dark-mode-weekdays .react-calendar__month-view__weekdays__weekday {
+  color: white;
 }
 
 .react-calendar__month-view__weekdays__weekday {
@@ -512,4 +524,151 @@ react-calendar__navigation {
   font-weight: 700;
   grid-gap: 5px;
   gap: 5px;
+}
+
+/* HISTORY */
+.container-operation th {
+  border-color: #ededed;
+  color: black;
+}
+
+.img-banks {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+
+th {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 3px solid;
+  /* color: #ededed; */
+}
+table,
+th,
+td {
+  text-align: center;
+}
+
+th,
+td {
+  padding: 3px;
+  line-height: 1;
+  /* color: #000000; */
+  border-left: 4px solid #ededed;
+  border-right: 4px solid #ededed;
+}
+
+.light-mode-table th {
+  color: black;
+}
+
+.dark-mode-table th {
+  color: #eeeeee;
+  border-color: #262525;
+}
+
+.light-mode-table td {
+  border-color: #ededed;
+  color: #000;
+}
+
+.dark-mode-table td {
+  border-color: #262525;
+  color: #eeeeee;
+}
+
+/* MODAL VOUCHER */
+
+.modalbox {
+  width: auto;
+  height: auto;
+  border-radius: 20px;
+}
+.modal-image.zoomed {
+  transform: scale(1.7);
+  z-index: 999;
+}
+
+.zoomable {
+  transition: transform 0.3s ease-in-out;
+}
+
+.zoomable:hover {
+  transform: scale(1.5);
+}
+
+.non-clickable-image {
+  pointer-events: none;
+}
+
+.modalbox {
+  width: 800px;
+  height: 550px;
+  position: relative;
+  background: #fff;
+  border-radius: 15px;
+  -webkit-transition: all 500ms ease-in;
+  -moz-transition: all 500ms ease-in;
+  transition: all 500ms ease-in;
+
+  @media screen and (max-width: 768px) {
+    .modalbox {
+      width: 500px;
+      height: 700px;
+    }
+  }
+}
+
+.movedown {
+  margin: 0 auto;
+}
+.rotate {
+  margin: 10% auto;
+  -webkit-transform: scale(-5, -5);
+  transform: scale(-5, -5);
+}
+.resize {
+  margin: 10% auto;
+  width: 0;
+  height: 0;
+}
+.modalmask:target .movedown {
+  margin: 10% auto;
+}
+.modalmask:target .rotate {
+  transform: rotate(360deg) scale(1, 1);
+  -webkit-transform: rotate(360deg) scale(1, 1);
+}
+
+.modalmask:target .resize {
+  width: 400px;
+  height: 200px;
+}
+
+/* TOUR */
+
+.button1 {
+  width: 153px;
+  height: 60px;
+  background-color: #0d3a5c;
+  border-radius: 26px;
+  border: none;
+  font-size: 24px;
+  font-weight: normal;
+  color: #ffffff;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.bodyTour {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(13, 58, 92, 90%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
