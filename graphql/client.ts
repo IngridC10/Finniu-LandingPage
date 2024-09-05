@@ -2,7 +2,8 @@ import { GraphQLClient } from "graphql-request";
 import { getServerToken } from "../app/cookies/server/tokenCookieServer"; // Asegúrate de que esta ruta sea correcta
 import { cookies } from "next/headers";
 
-const API_URL = "https://finniu.com/api/v1/graph/finniu/";
+const API_URL = process.env.API_URL as string;
+console.log("API_URL en el cliente:", API_URL);
 
 export function createGraphQLClient() {
   console.log("All cookies before creating client:", cookies().getAll());
