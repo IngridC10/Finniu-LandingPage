@@ -1,9 +1,7 @@
 import React from "react";
 import { GoBell } from "react-icons/go";
 import ArrowRightSoles from "@/images/Dashboard/Tour/arrowRightSoles.png";
-import { useNavigate } from "react-router-dom";
 import Image from "next/image";
-import router from "next/router";
 
 const TourNotification = ({
   handleCloseTour,
@@ -13,7 +11,7 @@ const TourNotification = ({
   // const navigate = useNavigate();
 
   const handleGetOutClick = () => {
-    router.push("/home?forceTour=false");
+    // navigate("/home?forceTour=false");
     handleCloseTour();
   };
 
@@ -30,8 +28,8 @@ const TourNotification = ({
                   alt="arrow"
                 />
               </div>
-              <div className="bg-custom-light-blue rounded-[60%] w-[74px] h-[79px] flex items-center">
-                <GoBell className="w-16 ml-[19px] icon text-custom-blue" />
+              <div className="bg-lighBlue rounded-[60%] w-[74px] h-[79px] flex items-center">
+                <GoBell className="w-16 ml-1 icon text-darkBlueColor h-[49px] " />
               </div>
             </div>
             <div className="mt-5 text-right md:mr-[80px] lg:mr-[76px] xl:mr-[78px] ">
@@ -49,7 +47,7 @@ const TourNotification = ({
                 style={{
                   boxShadow: "0 7px 6px -6px #d3d7de",
                 }}
-                className="flex flex-col items-center justify-center h-16 mt-5 sm:text-lg md:text-xl lg:text-2xl font-normal text-custom-blue no-underline border-none rounded-full shadow-md bg-custom-lightblue w-60 lg:w-[303px] ml-[317px]"
+                className="flex flex-col items-center justify-center h-16 mt-5 sm:text-lg md:text-xl lg:text-2xl font-normal text-darkBlueColor no-underline border-none rounded-full shadow-md bg-customLightBlue  w-60 lg:w-[303px] ml-[317px]"
               >
                 Listo para comenzar
               </button>

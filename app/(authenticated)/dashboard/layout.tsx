@@ -19,7 +19,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <main className="mx-auto">
               <div
                 className="flex-1 flex flex-col items-center justify-center bg-customBackgroundLight max-w-[1800px]
-                   p-10 mx-auto my-15"
+                   p-10 mx-auto my-15 h-full"
               >
                 <UserMenu />
                 {children}

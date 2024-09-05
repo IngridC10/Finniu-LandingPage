@@ -21,7 +21,7 @@ const TourSolesDolares = ({
                   src={ArrowRightSoles}
                   alt="arrow"
                 />{" "}
-                <div className="w-[220px] h-[76px] bg-customLightBlue rounded-[150px] ml-4">
+                <div className="w-[220px] h-[76px] bg-lighBlue rounded-[150px] ml-4">
                   {" "}
                   <SwitchSolesTour />
                 </div>

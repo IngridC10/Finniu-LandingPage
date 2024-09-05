@@ -9,8 +9,8 @@ const TourCalendar = ({ handleContinue }: { handleContinue: () => void }) => {
       <div className="flex items-center justify-center h-screen mt-120">
         <div className="fixed md:top-[360px] lg:top-[394px]  sm:max-w-md  xl:max-w-2xl left-32 ml-[42px]">
           ;
-          <div className="bg-customLightBlue rounded-[60%]  w-[74px] h-[79px] fixed left-[16px] top-[387px] flex ">
-            <LuCalendarDays className="w-16  m-2.5 ml-[19px] h-[49px] " />
+          <div className="bg-lighBlue rounded-[60%]  w-[74px] h-[79px] fixed left-[16px] top-[438px] flex ">
+            <LuCalendarDays className="w-16  m-2.5 ml-3 h-[49px] " />
           </div>
           <Image
             className="w-[209px] fixed   md:top-[306px]   lg:top-[336px]   md:left-[92px]   lg:left-[125px] "

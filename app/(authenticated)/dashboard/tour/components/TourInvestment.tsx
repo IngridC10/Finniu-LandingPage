@@ -8,7 +8,7 @@ const TourInvestment = ({ handleContinue }: { handleContinue: () => void }) => {
     <div className="overflow-y-hidden w-full h-full flex flex-col pr-[60px] pt-[40px]">
       <div className="flex items-center justify-center h-screen mt-120">
         <div className="fixed top-[270px] left-[300px]">
-          <div className="bg-lighBlue rounded-[60%] -mt-28 w-[74px] h-[79px] fixed left-[16px] top-[275px] flex justify-center items-center">
+          <div className="bg-lighBlue rounded-[60%] mt-[-7.5rem] w-[74px] h-[79px] fixed left-[16px] top-[275px] flex justify-center items-center">
             <AiOutlineDollar className="w-16  m-2.5 ml-[15px] h-[49px] " />
           </div>
           <Image

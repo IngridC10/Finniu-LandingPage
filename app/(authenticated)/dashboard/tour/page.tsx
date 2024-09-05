@@ -14,6 +14,7 @@ import TourHistory from "./components/TourHistory";
 import TourCalendar from "./components/TourCalendar";
 import TourSolesDolares from "./components/TourSolesDolares";
 import TourNotification from "./components/TourNotification";
+import { useRouter } from "next/router";
 
 const Tour = ({
   setTourVisibleState,
@@ -51,13 +52,11 @@ const Tour = ({
           <TourStepCero
             handleContinue={handleContinue}
             handleCloseTour={handleCloseTour}
-            // setCurrentPage={setCurrentPage}
+            setCurrentPage={setCurrentPage}
           />
         );
       case 2:
         return <TourInvestment handleContinue={handleContinue} />;
-      default:
-        return null;
 
       case 3:
         return <TourHistory handleContinue={handleContinue} />;
@@ -69,12 +68,9 @@ const Tour = ({
         return <TourSolesDolares handleContinue={handleContinue} />;
 
       case 6:
-        return (
-          <TourNotification
-            // handleContinue={handleContinue}
-            handleCloseTour={handleCloseTour}
-          />
-        );
+        return <TourNotification handleCloseTour={handleCloseTour} />;
+      default:
+        return null;
     }
   }
 
@@ -149,7 +145,9 @@ const Tour = ({
         <FontAwesomeIcon
           onClick={() => {
             // navigate("/home?forceTour=false");
+
             handleCloseTour();
+            saveShowTourCookies("false");
           }}
           icon={faTimes}
           style={tourStyles.closedIcon}

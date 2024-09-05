@@ -7,8 +7,8 @@ const TourHistory = ({ handleContinue }: { handleContinue: () => void }) => {
     <div className="overflow-y-hidden w-[94px] h-[88px] flex flex-col pr-[60px] pt-[40px]">
       <div className="flex items-center justify-center h-screen mt-120">
         <div className="fixed top-[334px] sm:left-[195px]  lg:left-[248px]">
-          <div className="bg-customLightBlue rounded-[60%] mt-9 w-[74px] h-[79px] fixed left-[16px] top-[214px] flex items-center justify-center">
-            <AiOutlineHistory className="w-16  m-2.5 ml-[19px] h-[49px] " />
+          <div className="bg-lighBlue  rounded-[60%] mt-24 w-[74px] h-[79px] fixed left-[16px] top-[214px] flex items-center justify-center">
+            <AiOutlineHistory className="w-16  m-2.5 ml-3 h-[49px] " />
           </div>
           <Image
             className="w-[209px] fixed top-[241px] left-32"
