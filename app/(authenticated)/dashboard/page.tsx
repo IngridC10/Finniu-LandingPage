@@ -44,7 +44,7 @@ const Page = () => {
 
   return (
     <main
-      className={`relative flex min-h-screen w-full  ${
+      className={`relative flex h-full w-full  ${
         darkMode ? "bg-backgroundDarkColor" : "bg-customBackgroundLight"
       }`}
     >

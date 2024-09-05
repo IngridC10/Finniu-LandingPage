@@ -42,11 +42,11 @@ const Page = () => {
   return (
     <div>
       <div
-        className={`w-full h-full min-h-screen ${
+        className={`w-full h-full  ${
           darkMode ? "bg-background-dark" : "bg-custom-background-light"
         }`}
       >
-        <div className="flex flex-row h-full min-h-screen gap-4">
+        <div className="flex flex-row h-full  gap-4">
           <div className="flex flex-col  mx-auto max-w-1800px my-15">
             <div className="flex items-center justify-between pl-2 ">
               <div className="text-2xl font-bold">

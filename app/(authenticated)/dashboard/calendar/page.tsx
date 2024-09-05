@@ -7,7 +7,6 @@ import ImportantDayListComponent from "./components/ImportantDayListComponent";
 import { getRemainingPaymentDaysAction } from "@/app/actions/remainingPaymentDays";
 import { getPastPaymentDaysAction } from "@/app/actions/pastPaymentDays";
 import { getIsDarkModeCookies } from "@/app/cookies/client/IsDarkModeCookies";
-
 type PageProps = {
   handleDaySelect: (date: Date) => void;
   selectedDateState: Date;
@@ -86,105 +85,118 @@ const Page: React.FC<PageProps> = ({ handleDaySelect, selectedDateState }) => {
   };
 
   return (
-    <div>
-      <div
-        className={`flex items-center h-full justify-between mb-10 sm:p-5 ${
-          darkMode ? "bg-customBackgroundLight" : "bg-customBackgroundLight"
-        }`}
-      >
-        <p
-          className={`text-2xl font-bold ${
-            darkMode ? "text-customLightBlue" : "text-darkBlueColor"
-          }`}
-        >
-          Mi calendario
-        </p>
-      </div>
-      <div className="flex flex-row sm:flex-col lg:flex-col xl:flex-row justify-evenly">
-        <div className="flex items-center justify-center">
-          <CalendarComponent
-            onSelectDay={handleDaySelect}
-            selectedDateState={selectedDateState}
-            setCurrentMonthState={setCurrentMonthState}
-            setCurrentYearState={setCurrentYearState}
-            importantDays={importantDays}
-          />
-        </div>
-        <div className="flex flex-col md:ml-0 xl:ml-20 xl:mt-2 sm:mt-10 md:mt-10 md:items-center md:content-center">
+    <div
+      className={`${
+        darkMode ? "bg-backgroundDarkColor" : "bg-customBackgroundLight"
+      } text-${darkMode ? "gray-200" : "gray-700"} h-full w-full `}
+    >
+      <div className="flex flex-row h-full gap-15">
+        <div className="flex flex-col  p-10 ml-auto mr-auto max-w-1800 m-15 ">
           <div
-            className={`flex rentability-text md:justify-center md:mr-12 ${
-              darkMode ? "text-customLightBlue" : "text-darkBlueColor"
+            className={`flex items-center h-full justify-between mb-10 sm:p-5 ${
+              darkMode ? "bg-customBackgroundLight" : "bg-customBackgroundLight"
             }`}
           >
-            <p className="text-2xl font-bold">Pagos de mi Rentabilidad</p>
-          </div>
-          <div className="flex justify-around">
-            <div className="flex flex-col">
-              <button
-                className={`button-rentability px-5 py-2 m-10 ${
-                  getButtonStylesRentability(!showPassRentabilityState)
-                    .textColor
-                } ${
-                  getButtonStylesRentability(!showPassRentabilityState)
-                    .fontWeight
-                }`}
-                onClick={() => setPassRentabilityState(false)}
-              >
-                Próximos
-              </button>
-              {!showPassRentabilityState && (
-                <div className="w-32 border-4 rounded-xl line-chart border-customLightBlue mt-[-34px] ml-[29px]"></div>
-              )}
-            </div>
-            <div className="flex flex-col">
-              <button
-                className={`button-rentability px-5 py-2 m-10 ${
-                  getButtonStylesRentability(showPassRentabilityState).textColor
-                } ${
-                  getButtonStylesRentability(showPassRentabilityState)
-                    .fontWeight
-                }`}
-                onClick={() => setPassRentabilityState(true)}
-              >
-                Pasados
-              </button>
-              {showPassRentabilityState && (
-                <div className="w-32 border-4 rounded-xl line-chart mt-[-34px] ml-[29px] border-customLightBlue"></div>
-              )}
-            </div>
-          </div>
-
-          <div
-            className={`relative w-full md:w-[453px] max-h-[350px] z-0 ${
-              darkMode ? "bg-backgroundDarkColor" : "bg-customBackgroundLight"
-            }`}
-          >
-            <div className="relative h-full p-3 overflow-x-hidden overflow-y-auto">
-              <div>
-                <CardRentability
-                  showPassRentabilityState={showPassRentabilityState}
-                  currentMonthState={currentMonthState}
-                  currentYearState={currentYearState}
-                  importantDays={importantDays}
-                />
-              </div>
-            </div>
-          </div>
-
-          <div>
             <p
-              className={`${
-                darkMode ? "text-blueCustom" : "text-darkBlueColor"
-              } text-2xl font-bold mt-6 ml-9 p-2`}
-            >
-              Fechas importantes
-            </p>
-            <div
-              className={`relative w-full md:w-[453px] max-h-[350px] z-0 ${
-                darkMode ? "bg-backgroundDarkColor" : "bg-customBackgroundLight"
+              className={`text-2xl font-bold ${
+                darkMode ? "text-customLightBlue" : "text-darkBlueColor"
               }`}
             >
-              <ImportantDayListComponent />
+              Mi calendario
+            </p>
+          </div>
+          <div className="flex flex-row sm:flex-col lg:flex-col xl:flex-row justify-evenly">
+            <div className="flex items-center justify-center">
+              <CalendarComponent
+                onSelectDay={handleDaySelect}
+                selectedDateState={selectedDateState}
+                setCurrentMonthState={setCurrentMonthState}
+                setCurrentYearState={setCurrentYearState}
+                importantDays={importantDays}
+              />
+            </div>
+            <div className="flex flex-col md:ml-0 xl:ml-20 xl:mt-2 sm:mt-10 md:mt-10 md:items-center md:content-center">
+              <div
+                className={`flex rentability-text md:justify-center md:mr-12 ${
+                  darkMode ? "text-customLightBlue" : "text-darkBlueColor"
+                }`}
+              >
+                <p className="text-2xl font-bold">Pagos de mi Rentabilidad</p>
+              </div>
+              <div className="flex justify-around">
+                <div className="flex flex-col">
+                  <button
+                    className={`button-rentability px-5 py-2 m-10 ${
+                      getButtonStylesRentability(!showPassRentabilityState)
+                        .textColor
+                    } ${
+                      getButtonStylesRentability(!showPassRentabilityState)
+                        .fontWeight
+                    }`}
+                    onClick={() => setPassRentabilityState(false)}
+                  >
+                    Próximos
+                  </button>
+                  {!showPassRentabilityState && (
+                    <div className="w-32 border-4 rounded-xl line-chart border-customLightBlue mt-[-34px] ml-[29px]"></div>
+                  )}
+                </div>
+                <div className="flex flex-col">
+                  <button
+                    className={`button-rentability px-5 py-2 m-10 ${
+                      getButtonStylesRentability(showPassRentabilityState)
+                        .textColor
+                    } ${
+                      getButtonStylesRentability(showPassRentabilityState)
+                        .fontWeight
+                    }`}
+                    onClick={() => setPassRentabilityState(true)}
+                  >
+                    Pasados
+                  </button>
+                  {showPassRentabilityState && (
+                    <div className="w-32 border-4 rounded-xl line-chart mt-[-34px] ml-[29px] border-customLightBlue"></div>
+                  )}
+                </div>
+              </div>
+
+              <div
+                className={`relative w-full md:w-[453px] max-h-[350px] z-0 ${
+                  darkMode
+                    ? "bg-backgroundDarkColor"
+                    : "bg-customBackgroundLight"
+                }`}
+              >
+                <div className="relative h-full p-3 overflow-x-hidden overflow-y-auto">
+                  <div>
+                    <CardRentability
+                      showPassRentabilityState={showPassRentabilityState}
+                      currentMonthState={currentMonthState}
+                      currentYearState={currentYearState}
+                      importantDays={importantDays}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <p
+                  className={`${
+                    darkMode ? "text-blueCustom" : "text-darkBlueColor"
+                  } text-2xl font-bold mt-6 ml-9 p-2`}
+                >
+                  Fechas importantes
+                </p>
+                <div
+                  className={`relative w-full md:w-[453px] max-h-[350px] z-0 ${
+                    darkMode
+                      ? "bg-backgroundDarkColor"
+                      : "bg-customBackgroundLight"
+                  }`}
+                >
+                  <ImportantDayListComponent />
+                </div>
+              </div>
             </div>
           </div>
         </div>
