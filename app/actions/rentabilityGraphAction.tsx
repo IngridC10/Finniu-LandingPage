@@ -2,7 +2,10 @@
 import { useGraphQLClient } from "@/graphql/client";
 import { RENTABILITY_GRAPH } from "@/graphql/querys";
 
-export async function getRentabilityGraphAction(timeLine: string) {
+export async function getRentabilityGraphAction(
+  timeLine: string,
+  fundUUID: string
+) {
   try {
     const client = useGraphQLClient();
 
@@ -23,7 +26,7 @@ export async function getRentabilityGraphAction(timeLine: string) {
           details: string;
         }[];
       };
-    } = await client.request(RENTABILITY_GRAPH, { timeLine });
+    } = await client.request(RENTABILITY_GRAPH, { timeLine, fundUUID });
 
     if (!result || !result.rentabilityGraph) {
       throw new Error("Invalid API response");

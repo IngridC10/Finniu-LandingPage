@@ -58,7 +58,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
           <div
             className="flex justify-center w-auto h-auto p-6 bg-white rounded-lg modalbox max-w-[850px]"
             style={{ width: `${modalWidth}px`, height: `${modalHeight}px` }}
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()} // Evitar cerrar el modal al hacer clic dentro de él
           >
             <a
               href="#close"
@@ -67,13 +67,14 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
             >
               X
             </a>
+
             {selectedImage ? (
               <div className="flex items-center justify-center w-[950px] h-[980px]">
                 <button
                   onClick={handleBack}
                   className="absolute flex items-center justify-center w-20 h-8 bg-white border-2 border-black border-solid rounded-lg top-4 left-4"
                 >
-                  <FontAwesomeIcon icon={faArrowLeft} />
+                  <FontAwesomeIcon icon={faArrowLeft} className="mr-2" />
                   Atrás
                 </button>
                 <img
@@ -96,12 +97,14 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
                       alt={`voucher-${index}`}
                       className="w-[210px] h-[180px] rounded-lg modal-image zoomable"
                       onClick={(e) => {
-                        if (e.currentTarget.src !== DefaultImage.src) {
+                        const target = e.target as HTMLImageElement;
+                        if (target.src !== DefaultImage.src) {
                           handleClick(imageSrc);
                         }
                       }}
                       onError={(e) => {
-                        e.currentTarget.src = DefaultImage.src;
+                        const target = e.target as HTMLImageElement;
+                        target.src = DefaultImage.src;
                       }}
                     />
                   </div>

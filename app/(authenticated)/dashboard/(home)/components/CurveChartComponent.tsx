@@ -20,16 +20,11 @@ import {
 } from "recharts";
 import { getRentabilityGraphAction } from "@/app/actions/rentabilityGraphAction";
 import { useTheme } from "@/app/contexts/ThemeProvider";
+import { useCurrency } from "@/app/contexts/CurrencyProvider";
+type CurveChartComponentProps = {};
 
-type CurveChartComponentProps = {
-  isDarkModeState: boolean;
-  isSolesState: boolean;
-};
-
-const CurveChartComponent: React.FC<CurveChartComponentProps> = ({
-  isSolesState,
-}) => {
-  const isSoles = isSolesState;
+const CurveChartComponent: React.FC<CurveChartComponentProps> = ({}) => {
+  const { isSoles } = useCurrency();
   const { darkMode } = useTheme();
   const [selectedValue, setSelectedValue] = useState("all_months");
   const [dataValues, setDataValues] = useState<
@@ -37,45 +32,50 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = ({
   >([]);
   const [loading, setLoading] = useState(true);
   const [isLineChart, setIsLineChart] = useState(true);
+  const fundUUID = "cbeff767-93f6-493f-9a55-faf5c380b0f9";
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const result = await getRentabilityGraphAction(selectedValue);
+        const result = await getRentabilityGraphAction(selectedValue, fundUUID);
+
         const { rentabilityInPen, rentabilityInUsd } = result;
 
         const reportData = isSoles ? rentabilityInPen : rentabilityInUsd;
 
-        const formattedData = reportData.map((item) => ({
-          name:
-            item.month.slice(0, 1).toUpperCase() +
-            item.month.slice(1, 3).toLowerCase(),
-          Monto: item.amountPoint,
-          date: new Date(item.date),
-          year: item.year,
-        }));
+        if (!reportData || reportData.length === 0) {
+          setDataValues([]);
+        } else {
+          const formattedData = reportData.map((item: any) => ({
+            name:
+              item.month.charAt(0).toUpperCase() +
+              item.month.slice(1).toLowerCase(),
+            Monto: Number(item.amountPoint),
+            date: new Date(item.date),
+            year: item.year,
+          }));
 
-        formattedData.sort((a, b) => a.date.getTime() - b.date.getTime());
-        setDataValues(formattedData);
+          formattedData.sort((a, b) => a.date.getTime() - b.date.getTime());
+          setDataValues(formattedData);
+        }
       } catch (error) {
         console.error("Error fetching rentability graph:", error);
+        setDataValues([]);
       } finally {
         setLoading(false);
       }
     };
 
     fetchData();
-  }, [selectedValue, isSoles]);
+  }, [selectedValue, isSoles, fundUUID]);
 
-  const handleSelectChange = (event: {
-    target: { value: React.SetStateAction<string> };
-  }) => {
+  const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedValue(event.target.value);
   };
 
   const moneySymbol = isSoles ? "S/" : "$";
-  const formatYAxis = (Monto: any) => `${moneySymbol}${Monto}`;
+  const formatYAxis = (Monto: number) => `${moneySymbol}${Monto}`;
 
   const shouldDisplayChart = !loading && dataValues.length > 0;
 
@@ -166,7 +166,7 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = ({
 
         {shouldDisplayChart ? (
           <div className="h-full overflow-x-auto max-h-[260px] overflow-y-hidden">
-            <div className="flex flex-col w-full h-full ">
+            <div className="flex flex-col w-full h-full">
               <ResponsiveContainer
                 className="recharts-responsive-container"
                 width={chartWidths[selectedValue]}
@@ -202,7 +202,6 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = ({
                         return null;
                       }}
                     />
-
                     <YAxis
                       tickFormatter={formatYAxis}
                       tick={{ fill: darkMode ? "#ffffff" : "#0D3A5C" }}

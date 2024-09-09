@@ -2,6 +2,7 @@ import React from "react";
 import { GoBell } from "react-icons/go";
 import ArrowRightSoles from "@/images/Dashboard/Tour/arrowRightSoles.png";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const TourNotification = ({
   handleCloseTour,
@@ -9,9 +10,11 @@ const TourNotification = ({
   handleCloseTour: () => void;
 }) => {
   // const navigate = useNavigate();
+  const router = useRouter();
 
   const handleGetOutClick = () => {
-    // navigate("/home?forceTour=false");
+    router.push("/dashboard");
+    // router.push("/home?forceTour=false");
     handleCloseTour();
   };
 

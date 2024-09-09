@@ -70,18 +70,10 @@ const CardRentability = ({
           >
             <div className="text-container">
               <div className="flex justify-between date">
-                <h1
-                  className={`font-bold ${
-                    darkMode ? "text-white" : "text-black"
-                  }`}
-                >
-                  {payDay.date}
-                </h1>
+                <h1 className="font-bold  text-black">{payDay.date}</h1>
               </div>
               <div className="flex justify-between amount">
-                <h2 className={`${darkMode ? "text-white" : "text-black"}`}>
-                  {payDay.description}
-                </h2>
+                <h2 className="text-black">{payDay.description}</h2>
               </div>
             </div>
           </div>

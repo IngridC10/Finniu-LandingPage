@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -14,15 +13,14 @@ import TourHistory from "./components/TourHistory";
 import TourCalendar from "./components/TourCalendar";
 import TourSolesDolares from "./components/TourSolesDolares";
 import TourNotification from "./components/TourNotification";
-import { useRouter } from "next/router";
-
+import { useRouter } from "next/navigation";
 const Tour = ({
   setTourVisibleState,
 }: {
-  setTourVisibleState: (visible: boolean) => void;
+  setTourVisibleState: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  //   const navigate = useNavigate();
+  const router = useRouter();
 
   useEffect(() => {
     const showTour = getShowTourCookies();
@@ -45,6 +43,10 @@ const Tour = ({
     removeShowTourCookies();
   };
 
+  const handleNavigate = (path: string) => {
+    router.push(path);
+  };
+
   function getTourStep(pageNumber: number) {
     switch (pageNumber) {
       case 1:
@@ -57,16 +59,12 @@ const Tour = ({
         );
       case 2:
         return <TourInvestment handleContinue={handleContinue} />;
-
       case 3:
         return <TourHistory handleContinue={handleContinue} />;
-
       case 4:
         return <TourCalendar handleContinue={handleContinue} />;
-
       case 5:
         return <TourSolesDolares handleContinue={handleContinue} />;
-
       case 6:
         return <TourNotification handleCloseTour={handleCloseTour} />;
       default:
@@ -144,10 +142,9 @@ const Tour = ({
       <div className="bodyTour">
         <FontAwesomeIcon
           onClick={() => {
-            // navigate("/home?forceTour=false");
-
+            // handleNavigate("/home?forceTour=false");
+            router.push("/dashboard");
             handleCloseTour();
-            saveShowTourCookies("false");
           }}
           icon={faTimes}
           style={tourStyles.closedIcon}

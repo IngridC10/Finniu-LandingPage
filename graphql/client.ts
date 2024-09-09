@@ -3,14 +3,11 @@ import { getServerToken } from "../app/cookies/server/tokenCookieServer"; // Ase
 import { cookies } from "next/headers";
 
 const API_URL = process.env.API_URL as string;
-console.log("API_URL en el cliente:", API_URL);
 
 export function createGraphQLClient() {
   console.log("All cookies before creating client:", cookies().getAll());
 
   const token = getServerToken();
-
-  console.log("Token: client", token);
 
   const headers: Record<string, string> = {
     "Content-Type": "application/json",

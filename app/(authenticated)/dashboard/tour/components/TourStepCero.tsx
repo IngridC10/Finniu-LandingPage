@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import ArrowRight from "@/images/Dashboard/Tour/arrowRight.png";
 import { saveShowTourCookies } from "@/app/cookies/client/ShowTourCookies";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 type TourStepCeroProps = {
   handleContinue: () => void;
@@ -16,10 +16,11 @@ const TourStepCero: React.FC<TourStepCeroProps> = ({
   handleCloseTour,
 }) => {
   // const navigate = useNavigate();
+  const router = useRouter();
 
   const handleGetOutClick = () => {
     // navigate("/home?forceTour=false");
-
+    router.push("/dashboard");
     handleCloseTour();
     saveShowTourCookies("false");
   };

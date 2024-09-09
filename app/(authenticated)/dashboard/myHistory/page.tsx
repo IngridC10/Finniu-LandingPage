@@ -43,7 +43,7 @@ const Page = () => {
     <div>
       <div
         className={`w-full h-full  ${
-          darkMode ? "bg-background-dark" : "bg-custom-background-light"
+          darkMode ? "bg-backgroundDarkColor" : "bg-customBackgroundLight"
         }`}
       >
         <div className="flex flex-row h-full  gap-4">

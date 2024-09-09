@@ -13,8 +13,8 @@ export const USER_PROFILE = gql`
 `;
 
 export const RENTABILITY_GRAPH = gql`
-  query rentabilityGraph($timeLine: TimeLineEnum) {
-    rentabilityGraph(timeLine: $timeLine) {
+  query rentabilityGraph($timeLine: TimeLineEnum, $fundUUID: String) {
+    rentabilityGraph(timeLine: $timeLine, investmentFundUuid: $fundUUID) {
       rentabilityInPen {
         month
         date

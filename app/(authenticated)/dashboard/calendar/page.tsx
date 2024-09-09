@@ -59,14 +59,6 @@ const Page: React.FC<PageProps> = ({ handleDaySelect, selectedDateState }) => {
   if (loading) return <p>Cargando...</p>;
   if (error) return <p>Error: {error}</p>;
 
-  if (
-    !importantDays ||
-    (importantDays.remainingPaymentDays.length === 0 &&
-      importantDays.pastPaymentDays.length === 0)
-  ) {
-    return <p>No hay datos disponibles.</p>;
-  }
-
   const handleButtonClick = (buttonStateRentability: boolean) => {
     setPassRentabilityState(buttonStateRentability);
   };
@@ -94,12 +86,12 @@ const Page: React.FC<PageProps> = ({ handleDaySelect, selectedDateState }) => {
         <div className="flex flex-col  p-10 ml-auto mr-auto max-w-1800 m-15 ">
           <div
             className={`flex items-center h-full justify-between mb-10 sm:p-5 ${
-              darkMode ? "bg-customBackgroundLight" : "bg-customBackgroundLight"
+              darkMode ? "bg-backgroundDarkColor" : "bg-customBackgroundLight"
             }`}
           >
             <p
               className={`text-2xl font-bold ${
-                darkMode ? "text-customLightBlue" : "text-darkBlueColor"
+                darkMode ? "text-customLightBlue " : "text-darkBlueColor"
               }`}
             >
               Mi calendario

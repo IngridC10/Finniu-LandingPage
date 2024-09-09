@@ -158,7 +158,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
 
   return (
     <div
-      className="flex flex-col sidebar h-screen"
+      className="flex flex-col sidebar  h-screen"
       style={{ color: darkMode ? "#A2E6FA" : "#0D3A5C" }}
     >
       <div
@@ -355,8 +355,8 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
             id="tour"
           >
             <Link
-              // href="/home?forceTourVisible=true"
               href="/dashboard/tour"
+              // href="/home?forceTourVisible=true"
               style={{
                 display: "flex",
                 flexDirection: "row",
