@@ -8,9 +8,9 @@ interface MainContentProps {
 
 const MainContent: React.FC<MainContentProps> = ({ children }) => {
   return (
-    <div className="flex h-full w-full bg-customBackgroundLight">
+    <div className="flex  min-h-screen w-full bg-customBackgroundLight">
       <SideBarComponent currentPage={"home"} />
-      <main className="mx-auto">
+      <main className="mx-auto ">
         <div
           className="flex-1 flex flex-col items-center justify-center bg-customBackgroundLight max-w-[1800px]
               p-10 mx-auto my-15 h-auto md:h-full"

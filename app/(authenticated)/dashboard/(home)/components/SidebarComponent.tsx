@@ -158,13 +158,13 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
 
   return (
     <div
-      className="flex flex-col sidebar  h-screen"
+      className="flex flex-col sidebar min-h-screen"
       style={{ color: darkMode ? "#A2E6FA" : "#0D3A5C" }}
     >
       <div
         className={`${
           darkMode ? "bg-darkBlueColor" : "bg-lighBlue"
-        } h-full pt-24 
+        } h-screen pt-24 
         
         
         

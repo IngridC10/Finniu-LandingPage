@@ -67,7 +67,7 @@ const Page = () => {
         darkMode ? "bg-backgroundDarkColor" : "bg-customBackgroundLight"
       }`}
     >
-      <div className="flex flex-row w-screen h-full min-h-screen gap-15">
+      <div className="flex flex-row  h-full min-h-screen gap-15">
         {tourVisibleState && <Tour setTourVisibleState={setTourVisibleState} />}
 
         <div className="relative flex flex-col items-end w-full container">
