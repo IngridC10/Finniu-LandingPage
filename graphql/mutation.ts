@@ -67,3 +67,14 @@ export const CHANGE_PASSWORD = gql`
     }
   }
 `;
+
+export const REFRESH_TOKEN = gql`
+  mutation RefreshToken($refreshToken: String) {
+    refreshToken(refreshToken: $refreshToken) {
+      refreshToken
+      payload
+      token
+      refreshExpiresIn
+    }
+  }
+`;
