@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { ThemeProvider, useTheme } from "../../contexts/ThemeProvider";
+import { ThemeProvider } from "../../contexts/ThemeProvider";
 // import SideBarComponent from "./(home)/components/SidebarComponent";
 // import UserMenu from "./(home)/components/UserMenu";
 import { CurrencyProvider } from "@/app/contexts/CurrencyProvider";
