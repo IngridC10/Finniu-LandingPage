@@ -8,12 +8,13 @@ import Finniu from "@/images/dashboard/History/logoSmallLight.png";
 import { useTheme } from "@/app/contexts/ThemeProvider";
 import { useCurrency } from "@/app/contexts/CurrencyProvider";
 import ModalComponent from "./ModalComponent";
+import { Transaction } from "../../models";
 
 type InvestmentData = {
-  invesmentInCourse: any[];
-  invesmentFinished: any[];
-  invesmentInProcess: any[];
-  invesmentCanceled: any[];
+  invesmentInCourse: Transaction[];
+  invesmentFinished: Transaction[];
+  invesmentInProcess: Transaction[];
+  invesmentCanceled: Transaction[];
   countPlanesActive: number;
   [key: string]: any;
 };
@@ -42,7 +43,6 @@ const Transactions: React.FC<TransactionsProps> = ({
   const dataSoles = dataReport.invesmentInSoles ?? [];
   const dataDolar = dataReport.invesmentInDolares ?? [];
   const selectedData = isSoles ? dataSoles : dataDolar;
-
   const dataToRender =
     selectedData[0]?.[getSelectedInvestmentKey(filterSelectedState)] || [];
 
@@ -75,7 +75,7 @@ const Transactions: React.FC<TransactionsProps> = ({
           darkMode ? "bg-customBlack" : "bg-white"
         } shadow-md`}
       >
-        <div className="flex flex-row content-center gap-2.5 leading-none text-left h-[220px] mt-3 lg: ml-[-16px] md:ml-0 xxl:overflow-y-auto xxl:overflow-x-hidden xl:overflow-y-auto xl:overflow-x-auto lg:overflow-x-auto lg:overflow-y-auto md:overflow-auto">
+        <div className="flex flex-row content-center gap-2.5 leading-none text-left h-[220px] mt-3 lg:ml-[-16px] md:ml-0 xxl:overflow-y-auto xxl:overflow-x-hidden xl:overflow-y-auto xl:overflow-x-auto lg:overflow-x-auto lg:overflow-y-auto md:overflow-auto">
           <div className="containers-overflow">
             <div
               className={`container-operation ${
@@ -95,139 +95,97 @@ const Transactions: React.FC<TransactionsProps> = ({
                       {filterSelectedState !== "rejected" && <th>Voucher</th>}
                       <th>Inicio</th>
                     </tr>
-                    {dataToRender.map(
-                      (
-                        item: {
-                          depositBank: { bankLogoUrl: any };
-                          operationCode:
-                            | string
-                            | number
-                            | bigint
-                            | boolean
-                            | React.ReactElement<
-                                any,
-                                string | React.JSXElementConstructor<any>
-                              >
-                            | Iterable<React.ReactNode>
-                            | React.ReactPortal
-                            | Promise<React.AwaitedReactNode>
-                            | null
-                            | undefined;
-                          amount: number;
-                          deadline: {
-                            name:
-                              | string
-                              | number
-                              | bigint
-                              | boolean
-                              | React.ReactElement<
-                                  any,
-                                  string | React.JSXElementConstructor<any>
-                                >
-                              | Iterable<React.ReactNode>
-                              | React.ReactPortal
-                              | Promise<React.AwaitedReactNode>
-                              | null
-                              | undefined;
-                          };
-                          rentabilityPercent: number;
-                          rentabilityPerMonth: number | null;
-                          boucherList: { boucherImage: any }[];
-                          startDateInvestment: {
-                            split: (arg0: string) => number[];
-                          };
-                        },
-                        index: React.Key | null | undefined
-                      ) => (
-                        <tr key={index}>
-                          <td>
-                            <Image
-                              className="m-auto img-banks"
-                              src={
-                                item.depositBank?.bankLogoUrl ||
-                                defaultBankLogoUrl
-                              }
-                              alt="finniu"
-                              width={164}
-                              height={164}
-                              priority
-                            />
-                          </td>
-                          <td>{item.operationCode}</td>
-                          <td>
-                            {isSoles ? "S/" : "$"}{" "}
+                    {dataToRender.map((item: Transaction, index: number) => (
+                      <tr key={index}>
+                        <td>
+                          <Image
+                            className="m-auto img-banks"
+                            src={
+                              item.depositBank?.bankLogoUrl ||
+                              defaultBankLogoUrl
+                            }
+                            alt="finniu"
+                            width={164}
+                            height={164}
+                            priority
+                          />
+                        </td>
+                        <td>{item.operationCode}</td>
+                        <td>
+                          {isSoles ? "S/" : "$"}{" "}
+                          <CountUp
+                            start={0}
+                            end={item.amount}
+                            duration={2.75}
+                            separator=","
+                            decimals={2}
+                          />
+                        </td>
+                        <td>
+                          {typeof item.deadline === "object"
+                            ? item.deadline.name
+                            : item.deadline}
+                        </td>
+                        <td>
+                          <CountUp
+                            start={0}
+                            end={item.rentabilityPercent}
+                            duration={2.75}
+                            separator=","
+                            decimals={2}
+                          />
+                          {"%"}
+                        </td>
+                        <td>
+                          {isSoles ? "S/" : "$"}
+                          {item.rentabilityPerMonth !== null ? (
                             <CountUp
                               start={0}
-                              end={item.amount}
+                              end={item.rentabilityPerMonth}
                               duration={2.75}
                               separator=","
                               decimals={2}
                             />
-                          </td>
-                          <td> {item.deadline?.name}</td>
-                          <td>
-                            <CountUp
-                              start={0}
-                              end={item.rentabilityPercent}
-                              duration={2.75}
-                              separator=","
-                              decimals={2}
-                            />
-                            {"%"}
-                          </td>
-                          <td>
-                            {isSoles ? "S/" : "$"}
-                            {item.rentabilityPerMonth !== null ? (
-                              <CountUp
-                                start={0}
-                                end={item.rentabilityPerMonth}
-                                duration={2.75}
-                                separator=","
-                                decimals={2}
-                              />
-                            ) : (
-                              "-"
-                            )}
-                          </td>
-                          {filterSelectedState !== "rejected" && (
-                            <td
-                              style={{
-                                color: darkMode ? "#A2E6FA" : "#262525",
-                              }}
-                            >
-                              <button
-                                onClick={() =>
-                                  toggleModal(
-                                    item.boucherList.map(
-                                      (boucher: { boucherImage: any }) =>
-                                        boucher.boucherImage
-                                    )
-                                  )
-                                }
-                              >
-                                {item.boucherList.length !== 0 && (
-                                  <FontAwesomeIcon
-                                    icon={faEye}
-                                    className="eye-icon"
-                                  />
-                                )}
-                              </button>
-                            </td>
+                          ) : (
+                            "-"
                           )}
-                          <td>
-                            {new Date(
-                              item.startDateInvestment.split("-")[0],
-                              item.startDateInvestment.split("-")[1] - 1,
-                              item.startDateInvestment.split("-")[2]
-                            ).toLocaleDateString("es-PE", {
-                              day: "2-digit",
-                              month: "2-digit",
-                              year: "numeric",
-                            })}
+                        </td>
+                        {filterSelectedState !== "rejected" && (
+                          <td
+                            style={{
+                              color: darkMode ? "#A2E6FA" : "#262525",
+                            }}
+                          >
+                            <button
+                              onClick={() =>
+                                toggleModal(
+                                  item.boucherList.map(
+                                    (boucher: { boucherImage: string }) =>
+                                      boucher.boucherImage
+                                  )
+                                )
+                              }
+                            >
+                              {item.boucherList.length !== 0 && (
+                                <FontAwesomeIcon
+                                  icon={faEye}
+                                  className="eye-icon"
+                                />
+                              )}
+                            </button>
                           </td>
-                        </tr>
-                      )
-                    )}
+                        )}
+                        <td>
+                          {new Date(
+                            item.startDateInvestment
+                          ).toLocaleDateString("es-PE", {
+                            day: "2-digit",
+                            month: "2-digit",
+                            year: "numeric",
+                          })}
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               ) : (

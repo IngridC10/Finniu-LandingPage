@@ -21,9 +21,31 @@ import {
 import { getRentabilityGraphAction } from "@/app/actions/rentabilityGraphAction";
 import { useTheme } from "@/app/contexts/ThemeProvider";
 import { useCurrency } from "@/app/contexts/CurrencyProvider";
+
+const COLORS = {
+  darkMode: {
+    text: "#ffffff",
+    grid: "#666666",
+    areaFill: "#0D3A5C",
+    areaStroke: "#a2e6fa",
+    tooltipBg: "#333333",
+    tooltipText: "#ffffff",
+    dot: "#8FE6FF",
+  },
+  lightMode: {
+    text: "#0D3A5C",
+    grid: "#e0e0e0",
+    areaFill: "#a2e6fa",
+    areaStroke: "#a2e6fa",
+    tooltipBg: "#ffffff",
+    tooltipText: "#000000",
+    dot: "#8FE6FF",
+  },
+};
+
 type CurveChartComponentProps = {};
 
-const CurveChartComponent: React.FC<CurveChartComponentProps> = ({}) => {
+const CurveChartComponent: React.FC<CurveChartComponentProps> = () => {
   const { isSoles } = useCurrency();
   const { darkMode } = useTheme();
   const [selectedValue, setSelectedValue] = useState("all_months");
@@ -39,9 +61,7 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = ({}) => {
       try {
         setLoading(true);
         const result = await getRentabilityGraphAction(selectedValue, fundUUID);
-
         const { rentabilityInPen, rentabilityInUsd } = result;
-
         const reportData = isSoles ? rentabilityInPen : rentabilityInUsd;
 
         if (!reportData || reportData.length === 0) {
@@ -88,6 +108,8 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = ({}) => {
     three_years: 1200,
   };
 
+  const currentColors = darkMode ? COLORS.darkMode : COLORS.lightMode;
+
   return (
     <div className="flex flex-col items-center">
       <div
@@ -109,9 +131,7 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = ({}) => {
             } border-1 border-white rounded-[5px] ml-[10px] relative`}
           >
             <FontAwesomeIcon
-              style={{
-                color: darkMode ? "#A2E6FA" : "#0D3A5C",
-              }}
+              style={{ color: currentColors.text }}
               icon={faArrowTrendDown}
             />
           </button>
@@ -128,7 +148,7 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = ({}) => {
             } border-1 border-white rounded-[5px] ml-1 mr-1`}
           >
             <FontAwesomeIcon
-              style={{ color: darkMode ? "#A2E6FA" : "#0D3A5C" }}
+              style={{ color: currentColors.text }}
               icon={faChartSimple}
             />
           </button>
@@ -173,10 +193,15 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = ({}) => {
               >
                 {isLineChart ? (
                   <AreaChart data={dataValues}>
-                    <CartesianGrid horizontal={true} vertical={false} />
-                    <XAxis
-                      dataKey="name"
-                      tick={{ fill: darkMode ? "#ffffff" : "#0D3A5C" }}
+                    <CartesianGrid
+                      horizontal={true}
+                      vertical={false}
+                      stroke={currentColors.grid}
+                    />
+                    <XAxis dataKey="name" tick={{ fill: currentColors.text }} />
+                    <YAxis
+                      tickFormatter={formatYAxis}
+                      tick={{ fill: currentColors.text }}
                     />
                     <Tooltip
                       content={({ active, payload, label }) => {
@@ -184,13 +209,15 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = ({}) => {
                           return (
                             <div
                               style={{
-                                backgroundColor: darkMode
-                                  ? "#A2E6FA"
-                                  : "#f3f3f3",
+                                backgroundColor: currentColors.tooltipBg,
                                 padding: "10px",
-                                color: "#000000",
+                                color: currentColors.tooltipText,
                                 fontWeight: "bold",
                                 textAlign: "center",
+                                borderRadius: "5px",
+                                boxShadow: darkMode
+                                  ? "0 4px 8px rgba(0, 0, 0, 0.5)"
+                                  : "0 4px 8px rgba(0, 0, 0, 0.1)",
                               }}
                             >
                               <p>{`${label} - ${payload[0].payload.year}`}</p>
@@ -202,70 +229,42 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = ({}) => {
                         return null;
                       }}
                     />
-                    <YAxis
-                      tickFormatter={formatYAxis}
-                      tick={{ fill: darkMode ? "#ffffff" : "#0D3A5C" }}
-                    />
                     <Area
                       type="monotone"
                       dataKey="Monto"
-                      stroke={darkMode ? "#a2e6fa" : "#a2e6fa"}
-                      fill={darkMode ? "#0D3A5C" : "#a2e6fa"}
+                      stroke={currentColors.areaStroke}
+                      fill={currentColors.areaFill}
                       strokeWidth={4}
-                      dot={{ r: 6, fill: "#8FE6FF" }}
+                      dot={{ r: 6, fill: currentColors.dot }}
                     />
                   </AreaChart>
                 ) : (
                   <BarChart data={dataValues} barSize={50}>
-                    <CartesianGrid horizontal={true} vertical={false} />
-                    <XAxis
-                      dataKey="name"
-                      tick={{ fill: darkMode ? "#ffffff" : "#0D3A5C" }}
+                    <CartesianGrid
+                      horizontal={true}
+                      vertical={false}
+                      stroke={currentColors.grid}
                     />
+                    <XAxis dataKey="name" tick={{ fill: currentColors.text }} />
                     <YAxis
                       tickFormatter={formatYAxis}
-                      tick={{ fill: darkMode ? "#ffffff" : "#0D3A5C" }}
+                      tick={{ fill: currentColors.text }}
                     />
                     <Bar
                       isAnimationActive={false}
                       dataKey="Monto"
-                      fill={darkMode ? "#0D3A5C" : "#a2e6fa"}
+                      fill={currentColors.areaFill}
                       onMouseEnter={(data, index, e) => {
                         (e.target as HTMLElement).setAttribute(
                           "fill",
-                          darkMode ? "#a2e6fa" : "#0D3A5C"
+                          currentColors.areaStroke
                         );
                       }}
                       onMouseLeave={(data, index, e) => {
                         (e.target as HTMLElement).setAttribute(
                           "fill",
-                          darkMode ? "#0D3A5C" : "#a2e6fa"
+                          currentColors.areaFill
                         );
-                      }}
-                    />
-                    <Tooltip
-                      cursor={false}
-                      content={({ active, payload, label }) => {
-                        if (active && payload && payload.length) {
-                          return (
-                            <div
-                              style={{
-                                backgroundColor: darkMode
-                                  ? "#A2E6FA"
-                                  : "#f3f3f3",
-                                padding: "10px",
-                                color: "#000000",
-                                fontWeight: "bold",
-                                textAlign: "center",
-                              }}
-                            >
-                              <p>{`${label} - ${payload[0].payload.year}`}</p>
-                              <p>{`${moneySymbol} ${payload[0].value}`}</p>
-                            </div>
-                          );
-                        }
-
-                        return null;
                       }}
                     />
                   </BarChart>
@@ -274,24 +273,8 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = ({}) => {
             </div>
           </div>
         ) : (
-          <div className="flex items-center justify-center">
-            {loading ? (
-              <Image
-                src={loadingImage}
-                alt="loading"
-                className="flex items-center justify-center w-52"
-              />
-            ) : (
-              <p
-                className={`text-xl m-24 font-bold ${
-                  darkMode ? "text-white" : "text-black"
-                }`}
-              >
-                {isSoles
-                  ? "Usted no cuenta con planes en soles."
-                  : "Usted no cuenta con planes en dólares."}
-              </p>
-            )}
+          <div className="flex justify-center items-center h-[100%]">
+            <Image src={loadingImage} alt="Cargando" width={100} height={100} />
           </div>
         )}
       </div>

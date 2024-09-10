@@ -1,9 +1,7 @@
 import React, { ReactNode, useEffect, useState } from "react";
-import { useTheme } from "@/app/contexts/ThemeProvider";
 import { getImportantDaysAction } from "@/app/actions/importantDaysAction";
 
 const ImportantDayListComponent = () => {
-  const { darkMode } = useTheme();
   const [importantDays, setImportantDays] = useState<
     {
       description: ReactNode;

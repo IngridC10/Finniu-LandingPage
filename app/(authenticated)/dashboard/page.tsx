@@ -63,14 +63,14 @@ const Page = () => {
 
   return (
     <main
-      className={`relative flex h-full w-full ${
+      className={` flex h-full w-full ${
         darkMode ? "bg-backgroundDarkColor" : "bg-customBackgroundLight"
       }`}
     >
-      <div className="flex flex-row  h-full min-h-screen gap-15">
+      <div className="flex flex-row  h-full min-h-screen gap-15 ">
         {tourVisibleState && <Tour setTourVisibleState={setTourVisibleState} />}
 
-        <div className="relative flex flex-col items-end w-full container">
+        <div className=" flex flex-col items-end w-full container">
           <div className="flex items-center w-full justify-between mb-10">
             <p
               className={`text-3xl font-bold flex w-[237px] flex-row justify-start ${
