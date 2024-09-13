@@ -7,6 +7,8 @@ import ImportantDayListComponent from "./components/ImportantDayListComponent";
 import { getRemainingPaymentDaysAction } from "@/app/actions/remainingPaymentDays";
 import { getPastPaymentDaysAction } from "@/app/actions/pastPaymentDays";
 import { getIsDarkModeCookies } from "@/app/cookies/client/IsDarkModeCookies";
+import { ClipLoader } from "react-spinners";
+
 type PageProps = {
   handleDaySelect: (date: Date) => void;
   selectedDateState: Date;
@@ -56,12 +58,19 @@ const Page: React.FC<PageProps> = ({ handleDaySelect, selectedDateState }) => {
     fetchData();
   }, []);
 
-  if (loading) return <p>Cargando...</p>;
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <ClipLoader color={darkMode ? "#A2E6FA" : "#0D3A5C"} size={150} />
+      </div>
+    );
+  }
+
   if (error) return <p>Error: {error}</p>;
 
-  const handleButtonClick = (buttonStateRentability: boolean) => {
-    setPassRentabilityState(buttonStateRentability);
-  };
+  // const handleButtonClick = (buttonStateRentability: boolean) => {
+  //   setPassRentabilityState(buttonStateRentability);
+  // };
 
   const getButtonStylesRentability = (isSelectedButton: boolean) => {
     const fontWeight = isSelectedButton ? "font-bold" : "";
@@ -83,7 +92,7 @@ const Page: React.FC<PageProps> = ({ handleDaySelect, selectedDateState }) => {
       } text-${darkMode ? "gray-200" : "gray-700"} h-full w-full `}
     >
       <div className="flex flex-row h-full gap-15">
-        <div className="flex flex-col  p-10 ml-auto mr-auto max-w-1800 m-15 ">
+        <div className="flex flex-col p-10 ml-auto mr-auto max-w-1800 m-15 ">
           <div
             className={`flex items-center h-full justify-between mb-10 sm:p-5 ${
               darkMode ? "bg-backgroundDarkColor" : "bg-customBackgroundLight"

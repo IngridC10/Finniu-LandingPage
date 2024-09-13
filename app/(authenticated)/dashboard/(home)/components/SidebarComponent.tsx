@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { AiOutlineDollar, AiOutlineHistory } from "react-icons/ai";
 import { FaArrowRightToBracket } from "react-icons/fa6";
 import { HiMiniComputerDesktop } from "react-icons/hi2";
@@ -53,7 +52,6 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
     } else {
       setSidebarOpen(false);
     }
-    // check the selected menu stored in local storage
 
     const selectedMenu = getSelectedMenuCookies();
 
@@ -164,7 +162,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
       <div
         className={`${
           darkMode ? "bg-darkBlueColor" : "bg-lighBlue"
-        } h-screen pt-24 
+        } h-full pt-24 
         
         
         
@@ -355,18 +353,18 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
             id="tour"
           >
             <Link
-              href="/dashboard/tour"
-              // href="/home?forceTourVisible=true"
+              // href="/dashboard/tour"
+              href="/dashboard?forceTourVisible=true"
               style={{
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: isSidebarOpenState ? "left" : "center",
                 alignItems: "left",
               }}
-              // onClick={() => {
-              //   handleMenuClick("tour");
-              //   window.location.href = "/home?forceTourVisible=true";
-              // }}
+              onClick={() => {
+                handleMenuClick("tour");
+                window.location.href = "/dashboard?forceTourVisible=true";
+              }}
             >
               <div
                 className={`${

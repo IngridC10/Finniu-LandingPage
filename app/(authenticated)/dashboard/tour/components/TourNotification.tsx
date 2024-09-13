@@ -13,8 +13,8 @@ const TourNotification = ({
   const router = useRouter();
 
   const handleGetOutClick = () => {
-    router.push("/dashboard");
-    // router.push("/home?forceTour=false");
+    router.push("/dashboard?forceTour=false");
+
     handleCloseTour();
   };
 

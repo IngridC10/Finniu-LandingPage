@@ -45,7 +45,7 @@ const COLORS = {
 
 type CurveChartComponentProps = {};
 
-const CurveChartComponent: React.FC<CurveChartComponentProps> = () => {
+const CurveChartComponent: React.FC<CurveChartComponentProps> = ({}) => {
   const { isSoles } = useCurrency();
   const { darkMode } = useTheme();
   const [selectedValue, setSelectedValue] = useState("all_months");
@@ -61,7 +61,9 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = () => {
       try {
         setLoading(true);
         const result = await getRentabilityGraphAction(selectedValue, fundUUID);
+
         const { rentabilityInPen, rentabilityInUsd } = result;
+
         const reportData = isSoles ? rentabilityInPen : rentabilityInUsd;
 
         if (!reportData || reportData.length === 0) {
@@ -131,7 +133,9 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = () => {
             } border-1 border-white rounded-[5px] ml-[10px] relative`}
           >
             <FontAwesomeIcon
-              style={{ color: currentColors.text }}
+              style={{
+                color: currentColors.text,
+              }}
               icon={faArrowTrendDown}
             />
           </button>
@@ -193,16 +197,8 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = () => {
               >
                 {isLineChart ? (
                   <AreaChart data={dataValues}>
-                    <CartesianGrid
-                      horizontal={true}
-                      vertical={false}
-                      stroke={currentColors.grid}
-                    />
+                    <CartesianGrid horizontal={true} vertical={false} />
                     <XAxis dataKey="name" tick={{ fill: currentColors.text }} />
-                    <YAxis
-                      tickFormatter={formatYAxis}
-                      tick={{ fill: currentColors.text }}
-                    />
                     <Tooltip
                       content={({ active, payload, label }) => {
                         if (active && payload && payload.length) {
@@ -214,10 +210,6 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = () => {
                                 color: currentColors.tooltipText,
                                 fontWeight: "bold",
                                 textAlign: "center",
-                                borderRadius: "5px",
-                                boxShadow: darkMode
-                                  ? "0 4px 8px rgba(0, 0, 0, 0.5)"
-                                  : "0 4px 8px rgba(0, 0, 0, 0.1)",
                               }}
                             >
                               <p>{`${label} - ${payload[0].payload.year}`}</p>
@@ -228,6 +220,10 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = () => {
 
                         return null;
                       }}
+                    />
+                    <YAxis
+                      tickFormatter={formatYAxis}
+                      tick={{ fill: currentColors.text }}
                     />
                     <Area
                       type="monotone"
@@ -240,11 +236,7 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = () => {
                   </AreaChart>
                 ) : (
                   <BarChart data={dataValues} barSize={50}>
-                    <CartesianGrid
-                      horizontal={true}
-                      vertical={false}
-                      stroke={currentColors.grid}
-                    />
+                    <CartesianGrid horizontal={true} vertical={false} />
                     <XAxis dataKey="name" tick={{ fill: currentColors.text }} />
                     <YAxis
                       tickFormatter={formatYAxis}
@@ -267,14 +259,53 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = () => {
                         );
                       }}
                     />
+                    <Tooltip
+                      cursor={false}
+                      content={({ active, payload, label }) => {
+                        if (active && payload && payload.length) {
+                          return (
+                            <div
+                              style={{
+                                backgroundColor: currentColors.tooltipBg,
+                                padding: "10px",
+                                color: currentColors.tooltipText,
+                                fontWeight: "bold",
+                                textAlign: "center",
+                              }}
+                            >
+                              <p>{`${label} - ${payload[0].payload.year}`}</p>
+                              <p>{`${moneySymbol} ${payload[0].value}`}</p>
+                            </div>
+                          );
+                        }
+
+                        return null;
+                      }}
+                    />
                   </BarChart>
                 )}
               </ResponsiveContainer>
             </div>
           </div>
         ) : (
-          <div className="flex justify-center items-center h-[100%]">
-            <Image src={loadingImage} alt="Cargando" width={100} height={100} />
+          <div className="flex items-center justify-center">
+            {loading ? (
+              <Image
+                src={loadingImage}
+                alt="loading"
+                className="flex items-center justify-center w-52"
+              />
+            ) : (
+              <p
+                className={`text-xl m-24 font-bold ${
+                  darkMode ? "text-white" : "text-black"
+                }`}
+              >
+                {isSoles
+                  ? "Usted no cuenta con planes en soles."
+                  : "Usted no cuenta con planes en dólares."}
+              </p>
+            )}
           </div>
         )}
       </div>

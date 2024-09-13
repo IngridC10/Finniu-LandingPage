@@ -54,6 +54,7 @@ const LoginBody = () => {
 
       if (loginResponse?.token) {
         saveTokenCookies(loginResponse.token);
+
         saveRefreshTokenCookies(loginResponse.refreshToken);
 
         if (rememberCredentialsState) {
