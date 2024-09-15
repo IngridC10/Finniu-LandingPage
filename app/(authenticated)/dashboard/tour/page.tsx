@@ -149,6 +149,7 @@ const Tour = ({
           onClick={() => {
             router.push("/dashboard?forceTour=false");
             handleCloseTour();
+            saveShowTourCookies("false");
           }}
           icon={faTimes}
           style={tourStyles.closedIcon}

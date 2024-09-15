@@ -75,7 +75,7 @@ const SideBarComponent: React.FC<SideBarComponentProps> = ({ currentPage }) => {
     removeSelectedMenuCookies();
     removeIsSolesCookies();
     removeIsDarkModeCookies();
-    removeShowTourCookies();
+    // removeShowTourCookies();
   };
 
   const handleMenuClick = (menu: string) => {
