@@ -58,7 +58,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
           <div
             className="flex justify-center w-auto h-auto p-6 bg-white rounded-lg modalbox max-w-[850px]"
             style={{ width: `${modalWidth}px`, height: `${modalHeight}px` }}
-            onClick={(e) => e.stopPropagation()} // Evitar cerrar el modal al hacer clic dentro de él
+            onClick={(e) => e.stopPropagation()}
           >
             <a
               href="#close"

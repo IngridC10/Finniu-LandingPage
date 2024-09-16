@@ -19,8 +19,7 @@ const TourStepCero: React.FC<TourStepCeroProps> = ({
   const router = useRouter();
 
   const handleGetOutClick = () => {
-    // navigate("/home?forceTour=false");
-    router.push("/dashboard");
+    router.push("/dashboard?forceTour=false");
     handleCloseTour();
     saveShowTourCookies("false");
   };

@@ -85,7 +85,7 @@ const PlansInProgress: React.FC = () => {
                       key={index}
                       isDarkModeState={darkMode}
                       {...plan}
-                      isSoles={isSoles} // Se usa el contexto para pasar isSoles
+                      isSoles={isSoles}
                     />
                   )
                 )}

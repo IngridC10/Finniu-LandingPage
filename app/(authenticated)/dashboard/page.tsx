@@ -15,7 +15,7 @@ import CurveChartComponent from "./(home)/components/CurveChartComponent";
 import PlansInProgress from "./(home)/components/PlanInprogress";
 import Tour from "./tour/page";
 import { getShowTourCookies } from "@/app/cookies/client/ShowTourCookies";
-
+import { ClipLoader } from "react-spinners";
 const Page = () => {
   const router = useRouter();
   const { darkMode } = useTheme();
@@ -26,6 +26,8 @@ const Page = () => {
   const [tourVisibleState, setTourVisibleState] = useState(true);
 
   const [forceTour, setForceTour] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -41,18 +43,24 @@ const Page = () => {
       return;
     }
 
-    const profile = getProfileCookies();
-    if (profile && profile.firstName) {
-      setUserName(profile.firstName);
-    } else {
-      console.error("No se pudo recuperar el perfil del usuario.");
-    }
+    try {
+      const profile = getProfileCookies();
+      if (profile && profile.firstName) {
+        setUserName(profile.firstName);
+      } else {
+        console.error("No se pudo recuperar el perfil del usuario.");
+      }
 
-    if (forceTour === "true") {
-      setTourVisibleState(true);
-    } else {
-      const showTour = getShowTourCookies();
-      setTourVisibleState(showTour !== "false");
+      if (forceTour === "true") {
+        setTourVisibleState(true);
+      } else {
+        const showTour = getShowTourCookies();
+        setTourVisibleState(showTour !== "false");
+      }
+    } catch (err) {
+      setError("Hubo un problema al cargar los datos.");
+    } finally {
+      setLoading(false);
     }
   }, [router, forceTour]);
 
@@ -61,16 +69,28 @@ const Page = () => {
     saveIsSolesCookies(!isSolesState);
   };
 
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <ClipLoader color={darkMode ? "#A2E6FA" : "#0D3A5C"} size={150} />
+      </div>
+    );
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
   return (
     <main
-      className={` flex h-full w-full ${
+      className={`flex h-full w-full ${
         darkMode ? "bg-backgroundDarkColor" : "bg-customBackgroundLight"
       }`}
     >
-      <div className="flex flex-row  h-full min-h-screen gap-15 ">
+      <div className="flex flex-row h-full min-h-screen gap-15">
         {tourVisibleState && <Tour setTourVisibleState={setTourVisibleState} />}
 
-        <div className=" flex flex-col items-end w-full container">
+        <div className="flex flex-col items-end w-full container">
           <div className="flex items-center w-full justify-between mb-10">
             <p
               className={`text-3xl font-bold flex w-[237px] flex-row justify-start ${

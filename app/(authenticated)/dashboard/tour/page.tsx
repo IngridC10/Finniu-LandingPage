@@ -27,6 +27,7 @@ const Tour = ({
     if (showTour === "true") {
       setTourVisibleState(false);
     }
+
     document.body.style.overflow = "hidden";
     return () => {
       document.body.style.overflow = "scroll";
@@ -43,9 +44,9 @@ const Tour = ({
     removeShowTourCookies();
   };
 
-  const handleNavigate = (path: string) => {
-    router.push(path);
-  };
+  // const handleNavigate = (path: string) => {
+  //   router.push(path);
+  // };
 
   function getTourStep(pageNumber: number) {
     switch (pageNumber) {
@@ -74,20 +75,25 @@ const Tour = ({
 
   const tourStyles: { [key: string]: React.CSSProperties } = {
     container: {
-      overflowX: "hidden",
-      overflowY: "hidden",
-      height: "100%",
-      width: "100%",
-      position: "absolute",
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100vw",
+      height: "100vh",
       zIndex: 1000,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
     },
     bodyTour: {
+      position: "relative",
       width: "100%",
       height: "100%",
       backgroundColor: "rgba(13, 58, 92, 0.9)",
       display: "flex",
       flexDirection: "column",
       justifyContent: "center",
+      alignItems: "center",
     },
     bodyContainer: {
       display: "flex",
@@ -122,7 +128,6 @@ const Tour = ({
       color: "#ffffff",
       textDecoration: "none",
       display: "flex",
-      flexDirection: "column",
       justifyContent: "center",
       alignItems: "center",
     },
@@ -139,12 +144,12 @@ const Tour = ({
 
   return (
     <div style={tourStyles.container}>
-      <div className="bodyTour">
+      <div style={tourStyles.bodyTour}>
         <FontAwesomeIcon
           onClick={() => {
-            // handleNavigate("/home?forceTour=false");
-            router.push("/dashboard");
+            router.push("/dashboard?forceTour=false");
             handleCloseTour();
+            saveShowTourCookies("false");
           }}
           icon={faTimes}
           style={tourStyles.closedIcon}
