@@ -68,7 +68,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
               X
             </a>
 
-            {selectedImage ? (
+            {selectedImage && (
               <div className="flex items-center justify-center w-[950px] h-[980px]">
                 <button
                   onClick={handleBack}
@@ -85,7 +85,8 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
                   style={{ maxWidth: "50%", maxHeight: "50%" }}
                 />
               </div>
-            ) : (
+            )}
+            {!selectedImage && (
               <div className="flex max-h-[431px] justify-start items-center flex-wrap overflow-y-auto overflow-x-hidden modal-container">
                 {voucherImages.map((imageSrc, index) => (
                   <div

@@ -292,6 +292,7 @@ const CurveChartComponent: React.FC<CurveChartComponentProps> = ({}) => {
             {loading ? (
               <Image
                 src={loadingImage}
+                priority={true}
                 alt="loading"
                 className="flex items-center justify-center w-52"
               />

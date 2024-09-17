@@ -37,6 +37,7 @@ const UserMenu = () => {
         alt="User"
         width={50}
         height={50}
+        priority={true}
       />
     </div>
   );
