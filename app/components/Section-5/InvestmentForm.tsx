@@ -20,7 +20,7 @@ const InvestmentForm = () => {
   });
   const [errorState, setErrorState] = useState("");
 
-  const steps = [6, 12, 24, 36];
+  const steps = [6, 12, 24];
 
   const handleButtonClick = (currency: string) => {
     setCurrencyState(currency === "Dólares" ? "dolar" : "nuevo sol");
