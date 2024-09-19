@@ -71,10 +71,10 @@ const Footer = () => {
               />
               <Link
                 target="_blank"
-                href="https://api.whatsapp.com/send?phone=51940206852&text=Hola!%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20info%20sobre%20Finniu.%20Mi%20nombre%20es%20"
+                href="https://api.whatsapp.com/send?phone=51983796139&text=Hola!%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20info%20sobre%20Finniu.%20Mi%20nombre%20es%20"
                 className="ml-2 text-darkBlueColor hover:underline"
               >
-                +51 940 206 852
+                +51 983 796 139
               </Link>
             </div>
             <div className="flex items-center">
