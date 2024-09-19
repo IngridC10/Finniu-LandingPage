@@ -61,7 +61,7 @@ const NavComponent = () => {
             Simulador
           </Link>
           <Link
-            href="https://finniuapp.notion.site/Preguntas-Frecuentes-f7f77872d34a4de3a9e12d5fc58421ff"
+            href="https://finniu.notion.site/Preguntas-Frecuentes-3e9f2732211d4193ad0b77d061c8cc78"
             target="_blank"
             className={`transition-transform duration-300 ${
               selectedNavItemState === "frequent-questions"
