@@ -17,7 +17,7 @@ const Footer = () => {
               <li className="mb-1">
                 <Link
                   target="_blank"
-                  href="https://finniuapp.notion.site/Preguntas-Frecuentes-f7f77872d34a4de3a9e12d5fc58421ff"
+                  href="https://finniu.notion.site/Preguntas-Frecuentes-3e9f2732211d4193ad0b77d061c8cc78"
                   className="cursor-pointer hover:underline"
                 >
                   Preguntas Frecuentes

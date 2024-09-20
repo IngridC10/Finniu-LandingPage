@@ -6,7 +6,7 @@ import CellPhoneDollar from "@/images/About/Section-7/CellPhoneDollar.png";
 
 const DownloadAppFinniuDesktop = () => {
   return (
-    <div className=" p-[30px] min-h-full w-[1536px] flex justify-center items-start h-[637px] shadow-md relative bg-lightColorOpcional rounded-3xl flex-col">
+    <div className=" p-[30px] min-h-full w-[1240px] flex justify-center items-start h-[637px] shadow-md relative bg-lightColorOpcional rounded-3xl flex-col">
       <div className="  flex flex-row justify-center ml-10 items-center">
         <div className=" flex flex-col w-[540px]">
           <p className=" text-[32px] ">

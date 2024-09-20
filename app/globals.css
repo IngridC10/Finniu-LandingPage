@@ -179,7 +179,7 @@ button[data-testid="carousel-indicator"] {
   height: 40px;
 }
 
-@media (min-width: 1536px) {
+@media (min-width: 1240px) {
   .inline-flex {
     width: 80px;
     height: 80px;

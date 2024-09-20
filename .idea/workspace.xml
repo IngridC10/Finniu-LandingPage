@@ -6,8 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="2711e060-f8e6-44a8-b959-8c924ae88cb9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/about/components/Section-7/DownloadAppFinniuDesktop.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/about/components/Section-7/DownloadAppFinniuDesktop.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/components/Footer/FooterPageComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Footer/FooterPageComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Navbar/NavComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Navbar/NavComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Section-1/DownloadAppSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Section-1/DownloadAppSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Section-1/DownloadAppSectionDesktop.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Section-1/DownloadAppSectionDesktop.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Section-2/FixedTermSectionDesktop.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Section-2/FixedTermSectionDesktop.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Section-2/FixedTermsSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Section-2/FixedTermsSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,20 +31,20 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "new2",
-    "last_opened_file_path": "/Users/diegodelavega/Diego/Finniu-LandingPage",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/Users/diegodelavega/Diego/Finniu-LandingPage/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;new2&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/diegodelavega/Diego/Finniu-LandingPage&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/diegodelavega/Diego/Finniu-LandingPage/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -57,11 +62,23 @@
       <option name="presentableId" value="Default" />
       <updated>1726753056603</updated>
       <workItem from="1726753057684" duration="3981000" />
-      <workItem from="1726757446228" duration="97000" />
+      <workItem from="1726757446228" duration="18964000" />
+      <workItem from="1726842597928" duration="1140000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
