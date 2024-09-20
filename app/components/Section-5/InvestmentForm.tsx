@@ -130,15 +130,17 @@ const InvestmentForm = () => {
         </div>
       ) : (
         <div>
-          <div className="flex flex-row items-center gap-2 block 2xl:hidden absolute -top-[55px] z-20">
-            <h1 className="text-[30px] font-bold">Simula tu inversión</h1>
+          <div className="flex flex-row items-center gap-2 block xl:hidden absolute -top-[55px] z-20">
+            <h1 className="  text-[28px] lg:text-[30px] font-bold">
+              Simula tu inversión
+            </h1>
             <div className="h-[38px] mb-3">
               <Image src={Bill} alt="bill" height={38} />
             </div>
           </div>
 
           <div className="flex flex-row justify-between items-center w-full">
-            <h2 className="text-[16px] 2xl:text-[30px] font-bold text-black">
+            <h2 className="text-[16px] 2xl:text-[26px] font-bold text-black">
               Quiero invertir en
             </h2>
 
@@ -172,7 +174,7 @@ const InvestmentForm = () => {
 
           <div>
             <label
-              className="block text-black text-[15px] 2xl:text-[20px] font-bold mb-0 2xl:mb-2"
+              className="block text-black text-[15px] xl:text-[20px] font-bold mb-0 2xl:mb-2"
               htmlFor="investmentAmount"
             >
               ¿Cuánto quiero invertir?
@@ -232,7 +234,7 @@ const InvestmentForm = () => {
             <ButtonComponent
               text="Calcular"
               onClick={handleCalculateClick}
-              className="w-full bg-blueColorButton text-white rounded-full py-2 mt-4"
+              className="w-full xl:h-[65px] bg-blueColorButton text-white rounded-full py-2 mt-4"
             />
           </div>
         </div>

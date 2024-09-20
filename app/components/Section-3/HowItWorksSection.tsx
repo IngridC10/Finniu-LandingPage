@@ -147,7 +147,7 @@ const HowItWorksSection = () => {
     >
       <div className="flex flex-col container-section items-center container">
         <div className="flex flex-col 2xl:flex-row items-center justify-between w-full">
-          <h1 className="text-[32px] 2xl:text-[55px] font-bold">
+          <h1 className="text-[28px] 2xl:text-[40px] font-bold">
             ¿Cómo funciona?
           </h1>
           <div
@@ -158,7 +158,7 @@ const HowItWorksSection = () => {
             }`}
           >
             <ButtonComponent
-              text="¿Cómo encontrarlo?"
+              text="Descarga la app"
               onClick={handleButtonClick}
               className={`buttonTransition h-[35px] 2xl:h-16 text-[12px] text-center ml-2 2xl:ml-0 2xl:text-[28px] shadow-md w-[162px] 2xl:w-[333px] gap-2 flex justify-center items-center rounded-full ${
                 isWhereToFindButtonActiveState
@@ -171,7 +171,7 @@ const HowItWorksSection = () => {
               )}
             </ButtonComponent>
             <ButtonComponent
-              text="¿Cómo invertir?"
+              text="¿Cómo empezar?"
               onClick={handleButtonClick}
               className={`buttonTransition h-[35px] 2xl:h-16 w-[162px] ml-0 2xl:w-[333px] m-1 flex justify-center items-center gap-2 rounded-full text-[12px] 2xl:text-[28px] ${
                 isWhereToFindButtonActiveState
@@ -185,7 +185,7 @@ const HowItWorksSection = () => {
             </ButtonComponent>
           </div>
         </div>
-        <h1 className="text-[24px] 2xl:text-[48px]">
+        <h1 className="text-[24px] 2xl:text-[40px]">
           Paso {activeIndexState + 1}
         </h1>
         <div className="flex flex-row rounded-2xl justify-center items-center w-[400px] 2xl:w-[80%]">

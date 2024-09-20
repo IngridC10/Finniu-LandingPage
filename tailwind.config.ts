@@ -62,7 +62,7 @@ const config: Config = {
         xl: "1280px",
         xxl: "1536px",
 
-        // "2xl": "1400px",
+        //"2xl": "1400px",
       },
     },
   },

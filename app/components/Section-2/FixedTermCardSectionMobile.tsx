@@ -9,7 +9,7 @@ const FixedTermCardSectionMobile = () => {
   return (
     <div className="flex flex-col w-full min-h-screen bg-white justify-center items-center">
       <div>
-        <h1 className="text-[32px] text-center mt-5 text-blueDarkColor font-bold">
+        <h1 className="text-[28px] text-center mt-5 text-blueDarkColor font-bold">
           Crecer es simple
         </h1>
         <div className="flex flex-row justify-center items-center">
@@ -22,9 +22,9 @@ const FixedTermCardSectionMobile = () => {
           <Image
             src={CellphoneImage}
             alt="cellphone-image"
-            width={258}
-            height={154}
-            className="absolute top-0 left-[40px] z-10"
+            width={200}
+            height={299}
+            className="absolute top-0 left-[69px] z-10"
           />
           <div className="bg-lighBlueColorOpcional w-[333px] rounded-xl h-[260px] shadow-lg flex flex-col justify-center p-4 text-justify relative z-0">
             <p className="text-[16px]">
@@ -48,7 +48,7 @@ const FixedTermCardSectionMobile = () => {
       </div>
 
       <div className=" m-3">
-        <h1 className="text-[32px] text-blueDarkColor text-center mt-5 font-bold">
+        <h1 className="text-[28px] text-blueDarkColor text-center mt-5 font-bold">
           Invierte sin paltas
         </h1>
         <div className="flex flex-row justify-center">

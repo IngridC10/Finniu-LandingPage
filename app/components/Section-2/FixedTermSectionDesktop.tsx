@@ -24,7 +24,7 @@ const FixedTermSectionDesktop = () => {
         <p
           className={`mb-4 leading-tight font-bold  transition-all duration-300  cursor-pointer ${
             showComponentFixedTermSelectedState
-              ? "text-graySecondaryColor text-[55px]"
+              ? "text-graySecondaryColor text-[40px]"
               : "text-grayColorText text-[40px]"
           }`}
           onClick={handleTextClick}
@@ -34,7 +34,7 @@ const FixedTermSectionDesktop = () => {
         <p
           className={`font-bold mb-4 leading-tight cursor-pointer ${
             showComponentFixedTermSelectedState
-              ? "text-grayColorText text-[40px]"
+              ? "text-grayColorText text-[36px]"
               : "text-graySecondaryColor text-[55px]"
           }`}
           onClick={handleTextClick}
@@ -57,8 +57,8 @@ const FixedTermSectionDesktop = () => {
         <Image
           src={CellphoneImage}
           alt="cellphone-image"
-          width={575}
-          height={575}
+          width={275}
+          height={375}
         />
       </div>
     </div>
