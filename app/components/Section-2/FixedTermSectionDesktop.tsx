@@ -35,7 +35,7 @@ const FixedTermSectionDesktop = () => {
           className={`font-bold mb-4 leading-tight cursor-pointer ${
             showComponentFixedTermSelectedState
               ? "text-grayColorText text-[36px]"
-              : "text-graySecondaryColor text-[55px]"
+              : "text-graySecondaryColor text-[45px]"
           }`}
           onClick={handleTextClick}
         >
@@ -57,8 +57,8 @@ const FixedTermSectionDesktop = () => {
         <Image
           src={CellphoneImage}
           alt="cellphone-image"
-          width={275}
-          height={375}
+          width={245}
+          height={345}
         />
       </div>
     </div>

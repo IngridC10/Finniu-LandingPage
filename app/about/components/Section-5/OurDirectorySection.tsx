@@ -6,10 +6,10 @@ import OurDirectoryDesktop from "./OurDirectoryDesktop";
 const OurDirectorySection = () => {
   return (
     <section className="flex flex-col w-full justify-center items-center  min-h-[100%] bg-white  ">
-      <div className="hidden 2xl:flex h-full w-full items-center justify-center">
+      <div className="hidden xl:flex h-full w-full items-center justify-center">
         <OurDirectoryDesktop />
       </div>
-      <div className="block 2xl:hidden">
+      <div className="block xl:hidden">
         <OurDirectoryMobile />
       </div>
     </section>

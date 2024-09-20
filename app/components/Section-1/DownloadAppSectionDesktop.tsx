@@ -104,7 +104,7 @@ const DownloadAppSectionDesktop = () => {
         <Image
           src={CellphoneDollar}
           alt="CellPhone-Dollar"
-          width={670}
+          width={570}
           style={{ height: "auto" }}
         />
       </div>

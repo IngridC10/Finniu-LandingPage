@@ -41,13 +41,13 @@ const StepInvestmentGuideSection = () => {
       imageSrc: ProjectYourGoals,
       bgColor: "bg-white text-blackColorText",
     },
-    {
-      title: "Billetera Virtual",
-      description:
-        "Pronto podrás disfrutar de nuestra billetera virtual, una herramienta adicional para gestionar de manera conveniente tus inversiones.",
-      imageSrc: VirtualWallet,
-      bgColor: "bg-lightSkyBlue text-blackColorText",
-    },
+    // {
+    //   title: "Billetera Virtual",
+    //   description:
+    //     "Pronto podrás disfrutar de nuestra billetera virtual, una herramienta adicional para gestionar de manera conveniente tus inversiones.",
+    //   imageSrc: VirtualWallet,
+    //   bgColor: "bg-lightSkyBlue text-blackColorText",
+    // },
   ];
 
   const handleNextSlide = () => {
@@ -131,24 +131,24 @@ const StepInvestmentGuideSection = () => {
   return (
     <section
       ref={sectionRef}
-      className={`min-h-[598px] 2xl:min-h-screen flex justify-center w-full items-center py-10 ${slidesData[currentIndexState].bgColor}`}
+      className={`min-h-[598px] xl:min-h-screen flex justify-center w-full items-center py-10 ${slidesData[currentIndexState].bgColor}`}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
       <div className="container relative container-section">
-        <div className="flex flex-col-reverse 2xl:flex-row items-center justify-between">
-          <div className="2xl:w-[498px] w-[292px] text-left 2xl:text-right mb-0">
-            <p className="text-[21px] 2xl:text-[44px] font-bold mb-0 2xl:mb-2">
+        <div className="flex flex-col-reverse xl:flex-row items-center justify-between">
+          <div className=" xl:w-[498px] w-[292px] text-left xl:text-right mb-0">
+            <p className="text-[21px] xl:text-[44px] font-bold mb-0 2xl:mb-2">
               {slidesData[currentIndexState].title} <br />
             </p>
-            <p className="text-[19px] 2xl:text-[36px] mb-0 2xl:mb-4">
+            <p className="text-[19px] xl:text-[36px] mb-0 2xl:mb-4">
               {slidesData[currentIndexState].subtitle}
             </p>
-            <p className="text-[16px] 2xl:text-[24px] font-medium mb-0 2xl:mb-6 2xl:text-right text-justify">
+            <p className="text-[16px] xl:text-[24px] font-medium mb-0 xl:mb-6 2xl:text-right text-justify">
               {slidesData[currentIndexState].description}
             </p>
-            <div className="hidden 2xl:flex flex-row gap-8 justify-center 2xl:justify-end 2xl:gap-3">
+            <div className="hidden xl:flex flex-row gap-8 justify-center xl:justify-end xl:gap-3">
               <button
                 onClick={handlePrevSlide}
                 disabled={currentIndexState === 0}
@@ -185,7 +185,7 @@ const StepInvestmentGuideSection = () => {
                 alt={`slide-${index + 1}`}
                 className={`slide-image ${
                   index === currentIndexState ? "active" : ""
-                } object-cover w-[235px] 2xl:w-[532px]`}
+                } object-cover w-[235px] xl:w-[532px]`}
               />
             ))}
           </div>
@@ -195,7 +195,7 @@ const StepInvestmentGuideSection = () => {
             <button
               key={index}
               onClick={() => handleDotClick(index)}
-              className={`2xl:w-5 w-3 h-3 2xl:h-5 rounded-full mx-2 ${
+              className={`xl:w-5 w-3 h-3 xl:h-5 rounded-full mx-2 ${
                 index === currentIndexState
                   ? "bg-blueDarkColor"
                   : "bg-lightBlueColor"

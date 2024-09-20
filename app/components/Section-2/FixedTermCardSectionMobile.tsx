@@ -22,9 +22,9 @@ const FixedTermCardSectionMobile = () => {
           <Image
             src={CellphoneImage}
             alt="cellphone-image"
-            width={200}
-            height={299}
-            className="absolute top-0 left-[69px] z-10"
+            // width={200}
+            height={300}
+            className="absolute top-0 left-[80px] z-10"
           />
           <div className="bg-lighBlueColorOpcional w-[333px] rounded-xl h-[260px] shadow-lg flex flex-col justify-center p-4 text-justify relative z-0">
             <p className="text-[16px]">
