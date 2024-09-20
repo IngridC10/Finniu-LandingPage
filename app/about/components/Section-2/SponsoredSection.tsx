@@ -19,23 +19,23 @@ const Sponsored = () => {
           <Image
             src={Innovaul}
             alt="innovaul"
-            className="  w-[110px]  sm:w-[115px]   md:w-[200px]  xl:w-[300px]"
+            className="  w-[178px]  sm:w-[180px]   md:w-[200px]  xl:w-[300px]"
           />
           <Image
             src={Incubagraria}
             alt="incubagraria"
-            className=" w-[110px]  sm:w-[115px]   md:w-[200px]    xl:w-[300px]"
+            className=" w-[178px]  sm:w-[180px]   md:w-[200px]    xl:w-[300px]"
           />
           <Image
             src={Emprelatam}
             alt="emprelatam"
-            className=" w-[110px]  sm:w-[115px]   md:w-[200px]    xl:w-[300px]"
+            className=" w-[178px]  sm:w-[180px]   md:w-[200px]    xl:w-[300px]"
           />
 
           <Image
             src={InversionSimple}
             alt="inversion-simple"
-            className=" w-[110px]  sm:w-[115px]   md:w-[200px]    xl:w-[300px]"
+            className=" w-[178px]  sm:w-[180px]   md:w-[200px]    xl:w-[300px]"
           />
         </div>
       </div>
