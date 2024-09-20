@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2711e060-f8e6-44a8-b959-8c924ae88cb9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/about/components/Section-7/DownloadAppFinniuDesktop.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/about/components/Section-7/DownloadAppFinniuDesktop.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Footer/FooterPageComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Footer/FooterPageComponent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Section-1/DownloadAppSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Section-1/DownloadAppSection.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Section-1/DownloadAppSectionDesktop.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Section-1/DownloadAppSectionDesktop.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Section-2/FixedTermSectionDesktop.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Section-2/FixedTermSectionDesktop.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/components/Section-2/FixedTermsSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Section-2/FixedTermsSection.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
-    </list>
+    <list default="true" id="2711e060-f8e6-44a8-b959-8c924ae88cb9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,7 +54,7 @@
       <updated>1726753056603</updated>
       <workItem from="1726753057684" duration="3981000" />
       <workItem from="1726757446228" duration="18964000" />
-      <workItem from="1726842597928" duration="1140000" />
+      <workItem from="1726842597928" duration="1759000" />
     </task>
     <servers />
   </component>
