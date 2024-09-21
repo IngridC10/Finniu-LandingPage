@@ -50,15 +50,15 @@ const FixedTermSectionDesktop = () => {
       )}
 
       <div
-        className={`image-container ${
+        className={` image-container  ${
           showComponentFixedTermSelectedState ? "" : "hidden"
         }`}
       >
         <Image
           src={CellphoneImage}
           alt="cellphone-image"
-          width={245}
-          height={345}
+          // width={285}
+          height={500}
         />
       </div>
     </div>

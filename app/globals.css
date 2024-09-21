@@ -52,6 +52,12 @@
   transform: translateY(0);
 }
 
+@media (min-width: 1280px) and (max-width: 1535px) {
+  .image-container {
+    width: 90%;
+  }
+}
+
 .image-container.hidden {
   opacity: 0;
   transform: translateY(20px);

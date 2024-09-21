@@ -158,7 +158,7 @@ const HowItWorksSection = () => {
             }`}
           >
             <ButtonComponent
-              text="Descarga la app"
+              text=" ¿Cómo encontrarlo?"
               onClick={handleButtonClick}
               className={`buttonTransition h-[35px] xl:h-16 text-[12px] text-center ml-2 xl:ml-0 xl:text-[28px] shadow-md w-[162px] xl:w-[333px] gap-2 flex justify-center items-center rounded-full ${
                 isWhereToFindButtonActiveState
