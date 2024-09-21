@@ -37,7 +37,7 @@ const NavComponent = () => {
             <Image src={LogoFinniu} alt="Logo de Finniu" />
           </div>
         </Link>
-        <div className="hidden 2xl:flex  flex-row justify-between items-center space-x-20 text-white text-[24px]">
+        <div className="hidden xl:flex  flex-row justify-between items-center space-x-20 text-white text-[18px]">
           <Link
             href="/#HowItWorks"
             className={`transition-transform duration-300 ${
@@ -92,17 +92,17 @@ const NavComponent = () => {
             Nosotros
           </Link>
         </div>
-        <div className="hidden 2xl:flex">
+        <div className="hidden xl:flex">
           <ButtonComponent
             text="Ingresar"
-            className="h-12 w-36 text-blueDarkColor bg-lightBlueColor text-[24px]  rounded-lg"
+            className="h-12 w-36 text-blueDarkColor bg-lightBlueColor text-[18px]  rounded-lg"
             onClick={handleButton}
           />
         </div>
-        <div className="flex items-start space-x-4 2xl:hidden">
+        <div className="flex items-start space-x-4 xl:hidden">
           <ButtonComponent
             text="Ingresar"
-            className="h-10 2xl:h-12 w-[129px] 2xl:w-36 text-blueDarkColor bg-lightBlueColor text-[15px] 2xl:text-[24px] rounded-lg"
+            className="h-10 2xl:h-12 w-[129px] 2xl:w-36 text-blueDarkColor bg-lightBlueColor text-[15px] 2xl:text-[18px] rounded-lg"
             onClick={handleButton}
           />
           <button onClick={toggleMenu} className="text-white">

@@ -95,9 +95,9 @@ const TestimonialsDesktop = () => {
 
   return (
     <div className="flex flex-row container-section gap-32">
-      <div className="flex flex-col justify-center relative w-[594px]">
-        <h2 className="text-[45px] font-semibold">¿Qué dicen de Finniu?</h2>
-        <p className="text-[36px] flex justify-end">
+      <div className="flex flex-col justify-center relative w-[535px]">
+        <h2 className="text-[37px] font-semibold">¿Qué dicen de Finniu?</h2>
+        <p className="text-[28px] flex justify-end">
           Ellos lograron sus metas, ahora te toca a ti.
         </p>
         <div className="flex absolute inset-0 justify-center items-center top-[217px] right-16">
@@ -112,7 +112,7 @@ const TestimonialsDesktop = () => {
         {testimonialGroups[currentIndexState].map((testimonial, index) => (
           <div
             key={index}
-            className={`bg-lighBlue w-[691px] p-16 h-[332px] min-h-[332px] rounded-xl shadow-md leading-relaxed`}
+            className={`bg-lighBlue   xl:w-[691px] p-16 h-[332px] min-h-[332px] rounded-xl shadow-md leading-relaxed`}
           >
             <p className="mb-2 text-xl text-justify">{testimonial.text}</p>
             <div className="flex justify-between items-end">

@@ -10,10 +10,10 @@ const OurDirectoryDesktop = () => {
   return (
     <div className="container w-full container-section justify-center items-center ">
       <h1>
-        <span className="text-blueColorButton  text-[64px] semi-bold">
+        <span className="text-blueColorButton  text-[50px] semi-bold">
           Conoce a nuestro
         </span>
-        <span className="text-black text-[64px] font-bold"> directorio</span>
+        <span className="text-black text-[50px] font-bold"> directorio</span>
       </h1>
 
       <div className=" flex flex-row  justify-between h-[480px] items-end ">
