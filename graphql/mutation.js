@@ -4,9 +4,19 @@ export const CALCULATE_INVESTMENT = gql`
     $ammount: Int!
     $deadline: Int!
     $currency: String!
+    $name: String!
+    $email: String!
+    $phone: String!
   ) {
     calculateInvestment(
-      input: { ammount: $ammount, deadline: $deadline, currency: $currency }
+      input: {
+        ammount: $ammount
+        deadline: $deadline
+        currency: $currency
+        name: $name
+        email: $email
+        phone: $phone
+      }
     ) {
       success
       profitability {
