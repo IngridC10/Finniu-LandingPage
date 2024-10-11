@@ -209,7 +209,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
           </div>
         </form>
         <button
-          className="absolute text-[28px] top-1 right-2"
+          className="absolute text-[28px] top-1 right-6"
           onClick={onClose}
         >
           &times;
