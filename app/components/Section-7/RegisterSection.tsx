@@ -318,7 +318,7 @@ const RegisterSection = () => {
                   containerStyle={{
                     width: "100%",
                     position: "relative",
-                    zIndex: 1000,
+                    // zIndex: 1000,
                   }}
                   inputStyle={{
                     width: "100%",

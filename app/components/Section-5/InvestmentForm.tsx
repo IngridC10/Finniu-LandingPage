@@ -5,10 +5,21 @@ import ButtonComponent from "@/components/ButtonComponent";
 import LogoFinniuLight from "@/images/Section-5/LogoFinniuLight.png";
 import Bill from "@/images/Section-5/Bill.png";
 import { calculateInvestment } from "@/app/actions/calculateInvestment";
+import ModalComponent from "@/components/ModalComponent";
+
+interface CalculateParams {
+  ammount: string;
+  deadline: number;
+  currency: string;
+  email: string;
+  name: string;
+  phone: string;
+}
 
 const InvestmentForm = () => {
-  const [investmentAmountState, setInvestmentAmountState] = useState("");
-  const [investmentTimeState, setInvestmentTimeState] = useState(6);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  // const [investmentAmountState, setInvestmentAmountState] = useState("");
+  // const [investmentTimeState, setInvestmentTimeState] = useState(6);
   const [isWhereToFindButtonActiveState, setWhereToFindButtonActiveState] =
     useState(true);
   const [currencyState, setCurrencyState] = useState("nuevo sol");
@@ -18,6 +29,15 @@ const InvestmentForm = () => {
     finalAmount: 0,
     investmentTimeState: 0,
   });
+  const [calculateParamsState, setCalculateParamsState] =
+    useState<CalculateParams>({
+      ammount: "",
+      deadline: 6,
+      currency: "",
+      email: "",
+      name: "",
+      phone: "",
+    });
   const [errorState, setErrorState] = useState("");
 
   const steps = [6, 12, 24];
@@ -29,9 +49,14 @@ const InvestmentForm = () => {
 
   const currencySymbol = currencyState === "nuevo sol" ? "S/" : "$";
 
-  const handleCalculateClick = async () => {
+  const handleCalculateButtonClick = () => {
+    setIsCalculatedState(false);
+    setIsModalVisible(true);
+  };
+
+  const handleCalculate = async () => {
     const initialAmount =
-      parseFloat(investmentAmountState.replace(/,/g, "")) || 0;
+      parseFloat(calculateParamsState.ammount.replace(/,/g, "")) || 0;
 
     if (isNaN(initialAmount) || initialAmount <= 0) {
       setErrorState("El monto es obligatorio");
@@ -47,21 +72,24 @@ const InvestmentForm = () => {
 
     const investmentResult = await calculateInvestment({
       ammount: initialAmount,
-      deadline: investmentTimeState,
+      deadline: calculateParamsState.deadline,
       currency: currencyState,
+      phone: calculateParamsState.phone,
+      email: calculateParamsState.email,
+      name: calculateParamsState.name,
     });
 
     setCalculatedResultState({
       initialAmount,
       finalAmount: investmentResult.investmentTotalAmount || 0,
-      investmentTimeState,
+      investmentTimeState: calculateParamsState.deadline,
     });
     setIsCalculatedState(true);
   };
 
   const handleRecalculateClick = () => {
     setIsCalculatedState(false);
-    setInvestmentAmountState("");
+    calculateParamsState.ammount = "";
   };
 
   const handleInvestClick = () => {
@@ -186,8 +214,13 @@ const InvestmentForm = () => {
               <input
                 id="investmentAmount"
                 type="text"
-                value={investmentAmountState}
-                onChange={(e) => setInvestmentAmountState(e.target.value)}
+                value={calculateParamsState.ammount}
+                onChange={(e) =>
+                  setCalculateParamsState((prevState: CalculateParams) => ({
+                    ...prevState,
+                    ammount: e.target.value,
+                  }))
+                }
                 className={`pl-10 pr-3 py-2 2xl:text-[18px] border-t-0 border-l-0 border-r-0 text-sm border-b-[5px] ${
                   errorState ? "border-red-500" : "border-grayColorLine"
                 } 2xl:w-full w-[320px]`}
@@ -205,7 +238,9 @@ const InvestmentForm = () => {
               <label className="block text-black text-[15px] 2xl:text-[20px] font-bold mb-2">
                 ¿Por cuánto tiempo?
               </label>
-              <h2 className="text-[15px]">{investmentTimeState} meses</h2>
+              <h2 className="text-[15px]">
+                {calculateParamsState.deadline} meses
+              </h2>
             </div>
             <div className="flex items-center relative">
               <div className="2xl:w-full w-[320px] mt-0 2xl:mt-[20px]">
@@ -214,9 +249,12 @@ const InvestmentForm = () => {
                   min="0"
                   max={steps.length - 1}
                   step="1"
-                  value={steps.indexOf(investmentTimeState)}
+                  value={steps.indexOf(calculateParamsState.deadline)}
                   onChange={(e) =>
-                    setInvestmentTimeState(steps[Number(e.target.value)])
+                    setCalculateParamsState((prevState) => ({
+                      ...prevState,
+                      deadline: steps[Number(e.target.value)],
+                    }))
                   }
                   className="w-full"
                   style={{ direction: "ltr" }}
@@ -233,10 +271,19 @@ const InvestmentForm = () => {
           <div className="text-center mt-10">
             <ButtonComponent
               text="Calcular"
-              onClick={handleCalculateClick}
-              className="w-full xl:h-[65px] bg-blueColorButton text-white rounded-full py-2 mt-4"
+              onClick={handleCalculateButtonClick}
+              className="w-full bg-blueColorButton text-white rounded-full py-2 mt-4"
             />
           </div>
+
+          <ModalComponent
+            isOpen={isModalVisible}
+            setIsCalculatedState={setIsCalculatedState}
+            onClose={() => setIsModalVisible(false)}
+            setIsModalVisible={setIsModalVisible}
+            setCalculateParamsState={setCalculateParamsState}
+            handleCalculateClick={handleCalculate}
+          />
         </div>
       )}
     </div>

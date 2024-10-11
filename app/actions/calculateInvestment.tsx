@@ -13,27 +13,29 @@ export async function calculateInvestment(input: {
   ammount: number;
   deadline: number;
   currency: string;
+  phone: string;
+  name: string;
+  email: string;
 }): Promise<InvestmentResult> {
   try {
-    console.log('calculateInvestment input', input);
     const parameters = {
       ammount: input.ammount,
       deadline: input.deadline,
       currency: input.currency,
+      phone: input.phone,
+      name: input.name,
+      email: input.email,
     };
 
     const result: any = await client.request(CALCULATE_INVESTMENT, parameters);
-    console.log('result', result);
 
     const investmentData = result.calculateInvestment;
-    
 
     return {
       success: investmentData.success,
       investmentTotalAmount: investmentData.profitability.preInvestmentAmount,
     };
   } catch (error) {
-    console.log('error calculateInvestment', error);
     return {
       success: false,
     };
