@@ -150,7 +150,7 @@ const RegisterSection = () => {
         });
         setFormErrors({});
       } else {
-        setGeneralError("Error al guardar la preinscripción");
+        setGeneralError("Ya tiene un pre-registro con estos datos");
       }
     } else {
       setFormErrors(errors);
@@ -182,12 +182,12 @@ const RegisterSection = () => {
       className="w-full flex justify-center min-h-[550px] 2xl:min-h-screen items-center bg-blueDarkColor"
     >
       <div className="flex flex-col items-center container-section">
-        <div className="flex flex-col justify-center items-center text-center w-[309px] 2xl:w-[1050px]">
-          <h1 className="text-[24px] 2xl:text-[50px] text-white">
+        <div className="flex flex-col justify-center items-center text-center w-[309px]   sm:w-[596px]   md:w-[642px]  xl:w-[800px]">
+          <h1 className="text-[24px] sm:text-[28px] md:text-[30px] xl:text-[36px] text-white">
             Finniu, tu App para lograr tus metas financieras
           </h1>
           <div className="flex flex-row justify-center">
-            <h3 className="text-[14px] 2xl:text-[30px] text-white">
+            <h3 className="text-[12px] sm:text-[14px] md:text-[26px] xl:text-[28px] text-white">
               Tus primeros pasos en el mundo de las inversiones
             </h3>
             <div className="w-[30px] 2xl:w-[50px]">
@@ -196,7 +196,7 @@ const RegisterSection = () => {
           </div>
         </div>
         <div
-          className={`bg-white 2xl:p-16 flex flex-col justify-center p-12 rounded-3xl shadow-md w-[341px] 2xl:w-[545px] h-auto mt-4 m-auto ${
+          className={`bg-white 2xl:p-16 flex flex-col justify-center p-12 rounded-3xl shadow-md  w-[330px] sm:w-[340px] md:w-[350px] xl:w-[450px]  h-[485px] sm:h-[494px] md:h-[520px] xl:h-[535px] mt-4 m-auto ${
             isPopupVisibleState ? "blur-effect" : ""
           }`}
         >

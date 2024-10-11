@@ -5,10 +5,10 @@ import FixedTermSectionDesktop from "./FixedTermSectionDesktop";
 const FixedTermsSection = () => {
   return (
     <section className=" section-custom flex-col bg-white">
-      <div className="hidden 2xl:block container">
+      <div className="hidden xl:block container">
         <FixedTermSectionDesktop />
       </div>
-      <div className="block 2xl:hidden">
+      <div className="block xl:hidden">
         <FixedTermCardSectionMobile />
       </div>
     </section>

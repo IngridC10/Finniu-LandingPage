@@ -143,24 +143,24 @@ const HowItWorksSection = () => {
     <section
       id="HowItWorks"
       ref={sectionRef}
-      className="bg-grayColorOpcional w-full min-h-[550px] 2xl:min-h-screen flex justify-center items-center"
+      className="bg-grayColorOpcional w-full min-h-[550px] xl:min-h-screen flex justify-center items-center"
     >
       <div className="flex flex-col container-section items-center container">
-        <div className="flex flex-col 2xl:flex-row items-center justify-between w-full">
-          <h1 className="text-[32px] 2xl:text-[55px] font-bold">
+        <div className="flex flex-col xl:flex-row items-center justify-between w-full">
+          <h1 className="text-[28px] xl:text-[40px] font-bold">
             ¿Cómo funciona?
           </h1>
           <div
-            className={`flex flex-row m-2 w-[337px] 2xl:w-[805px] items-center h-[51px] 2xl:h-[90px] justify-around rounded-full ${
+            className={`flex flex-row m-2 w-[337px] xl:w-[805px] items-center h-[51px] xl:h-[90px] justify-around rounded-full ${
               isWhereToFindButtonActiveState
                 ? "bg-lightBlue"
                 : "bg-blueDarkColor"
             }`}
           >
             <ButtonComponent
-              text="¿Cómo encontrarlo?"
+              text=" ¿Cómo encontrarlo?"
               onClick={handleButtonClick}
-              className={`buttonTransition h-[35px] 2xl:h-16 text-[12px] text-center ml-2 2xl:ml-0 2xl:text-[28px] shadow-md w-[162px] 2xl:w-[333px] gap-2 flex justify-center items-center rounded-full ${
+              className={`buttonTransition h-[35px] xl:h-16 text-[12px] text-center ml-2 xl:ml-0 xl:text-[28px] shadow-md w-[162px] xl:w-[333px] gap-2 flex justify-center items-center rounded-full ${
                 isWhereToFindButtonActiveState
                   ? "bg-lightBlueColor text-blackColorText"
                   : "bg-blueDarkColor text-white"
@@ -171,9 +171,9 @@ const HowItWorksSection = () => {
               )}
             </ButtonComponent>
             <ButtonComponent
-              text="¿Cómo invertir?"
+              text="¿Cómo empezar?"
               onClick={handleButtonClick}
-              className={`buttonTransition h-[35px] 2xl:h-16 w-[162px] ml-0 2xl:w-[333px] m-1 flex justify-center items-center gap-2 rounded-full text-[12px] 2xl:text-[28px] ${
+              className={`buttonTransition h-[35px] xl:h-16 w-[162px] ml-0 xl:w-[333px] m-1 flex justify-center items-center gap-2 rounded-full text-[12px] xl:text-[28px] ${
                 isWhereToFindButtonActiveState
                   ? "bg-lightBlue text-blueDarkColor"
                   : "bg-blueColorButton text-white"
@@ -185,10 +185,10 @@ const HowItWorksSection = () => {
             </ButtonComponent>
           </div>
         </div>
-        <h1 className="text-[24px] 2xl:text-[48px]">
+        <h1 className="text-[24px] xl:text-[40px]">
           Paso {activeIndexState + 1}
         </h1>
-        <div className="flex flex-row rounded-2xl justify-center items-center w-[400px] 2xl:w-[80%]">
+        <div className="flex flex-row rounded-2xl justify-center items-center w-[400px] xl:w-[80%]">
           <button
             onClick={handlePrevClick}
             disabled={activeIndexState === 0}
@@ -199,24 +199,24 @@ const HowItWorksSection = () => {
             <CustomLeftArrow
               isFirstSlide={activeIndexState === 0}
               isLastSlide={activeIndexState === itemsSlider.length - 1}
-              className="relative left-5 2xl:static 2xl:left-0"
+              className="relative left-5 xl:static xl:left-0"
             />
           </button>
           <div
-            className={`slider-container p-5 w-full h-[416px] 2xl:h-[599px] flex rounded-2xl flex-col justify-center items-center ${containerBackgroundColor}`}
+            className={`slider-container p-5 w-full h-[416px] xl:h-[599px] flex rounded-2xl flex-col justify-center items-center ${containerBackgroundColor}`}
           >
             <p
-              className={`mb-4 text-[14px] 2xl:text-[24px] text-center ${textColor} ${animationClassState}`}
+              className={`mb-4 text-[14px] xl:text-[24px] text-center ${textColor} ${animationClassState}`}
             >
               {itemsSlider[activeIndexState].text}
             </p>
-            <div className="flex flex-row justify-center 2xl:w-[200px] w-[140px] items-center ">
+            <div className="flex flex-row justify-center xl:w-[200px] w-[140px] items-center ">
               {itemsSlider[activeIndexState].image.map((img, idx) => (
                 <Image
                   key={idx}
                   src={img}
                   alt={itemsSlider[activeIndexState].alt}
-                  className={`w-[140px] 2xl:w-[350px]`}
+                  className={`w-[140px] xl:w-[350px]`}
                 />
               ))}
             </div>
@@ -233,7 +233,7 @@ const HowItWorksSection = () => {
             <CustomRightArrow
               isFirstSlide={activeIndexState === 0}
               isLastSlide={activeIndexState === itemsSlider.length - 1}
-              className="relative right-5 2xl:static 2xl:right-0"
+              className="relative right-5 xl:static xl:right-0"
             />
           </button>
         </div>
