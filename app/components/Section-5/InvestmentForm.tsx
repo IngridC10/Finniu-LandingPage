@@ -29,6 +29,7 @@ const InvestmentForm = () => {
     finalAmount: 0,
     investmentTimeState: 0,
   });
+
   const [calculateParamsState, setCalculateParamsState] =
     useState<CalculateParams>({
       ammount: "",
@@ -50,6 +51,19 @@ const InvestmentForm = () => {
   const currencySymbol = currencyState === "nuevo sol" ? "S/" : "$";
 
   const handleCalculateButtonClick = () => {
+    const initialAmount =
+      parseFloat(calculateParamsState.ammount.replace(/,/g, "")) || 0;
+    if (isNaN(initialAmount) || initialAmount <= 0) {
+      setErrorState("El monto es obligatorio");
+      return;
+    }
+
+    if (initialAmount < 1000) {
+      setErrorState("El monto no es válido");
+      return;
+    } else {
+      setErrorState("");
+    }
     setIsCalculatedState(false);
     setIsModalVisible(true);
   };
@@ -89,6 +103,7 @@ const InvestmentForm = () => {
 
   const handleRecalculateClick = () => {
     setIsCalculatedState(false);
+
     calculateParamsState.ammount = "";
   };
 
