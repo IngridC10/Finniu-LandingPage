@@ -6,7 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="2711e060-f8e6-44a8-b959-8c924ae88cb9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Navbar/NavComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Navbar/NavComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Section-7/RegisterSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Section-7/RegisterSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +34,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/diegodelavega/Diego/Finniu-LandingPage&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/diegodelavega/Diego/Finniu-LandingPage/app/components/Button-wsp&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -39,6 +44,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/components/Button-wsp" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -58,7 +68,9 @@
       <workItem from="1726753057684" duration="3981000" />
       <workItem from="1726757446228" duration="97000" />
       <workItem from="1728659584400" duration="1060000" />
-      <workItem from="1729145363014" duration="1557000" />
+      <workItem from="1729145363014" duration="5200000" />
+      <workItem from="1729189046356" duration="2740000" />
+      <workItem from="1729198481536" duration="2228000" />
     </task>
     <servers />
   </component>

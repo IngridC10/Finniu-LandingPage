@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import NavComponent from "./components/Navbar/NavComponent";
 import FooterPageComponent from "./components/Footer/FooterPageComponent";
+import FloatingWhatsappButton from "./components/Button-wsp/FloatingWhatsappButtonComponent"
 
 const DMSans = localFont({
   src: [
@@ -56,6 +57,7 @@ export default function RootLayout({
       <body className={DMSans.className}>
         <NavComponent />
         {children}
+        <FloatingWhatsappButton/>
         <FooterPageComponent />
       </body>
     </html>
