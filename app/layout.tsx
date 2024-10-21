@@ -55,6 +55,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+    <head>
+      <GTM />
+    </head>
       <body className={DMSans.className}>
         <NavComponent />
         {children}
