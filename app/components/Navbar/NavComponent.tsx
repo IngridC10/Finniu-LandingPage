@@ -161,7 +161,7 @@ const NavComponent = () => {
               Simulador
             </Link>
             <Link
-              href="https://finniuapp.notion.site/Preguntas-Frecuentes-f7f77872d34a4de3a9e12d5fc58421ff"
+              href="https://finniu.tawk.help/"
               target="_blank"
               className={selectedNavItemState === "frequent-questions" ? "text-lightTextNavBar" : ""}
               onClick={() => handleItemSelect("frequent-questions")}

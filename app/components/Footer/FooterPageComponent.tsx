@@ -17,7 +17,7 @@ const Footer = () => {
               <li className="mb-1">
                 <Link
                   target="_blank"
-                  href="https://finniuapp.notion.site/Preguntas-Frecuentes-f7f77872d34a4de3a9e12d5fc58421ff"
+                  href="https://finniu.tawk.help/"
                   className="cursor-pointer hover:underline"
                 >
                   Preguntas Frecuentes
