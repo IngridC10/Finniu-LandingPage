@@ -2,7 +2,7 @@
 import { CALCULATE_INVESTMENT } from "../../graphql/mutation";
 import { GraphQLClient } from "graphql-request";
 
-const client = new GraphQLClient("https://www.finniu.com/api/v1/graph/finniu/");
+const client = new GraphQLClient("https://manage.finniu.com/api/v1/graph/finniu/");
 
 export type InvestmentResult = {
   success: boolean;
@@ -26,11 +26,11 @@ export async function calculateInvestment(input: {
       name: input.name,
       email: input.email,
     };
-
+    console.log("parameters", parameters)
     const result: any = await client.request(CALCULATE_INVESTMENT, parameters);
-
+    console.log("result", result)
     const investmentData = result.calculateInvestment;
-
+    console.log("investmentData", investmentData)
     return {
       success: investmentData.success,
       investmentTotalAmount: investmentData.profitability.preInvestmentAmount,

@@ -78,7 +78,7 @@ const InvestmentForm = () => {
       email: calculateParamsState.email,
       name: calculateParamsState.name,
     });
-
+    console.log("investmentResult", investmentResult)
     setCalculatedResultState({
       initialAmount,
       finalAmount: investmentResult.investmentTotalAmount || 0,
