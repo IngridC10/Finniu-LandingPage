@@ -99,16 +99,16 @@ const InvestmentForm = () => {
 
     if (/iPad|iPhone|iPod/.test(userAgent) && !(window as any).MSStream) {
       // iOS
-      url = "https://apps.apple.com/pe/app/finniu/id6449205870"; // App Store
+      url = "https://apps.apple.com/app/apple-store/id6449205870?pt=126231912&ct=web&mt=8"; // App Store
     } else if (/android/i.test(userAgent)) {
       // Android
-      url = "https://play.google.com/store/apps/details?id=com.finniu"; // Google Play
+      url = "https://play.google.com/store/apps/details?id=com.finniu&referrer=utm_source%3Dfinniu_web%26utm_medium%3Dweb%26anid%3Daarki%26aclid%3D{click_id}%26cp1%3D{app_id}"; // Google Play
     } else if (/Macintosh/.test(userAgent)) {
       // macOS
-      url = "https://apps.apple.com/pe/app/finniu/id6449205870"; // macOS
+      url = "https://apps.apple.com/app/apple-store/id6449205870?pt=126231912&ct=web&mt=8"; // macOS
     } else {
       // other systems
-      url = "https://play.google.com/store/apps/details?id=com.finniu"; // generic
+      url = "https://play.google.com/store/apps/details?id=com.finniu&referrer=utm_source%3Dfinniu_web%26utm_medium%3Dweb%26anid%3Daarki%26aclid%3D{click_id}%26cp1%3D{app_id}"; // generic
     }
 
     window.open(url, "_blank");

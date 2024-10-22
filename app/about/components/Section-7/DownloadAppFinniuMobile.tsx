@@ -18,14 +18,14 @@ const DownloadAppFinniuMobile = () => {
         <div>
           <div className=" flex flex-col gap-6 justify-center items-center mt-0">
             <a
-              href="https://play.google.com/store/apps/details?id=com.finniu"
+              href="https://play.google.com/store/apps/details?id=com.finniu&referrer=utm_source%3Dfinniu_web%26utm_medium%3Dweb%26anid%3Daarki%26aclid%3D{click_id}%26cp1%3D{app_id}"
               target="_blank"
             >
               <Image src={GooglePlay} alt="Google-Play" width={140} />
             </a>
 
             <a
-              href="https://apps.apple.com/pe/app/finniu/id6449205870"
+              href="https://apps.apple.com/app/apple-store/id6449205870?pt=126231912&ct=web&mt=8"
               target="_blank"
             >
               <Image src={AppStore} alt="App-Store" width={140} />
