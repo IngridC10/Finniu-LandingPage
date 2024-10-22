@@ -2,7 +2,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import ButtonComponent from "./ButtonComponent";
-import PopUpComponent from "./PopUpComponent";
 import { saveRegisterStorage } from "../app/helpers/SaveRegisterStorage";
 
 interface FormData {
@@ -45,7 +44,6 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
   setCalculateParamsState,
   handleCalculateClick,
 }) => {
-  const [isPopupVisible, setPopupVisible] = useState(false);
   const [formErrors, setFormErrors] = useState<FormErrors>({});
   const [formData, setFormData] = useState<FormData>({
     fullName: "",
@@ -115,16 +113,11 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
 
     localStorage.setItem("formData", JSON.stringify(formData));
     saveRegisterStorage(JSON.stringify(formData));
-    setPopupVisible(true);
   };
 
   return (
     <div className="fixed inset-0 backdrop-blur-md bg-opacity-70 flex items-center justify-center z-50">
-      <div
-        className={`bg-white rounded-xl h-[500px] flex flex-col justify-center p-8 w-[90%] max-w-md relative ${
-          isPopupVisible ? "blur-md" : ""
-        }`}
-      >
+      <div className="bg-white rounded-xl h-[500px] flex flex-col justify-center p-8 w-[90%] max-w-md relative">
         <h2 className="text-center text-xl mb-10 font-bold">
           Regístrate para recibir <br />
           mayor información
@@ -203,6 +196,11 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
           <div className="text-center mt-10">
             <ButtonComponent
               text="Continuar"
+              onClick={() => {
+                handleCalculateClick();
+                setIsCalculatedState(true);
+                setIsModalVisible(false);
+              }}
               type="submit"
               className="w-full bg-blueColorButton text-white rounded-full py-2 mt-4"
             />
@@ -215,15 +213,6 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
           &times;
         </button>
       </div>
-      {isPopupVisible && (
-        <PopUpComponent
-          isVisible={isPopupVisible}
-          setModalOpen={setIsModalVisible}
-          onClose={() => setPopupVisible(false)}
-          setIsCalculatedState={setIsCalculatedState}
-          handleCalculateClick={handleCalculateClick}
-        />
-      )}
     </div>
   );
 };
