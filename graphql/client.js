@@ -1,10 +1,8 @@
-import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
+import { GraphQLClient } from "graphql-request";
 
-const httpLink = createHttpLink({
-  uri: "https://manage.finniu.com/api/v1/graph/finniu/",
-});
-export const client = new ApolloClient({
-  cache: new InMemoryCache(),
-});
+const apiUrl = process.env.API_URL;
+console.log("apiUrl", apiUrl);
+
+export const client = new GraphQLClient(apiUrl);
 
 export default client;

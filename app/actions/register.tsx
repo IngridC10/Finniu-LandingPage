@@ -1,7 +1,9 @@
 "use server";
 import { SAVE_PRE_REGISTRATION } from "../../graphql/mutation";
 import { GraphQLClient } from "graphql-request";
-const client = new GraphQLClient("https://manage.finniu.com/api/v1/graph/finniu/");
+// const client = new GraphQLClient("https://manage.finniu.com/api/v1/graph/finniu/");
+import {client} from "@/graphql/client";
+
 
 export async function savePreRegistration(input: {
   documentNumber: string;

@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import ButtonComponent from "./ButtonComponent";
-import { saveRegisterStorage } from "../app/helpers/SaveRegisterStorage";
+import { saveRegisterStorage } from "../app/helpers/registrationStorage";
 
 interface FormData {
   fullName: string;
@@ -30,9 +30,7 @@ interface ModalComponentProps {
   onClose: () => void;
   setIsCalculatedState: React.Dispatch<React.SetStateAction<boolean>>;
   setIsModalVisible: React.Dispatch<React.SetStateAction<boolean>>;
-  setCalculateParamsState: React.Dispatch<
-    React.SetStateAction<CalculateParams>
-  >;
+  setCalculateParamsState: React.Dispatch<React.SetStateAction<CalculateParams>>;
   handleCalculateClick: () => void;
 }
 
@@ -51,6 +49,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
     phoneNumber: "",
     phonePrefix: "+51",
   });
+  const [isUpdatingState, setIsUpdatingState] = useState(false);
 
   const fullNameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
@@ -62,6 +61,15 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
       setFormData(JSON.parse(savedData));
     }
   }, []);
+
+  useEffect(() => {
+    if (isUpdatingState) {
+      handleCalculateClick();
+      setIsCalculatedState(true);
+      setIsModalVisible(false);
+      setIsUpdatingState(false);
+    }
+  }, [isUpdatingState, handleCalculateClick, setIsCalculatedState, setIsModalVisible]);
 
   if (!isOpen) return null;
 
@@ -87,6 +95,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
 
   const handleContinue = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    
     const errors: FormErrors = {};
 
     if (!formData.fullName) {
@@ -99,6 +108,16 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
       errors.phoneNumber = "El número telefónico es obligatorio.";
     }
 
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+
+
+    localStorage.setItem("formData", JSON.stringify(formData));
+    saveRegisterStorage(JSON.stringify(formData));
+
+
     setCalculateParamsState((prevState) => ({
       ...prevState,
       name: formData.fullName,
@@ -106,13 +125,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
       phone: formData.phoneNumber,
     }));
 
-    if (Object.keys(errors).length > 0) {
-      setFormErrors(errors);
-      return;
-    }
-
-    localStorage.setItem("formData", JSON.stringify(formData));
-    saveRegisterStorage(JSON.stringify(formData));
+    setIsUpdatingState(true);
   };
 
   return (
@@ -196,11 +209,6 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
           <div className="text-center mt-10">
             <ButtonComponent
               text="Continuar"
-              onClick={() => {
-                handleCalculateClick();
-                setIsCalculatedState(true);
-                setIsModalVisible(false);
-              }}
               type="submit"
               className="w-full bg-blueColorButton text-white rounded-full py-2 mt-4"
             />
