@@ -2,7 +2,9 @@
 import { CALCULATE_INVESTMENT } from "../../graphql/mutation";
 import { GraphQLClient } from "graphql-request";
 
-const client = new GraphQLClient("https://www.finniu.com/api/v1/graph/finniu/");
+const client = new GraphQLClient(
+  "https://manage.finniu.com/api/v1/graph/finniu/"
+);
 
 export type InvestmentResult = {
   success: boolean;
