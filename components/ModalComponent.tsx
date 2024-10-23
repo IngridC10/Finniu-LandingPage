@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import PhoneInput from "react-phone-input-2";
+import 'react-phone-input-2/lib/style.css';
 import ButtonComponent from "./ButtonComponent";
 import { saveRegisterStorage } from "../app/helpers/registrationStorage";
 
