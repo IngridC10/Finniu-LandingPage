@@ -2,11 +2,13 @@
 import { CALCULATE_INVESTMENT } from "../../graphql/mutation";
 // import { GraphQLClient } from "graphql-request";
 
-import {client} from "@/graphql/client";
- 
+import { client } from "@/graphql/client";
+
 export type InvestmentResult = {
   success: boolean;
   investmentTotalAmount?: number;
+  finalRestabilityPercent?: string;
+  rentabilityPerMonth?: string;
 };
 
 export async function calculateInvestment(input: {
@@ -26,14 +28,13 @@ export async function calculateInvestment(input: {
       name: input.name,
       email: input.email,
     };
-    console.log("parameters", parameters)
     const result: any = await client.request(CALCULATE_INVESTMENT, parameters);
-    console.log("result", result)
     const investmentData = result.calculateInvestment;
-    console.log("investmentData", investmentData)
     return {
       success: investmentData.success,
       investmentTotalAmount: investmentData.profitability.preInvestmentAmount,
+      finalRestabilityPercent: investmentData.finalRestabilityPercent,
+      rentabilityPerMonth: investmentData.rentabilityPerMonth
     };
   } catch (error) {
     return {

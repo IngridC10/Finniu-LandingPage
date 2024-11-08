@@ -19,8 +19,11 @@ export const CALCULATE_INVESTMENT = gql`
       }
     ) {
       success
+      finalRestabilityPercent
+      rentabilityPerMonth
       profitability {
         preInvestmentAmount
+        
       }
     }
   }

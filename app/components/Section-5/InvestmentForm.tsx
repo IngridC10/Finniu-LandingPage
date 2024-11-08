@@ -6,6 +6,9 @@ import LogoFinniuLight from "@/images/Section-5/LogoFinniuLight.png";
 import Bill from "@/images/Section-5/Bill.png";
 import { calculateInvestment } from "@/app/actions/calculateInvestment";
 import ModalComponent from "@/components/ModalComponent";
+import { faCalendar } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 interface CalculateParams {
   ammount: string;
@@ -16,6 +19,14 @@ interface CalculateParams {
   phone: string;
 }
 
+interface CalculateResult {
+  initialAmount: number;
+  finalAmount: number;
+  investmentTimeState: number;
+  finalRestabilityPercent: number;
+  rentabilityPerMonth: number;
+}
+
 const InvestmentForm = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   // const [investmentAmountState, setInvestmentAmountState] = useState("");
@@ -24,10 +35,12 @@ const InvestmentForm = () => {
     useState(true);
   const [currencyState, setCurrencyState] = useState("nuevo sol");
   const [isCalculatedState, setIsCalculatedState] = useState(false);
-  const [calculatedResultState, setCalculatedResultState] = useState({
+  const [calculatedResultState, setCalculatedResultState] = useState<CalculateResult>({
     initialAmount: 0,
     finalAmount: 0,
     investmentTimeState: 0,
+    finalRestabilityPercent: 0,
+    rentabilityPerMonth: 0,
   });
 
   const [calculateParamsState, setCalculateParamsState] =
@@ -39,6 +52,26 @@ const InvestmentForm = () => {
       name: "",
       phone: "",
     });
+
+  const onChangeInputAmout = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    if (value === "") {
+      setCalculateParamsState((prevState: CalculateParams) => ({
+        ...prevState,
+        ammount: e.target.value,
+      }))
+    }
+    const regex = /^[0-9]*$/;
+    if (!regex.test(value)) {
+      return;
+    }
+
+    setCalculateParamsState((prevState: CalculateParams) => ({
+      ...prevState,
+      ammount: value,
+    }))
+  };
+
   const [errorState, setErrorState] = useState("");
 
   const steps = [6, 12, 24];
@@ -59,7 +92,7 @@ const InvestmentForm = () => {
     }
 
     if (initialAmount < 1000) {
-      setErrorState("El monto no es válido");
+      setErrorState("El monto debe ser mayor a 1000");
       return;
     } else {
       setErrorState("");
@@ -78,7 +111,7 @@ const InvestmentForm = () => {
     }
 
     if (initialAmount < 1000) {
-      setErrorState("El monto no es válido");
+      setErrorState("El monto debe ser mayor a 1000");
       return;
     } else {
       setErrorState("");
@@ -92,11 +125,13 @@ const InvestmentForm = () => {
       email: calculateParamsState.email,
       name: calculateParamsState.name,
     });
-    console.log("investmentResult", investmentResult)
+
     setCalculatedResultState({
       initialAmount,
       finalAmount: investmentResult.investmentTotalAmount || 0,
       investmentTimeState: calculateParamsState.deadline,
+      finalRestabilityPercent: parseInt(investmentResult.finalRestabilityPercent!),
+      rentabilityPerMonth: parseInt(investmentResult.rentabilityPerMonth!),
     });
     setIsCalculatedState(true);
   };
@@ -134,29 +169,51 @@ const InvestmentForm = () => {
       {isCalculatedState ? (
         <div className="text-center">
           <div className="flex flex-col justify-center items-center">
-            <Image src={LogoFinniuLight} alt="Logo" width={50} />
+            <Image src={LogoFinniuLight} alt="Logo" width={80} />
           </div>
-          <p className="text-[16px] text-black ">Si comienzas con</p>
-          <p className="text-[23px] font-bold text-black">
-            {currencySymbol}{" "}
-            {calculatedResultState.initialAmount.toLocaleString()}
-          </p>
-          <p className="text-[20px] 2xl:text-[32px] text-black font-bold ">
-            <span>En </span>
-            <span className="text-lighBlueColorSimulador text-[20px] 2xl:text-[32px] font-bold">
-              {calculatedResultState.investmentTimeState} meses
-            </span>
-            <span> recibirás</span>
-            <span className="text-[20px] 2xl:text-[32px] ml-[5px] font-bold">
-              &#128184;
-            </span>
-          </p>
-          <div className="bg-lighBlue 2xl:w-[298px] w-[210px] h-[62px] flex justify-center items-center  2xl:h-[92px] m-auto p-0 2xl:p-4 rounded-xl my-4">
-            <p className="text-[23px] font-bold">
+
+          <div className="flex flex-row gap-6 justify-between mt-0">
+            <div>
+              <p className="text-[16px] text-black ">Si comienzas con</p>
+              <p className="text-[25px] font-bold text-black text-start">
+                {currencySymbol}{" "}
+                {calculatedResultState.initialAmount.toLocaleString()}
+              </p>
+            </div>
+            <div>
+              <p className="text-[16px] text-black ">con un % de retorno</p>
+              <p className="text-[25px] font-bold text-simulatorText text-center ">
+                {calculatedResultState.finalRestabilityPercent ?? "---"}%
+              </p>
+            </div>
+
+          </div>
+          <div className="flex flex-col justify-start items-start">
+            <p className="text-[20px] 2xl:text-[32px] text-black font-bold ">
+              <span >En </span>
+              <span className="text-lighBlueColorSimulador text-[20px] 2xl:text-[32px] font-bold">
+                {calculatedResultState.investmentTimeState} meses
+              </span>
+              <span> recibirás</span>
+              <span className="text-[20px] 2xl:text-[32px] ml-[5px] font-bold">
+                &#128184;
+              </span>
+            </p>
+          </div>
+
+          <div className="bg-sumulatorContainer  flex justify-center items-center  2xl:h-[92px] m-auto p-0 2xl:p-2 rounded-xl my-2">
+            <p className="text-[35px] font-bold text-simulatorText">
               {currencySymbol}{" "}
               {calculatedResultState.finalAmount.toLocaleString()}
             </p>
           </div>
+          <div className="bg-simulatorRecived  flex justify-center items-center  2xl:h-[70px] m-auto p-0 2xl:p-2 rounded-xl my-2">
+            <FontAwesomeIcon icon={faCalendar} className="text-simulatorText text-2xl" />
+            <p className="ml-2 text-[18px]  font-bold">
+              Cada mes recibiras {currencySymbol}{calculatedResultState.rentabilityPerMonth ?? "---"}
+            </p>
+          </div>
+
 
           <ButtonComponent
             text="Quiero invertir"
@@ -188,29 +245,26 @@ const InvestmentForm = () => {
             </h2>
 
             <div
-              className={`flex flex-row m-2 w-[162px] 2xl:w-[242px] items-center 2xl:h-[60px] h-[45px] p-2 bg-blueColorBackground justify-around rounded-full ${
-                isWhereToFindButtonActiveState
-                  ? "bg-lightBlueColor"
-                  : "bg-blueDarkColor"
-              }`}
+              className={`flex flex-row m-2 w-[162px] 2xl:w-[242px] items-center 2xl:h-[60px] h-[45px] p-2 bg-blueColorBackground justify-around rounded-full ${isWhereToFindButtonActiveState
+                ? "bg-lightBlueColor"
+                : "bg-blueDarkColor"
+                }`}
             >
               <ButtonComponent
                 text="Soles"
                 onClick={() => handleButtonClick("Soles")}
-                className={`2xl:h-[45px] h-[33px] text-[15px] 2xl:text-[20px] shadow-md w-[73px] 2xl:w-[111px] gap-2 flex justify-center items-center rounded-full ${
-                  isWhereToFindButtonActiveState
-                    ? "bg-lightColor text-blackColorText"
-                    : "bg-blueDarkColor text-white"
-                }`}
+                className={`2xl:h-[45px] h-[33px] text-[15px] 2xl:text-[20px] shadow-md w-[73px] 2xl:w-[111px] gap-2 flex justify-center items-center rounded-full ${isWhereToFindButtonActiveState
+                  ? "bg-lightColor text-blackColorText"
+                  : "bg-blueDarkColor text-white"
+                  }`}
               ></ButtonComponent>
               <ButtonComponent
                 text="Dólares"
                 onClick={() => handleButtonClick("Dólares")}
-                className={`2xl:h-[45px] h-[37px] w-[73px] 2xl:w-[111px] m-1 flex justify-center items-center gap-2 rounded-full text-[15px] 2xl:text-[20px] ${
-                  isWhereToFindButtonActiveState
-                    ? "bg-lightBlueColor text-blueDarkColor"
-                    : "bg-blueColorButton text-white"
-                }`}
+                className={`2xl:h-[45px] h-[37px] w-[73px] 2xl:w-[111px] m-1 flex justify-center items-center gap-2 rounded-full text-[15px] 2xl:text-[20px] ${isWhereToFindButtonActiveState
+                  ? "bg-lightBlueColor text-blueDarkColor"
+                  : "bg-blueColorButton text-white"
+                  }`}
               ></ButtonComponent>
             </div>
           </div>
@@ -230,15 +284,9 @@ const InvestmentForm = () => {
                 id="investmentAmount"
                 type="text"
                 value={calculateParamsState.ammount}
-                onChange={(e) =>
-                  setCalculateParamsState((prevState: CalculateParams) => ({
-                    ...prevState,
-                    ammount: e.target.value,
-                  }))
-                }
-                className={`pl-10 pr-3 py-2 2xl:text-[18px] border-t-0 border-l-0 border-r-0 text-sm border-b-[5px] ${
-                  errorState ? "border-red-500" : "border-grayColorLine"
-                } 2xl:w-full w-[320px]`}
+                onChange={onChangeInputAmout}
+                className={`pl-10 pr-3 py-2 2xl:text-[18px] border-t-0 border-l-0 border-r-0 text-sm border-b-[5px] ${errorState ? "border-red-500" : "border-grayColorLine"
+                  } 2xl:w-full w-[320px]`}
                 placeholder="Ingrese el monto"
               />
 

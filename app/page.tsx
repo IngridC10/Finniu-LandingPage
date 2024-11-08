@@ -15,7 +15,7 @@ export default function Home() {
       <StepInvestmentGuideSection />
       <SimulatorInvestmentSection />
       <TestimonialsSection />
-      <RegisterSection />
+      {/* <RegisterSection /> */}
     </main>
   );
 }
