@@ -5,6 +5,9 @@ import DownloadAppSection from "./components/Section-1/DownloadAppSection";
 import FixedTermsSection from "./components/Section-2/FixedTermsSection";
 import TestimonialsSection from "./components/Section-6/TestimonialsSection";
 import SponsoredV2 from "./about/components/Section-2/SponsoredSevtionV2";
+import ToStoresSection from "./about/components/Section-2/ToStoresSection";
+
+
 
 export default function Home() {
   return (
@@ -12,6 +15,7 @@ export default function Home() {
       <DownloadAppSection />
       <SponsoredV2 />
       <FixedTermsSection />
+      <ToStoresSection />
       <HowItWorksSection />
       <StepInvestmentGuideSection />
       <SimulatorInvestmentSection />

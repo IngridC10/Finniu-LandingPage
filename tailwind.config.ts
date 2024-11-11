@@ -55,6 +55,7 @@ const config: Config = {
         simulatorRecived: "#F0E4FF",
         simulatorText: "#0D3A5C",
         sumulatorContainer: "#DFF7FF",
+        toStoresContainer: "#E7F9FF",
 
       },
 
