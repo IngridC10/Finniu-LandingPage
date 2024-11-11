@@ -23,8 +23,7 @@ export default function CustomSelect() {
     };
 
     return (
-        <div className="relative w-full ">
-            {/* Selección */}
+        <div className="relative w-full  ">
             <div
                 className="border-2 border-l-0 border-t-0 border-r-0 rounded border-gray-300 flex justify-between items-center cursor-pointer"
                 onClick={toggleDropdown}
@@ -46,7 +45,7 @@ export default function CustomSelect() {
                         <div
                             key={index}
                             onClick={() => selectOption(option)}
-                            className="px-4 py-4 cursor-pointer hover:bg-gray-100 border-b border-gray-200 last:border-none text-black"
+                            className=" m-4 cursor-pointer hover:bg-gray-100 border-b border-gray-200 last:border-none text-black"
                         >
                             {option}
                         </div>
