@@ -24,32 +24,7 @@ const DownloadAppSectionDesktop = () => {
           <p className=" text-[25px] mr-4 text-lightBlueColor">Simula tu inversión</p>
           <FontAwesomeIcon icon={faCalculator} className="text-lightTextNavBar text-2xl" />
         </Link>
-        {/* <div className="flex justify-center md:justify-start gap-4 mt-8">
-          <a
-            href="https://play.google.com/store/apps/details?id=com.finniu&referrer=utm_source%3Dfinniu_web%26utm_medium%3Dweb%26anid%3Daarki%26aclid%3D{click_id}%26cp1%3D{app_id}"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src={GooglePlay}
-              alt="Google-Play"
-              width={160}
-              style={{ height: "auto" }}
-            />
-          </a>
-          <a
-            href="https://apps.apple.com/app/apple-store/id6449205870?pt=126231912&ct=web&mt=8"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              src={AppStore}
-              alt="App-Store"
-              width={160}
-              style={{ height: "auto" }}
-            />
-          </a>
-        </div> */}
+
       </div>
 
       <div className="w-[100px]"></div>

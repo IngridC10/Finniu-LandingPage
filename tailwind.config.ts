@@ -56,7 +56,7 @@ const config: Config = {
         simulatorText: "#0D3A5C",
         sumulatorContainer: "#DFF7FF",
         toStoresContainer: "#E7F9FF",
-
+        buttonSuscribe: "#A2E6FA",
       },
 
       screens: {

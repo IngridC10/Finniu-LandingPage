@@ -6,6 +6,7 @@ import FixedTermsSection from "./components/Section-2/FixedTermsSection";
 import TestimonialsSection from "./components/Section-6/TestimonialsSection";
 import SponsoredV2 from "./about/components/Section-2/SponsoredSevtionV2";
 import ToStoresSection from "./about/components/Section-2/ToStoresSection";
+import Susbcribe from "./components/Section-8/Susbcribe";
 
 
 
@@ -20,6 +21,7 @@ export default function Home() {
       <StepInvestmentGuideSection />
       <SimulatorInvestmentSection />
       <TestimonialsSection />
+      <Susbcribe />
       {/* <RegisterSection /> */}
     </main>
   );
