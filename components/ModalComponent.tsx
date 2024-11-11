@@ -4,6 +4,8 @@ import PhoneInput from "react-phone-input-2";
 import 'react-phone-input-2/lib/style.css';
 import ButtonComponent from "./ButtonComponent";
 import { saveRegisterStorage } from "../app/helpers/registrationStorage";
+import CustomSelect from "./SelectAbout";
+
 
 interface FormData {
   fullName: string;
@@ -96,7 +98,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
 
   const handleContinue = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     const errors: FormErrors = {};
 
     if (!formData.fullName) {
@@ -129,6 +131,19 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
     setIsUpdatingState(true);
   };
 
+  const selectAbout = [
+    "Anuncios en Google",
+    "Anuncios en Redes Sociales",
+    "Artículo de Blog",
+    "Búsqueda en Google",
+    "Inversión Simple",
+    "Influencers",
+    "Email",
+    "Video Youtube",
+    "Evento presencial",
+    "Amigo o Familiar ",
+  ];
+
   return (
     <div className="fixed inset-0 backdrop-blur-md bg-opacity-70 flex items-center justify-center z-50">
       <div className="bg-white rounded-xl h-[500px] flex flex-col justify-center p-8 w-[90%] max-w-md relative">
@@ -143,9 +158,8 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
               id="fullName"
               name="fullName"
               placeholder="Nombres y apellidos"
-              className={`w-full px-3 border-r-0 border-l-0 border-t-0 py-2 border-2 ${
-                formErrors.fullName ? "border-red-500" : "border-gray-300"
-              } rounded-sm bg-white text-black`}
+              className={`w-full px-3 border-r-0 border-l-0 border-t-0 py-2 border-2 ${formErrors.fullName ? "border-red-500" : "border-gray-300"
+                } rounded-sm bg-white text-black`}
               value={formData.fullName}
               onChange={handleInputChange}
               onKeyDown={(e) => handleKeyDown(e, emailRef)}
@@ -162,9 +176,8 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
               id="email"
               name="email"
               placeholder="Correo electrónico"
-              className={`w-full px-3 border-r-0 border-l-0 border-t-0 py-2 border-2 ${
-                formErrors.email ? "border-red-500" : "border-gray-300"
-              } rounded-sm bg-white text-black`}
+              className={`w-full px-3 border-r-0 border-l-0 border-t-0 py-2 border-2 ${formErrors.email ? "border-red-500" : "border-gray-300"
+                } rounded-sm bg-white text-black`}
               value={formData.email}
               onChange={handleInputChange}
               onKeyDown={(e) => handleKeyDown(e, phoneInputRef)}
@@ -174,6 +187,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
               <p className="text-red-500 text-sm">{formErrors.email}</p>
             )}
           </div>
+
 
           <div className="mb-10">
             <div className="relative phone-input-container">
@@ -186,11 +200,10 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
                   name: "phoneNumber",
                   placeholder: "Número telefónico",
                   required: true,
-                  className: `w-full px-3 border-2 border-l-0 border-t-0 border-r-0 ${
-                    formErrors.phoneNumber
-                      ? "border-red-500"
-                      : "border-gray-300"
-                  } rounded-sm bg-white text-black`,
+                  className: `w-full px-3 border-2 border-l-0 border-t-0 border-r-0 ${formErrors.phoneNumber
+                    ? "border-red-500"
+                    : "border-gray-300"
+                    } rounded-sm bg-white text-black`,
                 }}
                 containerStyle={{
                   width: "100%",
@@ -205,13 +218,17 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
                 <p className="text-red-500 text-sm">{formErrors.phoneNumber}</p>
               )}
             </div>
+            <div className="h-4"></div>
+
+            <CustomSelect />
           </div>
+
 
           <div className="text-center mt-10">
             <ButtonComponent
               text="Continuar"
               type="submit"
-              className="w-full bg-blueColorButton text-white rounded-full py-2 mt-4"
+              className="w-full bg-blueColorButton text-white rounded-full py-2 "
             />
           </div>
         </form>
