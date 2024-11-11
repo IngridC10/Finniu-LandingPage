@@ -230,7 +230,7 @@ const InvestmentForm = () => {
         </div>
       ) : (
         <div>
-          <div className="flex flex-row items-center gap-2 block xl:hidden absolute -top-[55px] z-20">
+          <div className="flex flex-row items-center gap-2 xl:hidden absolute -top-[55px] z-20">
             <h1 className="  text-[28px] lg:text-[30px] font-bold">
               Simula tu inversión
             </h1>
