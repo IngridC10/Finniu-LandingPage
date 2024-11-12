@@ -7,11 +7,13 @@ import { saveRegisterStorage } from "../app/helpers/registrationStorage";
 import CustomSelect from "./SelectAbout";
 
 
+
 interface FormData {
   fullName: string;
   email: string;
   phoneNumber: string;
   phonePrefix: string;
+  aboutUs: string;
 }
 
 interface FormErrors {
@@ -26,7 +28,9 @@ interface CalculateParams {
   email: string;
   name: string;
   phone: string;
+  discoverySource: string
 }
+
 
 interface ModalComponentProps {
   isOpen: boolean;
@@ -51,6 +55,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
     email: "",
     phoneNumber: "",
     phonePrefix: "+51",
+    aboutUs: "¿Como te enteraste de nosotros?",
   });
   const [isUpdatingState, setIsUpdatingState] = useState(false);
 
@@ -126,23 +131,16 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
       name: formData.fullName,
       email: formData.email,
       phone: formData.phoneNumber,
+      discoverySource: formData.aboutUs
     }));
 
     setIsUpdatingState(true);
   };
+  const handleAboutUsChange = (option: string) => {
+    setFormData((prev) => ({ ...prev, aboutUs: option }));
+  };
 
-  const selectAbout = [
-    "Anuncios en Google",
-    "Anuncios en Redes Sociales",
-    "Artículo de Blog",
-    "Búsqueda en Google",
-    "Inversión Simple",
-    "Influencers",
-    "Email",
-    "Video Youtube",
-    "Evento presencial",
-    "Amigo o Familiar ",
-  ];
+
 
   return (
     <div className="fixed inset-0 backdrop-blur-md bg-opacity-70 flex items-center justify-center z-50">
@@ -220,7 +218,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
             </div>
             <div className="h-4"></div>
 
-            <CustomSelect />
+            <CustomSelect onSelect={handleAboutUsChange} />
           </div>
 
 

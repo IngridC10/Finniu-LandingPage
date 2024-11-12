@@ -17,6 +17,7 @@ interface CalculateParams {
   email: string;
   name: string;
   phone: string;
+  discoverySource: string
 }
 
 interface CalculateResult {
@@ -51,6 +52,7 @@ const InvestmentForm = () => {
       email: "",
       name: "",
       phone: "",
+      discoverySource: ""
     });
 
   const onChangeInputAmout = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -124,6 +126,7 @@ const InvestmentForm = () => {
       phone: calculateParamsState.phone,
       email: calculateParamsState.email,
       name: calculateParamsState.name,
+      discoverySource: calculateParamsState.discoverySource
     });
 
     setCalculatedResultState({

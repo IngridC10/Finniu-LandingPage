@@ -1,12 +1,13 @@
 import { gql } from "@apollo/client";
 export const CALCULATE_INVESTMENT = gql`
-  mutation calculateInvestment(
+ mutation calculateInvestment(
     $ammount: Int!
     $deadline: Int!
-    $currency: String!
-    $name: String!
-    $email: String!
-    $phone: String!
+    $currency: String
+    $name: String
+    $email: String
+    $phone: String
+  	$discoverySource : DiscoverySourceEnum
   ) {
     calculateInvestment(
       input: {
@@ -16,8 +17,14 @@ export const CALCULATE_INVESTMENT = gql`
         name: $name
         email: $email
         phone: $phone
+        discoverySource: $discoverySource
       }
     ) {
+      messages {
+        field
+        message
+        errorCode
+      }
       success
       finalRestabilityPercent
       rentabilityPerMonth

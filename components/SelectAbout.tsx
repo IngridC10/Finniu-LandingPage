@@ -1,6 +1,9 @@
 import { useState } from "react";
+interface CustomSelectProps {
+    onSelect: (option: string) => void;
+}
 
-export default function CustomSelect() {
+const CustomSelect: React.FC<CustomSelectProps> = ({ onSelect }) => {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedOption, setSelectedOption] = useState("¿Cómo te enteraste de nosotros?");
     const options = [
@@ -20,6 +23,7 @@ export default function CustomSelect() {
     const selectOption = (option: string) => {
         setSelectedOption(option);
         setIsOpen(false);
+        onSelect(option);
     };
 
     return (
@@ -55,3 +59,5 @@ export default function CustomSelect() {
         </div>
     );
 }
+
+export default CustomSelect
