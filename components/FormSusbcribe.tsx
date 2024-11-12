@@ -2,18 +2,15 @@
 
 import { saveRegisterStorage } from "@/app/helpers/registrationStorage";
 import { useEffect, useRef, useState } from "react";
-
 import ButtonComponent from "./ButtonComponent";
-import { CustomSelectSubscribe } from "./SelectSusbcribe";
 import { MuiTelInput } from "mui-tel-input";
 import { styled } from '@mui/material/styles';
+import { savePreRegistration } from "@/app/actions/register";
 
 const CustomMuiTelInput = styled(MuiTelInput)({
     width: '100%',
     backgroundColor: '#051926',
     color: '#051926',
-
-
     '& .MuiInputBase-input': {
         backgroundColor: '#051926',
         color: '#FFFFFF',
@@ -32,6 +29,7 @@ interface FormData {
     email: string;
     phoneNumber: string;
     phonePrefix: string;
+    aboutUs: string;
 }
 
 interface FormErrors {
@@ -47,8 +45,24 @@ const FormSusbcribe = () => {
         email: "",
         phoneNumber: "",
         phonePrefix: "+51",
+        aboutUs: "¿Cómo te enteraste de nosotros?",
     });
     const [isUpdatingState, setIsUpdatingState] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+
+    const options = [
+        "Anuncios en Google",
+        "Anuncios en Redes Sociales",
+        "Artículo de Blog",
+        "Búsqueda en Google",
+        "Inversión Simple",
+        "Influencers",
+        "Email",
+        "Video Youtube",
+        "Evento presencial",
+        "Amigo o Familiar"
+    ];
+
 
     const fullNameRef = useRef<HTMLInputElement>(null);
     const emailRef = useRef<HTMLInputElement>(null);
@@ -57,7 +71,7 @@ const FormSusbcribe = () => {
     useEffect(() => {
         const savedData = localStorage.getItem("formData");
         if (savedData) {
-            setFormData(JSON.parse(savedData));
+            setFormData(prev => ({ ...prev, ...JSON.parse(savedData) }));
         }
     }, []);
 
@@ -103,24 +117,23 @@ const FormSusbcribe = () => {
         localStorage.setItem("formData", JSON.stringify(formData));
         saveRegisterStorage(JSON.stringify(formData));
         setIsUpdatingState(true);
+        savePreRegistration(formData);
     };
 
-    const selectAbout = [
-        "Anuncios en Google",
-        "Anuncios en Redes Sociales",
-        "Artículo de Blog",
-        "Búsqueda en Google",
-        "Inversión Simple",
-        "Influencers",
-        "Email",
-        "Video Youtube",
-        "Evento presencial",
-        "Amigo o Familiar",
-    ];
+
+
+
+    const toggleDropdown = () => setIsOpen(!isOpen);
+    const selectOption = (option: string) => {
+        setFormData((prev) => ({ ...prev, aboutUs: option }));
+
+        setIsOpen(false);
+    };
 
     return (
         <form onSubmit={handleContinue} className="w-4/5 sm:w-3/4 md:w-1/2 p-4 sm:p-6 md:p-8 bg-blueDarkColor rounded-lg flex flex-col gap-4">
             <input
+                autoComplete="off"
                 type="text"
                 id="fullName"
                 name="fullName"
@@ -134,6 +147,7 @@ const FormSusbcribe = () => {
             {formErrors.fullName && <p className="text-red-500 text-sm">{formErrors.fullName}</p>}
 
             <input
+                autoComplete="off"
                 type="email"
                 id="email"
                 name="email"
@@ -146,24 +160,39 @@ const FormSusbcribe = () => {
             />
             {formErrors.email && <p className="text-red-500 text-sm">{formErrors.email}</p>}
             <CustomMuiTelInput value={formData.phoneNumber} onChange={handlePhoneChange} defaultCountry="PE" className="" />
-            {/* <PhoneInput
-                country="pe"
-                value={formData.phoneNumber}
-                onChange={handlePhoneChange}
-                enableSearch
-                inputProps={{
-                    name: "phoneNumber",
-                    placeholder: "Número telefónico",
-                    required: true,
-                    className: `w-full px-3 py-2 border-2 border-l-0 border-t-0 border-r-0 ${formErrors.phoneNumber ? "border-red-500" : "border-darkBlueColor"} bg-blueDarkColor text-white`,
-                }}
-                containerStyle={{ width: "100%", position: "relative" }}
-                inputStyle={{ width: "100%", paddingLeft: "58px", height: "40px" }}
-                buttonStyle={{ backgroundColor: "red" }}
-            /> */}
             {formErrors.phoneNumber && <p className="text-red-500 text-sm">{formErrors.phoneNumber}</p>}
 
-            <CustomSelectSubscribe />
+            <div className="relative w-full py-3 ">
+                <div
+                    className="border-2 border-l-0 border-t-0 border-r-0 rounded border-darkBlueColor flex justify-between items-center cursor-pointer"
+                    onClick={toggleDropdown}
+                >
+                    <span className="text-white">{formData.aboutUs}</span>
+                    <svg
+                        className={`w-4 h-4 transform transition-transform text-white ${isOpen ? "rotate-180" : "rotate-0"}`}
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                    >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                </div>
+
+                {isOpen && (
+                    <div className="absolute z-10 mt-1 w-full border border-darkBlueColor rounded bg-white shadow-lg max-h-64 overflow-y-auto">
+                        {options.map((option, index) => (
+                            <div
+                                key={index}
+                                onClick={() => selectOption(option)}
+                                className=" m-4 cursor-pointer hover:bg-gray-100 border-b border-darkBlueColor last:border-none text-black"
+                            >
+                                {option}
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
 
             <div className="text-center mt-6">
                 <ButtonComponent

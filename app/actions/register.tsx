@@ -2,18 +2,20 @@
 import { SAVE_PRE_REGISTRATION } from "../../graphql/mutation";
 import { GraphQLClient } from "graphql-request";
 // const client = new GraphQLClient("https://manage.finniu.com/api/v1/graph/finniu/");
-import {client} from "@/graphql/client";
+import { client } from "@/graphql/client";
 
 
 export async function savePreRegistration(input: {
-  documentNumber: string;
+  fullName: string;
   email: string;
   phoneNumber: string;
   phonePrefix: string;
+  aboutUs: string;
 }): Promise<boolean> {
+  console.log("input", input);
   try {
     const parameters = {
-      documentNumber: input.documentNumber,
+
       email: input.email,
       phoneNumber: input.phoneNumber,
       phonePrefix: input.phonePrefix,
