@@ -2,10 +2,30 @@
 
 import { saveRegisterStorage } from "@/app/helpers/registrationStorage";
 import { useEffect, useRef, useState } from "react";
-import PhoneInput from "react-phone-input-2";
+
 import ButtonComponent from "./ButtonComponent";
 import { CustomSelectSubscribe } from "./SelectSusbcribe";
 import { MuiTelInput } from "mui-tel-input";
+import { styled } from '@mui/material/styles';
+
+const CustomMuiTelInput = styled(MuiTelInput)({
+    width: '100%',
+    backgroundColor: '#051926',
+    color: '#051926',
+
+
+    '& .MuiInputBase-input': {
+        backgroundColor: '#051926',
+        color: '#FFFFFF',
+        padding: 0,
+    },
+    '& .MuiOutlinedInput-notchedOutline': {
+        border: 'none',
+    },
+    '& .MuiOutlinedInput-root': {
+        borderBottom: '2px solid #0D3A5C',
+    },
+});
 
 interface FormData {
     fullName: string;
@@ -125,7 +145,7 @@ const FormSusbcribe = () => {
                 ref={emailRef}
             />
             {formErrors.email && <p className="text-red-500 text-sm">{formErrors.email}</p>}
-            <MuiTelInput value={formData.phoneNumber} onChange={handlePhoneChange} defaultCountry="PE" />
+            <CustomMuiTelInput value={formData.phoneNumber} onChange={handlePhoneChange} defaultCountry="PE" className="" />
             {/* <PhoneInput
                 country="pe"
                 value={formData.phoneNumber}
