@@ -37,18 +37,19 @@ export const CALCULATE_INVESTMENT = gql`
 `;
 
 export const SAVE_PRE_REGISTRATION = gql`
-  mutation savePreRegistration(
-    $documentNumber: String!
+mutation savePreRegistration(
+    $discoverySource : DiscoverySourceEnum!
     $email: String!
     $phoneNumber: String!
     $phonePrefix: String!
   ) {
     savePreRegistration(
-      documentNumber: $documentNumber
+         discoverySource: $discoverySource
       email: $email
       phoneNumber: $phoneNumber
       phonePrefix: $phonePrefix
     ) {
+      
       success
     }
   }
