@@ -1,10 +1,11 @@
-"use client"
+"use client";
 
 import { saveRegisterStorage } from "@/app/helpers/registrationStorage";
 import { useEffect, useRef, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import ButtonComponent from "./ButtonComponent";
 import { CustomSelectSubscribe } from "./SelectSusbcribe";
+import { MuiTelInput } from "mui-tel-input";
 
 interface FormData {
     fullName: string;
@@ -18,6 +19,7 @@ interface FormErrors {
     email?: string;
     phoneNumber?: string;
 }
+
 const FormSusbcribe = () => {
     const [formErrors, setFormErrors] = useState<FormErrors>({});
     const [formData, setFormData] = useState<FormData>({
@@ -41,12 +43,9 @@ const FormSusbcribe = () => {
 
     useEffect(() => {
         if (isUpdatingState) {
-
             setIsUpdatingState(false);
         }
-    }, [isUpdatingState,]);
-
-
+    }, [isUpdatingState]);
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -72,29 +71,17 @@ const FormSusbcribe = () => {
         e.preventDefault();
 
         const errors: FormErrors = {};
-
-        if (!formData.fullName) {
-            errors.fullName = "El nombre completo es obligatorio.";
-        }
-        if (!formData.email) {
-            errors.email = "El correo electrónico es obligatorio.";
-        }
-        if (!formData.phoneNumber) {
-            errors.phoneNumber = "El número telefónico es obligatorio.";
-        }
+        if (!formData.fullName) errors.fullName = "El nombre completo es obligatorio.";
+        if (!formData.email) errors.email = "El correo electrónico es obligatorio.";
+        if (!formData.phoneNumber) errors.phoneNumber = "El número telefónico es obligatorio.";
 
         if (Object.keys(errors).length > 0) {
             setFormErrors(errors);
             return;
         }
 
-
         localStorage.setItem("formData", JSON.stringify(formData));
         saveRegisterStorage(JSON.stringify(formData));
-
-
-
-
         setIsUpdatingState(true);
     };
 
@@ -108,86 +95,65 @@ const FormSusbcribe = () => {
         "Email",
         "Video Youtube",
         "Evento presencial",
-        "Amigo o Familiar ",
+        "Amigo o Familiar",
     ];
 
     return (
-        <form onSubmit={handleContinue} className="w-[450px] h-[400px] flex flex-col justify-between">
-            <div className="h-4"></div>
+        <form onSubmit={handleContinue} className="w-4/5 sm:w-3/4 md:w-1/2 p-4 sm:p-6 md:p-8 bg-blueDarkColor rounded-lg flex flex-col gap-4">
             <input
                 type="text"
                 id="fullName"
                 name="fullName"
                 placeholder="Nombres y apellidos"
-                className={`w-full px-3 border-r-0 border-l-0 border-t-0 py-2 border-2 ${formErrors.fullName ? "border-red-500" : "border-darkBlueColor"} bg-blueDarkColor rounded-sm  text-white`}
+                className={`w-full px-3 py-2  border-2 border-l-0 border-t-0 border-r-0 ${formErrors.fullName ? "border-red-500" : "border-darkBlueColor"} bg-blueDarkColor text-white `}
                 value={formData.fullName}
                 onChange={handleInputChange}
                 onKeyDown={(e) => handleKeyDown(e, emailRef)}
                 ref={fullNameRef}
             />
-            {formErrors.fullName && (
-                <p className="text-red-500 text-sm">{formErrors.fullName}</p>
-            )}
-            <div className="h-4"></div>
+            {formErrors.fullName && <p className="text-red-500 text-sm">{formErrors.fullName}</p>}
+
             <input
                 type="email"
                 id="email"
                 name="email"
                 placeholder="Correo electrónico"
-                className={`w-full px-3 border-r-0 border-l-0 border-t-0 py-2 border-2 ${formErrors.fullName ? "border-red-500" : "border-darkBlueColor"} bg-blueDarkColor rounded-sm  text-white`}
+                className={`w-full px-3 py-2 border-2 border-l-0 border-t-0 border-r-0 ${formErrors.email ? "border-red-500" : "border-darkBlueColor"} bg-blueDarkColor text-white `}
                 value={formData.email}
                 onChange={handleInputChange}
                 onKeyDown={(e) => handleKeyDown(e, phoneInputRef)}
                 ref={emailRef}
             />
-            {formErrors.email && (
-                <p className="text-red-500 text-sm">{formErrors.email}</p>
-            )}
-            <div className="h-4"></div>
-            <PhoneInput
-                containerClass="bg-red"
+            {formErrors.email && <p className="text-red-500 text-sm">{formErrors.email}</p>}
+            <MuiTelInput value={formData.phoneNumber} onChange={handlePhoneChange} defaultCountry="PE" />
+            {/* <PhoneInput
                 country="pe"
                 value={formData.phoneNumber}
                 onChange={handlePhoneChange}
-                enableSearch={true}
+                enableSearch
                 inputProps={{
                     name: "phoneNumber",
                     placeholder: "Número telefónico",
                     required: true,
-                    className: `w-full px-3 border-2 border-l-0 border-t-0 border-r-0 ${formErrors.phoneNumber ? "border-red-500" : "border-darkBlueColor"} bg-blueDarkColor rounded-sm  text-white`,
+                    className: `w-full px-3 py-2 border-2 border-l-0 border-t-0 border-r-0 ${formErrors.phoneNumber ? "border-red-500" : "border-darkBlueColor"} bg-blueDarkColor text-white`,
                 }}
-                containerStyle={{
-                    width: "100%",
-                    position: "relative",
+                containerStyle={{ width: "100%", position: "relative" }}
+                inputStyle={{ width: "100%", paddingLeft: "58px", height: "40px" }}
+                buttonStyle={{ backgroundColor: "red" }}
+            /> */}
+            {formErrors.phoneNumber && <p className="text-red-500 text-sm">{formErrors.phoneNumber}</p>}
 
-                }}
-                inputStyle={{
-                    width: "100%",
-                    paddingLeft: "58px",
-                    height: "40px",
-                }}
-
-                dropdownClass="bg-blueDarkColor"
-
-            />
-            {formErrors.phoneNumber && (
-                <p className="text-red-500 text-sm">{formErrors.phoneNumber}</p>
-            )}
-            <div className="h-4"></div>
             <CustomSelectSubscribe />
 
-            <div className="text-center mt-10">
+            <div className="text-center mt-6">
                 <ButtonComponent
                     text="Suscribirse"
                     type="submit"
-                    className="w-full h-[80px] bg-buttonSuscribe text-blueDarkColor rounded-lg py-2  text-[24px]"
+                    className="w-full h-12 bg-buttonSuscribe text-blueDarkColor rounded-lg text-lg font-semibold"
                 />
             </div>
         </form>
-    )
-}
+    );
+};
 
-export default FormSusbcribe
-
-
-
+export default FormSusbcribe;
