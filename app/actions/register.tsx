@@ -43,6 +43,16 @@ function translateDiscoverySource(discover: string): discoverySource {
       return discoverySource.GOOGLE_ADDS;
   }
 }
+
+const getPhonePrefix = (phone: string): string => {
+  const [prefix] = phone.split(" ");
+  return prefix;
+};
+
+const getPhoneNumberWithoutPrefix = (phone: string): string => {
+  const [, number] = phone.split(" ");
+  return number || "";
+};
 export async function savePreRegistration(input: {
   fullName: string;
   email: string;
@@ -50,17 +60,15 @@ export async function savePreRegistration(input: {
   phonePrefix: string;
   aboutUs: string;
 }): Promise<boolean> {
-  console.log("input", input);
   try {
     const discover = translateDiscoverySource(input.aboutUs);
     const parameters = {
       email: input.email,
-      phoneNumber: input.phoneNumber,
-      phonePrefix: input.phonePrefix,
+      phoneNumber: getPhoneNumberWithoutPrefix(input.phoneNumber),
+      phonePrefix: getPhonePrefix(input.phoneNumber),
       discoverySource: discover
     };
     const result: any = await client.request(SAVE_PRE_REGISTRATION, parameters);
-    console.log("result", result);
     const success = result.savePreRegistration.success;
 
     return success;
