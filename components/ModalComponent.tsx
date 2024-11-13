@@ -163,6 +163,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
   };
   const handleAboutUsChange = (option: string) => {
     setFormData((prev) => ({ ...prev, aboutUs: option }));
+    setFormErrors((prev) => ({ ...prev, aboutUs: undefined }));
   };
 
 
