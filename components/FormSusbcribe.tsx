@@ -36,6 +36,7 @@ interface FormErrors {
     fullName?: string;
     email?: string;
     phoneNumber?: string;
+    aboutUs?: string;
 }
 
 const FormSusbcribe = () => {
@@ -71,7 +72,15 @@ const FormSusbcribe = () => {
     useEffect(() => {
         const savedData = localStorage.getItem("formData");
         if (savedData) {
-            setFormData(prev => ({ ...prev, ...JSON.parse(savedData) }));
+            const parsedData = JSON.parse(savedData);
+            setFormData((prev) => ({
+                ...prev, ...{
+                    fullName: parsedData.fullName,
+                    email: parsedData.email,
+                    phoneNumber: parsedData.phoneNumber,
+                    phonePrefix: parsedData.phonePrefix
+                }
+            }));
         }
     }, []);
 
@@ -105,10 +114,13 @@ const FormSusbcribe = () => {
         e.preventDefault();
 
         const errors: FormErrors = {};
-        if (!formData.fullName) errors.fullName = "El nombre completo es obligatorio.";
-        if (!formData.email) errors.email = "El correo electrónico es obligatorio.";
-        if (!formData.phoneNumber) errors.phoneNumber = "El número telefónico es obligatorio.";
+        if (formData.fullName === "") errors.fullName = "El nombre completo es obligatorio.";
+        if (formData.email === "") errors.email = "El correo electrónico es obligatorio.";
+        if (formData.phoneNumber === "") errors.phoneNumber = "El número telefónico es obligatorio.";
+        if (formData.aboutUs === "¿Cómo te enteraste de nosotros?") {
+            errors.aboutUs = "Debe seleccionar una opcion";
 
+        }
         if (Object.keys(errors).length > 0) {
             setFormErrors(errors);
             return;
@@ -126,7 +138,7 @@ const FormSusbcribe = () => {
     const toggleDropdown = () => setIsOpen(!isOpen);
     const selectOption = (option: string) => {
         setFormData((prev) => ({ ...prev, aboutUs: option }));
-
+        setFormErrors((prev) => ({ ...prev, aboutUs: undefined }));
         setIsOpen(false);
     };
 
@@ -164,7 +176,8 @@ const FormSusbcribe = () => {
 
             <div className="relative w-full py-3 ">
                 <div
-                    className="border-2 border-l-0 border-t-0 border-r-0 rounded border-darkBlueColor flex justify-between items-center cursor-pointer"
+                    className={`border-2 border-l-0 border-t-0 border-r-0 rounded ${formErrors.aboutUs ? "border-red-500" : "border-darkBlueColor"
+                        } flex justify-between items-center cursor-pointer`}
                     onClick={toggleDropdown}
                 >
                     <span className="text-white">{formData.aboutUs}</span>
@@ -178,9 +191,11 @@ const FormSusbcribe = () => {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                     </svg>
                 </div>
-
+                {formErrors.aboutUs && (
+                    <p className="text-red-500 text-sm">{formErrors.aboutUs}</p>
+                )}
                 {isOpen && (
-                    <div className="absolute z-10 mt-1 w-full border border-darkBlueColor rounded bg-white shadow-lg max-h-64 overflow-y-auto">
+                    <div className="absolute z-10 mt-1 w-full border border- setFormErrors((prev) => ({ ...prev, phoneNumber: undefined })); rounded bg-white shadow-lg max-h-64 overflow-y-auto">
                         {options.map((option, index) => (
                             <div
                                 key={index}
