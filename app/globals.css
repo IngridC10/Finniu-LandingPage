@@ -306,10 +306,11 @@ input[type="range"]::-webkit-slider-runnable-track {
 
 @keyframes marquee {
   0% { transform: translateX(0); }
-  100% { transform: translateX(50%); }
+  100% { transform: translateX(-145%); }
 }
 
 .marquee {
   display: flex;
   animation: marquee 20s linear infinite;
+  white-space: nowrap;
 }
