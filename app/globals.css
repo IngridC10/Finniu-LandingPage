@@ -303,3 +303,13 @@ input[type="range"]::-webkit-slider-runnable-track {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(50%); }
+}
+
+.marquee {
+  display: flex;
+  animation: marquee 20s linear infinite;
+}
