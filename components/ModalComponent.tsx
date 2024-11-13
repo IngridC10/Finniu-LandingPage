@@ -20,6 +20,7 @@ interface FormErrors {
   fullName?: string;
   email?: string;
   phoneNumber?: string;
+  aboutUs?: string;
 }
 interface CalculateParams {
   ammount: string;
@@ -66,7 +67,15 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
   useEffect(() => {
     const savedData = localStorage.getItem("formData");
     if (savedData) {
-      setFormData(JSON.parse(savedData));
+      const parsedData = JSON.parse(savedData);
+      setFormData((prev) => ({
+        ...prev, ...{
+          fullName: parsedData.fullName,
+          email: parsedData.email,
+          phoneNumber: parsedData.phoneNumber,
+          phonePrefix: parsedData.phonePrefix
+        }
+      }));
     }
   }, []);
 
@@ -115,15 +124,25 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
     if (!formData.phoneNumber) {
       errors.phoneNumber = "El número telefónico es obligatorio.";
     }
+    if (!formData.aboutUs) {
+      errors.aboutUs = "Debe seleccionar una opcion";
+    }
+    if (formData.aboutUs === "¿Como te enteraste de nosotros?") {
+      errors.aboutUs = "Debe seleccionar una opcion";
+    }
 
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
       return;
     }
 
-
     localStorage.setItem("formData", JSON.stringify(formData));
-    saveRegisterStorage(JSON.stringify(formData));
+    saveRegisterStorage(JSON.stringify({
+      fullName: formData.fullName,
+      email: formData.email,
+      phoneNumber: formData.phoneNumber,
+      phonePrefix: formData.phonePrefix
+    }));
 
 
     setCalculateParamsState((prevState) => ({
@@ -133,7 +152,13 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
       phone: formData.phoneNumber,
       discoverySource: formData.aboutUs
     }));
-
+    setFormData({
+      aboutUs: "¿Como te enteraste de nosotros?",
+      email: "",
+      fullName: "",
+      phonePrefix: "+51",
+      phoneNumber: ""
+    })
     setIsUpdatingState(true);
   };
   const handleAboutUsChange = (option: string) => {
@@ -144,7 +169,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
 
   return (
     <div className="fixed inset-0 backdrop-blur-md bg-opacity-70 flex items-center justify-center z-50">
-      <div className="bg-white rounded-xl h-[500px] flex flex-col justify-center p-8 w-[90%] max-w-md relative">
+      <div className="bg-white rounded-xl  flex flex-col justify-center p-8 w-[90%] max-w-md relative">
         <h2 className="text-center text-xl mb-10 font-bold">
           Regístrate para recibir <br />
           mayor información
@@ -218,10 +243,8 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
             </div>
             <div className="h-4"></div>
 
-            <CustomSelect onSelect={handleAboutUsChange} />
+            <CustomSelect formData={formData} formError={formErrors} onSelect={handleAboutUsChange} />
           </div>
-
-
           <div className="text-center mt-10">
             <ButtonComponent
               text="Continuar"

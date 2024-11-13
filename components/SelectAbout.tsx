@@ -1,11 +1,29 @@
 import { useState } from "react";
-interface CustomSelectProps {
-    onSelect: (option: string) => void;
+
+interface FormData {
+    fullName: string;
+    email: string;
+    phoneNumber: string;
+    phonePrefix: string;
+    aboutUs: string;
 }
 
-const CustomSelect: React.FC<CustomSelectProps> = ({ onSelect }) => {
+interface FormErrors {
+    fullName?: string;
+    email?: string;
+    phoneNumber?: string;
+    aboutUs?: string;
+}
+interface CustomSelectProps {
+    onSelect: (option: string) => void;
+    formData: FormData;
+    formError: FormErrors;
+
+}
+
+const CustomSelect: React.FC<CustomSelectProps> = ({ onSelect, formData, formError }) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState("¿Cómo te enteraste de nosotros?");
+    const [selectedOption, setSelectedOption] = useState("¿Como te enteraste de nosotros?");
     const options = [
         "Anuncios en Google",
         "Anuncios en Redes Sociales",
@@ -23,13 +41,15 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ onSelect }) => {
     const selectOption = (option: string) => {
         setSelectedOption(option);
         setIsOpen(false);
+
         onSelect(option);
     };
 
     return (
         <div className="relative w-full  ">
             <div
-                className="border-2 border-l-0 border-t-0 border-r-0 rounded border-gray-300 flex justify-between items-center cursor-pointer"
+                className={`border-2 border-l-0 border-t-0 border-r-0 rounded ${formError.aboutUs ? "border-red-500" : "border-gray-300"
+                    } flex justify-between items-center cursor-pointer`}
                 onClick={toggleDropdown}
             >
                 <span className="text-black">{selectedOption}</span>
@@ -42,7 +62,11 @@ const CustomSelect: React.FC<CustomSelectProps> = ({ onSelect }) => {
                 >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                 </svg>
+
             </div>
+            {formError.aboutUs && (
+                <p className="text-red-500 text-sm">{formError.aboutUs}</p>
+            )}
             {isOpen && (
                 <div className="absolute z-10 mt-1 w-full border border-gray-300 rounded bg-white shadow-lg max-h-64 overflow-y-auto">
                     {options.map((option, index) => (
