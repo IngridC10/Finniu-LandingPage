@@ -1,13 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import CellphoneDollar from "@/images/Section-1/CellPhoneDollar.png";
-import GooglePlay from "@/images/Section-1/GooglePlay.png";
-import AppStore from "@/images/Section-1/AppStore.png";
-import ArrowLight from "@/images/Section-1/ArrowLight.png";
-import HowItWorksButtonMobile from "./HowItWorksButtonMobile";
 import Link from "next/dist/client/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalculator } from "@fortawesome/free-solid-svg-icons";
+import { faCalculator } from '@fortawesome/free-solid-svg-icons/faCalculator';
 
 const DownloadAppMobileSection = () => {
   return (
@@ -34,7 +30,7 @@ const DownloadAppMobileSection = () => {
           <p className=" text-[25px] mr-4 text-lightBlueColor">Simula tu inversión</p>
           <FontAwesomeIcon icon={faCalculator} className="text-lightTextNavBar text-2xl" />
         </Link>
-      </div>
+      </div> 
 
     </div>
   );
