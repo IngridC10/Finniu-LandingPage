@@ -18,15 +18,16 @@ export default function Popup() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
-      <div className="bg-white rounded-lg shadow-lg w-[90%] md:w-[60%] lg:w-[40%] max-w-2xl flex flex-col md:flex-row rounded-[25px] overflow-hidden">
-        {/* Imagen */}
-        <div className="md:w-1/2 w-full h-40 md:h-auto hidden md:block">
-          <Image
-            src={PopupImage}
-            alt="Popup"
-            className="w-full h-full object-cover"
-          />
-        </div>
+      <div className="bg-white rounded-5xl shadow-lg w-[90%] md:w-[60%] lg:w-[40%] max-w-2xl flex flex-col md:flex-row rounded-[25px] overflow-hidden">
+        {/* Imagen como fondo */}
+        <div
+          className="md:w-1/2 w-full h-40 md:h-auto hidden md:block"
+          style={{
+            backgroundImage: `url(${PopupImage.src})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        ></div>
 
         {/* Contenido */}
         <div className="w-full md:w-1/2 p-4 md:p-6 flex flex-col justify-between bg-[#A2E6FA] text-[#0D3A5C]">
