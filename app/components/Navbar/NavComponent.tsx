@@ -27,6 +27,7 @@ const NavComponent = () => {
     closeMenu();
   };
 
+
   return (
     <div className="w-full bg-blueDarkColor p-4 sticky top-0 z-50">
       <div className="container min-h-full flex justify-between items-center mx-auto">
@@ -38,18 +39,24 @@ const NavComponent = () => {
         <div className="hidden xl:flex flex-row justify-between items-center space-x-20 text-white text-[18px]">
           <Link
             href="/#HowItWorks"
-            className={`transition-transform duration-300 ${
-              selectedNavItemState === "how-it-works" ? "text-lightTextNavBar" : ""
-            } hover:scale-110`}
+            className={`transition-transform duration-300 ${selectedNavItemState === "how-it-works" ? "text-lightTextNavBar" : ""
+              } hover:scale-110`}
             onClick={() => handleItemSelect("how-it-works")}
           >
             ¿Cómo funciona?
           </Link>
           <Link
+            href="/transparency_security"
+            className={`transition-transform duration-300 ${selectedNavItemState === "how-it-works" ? "text-lightTextNavBar" : ""
+              } hover:scale-110`}
+            onClick={() => handleItemSelect("transparency_security")}
+          >
+            Transparencia y Seguridad
+          </Link>
+          <Link
             href="/#simulatorInvestment"
-            className={`transition-transform duration-300 ${
-              selectedNavItemState === "simulator-investment" ? "text-lightTextNavBar" : ""
-            } hover:scale-110`}
+            className={`transition-transform duration-300 ${selectedNavItemState === "simulator-investment" ? "text-lightTextNavBar" : ""
+              } hover:scale-110`}
             onClick={() => handleItemSelect("simulator-investment")}
           >
             Simulador
@@ -57,9 +64,8 @@ const NavComponent = () => {
           <Link
             href="https://finniu.tawk.help/"
             target="_blank"
-            className={`transition-transform duration-300 ${
-              selectedNavItemState === "frequent-questions" ? "text-lightTextNavBar" : ""
-            } hover:scale-110`}
+            className={`transition-transform duration-300 ${selectedNavItemState === "frequent-questions" ? "text-lightTextNavBar" : ""
+              } hover:scale-110`}
             onClick={() => handleItemSelect("frequent-questions")}
           >
             Ayuda
@@ -67,18 +73,16 @@ const NavComponent = () => {
           <Link
             href="https://finantips.substack.com/"
             target="_blank"
-            className={`transition-transform duration-300 ${
-              selectedNavItemState === "finantips" ? "text-lightTextNavBar" : ""
-            } hover:scale-110`}
+            className={`transition-transform duration-300 ${selectedNavItemState === "finantips" ? "text-lightTextNavBar" : ""
+              } hover:scale-110`}
             onClick={() => handleItemSelect("finantips")}
           >
             Finantips
           </Link>
           <Link
             href="/about"
-            className={`transition-transform duration-300 ${
-              selectedNavItemState === "about" ? " text-lightTextNavBar" : ""
-            } hover:scale-110`}
+            className={`transition-transform duration-300 ${selectedNavItemState === "about" ? " text-lightTextNavBar" : ""
+              } hover:scale-110`}
             onClick={() => handleItemSelect("about")}
           >
             Nosotros
