@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect } from "react";
 import ListQuestions from "./ListQuestions";
+import { questionCapital, questionIdBack, questionIdClient, questionIdHolding, questionIdInformation, questionIdLocation, questionIdRate, questionIdRisk, questionIdTeam } from "./questions";
 
 interface Question {
     id: number;
@@ -9,47 +10,18 @@ interface Question {
     tag: string[];
 }
 
-const questionId1 = (
-    <div className="flex flex-col ">
-        <p>
-            En Finniu ofrecemos tasas competitivas gracias a nuestra diversificación y a la administración directa de capital en sectores estratégicos del holding, evitando intermediarios bancarios.
-        </p>
-        <div className="h-4"></div>
-        <p>
-            Se puede revisar el artículo completo aquí.
-        </p>
-    </div>
-);
-const questionCapital = (
-    <div className="flex flex-col ">
-        <p>
-            En Finniu aseguramos tu capital a través del contrato de administración de capital y con cheque diferido.
-        </p>
-        <div className="h-4"></div>
-        <p>
-            El contrato de administración de capital, el cual es un documento legal que asegura el monto de tu inversión. En caso de incumplimiento, puedes hacer valer tus derechos a través de vías legales, este se genera automáticamente a través de la app.
-        </p>
-        <div className="h-4"></div>
-        <p>
-            El contrato con cheque diferido se otorga a inversiones de montos desde S/.50,000 soles, su función es la misma que el de administración de capital, pero adicional a ello se otorga un cheque por el monto del capital invertido añadiendo una capa adicional de seguridad sobre tu capital.
-        </p>
-        <div className="h-4"></div>
-        <p>
-            Se puede revisar el artículo completo aquí.
-        </p>
-    </div>
-);
+
 
 const faqData: Question[] = [
-    { id: 1, question: "¿Cómo consiguen una tasa tan competitiva?", answer: questionId1, tag: ["tasa"] },
+    { id: 1, question: "¿Cómo consiguen una tasa tan competitiva?", answer: questionIdRate, tag: ["tasa"] },
     { id: 2, question: "¿Cómo aseguran mi capital? ¿Hay alguna garantía?", answer: questionCapital, tag: ["capital", "garantia"] },
-    { id: 3, question: "¿Quién es su equipo?", answer: questionId1, tag: ["equipo", "linkedin", "perfil"] },
-    { id: 4, question: "¿Cuántos clientes / inversionistas manejan?", answer: questionId1, tag: ["clientes", "inversionistas"] },
-    { id: 5, question: "¿Qué riesgo existe al invertir con ustedes?", answer: questionId1, tag: ["inevertir"] },
-    { id: 6, question: "¿Qué empresas componen el holding?", answer: questionId1, tag: ["holding"] },
-    { id: 7, question: "¿Comparten información financiera de las empresas del holding?", answer: questionId1, tag: ["informacion financiera", "financiera"] },
-    { id: 8, question: "¿Cuentan con el respaldo de la SBS?", answer: questionId1, tag: ["respaldo"] },
-    { id: 9, question: "¿Dónde se ubican sus oficinas?", answer: questionId1, tag: ["oficinas", "ubicacion"] },
+    { id: 3, question: "¿Quién es su equipo?", answer: questionIdTeam, tag: ["equipo", "linkedin", "perfil"] },
+    { id: 4, question: "¿Cuántos clientes / inversionistas manejan?", answer: questionIdClient, tag: ["clientes", "inversionistas"] },
+    { id: 5, question: "¿Qué riesgo existe al invertir con ustedes?", answer: questionIdRisk, tag: ["inevertir"] },
+    { id: 6, question: "¿Qué empresas componen el holding?", answer: questionIdHolding, tag: ["holding"] },
+    { id: 7, question: "¿Comparten información financiera de las empresas del holding?", answer: questionIdInformation, tag: ["informacion financiera", "financiera", "informacion"] },
+    { id: 8, question: "¿Cuentan con el respaldo de la SBS?", answer: questionIdBack, tag: ["respaldo"] },
+    { id: 9, question: "¿Dónde se ubican sus oficinas?", answer: questionIdLocation, tag: ["oficinas", "ubicacion"] },
 ];
 
 export default function FAQ() {
