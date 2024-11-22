@@ -57,6 +57,7 @@ const config: Config = {
         sumulatorContainer: "#DFF7FF",
         toStoresContainer: "#E7F9FF",
         buttonSuscribe: "#A2E6FA",
+        titleTransparency: "#0B3257",
       },
 
       screens: {

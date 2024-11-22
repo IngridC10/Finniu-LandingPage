@@ -7,7 +7,8 @@ import { FC } from "react";
 interface Question {
     id: number;
     question: string;
-    answer: string;
+    answer: JSX.Element;
+    tag: string[];
 }
 
 interface ListQuestionsProps {
@@ -22,9 +23,9 @@ const ListQuestions: FC<ListQuestionsProps> = ({ faqData }) => {
     };
 
     return (
-        <div className="">
+        <div className="w-full">
             {faqData.map((item) => (
-                <div key={item.id} className="border-b">
+                <div key={item.id} className="border-b ">
                     <button
                         onClick={() => toggleQuestion(item.id)}
                         className="w-full flex justify-between items-center py-3 text-left text-gray-800 focus:outline-none"
@@ -36,7 +37,7 @@ const ListQuestions: FC<ListQuestionsProps> = ({ faqData }) => {
                         />
                     </button>
                     <div
-                        className={`text-gray-600 px-4 pb-3 overflow-hidden transition-all duration-300 ease-in-out ${expandedId === item.id ? "max-h-screen" : "h-0"
+                        className={`text-gray-600 px-4 pb-3  transition-transform duration-300  ${expandedId === item.id ? "max-h-screen" : "hidden"
                             }`}
                     >
                         {item.answer}
