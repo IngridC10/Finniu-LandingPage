@@ -56,17 +56,18 @@ export default function Popup() {
               respaldado por propiedades reales. Disfruta de seguridad,
               competitividad y diversificación con Finniu.
             </p>
-            <p className="text-sm md:text-lg mb-4 font-black">
+            <p className="text-sm md:text-lg mb-10 font-black">
               ¿Listo para hacer crecer tus ahorros?
             </p>
           </div>
-          <div className="mt-4">
-            <button
+          <div className="m-auto">
+            <a
+              href="https://api.whatsapp.com/send?phone=51952484612&text=Hola!%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20info%20sobre%20Finniu.%20Mi%20nombre%20es%20"
               onClick={closePopup}
               className="w-full px-4 py-3 bg-[#0D3A5C] text-white rounded hover:bg-[#104D7C] text-center font-bold"
             >
               ¡Me interesa!
-            </button>
+            </a>
           </div>
         </div>
       </div>
