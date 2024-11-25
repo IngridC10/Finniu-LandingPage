@@ -46,21 +46,24 @@ export default function FAQ() {
 
     return (
         <div className="max-w-4xl mx-auto px-10 py-8 w-full ">
-            <h2 className="text-[32px] font-[600] text-left text-titleTransparency mb-4">Transparencia y Seguridad</h2>
+            <h2 className="text-[32px] sm:text-[28px] font-[600] text-left text-titleTransparency mb-4">Transparencia y Seguridad</h2>
             <div className="relative mb-6">
                 <input
                     type="text"
                     placeholder="Buscar mi pregunta o duda"
                     value={searchQuery}
                     onChange={handleSearch}
-                    className="w-full border rounded-lg py-2 px-4 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full  border-2 rounded-full py-2  shadow-sm focus:outline-none focus:ring-2 focus:ring-titleTransparency border-border"
                 />
-                <button className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+
+                <button className="absolute right-6 top-1/2 transform -translate-y-1/2 text-gray-500">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1 0 8.35 8.35a7.5 7.5 0 0 0 8.3 8.3z" />
                     </svg>
                 </button>
             </div>
+            <div className="h-4"></div>
+            <h3 className="text-[24px] sm:text-[20px] font-[400] text-left text-titleTransparency mb-4">Aqui puedes encontrar algunas respuestas a tus dudas</h3>
 
             <ListQuestions faqData={renderData} />
         </div>
