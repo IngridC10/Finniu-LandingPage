@@ -56,9 +56,13 @@ export default function FAQ() {
 
     return (
         <div className="max-w-4xl mx-auto px-10 py-8 w-full">
-            <h2 className="md:text-[32px] xs:text-[24px] font-[600] text-left text-titleTransparency mb-4">
+            <h2 className="md:text-[32px] xs:text-[24px] font-[600] text-center text-titleTransparency mb-4">
                 Transparencia y Seguridad
             </h2>
+            <h3 className="md:text-[24px] xs:text-[18px] font-[500] text-center text-titleTransparency mb-4">
+                Preguntas frecuentes
+            </h3>
+            <div className="h-[30px]"></div>
             <div className="relative mb-6">
                 <input
                     type="text"
