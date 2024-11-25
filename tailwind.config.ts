@@ -59,7 +59,9 @@ const config: Config = {
         toStoresContainer: "#E7F9FF",
         buttonSuscribe: "#A2E6FA",
         titleTransparency: "#0B3257",
-        textSupport: "#051926"
+        textSupport: "#051926",
+        bgOperations: "#D5F4FF",
+        bgOperationsContianer: "#C1ECFB"
       },
 
       screens: {

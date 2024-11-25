@@ -7,6 +7,7 @@ import TestimonialsSection from "./components/Section-6/TestimonialsSection";
 import SponsoredV2 from "./about/components/Section-2/SponsoredSevtionV2";
 import ToStoresSection from "./about/components/Section-2/ToStoresSection";
 import Susbcribe from "./components/Section-8/Susbcribe";
+import MovilOperations from "@/components/MovilOperations";
 
 
 
@@ -15,6 +16,7 @@ export default function Home() {
     <main className=" flex min-h-screen flex-col items-center  justify-between   ">
       <DownloadAppSection />
       <SponsoredV2 />
+      <MovilOperations />
       <FixedTermsSection />
       <ToStoresSection />
       <HowItWorksSection />
