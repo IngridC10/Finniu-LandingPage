@@ -1,7 +1,9 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 import ListQuestions from "./ListQuestions";
 import { questionCapital, questionIdBack, questionIdClient, questionIdHolding, questionIdInformation, questionIdLocation, questionIdRate, questionIdRisk, questionIdTeam } from "./questions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 interface Question {
     id: number;
@@ -15,13 +17,10 @@ const tagsCapital = ["contrato", "capital", "seguridad", "cheque", "inversión",
 const tagsTeam = ["equipo", "linkedin", "perfil", "fundadores", "nosotros", "historia", "mision", "vision", "respaldo", "opinones", "directorio", "respaldo"];
 const tagsClient = ["clientes", "inversionistas", "manejan"];
 const tagsRisk = ["riesgo", "seguridad", "devolución", "contratos", "mutuo", "dinerario", "capital", "financiero", "respaldo", "garantía", "garantias", "garantías", "garantia"];
-const tagsHolding = ["holding", "empresas"];
-const tagsInformation = ["informacion financiera", "financiera", "informacion"];
-const tagsBack = ["respaldo"];
-const tagsLocation = ["oficinas", "ubicacion", "direccion", "localizacion", "sede", "sede principal"];
-
-
-
+const tagsHolding = ["holding", "empresas", "alimentos", "agroindustria", "energía", "rentabilidad"];
+const tagsInformation = ["informacion financiera", "financiera", "informacion", "reportes", "sunat"];
+const tagsBack = ["respaldo", "", "fondos de inversión", "fondos", "inscripcion", "regulación", "inscripción", "regulacion"];
+const tagsLocation = ["oficinas", "ubicacion", "direccion", "localizacion", "sede", "sede principal", "lima", "san luis", "san borja"];
 
 const faqData: Question[] = [
     { id: 1, question: "¿Cómo consiguen una tasa tan competitiva?", answer: questionIdRate, tag: tagsRate },
@@ -56,28 +55,34 @@ export default function FAQ() {
     };
 
     return (
-        <div className="max-w-4xl mx-auto px-10 py-8 w-full ">
-            <h2 className="md:text-[32px] xs:text-[24px] font-[600] text-left text-titleTransparency mb-4">Transparencia y Seguridad</h2>
+        <div className="max-w-4xl mx-auto px-10 py-8 w-full">
+            <h2 className="md:text-[32px] xs:text-[24px] font-[600] text-left text-titleTransparency mb-4">
+                Transparencia y Seguridad
+            </h2>
             <div className="relative mb-6">
                 <input
                     type="text"
                     placeholder="Buscar mi pregunta o duda"
                     value={searchQuery}
                     onChange={handleSearch}
-                    className="w-full  border-2 rounded-full py-2  shadow-sm focus:outline-none focus:ring-2 focus:ring-titleTransparency border-border"
+                    className="w-full border-2 rounded-full py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-titleTransparency border-border"
                 />
-
                 <button className="absolute right-6 top-1/2 transform -translate-y-1/2 text-gray-500">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1 0 8.35 8.35a7.5 7.5 0 0 0 8.3 8.3z" />
-                    </svg>
+                    <FontAwesomeIcon
+                        icon={faSearch}
+                        className={`text-darkBlueColor text-2xl transition-transform duration-500 `}
+                    />
                 </button>
             </div>
-            <div className="h-4"></div>
-            <h3 className="md:text-[24px] xs:text-[20px] font-[400] text-left text-titleTransparency mb-4">Aqui puedes encontrar algunas respuestas a tus dudas</h3>
-
-            <ListQuestions faqData={renderData} />
+            <h3 className="md:text-[24px] xs:text-[20px] font-[400] text-left text-titleTransparency mb-4">
+                Aqui puedes encontrar algunas respuestas a tus dudas
+            </h3>
+            <div
+                className={`transition-all duration-500 overflow-hidden ${renderData.length > 0 ? "max-h-full" : "max-h-0"
+                    }`}
+            >
+                <ListQuestions faqData={renderData} />
+            </div>
         </div>
     );
 }
-

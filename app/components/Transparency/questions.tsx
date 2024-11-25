@@ -140,7 +140,7 @@ export const questionIdBack = (
 export const questionIdLocation = (
     <div className={containerStyle}>
         <p className={textStyle}>
-            Sí, contamos con oficinas ubicadas en <Link href={mapsLink} className={linkStyle} target="_blank" rel="noopener noreferrer">Av. San Luis 2076, San Borja, Lima</Link>  ¡Nos encantaría recibirte si deseas conocer más sobre Finniu!
+            Sí, contamos con oficinas ubicadas en Av. San Luis 2076, San Borja, Lima ¡Nos encantaría recibirte si deseas conocer más sobre Finniu!
         </p>
         <div className="h-4"></div>
         <p className={textStyle}>
