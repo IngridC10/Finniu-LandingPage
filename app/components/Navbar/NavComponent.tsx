@@ -38,7 +38,10 @@ const NavComponent = () => {
       setSelectedNavItemState("about");
     } else if (router.includes("transparency_security")) {
       setSelectedNavItemState("transparency_security");
+    } else {
+      setSelectedNavItemState(null);
     }
+
   }, [router]);
 
 
