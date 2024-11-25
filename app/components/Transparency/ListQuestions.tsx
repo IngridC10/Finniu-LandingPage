@@ -25,10 +25,10 @@ const ListQuestions: FC<ListQuestionsProps> = ({ faqData }) => {
     return (
         <div className="w-full">
             {faqData.map((item) => (
-                <div key={item.id} className="border-b-2  ">
+                <div key={item.id} className="md:border-b-4  xs:border-b-2 border-gray-200 ">
                     <button
                         onClick={() => toggleQuestion(item.id)}
-                        className="w-full flex justify-between items-center px-8 py-3 text-left text-darkBlueColor text-[24px] font-medium focus:outline-none"
+                        className="w-full flex justify-between items-center px-8 py-3 text-left text-darkBlueColor md:text-[24px] xs:text-[16px] font-medium focus:outline-none"
                     >
                         <span className="font-medium">{item.question}</span>
                         <FontAwesomeIcon

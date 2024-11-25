@@ -10,18 +10,29 @@ interface Question {
     tag: string[];
 }
 
+const tagsRate = ["tasa", "competitivas", "diversificación", "diversificacion", "administración", "administracion", "intermediarios"];
+const tagsCapital = ["contrato", "capital", "seguridad", "cheque", "inversión", "legal", "automático", "montos", "adicional", "app"];
+const tagsTeam = ["equipo", "linkedin", "perfil", "fundadores", "nosotros", "historia", "mision", "vision", "respaldo", "opinones", "directorio", "respaldo"];
+const tagsClient = ["clientes", "inversionistas", "manejan"];
+const tagsRisk = ["riesgo", "seguridad", "devolución", "contratos", "mutuo", "dinerario", "capital", "financiero", "respaldo", "garantía", "garantias", "garantías", "garantia"];
+const tagsHolding = ["holding", "empresas"];
+const tagsInformation = ["informacion financiera", "financiera", "informacion"];
+const tagsBack = ["respaldo"];
+const tagsLocation = ["oficinas", "ubicacion", "direccion", "localizacion", "sede", "sede principal"];
+
+
 
 
 const faqData: Question[] = [
-    { id: 1, question: "¿Cómo consiguen una tasa tan competitiva?", answer: questionIdRate, tag: ["tasa"] },
-    { id: 2, question: "¿Cómo aseguran mi capital? ¿Hay alguna garantía?", answer: questionCapital, tag: ["capital", "garantia"] },
-    { id: 3, question: "¿Quién es su equipo?", answer: questionIdTeam, tag: ["equipo", "linkedin", "perfil"] },
-    { id: 4, question: "¿Cuántos clientes / inversionistas manejan?", answer: questionIdClient, tag: ["clientes", "inversionistas"] },
-    { id: 5, question: "¿Qué riesgo existe al invertir con ustedes?", answer: questionIdRisk, tag: ["inevertir"] },
-    { id: 6, question: "¿Qué empresas componen el holding?", answer: questionIdHolding, tag: ["holding"] },
-    { id: 7, question: "¿Comparten información financiera de las empresas del holding?", answer: questionIdInformation, tag: ["informacion financiera", "financiera", "informacion"] },
-    { id: 8, question: "¿Cuentan con el respaldo de la SBS?", answer: questionIdBack, tag: ["respaldo"] },
-    { id: 9, question: "¿Dónde se ubican sus oficinas?", answer: questionIdLocation, tag: ["oficinas", "ubicacion"] },
+    { id: 1, question: "¿Cómo consiguen una tasa tan competitiva?", answer: questionIdRate, tag: tagsRate },
+    { id: 2, question: "¿Cómo aseguran mi capital? ¿Hay alguna garantía?", answer: questionCapital, tag: tagsCapital },
+    { id: 3, question: "¿Quién es su equipo?", answer: questionIdTeam, tag: tagsTeam },
+    { id: 4, question: "¿Cuántos clientes / inversionistas manejan?", answer: questionIdClient, tag: tagsClient },
+    { id: 5, question: "¿Qué riesgo existe al invertir con ustedes?", answer: questionIdRisk, tag: tagsRisk },
+    { id: 6, question: "¿Qué empresas componen el holding?", answer: questionIdHolding, tag: tagsHolding },
+    { id: 7, question: "¿Comparten información financiera de las empresas del holding?", answer: questionIdInformation, tag: tagsInformation },
+    { id: 8, question: "¿Cuentan con el respaldo de la SBS?", answer: questionIdBack, tag: tagsBack },
+    { id: 9, question: "¿Dónde se ubican sus oficinas?", answer: questionIdLocation, tag: tagsLocation },
 ];
 
 export default function FAQ() {
@@ -46,7 +57,7 @@ export default function FAQ() {
 
     return (
         <div className="max-w-4xl mx-auto px-10 py-8 w-full ">
-            <h2 className="text-[32px] sm:text-[28px] font-[600] text-left text-titleTransparency mb-4">Transparencia y Seguridad</h2>
+            <h2 className="md:text-[32px] xs:text-[24px] font-[600] text-left text-titleTransparency mb-4">Transparencia y Seguridad</h2>
             <div className="relative mb-6">
                 <input
                     type="text"
@@ -63,7 +74,7 @@ export default function FAQ() {
                 </button>
             </div>
             <div className="h-4"></div>
-            <h3 className="text-[24px] sm:text-[20px] font-[400] text-left text-titleTransparency mb-4">Aqui puedes encontrar algunas respuestas a tus dudas</h3>
+            <h3 className="md:text-[24px] xs:text-[20px] font-[400] text-left text-titleTransparency mb-4">Aqui puedes encontrar algunas respuestas a tus dudas</h3>
 
             <ListQuestions faqData={renderData} />
         </div>

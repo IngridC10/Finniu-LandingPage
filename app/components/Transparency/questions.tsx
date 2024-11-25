@@ -1,9 +1,9 @@
 import Link from "next/dist/client/link";
 
-const textStyle = "md:text-lg font-normal text-black sm:text-xs";
-const textListStyle = "md:text-lg font-normal text-black sm:text-xs";
-const listStyle = "md:text-lg font-normal text-black list-disc list-outside ml-4 sm:text-xs";
-const linkStyle = "md:text-lg font-bold text-darkBlueColor sm:text-xs";
+const textStyle = "md:text-lg font-normal text-black xs:text-xs";
+const textListStyle = "md:text-lg font-normal text-black xs:text-xs";
+const listStyle = "md:text-lg font-normal text-black list-disc list-outside ml-4 xs:text-xs";
+const linkStyle = "md:text-lg font-bold text-darkBlueColor xs:text-xs";
 const containerStyle = "flex flex-col px-4 py-3";
 const rateLink = "https://finniu.tawk.help/article/%E2%AD%90%C2%BFc%C3%B3mo-consiguen-una-tasa-tan-competitiva";
 const capitalLink = "https://finniu.tawk.help/article/%C2%BFcomo-aseguramos-el-capital-de-nuestros-inversionistas";
