@@ -65,7 +65,7 @@ export default function FAQ() {
                     placeholder="Buscar mi pregunta o duda"
                     value={searchQuery}
                     onChange={handleSearch}
-                    className="w-full border-2 rounded-full py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-titleTransparency border-border"
+                    className="w-full border-2 rounded-full py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-titleTransparency border-border placeholder-black xs:placeholder:text-[14px] placeholder md:placeholder:text-[18px]"
                 />
                 <button className="absolute right-6 top-1/2 transform -translate-y-1/2 text-gray-500">
                     <FontAwesomeIcon

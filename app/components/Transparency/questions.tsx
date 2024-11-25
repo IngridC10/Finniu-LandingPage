@@ -11,8 +11,6 @@ const teamLink = "/about";
 const riskLink = "https://finniu.tawk.help/article/%C2%BFcomo-aseguramos-el-capital-de-nuestros-inversionistas";
 const holdingLink = "https://finniu.tawk.help/article/%C2%BFa-d%C3%B3nde-va-el-dinero-de-tu-inversi%C3%B3n";
 const calendarLink = "https://calendly.com/finniumeet/30min";
-const mapsLink = "https://maps.app.goo.gl/E38iBhrsnSaLvEaD8";
-
 
 export const questionIdRate = (
     <div className={containerStyle}>
@@ -126,15 +124,13 @@ export const questionIdHolding = (
 export const questionIdInformation = (
     <div className={containerStyle}>
         <p className={textStyle}>
-            Toda inversión conlleva riesgos. Sin embargo, contamos con contratos de mutuo dinerario que respaldan cada inversión y aseguran la devolución del capital al final del plazo. En estos 3 años, hemos cumplido con el 100% de rentabilidad, logrando un historial sólido de cumplimiento. Además, nuestra estrategia de diversificación nos permite mantener un buen equilibrio entre rentabilidad y seguridad, minimizando riesgos y ofreciendo estabilidad a nuestros inversionistas.
-        </p>
+            Sí, cada trimestre enviamos un informe a los inversionistas, detallando el avance del fondo y cómo estamos implementando las estrategias de inversión. Haz una simulación desde el Home de nuestra web y recibirás esta información en nuestro newsletter.        </p>
     </div>
 );
 export const questionIdBack = (
     <div className={containerStyle}>
         <p className={textStyle}>
-            Finniu ha iniciado recientemente el proceso de inscripción para operar bajo la regulación de la SBS como casa de préstamos y cambio de divisas, y se espera que la resolución se emita en diciembre de 2024. Si bien actualmente, Finniu no está supervisada por la SBS, pero cumple con el marco legal peruano y está autorizada para administrar fondos de inversión privados, donde los inversionistas eligen de manera independiente cómo invertir su dinero.
-        </p>
+            Finniu ha iniciado recientemente el proceso de inscripción para operar bajo la regulación de la SBS como casa de préstamos y cambio de divisas, y se espera que la resolución se emita en diciembre de 2024. Si bien actualmente, Finniu no está supervisada por la SBS, pero cumple con el marco legal peruano y está autorizada para administrar fondos de inversión privados, donde los inversionistas eligen de manera independiente cómo invertir su dinero.        </p>
     </div>
 );
 export const questionIdLocation = (

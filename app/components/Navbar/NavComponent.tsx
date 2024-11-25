@@ -1,14 +1,20 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ButtonComponent from "@/components/ButtonComponent";
 import LogoFinniu from "@/images/NavBar/LogoFinniu.png";
 import LogoFinniuDark from "@/images/NavBar/LogoFinniuDark.png";
+import { usePathname } from "next/navigation";
+
+
+
 
 const NavComponent = () => {
   const [isMenuOpenState, setIsMenuOpenState] = useState(false);
   const [selectedNavItemState, setSelectedNavItemState] = useState<string | null>(null);
+  const router = usePathname();
+
 
   const handleButton = () => {
     window.open("https://app.finniu.com/login");
@@ -26,6 +32,14 @@ const NavComponent = () => {
     setSelectedNavItemState(link);
     closeMenu();
   };
+
+  useEffect(() => {
+    if (router.includes("about")) {
+      setSelectedNavItemState("about");
+    } else if (router.includes("transparency_security")) {
+      setSelectedNavItemState("transparency_security");
+    }
+  }, [router]);
 
 
   return (
@@ -47,7 +61,7 @@ const NavComponent = () => {
           </Link>
           <Link
             href="/transparency_security"
-            className={`transition-transform duration-300 ${selectedNavItemState === "how-it-works" ? "text-lightTextNavBar" : ""
+            className={`transition-transform duration-300 ${selectedNavItemState === "transparency_security" ? "text-lightTextNavBar" : ""
               } hover:scale-110`}
             onClick={() => handleItemSelect("transparency_security")}
           >
@@ -156,6 +170,13 @@ const NavComponent = () => {
               onClick={() => handleItemSelect("how-it-works")}
             >
               ¿Cómo funciona?
+            </Link>
+            <Link
+              href="/transparency_security"
+              className={`${selectedNavItemState === "transparency_security" ? "text-lightTextNavBar" : ""}`}
+              onClick={() => handleItemSelect("transparency_security")}
+            >
+              Transparencia y Seguridad
             </Link>
             <Link
               href="/#simulatorInvestment"

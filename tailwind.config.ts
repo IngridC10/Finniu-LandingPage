@@ -14,6 +14,7 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         "gradient-light": "linear-gradient(to bottom, #C2EFFF, #FFFFFF)",
         gradient: "linear-gradient(to right, #051926 50%,#DCF6FF 50%)",
+        'support-gradient': 'linear-gradient(to right, #D6F5FF, #FFFFFF)',
       },
 
       fontFamily: {
@@ -58,6 +59,7 @@ const config: Config = {
         toStoresContainer: "#E7F9FF",
         buttonSuscribe: "#A2E6FA",
         titleTransparency: "#0B3257",
+        textSupport: "#051926"
       },
 
       screens: {
