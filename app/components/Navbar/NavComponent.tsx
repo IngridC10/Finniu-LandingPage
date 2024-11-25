@@ -65,14 +65,14 @@ const NavComponent = () => {
             Ayuda
           </Link>
           <Link
-            href="https://finantips.substack.com/"
+            href="https://blog.finniu.com/"
             target="_blank"
             className={`transition-transform duration-300 ${
               selectedNavItemState === "finantips" ? "text-lightTextNavBar" : ""
             } hover:scale-110`}
             onClick={() => handleItemSelect("finantips")}
           >
-            Finantips
+            Blog
           </Link>
           <Link
             href="/about"
@@ -169,12 +169,12 @@ const NavComponent = () => {
               Ayuda
             </Link>
             <Link
-              href="https://finantips.substack.com/"
+              href="https://blog.finniu.com/"
               target="_blank"
               className={selectedNavItemState === "finantips" ? "text-lightTextNavBar" : ""}
               onClick={() => handleItemSelect("finantips")}
             >
-              Finantips
+              Blog
             </Link>
             <Link
               href="/about"

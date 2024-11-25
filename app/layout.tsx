@@ -5,6 +5,8 @@ import NavComponent from "./components/Navbar/NavComponent";
 import FooterPageComponent from "./components/Footer/FooterPageComponent";
 import FloatingWhatsappButton from "./components/Button-wsp/FloatingWhatsappButtonComponent";
 import GTM from "./components/GTM";
+import Popup from "./components/Popup/Popup";
+
 const DMSans = localFont({
   src: [
     {
@@ -61,6 +63,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={DMSans.className}>
         <NavComponent />
         {children}
+        <Popup />
         <FloatingWhatsappButton />
         <FooterPageComponent />
       </body>

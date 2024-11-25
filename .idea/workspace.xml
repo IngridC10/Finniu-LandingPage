@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2711e060-f8e6-44a8-b959-8c924ae88cb9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/ModalComponent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/ModalComponent.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/components/Popup/Popup.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/components/Popup/Popup.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,25 +25,26 @@
     <option name="openDirectoriesWithSingleClick" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "hotfix/save-simulator-data",
-    "last_opened_file_path": "/Users/diegodelavega/Diego/Finniu-LandingPage/app/components/Button-wsp",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "/Users/diegodelavega/Diego/Finniu-LandingPage/node_modules/typescript/lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;staging&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/diegodelavega/Diego/Finniu-LandingPage/app/components/Button-wsp&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/diegodelavega/Diego/Finniu-LandingPage/node_modules/typescript/lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/components/Button-wsp" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/images/Popup" />
       <recent name="$PROJECT_DIR$/images/About/Section-1" />
       <recent name="$PROJECT_DIR$/app/components" />
       <recent name="$PROJECT_DIR$/app/about/components" />
@@ -72,6 +73,7 @@
       <workItem from="1729189046356" duration="2740000" />
       <workItem from="1729198481536" duration="24170000" />
       <workItem from="1729608485810" duration="2047000" />
+      <workItem from="1732313472989" duration="15927000" />
     </task>
     <servers />
   </component>

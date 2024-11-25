@@ -1,55 +1,37 @@
 import React from "react";
 import Image from "next/image";
 import CellphoneDollar from "@/images/Section-1/CellPhoneDollar.png";
-import GooglePlay from "@/images/Section-1/GooglePlay.png";
-import AppStore from "@/images/Section-1/AppStore.png";
-import ArrowLight from "@/images/Section-1/ArrowLight.png";
-import HowItWorksButtonMobile from "./HowItWorksButtonMobile";
+import Link from "next/dist/client/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalculator } from '@fortawesome/free-solid-svg-icons/faCalculator';
 
 const DownloadAppMobileSection = () => {
   return (
-    <div className="flex flex-col  2xl:justify-center justify-start p-6 items-center bg-blueDarkColor  m-0 2xl:m-3">
-      <div className="text-white  text-justify ">
-        <p className="text-2xl">Invierte en tu futuro</p>
-        <p className="text-[28px] lg:text-4xl">
-          <span className="text-white mr-2">Logra todas tus</span>
-          <span className="text-lilaColor mr-2">metas financieras</span>
-          <span>con</span>
-          <span className="text-lightBlueColor"> Finniu.</span>
+    <div className=" flex flex-col  2xl:justify-center justify-start m-10 items-center bg-blueDarkColor ">
+      <div className=" text-left z-10 flex justify-center flex-col ">
+
+
+        <p className="text-white text-[34px] leading-tight">
+          Haz crecer tus <span className="text-lightTextNavBar">Ahorros</span> y logra tus
+          <span className="text-lilaColor "> metas </span>
+          <span className="text-lilaColor capitalize"> Financieras </span>
+          con Finniu
         </p>
-      </div>
+        <div className="h-[20px]"></div>
 
-      <Image
-        src={CellphoneDollar}
-        alt="cellphone-dollar"
-        height={260}
-        className="ml-20 m-8"
-      />
 
-      <div className="flex flex-row ">
-        <HowItWorksButtonMobile />
-      </div>
+        <Image
+          src={CellphoneDollar}
+          alt="cellphone-dollar"
+          height={260}
+          className="ml-20 m-8"
+        />
+        <Link href={"/#simulatorInvestment"} className="w-[314px] h-[55px] flex flex-row justify-center items-center border rounded-lg border-lightTextNavBar  ">
+          <p className=" text-[25px] mr-4 text-lightBlueColor">Simula tu inversión</p>
+          <FontAwesomeIcon icon={faCalculator} className="text-lightTextNavBar text-2xl" />
+        </Link>
+      </div> 
 
-      <div className="flex justify-center md:justify-start gap-4 mt-6">
-        <a
-          href="https://play.google.com/store/apps/details?id=com.finniu&referrer=utm_source%3Dfinniu_web%26utm_medium%3Dweb%26anid%3Daarki%26aclid%3D{click_id}%26cp1%3D{app_id}"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image src={GooglePlay} alt="Google-Play" width={120} />
-        </a>
-        <a
-          href="https://apps.apple.com/app/apple-store/id6449205870?pt=126231912&ct=web&mt=8"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image src={AppStore} alt="App-Store" width={120} />
-        </a>
-      </div>
-
-      <div className="mt-5">
-        <Image src={ArrowLight} alt="arrow-light" height={50} />
-      </div>
     </div>
   );
 };

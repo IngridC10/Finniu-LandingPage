@@ -52,6 +52,11 @@ const config: Config = {
         blackColorText: "#020202",
         mustardColor: "#FDEFDF",
         greenColor: "#04A260",
+        simulatorRecived: "#F0E4FF",
+        simulatorText: "#0D3A5C",
+        sumulatorContainer: "#DFF7FF",
+        toStoresContainer: "#E7F9FF",
+        buttonSuscribe: "#A2E6FA",
       },
 
       screens: {
