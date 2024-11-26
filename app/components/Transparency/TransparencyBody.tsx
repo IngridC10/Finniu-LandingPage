@@ -1,7 +1,18 @@
 "use client";
 import { useState, useEffect } from "react";
 import ListQuestions from "./ListQuestions";
-import { questionCapital, questionIdBack, questionIdClient, questionIdHolding, questionIdInformation, questionIdLocation, questionIdRate, questionIdRisk, questionIdTeam } from "./questions";
+import {
+    questionCapital,
+    questionIdBack,
+    questionIdCapital,
+    questionIdClient,
+    questionIdHolding,
+    questionIdInformation,
+    questionIdLocation,
+    questionIdRate,
+    questionIdRisk,
+    questionIdTeam
+} from "./questions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
@@ -21,6 +32,7 @@ const tagsHolding = ["holding", "empresas", "alimentos", "agroindustria", "energ
 const tagsInformation = ["informacion financiera", "financiera", "informacion", "reportes", "sunat"];
 const tagsBack = ["respaldo", "", "fondos de inversión", "fondos", "inscripcion", "regulación", "inscripción", "regulacion"];
 const tagsLocation = ["oficinas", "ubicacion", "direccion", "localizacion", "sede", "sede principal", "lima", "san luis", "san borja"];
+const tagsIdCapital = ["retiro", "capital", "compromisos", "fondos", "rendimiento", "tiempo estipulado", "garantizar", "manera segura "];
 
 const faqData: Question[] = [
     { id: 1, question: "¿Cómo consiguen una tasa tan competitiva?", answer: questionIdRate, tag: tagsRate },
@@ -32,6 +44,7 @@ const faqData: Question[] = [
     { id: 7, question: "¿Comparten información financiera de las empresas del holding?", answer: questionIdInformation, tag: tagsInformation },
     { id: 8, question: "¿Cuentan con el respaldo de la SBS?", answer: questionIdBack, tag: tagsBack },
     { id: 9, question: "¿Dónde se ubican sus oficinas?", answer: questionIdLocation, tag: tagsLocation },
+    { id: 10, question: "💡¿Puedo retirar mi capital en caso de emergencia?", answer: questionIdCapital, tag: tagsIdCapital },
 ];
 
 export default function FAQ() {

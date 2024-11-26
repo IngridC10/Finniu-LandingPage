@@ -144,3 +144,37 @@ export const questionIdLocation = (
         </p>
     </div>
 );
+
+export const questionIdCapital = (
+    <div className={containerStyle}>
+        <p className={textStyle}>
+            Actualmente no es posible hacer el retiro del capital en caso de emergencia debido a los acuerdos
+            establecidos en el contrato generado al inicio de la inversión.
+
+
+        </p>
+        <div className="py-4">
+            <p className={textStyle}>
+                Estos acuerdos están diseñados para asegurar que todos los compromisos se cumplan de manera adecuada,
+                tanto para el inversionista como para la entidad que gestiona los fondos.
+
+            </p>
+        </div>
+        <div className="py-4">
+            <p className={textStyle}>
+                Al mantener el capital invertido durante
+                el tiempo estipulado, se protege el rendimiento esperado y la estabilidad de las inversiones.
+
+            </p>
+        </div>
+        <div className="py-4">
+            <p className={textStyle}>
+                Entendemos
+                que
+                pueden surgir situaciones inesperadas, pero estas reglas existen para garantizar que todo funcione de
+                manera
+                segura y equitativa para todos los participantes.
+            </p>
+        </div>
+    </div>
+);
