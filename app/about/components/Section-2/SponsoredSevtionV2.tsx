@@ -8,9 +8,9 @@ import InversionSimple from "@/images/About/Section-2/Inversion_simple_v2.png";
 
 const SponsoredV2 = () => {
     return (
-        <section className="w-full justify-center items-center h-[160px] xl:h-[240px] flex flex-col border-b border-gray-200">
-            <div className="flex flex-col justify-center pt-3 xl:pt-[66px] items-center w-full min-h-full">
-                <h2 className="text-black text-xl xl:text-[37px]">Con el respaldo de</h2>
+        <section className="w-full justify-center items-center h-[160px] xl:h-[240px] flex flex-col border-b border-gray-200 ">
+            <div className="flex flex-col justify-center pt-3 xl:pt-[66px] items-center w-full min-h-full bg-support-gradient	">
+                <h2 className="text-textSupport text-xl xl:text-[37px]">Nos respaldan</h2>
                 <ContainerSponsorLg />
                 <ContainerSponsorSm />
             </div>

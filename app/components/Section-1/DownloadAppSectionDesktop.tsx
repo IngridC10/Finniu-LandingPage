@@ -37,7 +37,7 @@ const DownloadAppSectionDesktop = () => {
 
               <CountUp
                 start={0}
-                end={7.5}
+                end={12.1}
                 duration={2.5}
                 separator=""
                 decimals={1}
@@ -52,7 +52,7 @@ const DownloadAppSectionDesktop = () => {
               <p className="text-base"> Operaciones</p>
               <CountUp
                 start={0}
-                end={550}
+                end={820}
                 duration={2.7}
                 prefix="+"
                 style={{ fontSize: "32px" }}
@@ -63,7 +63,7 @@ const DownloadAppSectionDesktop = () => {
               <p className="text-base">Inversionistas</p>
               <CountUp
                 start={0}
-                end={300}
+                end={390}
                 duration={2.5}
                 prefix="+"
                 style={{ fontSize: "32px" }}
