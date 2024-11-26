@@ -1,14 +1,20 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ButtonComponent from "@/components/ButtonComponent";
 import LogoFinniu from "@/images/NavBar/LogoFinniu.png";
 import LogoFinniuDark from "@/images/NavBar/LogoFinniuDark.png";
+import { usePathname } from "next/navigation";
+
+
+
 
 const NavComponent = () => {
   const [isMenuOpenState, setIsMenuOpenState] = useState(false);
   const [selectedNavItemState, setSelectedNavItemState] = useState<string | null>(null);
+  const router = usePathname();
+
 
   const handleButton = () => {
     window.open("https://app.finniu.com/login");
@@ -27,6 +33,18 @@ const NavComponent = () => {
     closeMenu();
   };
 
+  useEffect(() => {
+    if (router.includes("about")) {
+      setSelectedNavItemState("about");
+    } else if (router.includes("transparency_security")) {
+      setSelectedNavItemState("transparency_security");
+    } else {
+      setSelectedNavItemState(null);
+    }
+
+  }, [router]);
+
+
   return (
     <div className="w-full bg-blueDarkColor p-4 sticky top-0 z-50">
       <div className="container min-h-full flex justify-between items-center mx-auto">
@@ -38,18 +56,24 @@ const NavComponent = () => {
         <div className="hidden xl:flex flex-row justify-between items-center space-x-20 text-white text-[18px]">
           <Link
             href="/#HowItWorks"
-            className={`transition-transform duration-300 ${
-              selectedNavItemState === "how-it-works" ? "text-lightTextNavBar" : ""
-            } hover:scale-110`}
+            className={`transition-transform duration-300 ${selectedNavItemState === "how-it-works" ? "text-lightTextNavBar" : ""
+              } hover:scale-110`}
             onClick={() => handleItemSelect("how-it-works")}
           >
             ¿Cómo funciona?
           </Link>
           <Link
+            href="/transparency_security"
+            className={`transition-transform duration-300 ${selectedNavItemState === "transparency_security" ? "text-lightTextNavBar" : ""
+              } hover:scale-110`}
+            onClick={() => handleItemSelect("transparency_security")}
+          >
+            Transparencia y Seguridad
+          </Link>
+          <Link
             href="/#simulatorInvestment"
-            className={`transition-transform duration-300 ${
-              selectedNavItemState === "simulator-investment" ? "text-lightTextNavBar" : ""
-            } hover:scale-110`}
+            className={`transition-transform duration-300 ${selectedNavItemState === "simulator-investment" ? "text-lightTextNavBar" : ""
+              } hover:scale-110`}
             onClick={() => handleItemSelect("simulator-investment")}
           >
             Simulador
@@ -57,9 +81,8 @@ const NavComponent = () => {
           <Link
             href="https://finniu.tawk.help/"
             target="_blank"
-            className={`transition-transform duration-300 ${
-              selectedNavItemState === "frequent-questions" ? "text-lightTextNavBar" : ""
-            } hover:scale-110`}
+            className={`transition-transform duration-300 ${selectedNavItemState === "frequent-questions" ? "text-lightTextNavBar" : ""
+              } hover:scale-110`}
             onClick={() => handleItemSelect("frequent-questions")}
           >
             Ayuda
@@ -67,18 +90,16 @@ const NavComponent = () => {
           <Link
             href="https://blog.finniu.com/"
             target="_blank"
-            className={`transition-transform duration-300 ${
-              selectedNavItemState === "finantips" ? "text-lightTextNavBar" : ""
-            } hover:scale-110`}
+            className={`transition-transform duration-300 ${selectedNavItemState === "finantips" ? "text-lightTextNavBar" : ""
+              } hover:scale-110`}
             onClick={() => handleItemSelect("finantips")}
           >
             Blog
           </Link>
           <Link
             href="/about"
-            className={`transition-transform duration-300 ${
-              selectedNavItemState === "about" ? " text-lightTextNavBar" : ""
-            } hover:scale-110`}
+            className={`transition-transform duration-300 ${selectedNavItemState === "about" ? " text-lightTextNavBar" : ""
+              } hover:scale-110`}
             onClick={() => handleItemSelect("about")}
           >
             Nosotros
@@ -152,6 +173,13 @@ const NavComponent = () => {
               onClick={() => handleItemSelect("how-it-works")}
             >
               ¿Cómo funciona?
+            </Link>
+            <Link
+              href="/transparency_security"
+              className={`${selectedNavItemState === "transparency_security" ? "text-lightTextNavBar" : ""}`}
+              onClick={() => handleItemSelect("transparency_security")}
+            >
+              Transparencia y Seguridad
             </Link>
             <Link
               href="/#simulatorInvestment"
