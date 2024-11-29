@@ -54,7 +54,7 @@ const FixedTermCardSectionMobile = () => {
         <div className="flex flex-row justify-center">
           <Image src={Key} alt="business-money" width={25} height={35} />
           <h2 className="text-[20px] text-blueDarkColor ml-2">
-            Seguridad y confianza
+            Seguridad y transparencia
           </h2>
         </div>
         <div className="">
