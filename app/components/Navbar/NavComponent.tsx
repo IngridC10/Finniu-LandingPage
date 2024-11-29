@@ -89,7 +89,7 @@ const NavComponent = () => {
           </Link>
           <Link
             href="https://blog.finniu.com/"
-            target="_blank"
+
             className={`transition-transform duration-300 ${selectedNavItemState === "finantips" ? "text-lightTextNavBar" : ""
               } hover:scale-110`}
             onClick={() => handleItemSelect("finantips")}

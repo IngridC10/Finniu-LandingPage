@@ -71,8 +71,7 @@ const DownloadAppSectionDesktop = () => {
             </div>
           </div>
           <p className="text-justify leading-10 text-[24px]">
-            Descubre las oportunidades de inversión que existen para ti. Genera
-            ingresos adicionales de manera inteligente.
+            Somos un fondo de inversión privado con un producto de renta fija. En Finniu invertimos en las empresas de nuestro propio holding.
           </p>
         </div>
       </div>

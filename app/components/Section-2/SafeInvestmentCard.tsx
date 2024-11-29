@@ -11,7 +11,7 @@ const SafeInvestment = () => {
           <div className="flex flex-row gap-2 items-center mb-2">
             <Image src={Key} alt="key-icon" width={40} height={40} />
             <h2 className="text-darkBlueColor text-[32px] leading-relaxed">
-              Seguridad y confianza
+              Seguridad y transparencia
             </h2>
           </div>
           <div className="text-justify leading-relaxed ">
