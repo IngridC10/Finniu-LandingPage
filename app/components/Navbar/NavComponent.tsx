@@ -36,8 +36,8 @@ const NavComponent = () => {
   useEffect(() => {
     if (router.includes("about")) {
       setSelectedNavItemState("about");
-    } else if (router.includes("transparency_security")) {
-      setSelectedNavItemState("transparency_security");
+    } else if (router.includes("transparencia-y-seguridad-finniu")) {
+      setSelectedNavItemState("transparencia-y-seguridad-finniu");
     } else {
       setSelectedNavItemState(null);
     }
@@ -63,10 +63,10 @@ const NavComponent = () => {
             ¿Cómo funciona?
           </Link>
           <Link
-            href="/transparency_security"
-            className={`transition-transform duration-300 ${selectedNavItemState === "transparency_security" ? "text-lightTextNavBar" : ""
+            href="/transparencia-y-seguridad-finniu"
+            className={`transition-transform duration-300 ${selectedNavItemState === "transparencia-y-seguridad-finniu" ? "text-lightTextNavBar" : ""
               } hover:scale-110`}
-            onClick={() => handleItemSelect("transparency_security")}
+            onClick={() => handleItemSelect("transparencia-y-seguridad-finniu")}
           >
             Transparencia y Seguridad
           </Link>
@@ -175,9 +175,9 @@ const NavComponent = () => {
               ¿Cómo funciona?
             </Link>
             <Link
-              href="/transparency_security"
-              className={`${selectedNavItemState === "transparency_security" ? "text-lightTextNavBar" : ""}`}
-              onClick={() => handleItemSelect("transparency_security")}
+              href="/transparencia-y-seguridad-finniu"
+              className={`${selectedNavItemState === "transparencia-y-seguridad-finniu" ? "text-lightTextNavBar" : ""}`}
+              onClick={() => handleItemSelect("transparencia-y-seguridad-finniu")}
             >
               Transparencia y Seguridad
             </Link>
