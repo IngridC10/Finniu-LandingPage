@@ -124,12 +124,12 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
     if (!formData.phoneNumber) {
       errors.phoneNumber = "El número telefónico es obligatorio.";
     }
-    if (!formData.aboutUs) {
-      errors.aboutUs = "Debe seleccionar una opcion";
-    }
-    if (formData.aboutUs === "¿Como te enteraste de nosotros?") {
-      errors.aboutUs = "Debe seleccionar una opcion";
-    }
+    // if (!formData.aboutUs) {
+    //   errors.aboutUs = "Debe seleccionar una opcion";
+    // }
+    // if (formData.aboutUs === "¿Como te enteraste de nosotros?") {
+    //   errors.aboutUs = "Debe seleccionar una opcion";
+    // }
 
     if (Object.keys(errors).length > 0) {
       setFormErrors(errors);
@@ -244,7 +244,7 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
             </div>
             <div className="h-4"></div>
 
-            <CustomSelect formData={formData} formError={formErrors} onSelect={handleAboutUsChange} />
+
           </div>
           <div className="text-center mt-10">
             <ButtonComponent
