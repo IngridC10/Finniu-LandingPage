@@ -62,7 +62,7 @@ export default function Popup() {
           </div>
           <div className="m-auto">
             <a
-              href="https://api.whatsapp.com/send?phone=51952484612&text=Hola!%20Me%20gustar%C3%ADa%20recibir%20m%C3%A1s%20info%20sobre%20Finniu.%20Mi%20nombre%20es%20"
+              href="https://wa.link/hdzwy2"
               onClick={closePopup}
               className="w-full px-4 py-3 bg-[#0D3A5C] text-white rounded hover:bg-[#104D7C] text-center font-bold"
             >
