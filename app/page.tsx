@@ -22,8 +22,9 @@ export default function Home() {
       <HowItWorksSection />
       <StepInvestmentGuideSection />
       <SimulatorInvestmentSection />
+        <Susbcribe />
       <TestimonialsSection />
-      <Susbcribe />
+
       {/* <RegisterSection /> */}
     </main>
   );
