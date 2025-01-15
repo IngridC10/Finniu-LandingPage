@@ -130,7 +130,14 @@ export const questionIdInformation = (
 export const questionIdBack = (
     <div className={containerStyle}>
         <p className={textStyle}>
-            Finniu ha iniciado recientemente el proceso de inscripción para operar bajo la regulación de la SBS como casa de préstamos y cambio de divisas, y se espera que la resolución se emita en diciembre de 2024. Si bien actualmente, Finniu no está supervisada por la SBS, pero cumple con el marco legal peruano y está autorizada para administrar fondos de inversión privados, donde los inversionistas eligen de manera independiente cómo invertir su dinero.        </p>
+        Finniu ha iniciado recientemente el proceso de inscripción
+para operar bajo la regulación de la SBS como casa de préstamos y cambio de
+divisas, y se espera que la resolución se emita en durante el primer trimestre
+del 2025. Si bien actualmente, Finniu no está supervisada por la SBS, pero
+cumple con el marco legal peruano y está autorizada para administrar fondos de
+inversión privados, donde los inversionistas eligen de manera independiente
+cómo invertir su dinero.
+        </p>
     </div>
 );
 export const questionIdLocation = (
